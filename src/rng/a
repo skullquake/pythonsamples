@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+"""
+def main (args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    for a in range(0,2):
+        print(a);
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

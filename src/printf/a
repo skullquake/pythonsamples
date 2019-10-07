@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+documentation
+"""
+def main (args):
+    """
+    description
+    """
+    printf("%i\t%d\t%2f\t%s\n",1,12,12.34567,"qwer");
+    print("{}{}{a}{}{}".format(1,2,3,4,a="qwer"));
+    #fwidth demo
+    printf("+"+"-"*(42)+"+\n");
+    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
+    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
+    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
+    printf("+"+"-"*(42)+"+\n");
+    return 0;
+def printf(format, *args):
+    """
+    description
+    """
+    sys.stdout.write(format % args)
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PYTHON=python3
+SRC=./src/a.py
+$PYTHON /mnt/c/Course/Work/ex/prt/$SRC
