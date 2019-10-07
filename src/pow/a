@@ -8,8 +8,7 @@ def main (args):
     """
     main() Needs more stuff here, in real life.
     """
-    print(list((0,1,2,3))+[])
-    print(tuple([0,1,2,3])+())
+    print(pow(1,2));
     return 0;
 
 

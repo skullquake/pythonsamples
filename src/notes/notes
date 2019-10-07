@@ -1,0 +1,286 @@
+try powershell core
+	cross platform
+	not profiles
+	there is a built in one
+	there is a portable/sererate one
+		powershell 6???
+
+rg
+	ripgrep
+	pkg install ripgrep
+	sample usage
+		rg print
+		will search all files for print
+		highlighted
+
+fd
+	search files
+	e.g.
+		fd py
+		lists all .py files
+
+bat
+	like cat with syntax highlighting
+	very nice output
+
+fzf
+	fuzzy finder
+	better than find
+	pkg install fzf
+	sample usage
+		vim $(fzf)
+		this will help with search/open
+
+wsl as substitute for msys/cygwin
+	has package manager
+	might run faster
+	enable
+		gui or cli
+			windows features
+			windows subsystem for linux
+	run
+		browser: windows app store ubuntu
+		there might also be a powershell script for this
+	sudo apt-get update&&sudo apt-get upgrade
+	research
+		x11 server for wsl
+
+winpython
+	portable monolithic
+
+spyder
+	ide
+	takes long to start
+pycharm
+	intelij
+	might have commercial aspect
+most ides use ipython
+vscode
+	install python extension
+	setup posershell for console/setup wsl for console
+	has vim extension
+ipython
+	a more friendly interpreter
+jupyter notebook
+	interactive
+	browser
+	charts and data
+	you can create notebooks
+		these can be used for learning materials as well
+vim set color
+	:colorscheme industry
+python
+	module is a dictionary
+	dir lists the dictionary
+		import math;
+		print(dir(math));
+investigate cmath
+	this is for complex math
+	print(3j)
+	this also relates to coordinates
+		geographical programming
+the # comment in python
+	helps a lot with # as in bash
+python scripts in bash
+	#!/bin/bash
+	"""
+	doc
+	string
+	"""
+	print("asdf")
+use of symlinks
+	mkdir ~/bin
+	ln -s ~/src/python/a.py ~/bin/a
+importing
+	this actually imports a file
+	remember to not name your file
+	the same as the thing your are importing
+		turtle.py
+			import turtle
+			#this will reload itself, and not turtle the library
+game
+	oxygen not inclued
+	nor and gates etc
+.vimrc
+	e ~/.vimrc
+	stuff goes there
+.vimrc python
+	#!/usr/bin/python
+	# -*- coding: utf-8 -*-
+	# vim: ts=4 sw=4 et:
+	the second and third lines
+	are not just comments
+	research this
+	you can set up vimrc to use python documentation 
+	research how to accomplish this
+
+pydoc3
+	python3 -m pydoc
+	or
+	pydoc
+	this is command line version of
+	the help() function from the repl
+		e.g.
+		for a.py
+		pydoc a
+
+single quotes/double quotes
+	there is not difference in the interpretation
+	e.g. \ in a double or single quote is the same thing
+
+type
+	help(type)
+	type is also a type
+repr
+	representation
+	print(repr(0)
+	print(repr(str(0))
+	you can overload repr for a class to provide your own string repr
+lists and tuples
+	lists and tuples are differentiated on mutability
+	main thing to do is iterate over elements of elements
+sequence
+	the same concept as a colleciton
+list
+	elements can be of any typea
+chr
+	there is no chr type, just str
+style guid
+	dont write wider than 72 characters
+list slicing
+	[start:end:step]
+	end is not included
+		[0:4:1]
+			0,1,2,3,
+	you can also use negative indexes
+		[-8:-16:-2]
+	there are many experiments you can do with lists and strings to test this
+	e.g.
+		#reverse
+		a="0123456789abcdef";
+		print(a[len(a)::-1)
+		leaving out second make inclusive
+		#reverse alt
+		a="0123456789abcdef";
+		print(a[::-1)
+		leaving out second make inclusive
+references
+	a=[0]
+	b=a
+	a.append(1)
+	print(b)
+research duplication
+	through slice
+	a=[]
+	b=a[:]
+	a.push(0)
+	print(a)#neq b
+	print(b)#neq a
+list tuple concatenation
+	different types
+	so
+		list((0,1,2,3))+[]
+		tuple([0,1,2,3])+()
+take note of the main pattern
+	as in a c/cpp prg
+pep 8
+	style guide for python code
+	follow this standard
+	there is a tool that can help you
+		black
+			pip install black
+			formatting quality
+		or
+		flake8
+			pip install flake8
+			invocation
+			python -m flake8 file.py
+	and
+		pylint
+			code quality
+			shows if there is not documentation
+			you can set up vim to run pylint automatically
+	note the output of these programs and learn the style convensions
+	style convensions are important in the python world
+	global varialbes are supposed to be UPPERCASE
+membership
+	in is an operator
+	a="qwer"
+	"q" in a#true
+	b=[0,1,2,3]
+	0 in b#true
+any iterable can be converted to a list or tuple
+	list("qwer")
+	tuple("qwer")
+del
+	del is a statement that deletes objects for example from a dictionary
+manipulation lists
+	a=[0,1,2,3]
+	a[:2]=[3,2]
+	a=[0,1,2,3]
+	a[2:]=[1,0]
+	because sliced lhs, its a reference to the subarray
+element insertion
+	a=list("qwer");
+	a[0:0]="X"
+	# delete every second
+	a=list("0123456789")
+	del a[0::2]
+	#reverse od
+	a=list("01234567890")
+	a[::2]=a[::-2]
+research
+	angled brackets in python documentation referring to class vs referring to object
+append
+	append pushes an item onto a list
+	pop and append goes together
+	pop takes away the last element and returns
+emptying a list
+	clear(somelist)
+counting in lists
+	print(list("qwer").count("q"))
+	print([[1,2],[3,4]].count([1,2]))
+take note of all the list operations
+	push
+	pop
+	append
+	remove
+	index
+	...
+global reversed()
+	returns a copy that is reversed
+global sorted()
+	returns a copy that is sorted
+sort
+	a=['4','1','3','2'];
+	a.sort()
+	print(a)
+	a=['4','1','3','2'];
+	a.sort(key=len)
+	print(a)
+	# research: lambdas
+	a=['4','1','3','2'];
+	a.sort(key=lambda x:len(x))
+	print(a)
+	a=['4','1','3','2'];
+	a.sort(key=lambda x:0-len(x))
+	print(a)
+catching exceptions
+	def is_int(arg,fail=None)
+		"""
+		"""
+		try:
+			return int(s)
+		except:
+			return fail
+
+	print("asdf",0)
+string formatting functions
+	string -- common string operations
+	Lib/string.py
+	under built in types
+	str.format
+		e.g.
+			'{:<30}'.format('left aligned')
+			read up on how this compares with printf from c
+https://incusdata.site/pan/py/python-ipyp-20191007-code.html

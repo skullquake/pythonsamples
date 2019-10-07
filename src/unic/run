@@ -1,4 +1,0 @@
-#!/bin/bash
-PYTHON=python3
-SRC=./src/a.py
-$PYTHON $SRC

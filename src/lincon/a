@@ -6,7 +6,7 @@ This is documentation for the *module* (the whole file)
 """
 def main (args):
     """
-    main() Needs more stuff here, in real life.
+    main() line continuation
     """
     print(
         []+\

@@ -8,6 +8,8 @@ def main (args):
     """
     main() Needs more stuff here, in real life.
     """
+    for a in [0,1,2,3]:
+        print(a)
     return 0;
 
 

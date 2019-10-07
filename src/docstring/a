@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 # vim: ts=4 sw=4 et:
+import pydoc
 """
 This is documentation for the *module* (the whole file)
 """
@@ -8,8 +9,7 @@ def main (args):
     """
     main() Needs more stuff here, in real life.
     """
-    print(list((0,1,2,3))+[])
-    print(tuple([0,1,2,3])+())
+    print(pydoc.render_doc(main, "Help on %s"))
     return 0;
 
 

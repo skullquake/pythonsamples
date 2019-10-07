@@ -9,6 +9,8 @@ def main (args):
     main() Needs more stuff here, in real life.
     """
     print("a""b")
+    print("a"+"b")
+    print("{}{}".format("a","b"))
     return 0;
 
 

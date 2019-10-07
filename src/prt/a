@@ -8,8 +8,10 @@ def main (args):
     """
     main() Needs more stuff here, in real life.
     """
-    print(list((0,1,2,3))+[])
-    print(tuple([0,1,2,3])+())
+    import sys;
+    print("asdf");
+    sys.stdout.write("asdf");
+    sys.stdout.write("asdf");
     return 0;
 
 

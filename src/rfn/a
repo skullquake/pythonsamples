@@ -8,14 +8,6 @@ def main (args):
     """
     replacement field names
     """
-    printf("%i\t%d\t%2f\t%s\n",1,12,12.34567,"qwer");
-    #fwidth demo
-    printf("+"+"-"*(42)+"+\n");
-    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
-    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
-    printf("%-10i|%-10d|%-10f|%-10s|\n",1,12,12.34567,"qwer");
-    printf("+"+"-"*(42)+"+\n");
-    #rfn
     print("{a}{b}{c}".format(a="qwer",b="asdf",c="zxcv"));
     print("{}{}{a}{}{}".format(1,2,3,4,a="qwer"));
     print("{}{}{}{}{a}{b}{c}{}{}{}".format(1,2,3,4,4,3,2,1,a="qwer",b="asdf",c="zxcv"));
@@ -23,11 +15,8 @@ def main (args):
     print("{3}{2}{1}{0}".format(1,2,3,4));
     print("{0}{1}{2}{3}{3}{2}{1}{0}".format(1,2,3,4));
     return 0;
-def printf(format, *args):
-    """
-    description
-    """
-    sys.stdout.write(format % args)
+
+
 if __name__ == "__main__":
     import sys;
     sys.exit(main(sys.argv));
