@@ -1,0 +1,78 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+"""
+
+
+def main(args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    # Print a formatted price list with a given width
+    default_width = 20
+    width = to_int(args[1] if len(args)>1 else default_width, default_width) # ternary
+    price_width = 10
+    item_width = width - price_width
+    header_fmt =\
+            eval('f"{{:{item_width}}}{{:>{price_width}}}"') if \
+            (sys.version_info.major >= 3 and sys.version_info.minor >= 6) else \
+            eval('"{{:{}}}{{:>{}}}".format(item_width, price_width)') # #ifdef kludge
+    fmt =\
+            eval('f"{{:{item_width}}}{{:>{price_width}.2f}}"') if \
+            (sys.version_info.major >= 3 and sys.version_info.minor >= 6) else \
+            eval('"{{:{}}}{{:>{}.2f}}".format(item_width, price_width)') # #ifdef kludge
+
+    print("=" * width)
+    print(header_fmt.format("Item", "Price"))
+    print("-" * width)
+    d_frt={
+        "Apples":{
+            "p":0.4,
+            "w":0,
+            "u":""
+        },
+        "Pears":{
+            "p":0.5,
+            "w":0,
+            "u":""
+        },
+        "Cantaloupes":{
+            "p":1.92,
+            "w":0,
+            "u":""
+        },
+        "Dried Apricots (16 oz.)":{
+            "p":8,
+            "w":4,
+            "u":"oz"
+        },
+        "Prunes (4 lbs.)":{
+            "p":12,
+            "w":4,
+            "u":"lbs"
+        }
+    }
+    for frt in d_frt: 
+            print(fmt.format(frt,d_frt[frt]["p"]))
+    print("=" * width)
+
+    return 0
+
+def to_int (s, fail=None):
+    """
+    An exception-free "conversion" from a string to a "int". Optionally,
+    caller can specify what to return for invalid input (a default).
+    """
+    try:
+        return int(s)
+    except:
+        return fail
+
+
+if __name__ == "__main__":
+    import sys
+
+    sys.exit(main(sys.argv))
+    sys.exit(0)

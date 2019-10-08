@@ -1,0 +1,2 @@
+#!/bin/bash
+cat ./res/words|while read WORD;do ./a "$WORD";done
