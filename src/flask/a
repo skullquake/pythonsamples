@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+from flask import Flask,render_template,jsonify
+import random
+app=Flask(
+    __name__,
+    static_url_path='',
+    static_folder='web/static',
+    template_folder='web/templates'
+)
+@app.route('/a')
+def a():
+    return '<p>{}</p>'.format("hello");
+if __name__ == '__main__':
+    app.run()

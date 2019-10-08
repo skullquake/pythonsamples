@@ -1,0 +1,107 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+moddoc
+"""
+def main (args):
+    """
+    maindoc
+    """
+    import string;
+    #str const
+    print(string.ascii_letters);
+    print(string.ascii_lowercase);
+    print(string.ascii_uppercase);
+    print(string.digits);
+    print(string.hexdigits);
+    #print(string.letters);
+    #print(string.lowercase);
+    #print(string.uppercase);
+    print(string.octdigits);
+    print(string.printable);
+    print(string.whitespace);
+    #cus str fmt
+    print("{}".format(1));
+    print("{}{}".format(1,2));
+    print("{0}{1}".format(1,2));
+    print("{1}{0}".format(1,2));
+    print("{a[0]}".format(a=[0,1]));
+    print("{a[1]}".format(a=[0,1]));
+    print("{a[b]}".format(a={"b":"c","d":"e"}));
+    print("{a[d]}".format(a={"b":"c","d":"e"}));
+    print("{a[b][c]}".format(a={"b":{"c":"d"}}));
+    print("{a[b][c][d]}".format(a={"b":{"c":{"d":"e"}}}));
+    #str()
+    print("{!s}".format(0));
+    print("{a!s}".format(a=0));
+    #fmt spec
+    #lft
+    print("{:<}".format(0));
+    print("{:<8}".format(0));
+    print("{:_<8}".format(0));
+    print("{:<<8}".format(0));
+    #rht
+    print("{:>}".format(0));
+    print("{:>8}".format(0));
+    print("{:_>8}".format(0));
+    print("{:>>8}".format(0));
+    #cnt
+    print("{:^}".format(0));
+    print("{:^8}".format(0));
+    print("{:_^8}".format(0));
+    print("{:^^8}".format(0));
+    #sgn
+    print("{:+}".format(0));
+    print("{:-}".format(0));
+    print("{:+f}".format(0));
+    print("{:-f}".format(0));
+    #bas
+    print("{:d}".format(11));
+    print("{:x}".format(11));
+    print("{:#x}".format(11));
+    print("{:o}".format(11));
+    print("{:#o}".format(11));
+    #dsep
+    print("{:,}".format(pow(8,8)));
+    #perc
+    print("{:.2%}".format(0.1234567));
+    #dat
+    import datetime;
+    print("{:%Y-%m-%d %H:%M:%S}".format(datetime.datetime(1990,1,1,1,1,1)));
+    #loop
+    for a in range(5,12):
+        for b in 'dXob':
+            sys.stdout.write("{0:{width}{base}}".format(a,base=b,width=8));
+        sys.stdout.write("\n");
+    #tplsub
+    print(
+            string.
+            Template('$a $b $c').
+            substitute(a="c",b="b",c="a")
+    );
+    print(
+            string.
+            Template('$a $b $c').
+            substitute({"a":"c","b":"b","c":"a"})
+    );
+    #str fun
+    print(string.capwords("qwer asdf zxcv"));
+    print("abc".maketrans({"a":"1","b":"2","c":"3"}))
+    print("abc".find("a"));
+    print("abc".count("a"));
+    print("aabbcc".count("aa"));
+    print("abc".split("b"));
+    print("aBc".swapcase());
+    print("abc".translate("abc".maketrans({"a":"c","b":"b","c":"a"})))
+
+    return 0;
+
+
+if __name__ == "__main__":
+    """
+    epdoc
+    """
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
