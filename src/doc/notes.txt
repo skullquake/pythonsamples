@@ -284,3 +284,331 @@ string formatting functions
 			'{:<30}'.format('left aligned')
 			read up on how this compares with printf from c
 https://incusdata.site/pan/py/python-ipyp-20191007-code.html
+
+pip install local
+	pip install --user asdf
+	the stuff will be installed to ~/.local/bin
+	you have to add this to the path
+
+everything in python is in a dictionary and nested dictionary
+	scope and inheritance is implemented with nested dictionaries
+	when we talk about a function, it is an entry in an dictionary
+	that points to data/code
+
+duck typing
+	type is based on qualities of thing???
+
+built in functions
+	functions that are built into the language
+
+keywords
+	import keyword
+	print(keyword.kwlist)
+builtins
+	import builtins
+	print(dir(builtins))
+reflection
+	die idee dat 'n taal homself kan ontleed
+
+you can actually name things the names of keywords and builtins
+
+repr()
+	converts to string
+	0.toString()
+	repr(0)
+numeric to base
+	bin(0)
+	oct(0)
+	hex(0)
+pow operator
+	**
+	e.g.
+	2**2
+utf-8 is a variable length encoding
+	this makes adding numbers to glyphs difficult
+	ascii is a subset of utf-8
+	so ascii text does not have to be converted to utf-8
+how to determine if windows understands utf-8
+	"change code page"
+	chcp
+	how to change it
+	chcp 65001
+pip multiline
+a=(
+	"asdf"
+	"qwer"
+	"zxcv"
+)
+triple quoted strings
+	downside is indentiation, indentation whitespace is included in the value
+	the above is an alternative
+there is a section in the course notes of dealing with this
+also note the escape sequences
+formatted strings
+	python >=3.6
+	a="foo";
+	print(f"a: {a}");
+	compare that with javascript string literals
+	print(f"a:{('_'*8)}")
+ord
+	ord("asdf")
+	ord("a")
+	ordinal value of first char
+chr
+	opposite of ord
+	e.g. print(chr(ord("a"))#a
+print function
+	print("a","b","c")#space seperator
+	print("a","b","c",sep="---")#--- seperator
+	print("a","b","c",sep="---",end="_")#--- seperator, _ end
+	avoid newline at end???
+	print("a","b","c",end="")#avoid newline
+determine type
+	use is operator
+	type(0) is int
+read up on hackintosh
+truthiness
+	truth is nebulous
+	values are handled as true or false
+	e.g.
+		if 10:
+			print('a');
+		if object :
+			print('a');
+boolean specifics
+	user=user or 'anon'
+	the truthy value can actually be something else, not necessarily
+	a reall boolean
+	ensuring functions returned true and executing them from left to right only if all returned true
+		f0() and f1() and f2()
+if number is too big, its value exceeds 64 bits
+	it will be stored in an arbitrary precision type
+use double quotes
+	because black makes it all double quotes in any ways
+read up on string formatting type specifiers
+	b	formats an integer as binary
+	c	...
+	d	...
+	e	...
+	E	...
+	f	...
+	F	...
+	g	...
+	G	...
+	n	...
+	o	...
+	s	...
+	x	...
+	X	...
+vim
+	after load before save exec
+	black
+	:%black something
+pandoc 
+	can convert md to html etc
+	many formats
+maketrans and translate
+	relates to /bin/tr that translates characters to and from
+vim events
+	bufleave
+	this might be used to run buf on evt
+	type :help autocmd
+	if you search for BufFilePost/Pre, these are related commands for this
+	then a cli proc will exec on these evts
+vim multi windows
+	ctrl-w n
+		new
+	ctrl-w w
+		switch
+you can set up a configure file for pylint
+	research this
+python vim module
+	vim autoformat for python
+	you can research modules for vim
+dict
+	keys can be any immutable type, numeric, string, float, tuple
+	you can create a dict with dict()
+	you can have strange combintations
+	e.g.
+	{tuple([]):0}
+	{tuple([]):0,tuple([0]):1}
+	dictionaries also have operations
+dict itr
+	for k in myDict:
+		print(f"{k},{myDict[k]}");
+	for k,v in myDict:
+		print(f"{k},{v}");
+	see also how to get iterables
+lists are faster than dict
+you can create an html template with dictionaries
+getting values
+	{'a':'b'}.get('a')
+	{'a':'b'}.get('b')
+	{'a':'b'}.get('b','default')
+	a['a']
+	a['b']
+how to get iterables
+	a={'a':'a','b':'b'};
+	for b in a.items():
+		print(b);
+how to get the keys
+	a={'a':'b','c':'d'};
+	for b in a.keys():
+		print(a[b])
+how to get the values
+	a={'a':'b','c':'d'};
+	for b in a.values():
+		print(b)
+you can push and pop on dict
+	pop needs a key
+setdefault is like get
+	but a get if not exists set
+	if the key does not exists it operates to create it
+	else it works just like get
+dict update
+	this is like merging dictionaries
+print
+	there is a way to print to a file
+	read up on this
+importing
+	from flask import Flask
+	for example
+	lazy (this is frowned upon)
+		from flask import *
+		there is a way of writing a module that prohibits this
+		this has to do with export setup
+how to get the modules module from itsef
+	__main__ ???
+tuples without parentheses
+	1,2
+	(1,2)
+	a,b=1,2
+	(a,b)=1,2
+	a,b=(1,2)
+	(a,b)=(1,2)
+swapping
+	a,b=1,2
+	a,b=b,a
+chaned assignment
+	a=b=c=0
+	a,b,c=d,e,f=0,1,2
+* in lhs tuple assignment
+	a,b,*c=1,2,3,4
+	a,*b,c=1,2,3,4
+	*a,b,c=d,*e,f=g,h,*i=1,2,3,4
+	this is only for python3
+	you cannot have to * names in the tpl
+try download python for dos
+	2.4.2
+True and mathematica operators
+	True+True # 2
+if statements
+	if boolean:
+		...
+	if boolean:
+		...
+	else:
+		...
+ternary operator:
+	a=0 if boolean else 1;
+	this is similar to the conditional operator in c/cpp
+
+elif
+	this is similar to shell scripting
+		if a:
+			...
+		elif b:
+			...
+		elif c:
+			...
+if blocks
+	you can define a function in a block
+		if True:
+			def a():
+				print('b');
+		else:
+			def a():
+				print('b');
+		this might be good for doing version checking os checking
+the reason that capital letters have a bigger numerical value is due to the development
+at a point there was only capital letters
+boolean operators
+	and
+	or
+	not
+	...and not && | !
+testing in range
+	if 1<=n and n<=10:
+	special case
+		if 1<=n<=10:
+			...uniquely pythonic
+assertions
+	this is about design time
+	if there are more asserts then it indicates that it has design
+	for example
+		import os
+		assert(os.path.isfile('/path/to/file'));
+	with a message
+		import os
+		assert(os.path.isfile('/path/to/file')),'msg';
+	with a message
+	let the program crash with an assert
+	you can raise it as follows with a message
+		if asdf:
+			raise AssertionError('msg');
+range based loops:
+	instead of using a while loop
+		a=0;
+		while a<8;
+			print(a);
+			a=a+1;
+	you can use range based loops
+		for i in range(8):
+			print(i);
+		for i in range(0,8):
+			print(i);
+		for i in range(0,8,1):
+			print(i);
+		for i in range(8,0,-1):
+			print(i);
+	range is a class
+	it is an iterable
+	it is a generator, so it calculates, it does not create the actual
+	list, this is lighter on the hardware
+	it expects integer values
+opamps gates
+	read up on that
+stl range in cpp
+	cpp20 will have range similar to this
+enumerate
+	this returns a list of tuples with idx and val
+	e.g.
+	enumerate(['a','b','c'])
+	usage
+		list(enumerate(['a','b'])) # a tuple (0,'a')
+		for a,b in enumerate(l):
+			print(a,b)
+iterating dictionaries
+	d={'a','b'}
+	for a in d:
+		print(a);
+	for a list(d):
+		print(a);
+	for a d.keys():
+		print(a);
+items
+	{}.items() returns tuples of pairs
+zip
+	combine lists
+		zip([0,1],[2,3])
+		list(zip([0,1],[2,3]))
+		print(dict(zip(range(0,8,1),range(8,0,-1))))
+join
+	'seperator'.join(stringOrList)
+	','.join('ab')
+	','.join(['a','b'])
+for and while else clauses
+	for and while loops can have else clauses
+		if a loop has no break statement, then at the end
+		the else will execute or something like that
+read up on comprehensions
