@@ -20,18 +20,13 @@ import time
 import syslog
 import schedule
 import time
-import urllib.request
-import json
-import psutil
+
+
 class Daemon(object):
     """ Linux Daemon boilerplate. """
-
-    def __init__(
-        self,
-        pid_file,
-        stdout="/var/log/daemon_example_out.log",
-        stderr="/var/log/daemon_example_err.log",
-    ):
+    def __init__(self, pid_file,
+                 stdout='/var/log/daemon_example_out.log',
+                 stderr='/var/log/daemon_example_err.log'):
         self.stdout = stdout
         self.stderr = stderr
         self.pid_file = pid_file
@@ -62,14 +57,14 @@ class Daemon(object):
         # Now we shut down stdin and point stdout/stderr at log files.
 
         # stdin
-        with open("/dev/null", "r") as dev_null:
+        with open('/dev/null', 'r') as dev_null:
             os.dup2(dev_null.fileno(), sys.stdin.fileno())
 
         # stderr - do this before stdout so that errors about setting stdout write to the log file.
         #
         # Exceptions raised after this point will be written to the log file.
         sys.stderr.flush()
-        with open(self.stderr, "a+") as stderr:
+        with open(self.stderr, 'a+') as stderr:
             os.dup2(stderr.fileno(), sys.stderr.fileno())
 
         # stdout
@@ -77,20 +72,20 @@ class Daemon(object):
         # Print statements after this step will not work. Use sys.stdout
         # instead.
         sys.stdout.flush()
-        with open(self.stdout, "a+") as stdout:
+        with open(self.stdout, 'a+') as stdout:
             os.dup2(stdout.fileno(), sys.stdout.fileno())
 
         # Write pid file
         # Before file creation, make sure we'll delete the pid file on exit!
         atexit.register(self.del_pid)
         pid = str(os.getpid())
-        with open(self.pid_file, "w+") as pid_file:
-            pid_file.write("{0}".format(pid))
+        with open(self.pid_file, 'w+') as pid_file:
+            pid_file.write('{0}'.format(pid))
 
     def get_pid_by_file(self):
         """ Return the pid read from the pid file. """
         try:
-            with open(self.pid_file, "r") as pid_file:
+            with open(self.pid_file, 'r') as pid_file:
                 pid = int(pid_file.read().strip())
             return pid
         except IOError:
@@ -99,12 +94,9 @@ class Daemon(object):
     def start(self):
         """ Start the daemon. """
         print("Starting...")
+        syslog.syslog('Starting...')
         if self.get_pid_by_file():
-            print(
-                "PID file {0} exists. Is the deamon already running?".format(
-                    self.pid_file
-                )
-            )
+            print('PID file {0} exists. Is the deamon already running?'.format(self.pid_file))
             sys.exit(1)
 
         self.daemonize()
@@ -113,14 +105,10 @@ class Daemon(object):
     def stop(self):
         """ Stop the daemon. """
         print("Stopping...")
-        syslog.syslog("Stopping...")
+        syslog.syslog('Stopping...')
         pid = self.get_pid_by_file()
         if not pid:
-            print(
-                "PID file {0} doesn't exist. Is the daemon not running?".format(
-                    self.pid_file
-                )
-            )
+            print("PID file {0} doesn't exist. Is the daemon not running?".format(self.pid_file))
             return
 
         # Time to kill.
@@ -129,7 +117,7 @@ class Daemon(object):
                 os.kill(pid, signal.SIGTERM)
                 time.sleep(0.1)
         except OSError as err:
-            if "No such process" in err.strerror and os.path.exists(self.pid_file):
+            if 'No such process' in err.strerror and os.path.exists(self.pid_file):
                 os.remove(self.pid_file)
             else:
                 print(err)
@@ -142,62 +130,27 @@ class Daemon(object):
 
     def run(self):
         """ The main loop of the daemon. """
-        syslog.syslog("Starting...")
-        schedule.every(1).seconds.do(job)
+        schedule.every(1).seconds.do(self.job)
         while 1:
             schedule.run_pending()
+            #self.job()
+            #syslog.syslog(syslog.LOG_INFO,datetime.datetime.now().isoformat() + '\n')
             time.sleep(1)
+    def job():
+        syslog.syslog(syslog.LOG_INFO,datetime.datetime.now().isoformat() + '\n')
 
-
-def job():
-    syslog.syslog(syslog.LOG_INFO, datetime.datetime.now().isoformat() + "\n")
-    disks=[];
-    i=0
-    for disk in psutil.disk_partitions():
-        diskobj=disk._asdict()
-        diskobj["usage"]=psutil.disk_usage(i)._asdict()
-        disks.append(diskobj)
-        #i+=1
-    procs=[];
-    for proc in psutil.process_iter():
-        procs.append(proc.cmdline())
-    body = {
-            'name':'tst',
-            "time":datetime.datetime.now().isoformat(),
-            "cpu":psutil.cpu_percent(),
-            "cpu_stat":psutil.cpu_stats()._asdict(),
-            "cpu_timex":psutil.cpu_times()._asdict(),
-            "disks":disks,
-            "procs":procs
-    }
-    myurl = "http://localhost:8080"
-    req = urllib.request.Request(myurl)
-    req.add_header('Content-Type', 'application/json; charset=utf-8')
-    jsondata = json.dumps(body)
-    jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
-    req.add_header('Content-Length', len(jsondataasbytes))
-    #print (jsondataasbytes)
-    response = urllib.request.urlopen(req, jsondataasbytes)
-
-
-
-if __name__ == "__main__":
-
-
+if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Usage: {0} start|stop|restart".format(sys.argv[0]))
         sys.exit(2)
 
-    daemon = Daemon("/tmp/daemon_example_p3.pid")
-    if "start" == sys.argv[1]:
+    daemon = Daemon('/tmp/daemon_example_p3.pid')
+    if 'start' == sys.argv[1]:
         daemon.start()
-    elif "stop" == sys.argv[1]:
+    elif 'stop' == sys.argv[1]:
         daemon.stop()
-    elif "restart" == sys.argv[1]:
+    elif 'restart' == sys.argv[1]:
         daemon.restart()
     else:
         print("Unknown command '{0}'".format(sys.argv[1]))
         sys.exit(2)
-
-
-
