@@ -25,11 +25,11 @@ def main (args):
     print(a);
     a=[0];
     a.clear();
-    print(a)
+    print(a);
     a=[0,1,2,3,0,1,2,3];
-    print(a.index(1))
-    print(a.index(1,1))
-    print(a.count(1))
+    print(a.index(1));
+    print(a.index(1,1));
+    print(a.count(1));
     b=a.copy();
     a=[0,1,2,3];
     a.reverse();
