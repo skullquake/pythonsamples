@@ -616,3 +616,297 @@ for and while else clauses
 		if a loop has no break statement, then at the end
 		the else will execute or something like that
 read up on comprehensions
+how to upgrade pip
+				python -m pip install pip --upgrade
+				you can manipulate pip config in pip.conf
+				you can also have a pip.conf in the venv for the local pip
+				to duplicate a venv and ensure it remains the same
+								pip freeze > requirements.txt
+								create new env
+								activate
+								copy requirements.txt
+								pip install -r requirements.txt
+[un]installing with pip and upgrading
+				pip install flask
+				pip flask --upgrade
+				pip uninstall flask
+pip list packages
+				pip list
+								list installed packages
+				pip search
+virtual environments
+				you can use virtualenv which is older
+				or you can use venv which is newer
+								python -m venv
+								this came out around python 3.3
+venv
+				python -m venv --prompt MYPY mypy
+whl
+				this is an old thing
+other environment tools
+				pipenv
+				pyenv
+								this allows you to install specific versions
+								of python
+				research this
+pypi
+				pypi.org
+				this is where pip searches for modules
+				if something is on pypi its installable and
+				has documentation
+flatpak
+				making things portable
+				this is like protable app or osx app folder thingy
+				e.g.
+								you can install visual studio code as a flatpak
+								just as an example
+				research this
+comprehensions
+				its an abstract shorter way to create lists
+				its a syntax to create a list
+				#create list ints
+				[a for a in range(8)]
+				#you can use comprehensions in comprehensions
+				[b for b in [a for a in range(8)a]]
+				#create list of lists
+				[[b] for b in [a for a in range(8)a]]
+				#create list of tuples
+				[(b,) for b in [a for a in range(8)a]]
+				print([(b,b**b) for b in [a for a in range(8)a]]);
+								equiv
+												a=[];
+												for b in range(8):
+																a.append((b,b**b));
+												print(a);
+				#figure out what this does
+								[[a for c in range(8)] for a in range(8)]
+								this seems to create a 2d array
+vim
+				practice using .
+memoization
+				cache expensive calculations
+comprehensions nested loops
+				[(a,b) for a in [0,1] for b in [2,3]]
+markdown
+				commonmark java impl
+				pandoc does that as well
+vim modules
+				vimbal
+								this is old
+				pathogen
+								a module manager
+								unzip
+								deploy
+								modify .vimrc
+				vundel
+								this can get stuff from github
+tmux customizations and plugins
+modifying the statusline in vim
+iosefka font
+				you can compile and modify this
+				this is not build with svg its built using a languagse
+generator:
+				for b in (a**a for a in range(8)):
+								print(b);
+				(a**a for a in range(8))
+								this is a generator
+								it creates elements on the fly
+								the difference is () vs [] that encloses it all
+exec and eval
+				eval executes and returns value
+				exec executes and returns nothing
+				you can create a scope and give it to eval or exec as its scope
+								a={}
+								eval('0',a);
+								exec('print(0)',a);
+								a={'b':'c'};
+								exec('print(b);');
+callable
+				def a():
+								return;
+				type(a);#function
+				callable(a);#function
+				if no return is specified it will return none, e.g.
+								def a():
+												...
+				return is actually an unnamed variable
+positional parameters
+				def a(b,c):
+								print(b);
+								print(c);
+								return;
+				#positional call
+				a('a','b');
+				#kwargs 
+				a(a='a',b='b');
+				a(b='b',a='a');
+one line functions:
+				def a(): return;
+md
+				headings
+								#
+								##
+								###
+				italic
+								*
+				code
+								```
+								```
+				esc *
+								\*
+main formats
+				common mark
+				md
+				restructured text
+				asciidoc
+				pandoc
+								swis army knife
+								programmable
+								can convert to x
+you can program pandoc with lua
+latex pronunctiation
+				late[gh]
+				other
+								contex
+								luatex ...
+python function scope
+				the function upon call has its own dictionary
+passing lists or dictionaries as parameter
+				pass by reference trick
+function pass by reference
+				you have to use a hack
+				a=[8];
+				def b(c):
+								c[0]=c[0]++;
+				print(a);
+				b(a);
+				print(a);
+				#you can also do it with a dictionary
+read up on 
+				default values for parameters
+				required parameters
+collecting parameters
+				def a(*b):
+								print(b);
+								print(type(b));
+				b will be a tuple
+				you can write flexible functions with this
+				if a function in the api is defined as foo(*bar) then it 
+				refers to collecting parameters
+								print(b);
+				a(1,2,3);
+collecting parameters and normal params
+				def a(b,*c):
+								print(b);
+								print(c);
+				a(1,2,3);#1 will go into b, 2,3 will go into c
+collecting arguments
+				def a(b,c,d):
+								print(a);
+								print(b);
+								print(c);
+								return;
+				b={'b':'b','c':'c','d','d'};
+				a(**b);
+** arg
+				def a(**b):
+								print(b);
+				a(b=0,c=1,d=2);
+				#will print dict
+vars
+				vars is a global function
+				shows variables
+				e.g.
+				a=0;
+				print(vars()['a']);
+is this useful
+				import module if not already imported
+				exec('import random') if not vars().get('random') else None;
+scope
+				python implements scope with dictionaries
+send scope to fn
+				def a(b):
+								b['a']=1;
+								return;
+				a=0;
+				print(a);
+				a(vars());
+				print(a);
+fn decl glob var
+				def a():
+								global b;
+								b=0;
+				type(b);
+				a();
+				type(b);
+				print(b);
+shadowing
+				local variable supercedes same named variable from higher scope
+globals
+				globals() function returns dictionary of global variables
+				you can manipulate this
+function
+				creating a name with a callable value
+nesting functions
+				def a():
+								def b():
+												return;
+								return;
+returning a function
+				# this returns a function pointer
+				def a():
+								def b():
+												return;
+								return a;
+				# call
+				a()()
+putting functions in dict
+				def a():
+								def b():
+												return;
+								def c():
+												return;
+								return {"b":b,"c":c};
+				a()["a"]()
+				a()["b"]()
+interesting combination
+				def a(b):
+								def c(d):
+												return b+d;
+								return c;
+				print(a(1)(2))
+				# the above indicates that python engine will realize
+				# that the returned function references a scope
+				# and that the outer scope should not be destroyed
+				# this has to do with closure
+				# python has to capture the scope
+				# read up on this
+				# you can use this to store variables, play with vars() and stuff
+				def a():
+								c=0;
+								def b(c=vars()):
+												c+=1;
+												print(c);
+												return;
+								return b;
+				b=a();
+				b();
+				b();
+				b();
+recursion
+				def a(b):
+								print("{}".format(b));
+								a(b-1) if b>0 else None;
+map
+				def a(b):
+								return b*b;
+				list(map(a,[1,2,3]));
+filter
+				def a(b):
+								return b%2==0;
+				list(filter(a,range(8)));
+lambdas in python
+				are not so useful
+				it can only have one statement
+argument parsing library
+				argparse

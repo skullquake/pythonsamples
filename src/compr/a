@@ -10,6 +10,9 @@ def main (args):
     """
     main() Needs more stuff here, in real life.
     """
+    #-------------------------------------------
+    #lst
+    #-------------------------------------------
     #ctor lst no compr
     il=[1,2,3,4,4,5,6,7,7]
     ol=[]
@@ -22,13 +25,54 @@ def main (args):
     ol=[a for a in il if a %2==0];
     print(ol);
     #ctor lst compr cpy
+    #[expr for ident in iterable]
     ol.clear();
     ol=[a for a in range(8) if True];
     print(ol);
     ol.clear();
     ol=[a for a in il if random.randint(0,1)];
     print(ol);
-
+    #compr alt comp
+    #[expr for ident in iterable]
+    ol.clear();
+    ol=[a*2 for a in range(1,8)];
+    print(ol);
+    ol.clear();
+    ol=[a**2 for a in range(1,8)];
+    print(ol);
+    ol.clear();
+    ol=[a*random.randint(0,8) for a in range(1,8)];
+    print(ol);
+    ol.clear();
+    ol=[random.randint(0,8) for a in range(1,8)];
+    print(ol);
+    #-------------------------------------------
+    #dct...
+    #-------------------------------------------
+    il=[1, 2, 3, 4, 5, 6, 7]
+    od={}
+    #dict no compr
+    for a in il:
+        if a%2!=0:
+            od[a]=a;
+    print(od)
+    #dict compr
+    #[expr for ident in iterable]
+    od.clear();
+    od={a:a for a in il};
+    print(od);
+    od.clear();
+    od={a:a for a in range(8)};
+    print(od);
+    od.clear();
+    od={a:2*a for a in range(8)};
+    print(od);
+    od.clear();
+    od={a:random.randint(0,8) for a in range(8)};
+    print(od);
+    od.clear();
+    od={a:random.randint(0,8) for a in range(8) if a%2==0};
+    print(od);
     return 0;
 
 
