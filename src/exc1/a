@@ -4,7 +4,8 @@
 """
 This is documentation for the *module* (the whole file)
 """
-
+import Colr
+#print(C().b_rgb(0, 0, 0).rgb(255, 0, 0, 'Hello there.'))
 
 def main(args):
     """

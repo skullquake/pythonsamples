@@ -14,9 +14,29 @@ app=Flask(
     static_folder="web/static",
     template_folder="web/templates"
 );
-@app.route("/a")
+@app.route('/a', methods=['GET', 'POST'])
 def a():
-    return "asdf";
+    #if len(args) == 1:
+    #    print("Usage: {} width [character]".format(args[0]))
+    #    return -1
+    #h_pylint = to_int(args[1]) if len(args) > 1 else 7
+    #c_pylint = args[2] if len(args) > 2 else "#"
+    #h_pylint = 8
+    #c_pylint = '*'
+    h_pylint = request.['h']
+    c_pylint = request.['c']
+    #assert(h_pylint >= 1), "Invalid width"
+    #assert(len(c_pylint) == 1), "Invalid character: use single character"
+    w_pylint = h_pylint*2+1
+    ret=""
+    for a_pylint in range(h_pylint):
+        for b_pylint in range(w_pylint//2, 0, -1):
+            ret+=c_pylint if (a_pylint > b_pylint) else ' '
+        for b_pylint in range(w_pylint//2):
+            ret+=c_pylint if (a_pylint > b_pylint) else ' '
+        ret+="\n"
+    return "<!DOCTYPE html><html><head></head><body><pre>"+ret+"</pre></body></html>"
+
 
 def main (args):
     """
