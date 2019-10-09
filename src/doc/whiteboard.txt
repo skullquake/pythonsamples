@@ -1,4 +1,4 @@
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  
 Incus Data   
 Codi Matters
@@ -10,6 +10,154 @@ Python
 Whiteboard
 
 Welcome ‖ Python Course Notes ‖ Python Course Code
+
+Wednesday
+
+Exercise
+
+Write a ‘professional’ Python program that prints a text-rendered triangle,
+given a height, which must be validated to be in the range [1..25]. It should
+optionally accept a command line argument for the height, or obtain it from the
+user. Optionally, you can allow a second argument or input that specifies the
+character used for rendering. Examples, for a given height (h), and # as the
+rendering character.
+
+h = 3   #       h = 5  #             h = 8  #
+       ###            ###                  ###
+      #####          #####                #####
+                    #######              #######
+                   #########            #########
+                                       ###########
+
+Functions
+
+ def loop(count, func):
+    print("WORK {}".format(count), end="...")
+    func()
+    if count - 1 > 0:
+       loop(count - 1, func)
+ 
+ def F (): print("Function F() called")
+ def G (): print("Function G() called")
+ 
+ loop(5, F)
+ loop(2, G)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def Outer():
+    def Inner():
+       print("Inner() called")
+    return Inner
+ 
+ F = Outer()
+ F()
+ Outer()()
+ G = Outer
+ G()()
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def f () :
+    global X
+    X = 234
+    print(X)
+ f()
+ print(X)
+
+ [ x for x in dir() if not x.startswith("_") ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def F (a, b, c):
+    ...
+ L = [ 11, 22, 33 ]
+ F(L[0], L[1], L[2])
+ F(*L)
+ F(a=L[0], b=L[1], c=L[2])
+ 
+ def G (*parm):
+    print(len(parm), parm[1])
+ 
+ G(L); G(1); G(); G(11), G(22, 33, 44, 55)
+ 
+ def H (*parm, other=999): ...
+ H(11, 22, 33, 44, 55)
+ H(other=10)
+ 
+ def K (other, *parm): ...
+ 
+ def F (a, b, c):...
+ 
+ D = {'a':11, 'b':22, 'c':33}
+ F (D['a'], D['b'], D['c'])
+ F(**D)
+ 
+ def F (**kwparm):
+    print(type(kwparm))
+ F(aaaa=11, bbb=22, blahblah=33)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ func_name = function (‹parm›) ‹code›
+ def func_name (‹parm›):
+    """
+    Documentation for the function.
+    """
+    ‹code>
+ 
+ hello('world')
+ hello(parm='world')
+ 
+ def func (a, b):
+    """
+    This is a demo function. It does not do much.
+    """
+    print(a, b)
+ 
+ func("ABC", "DEF")
+ func(a="ABC", b="DEF")
+ func(b="ABC", a="DEF")
+ help(func)
+ print(func.__docstring__)
+
+Exec Etc.
+
+ exec("x = 10")
+ print(x)
+
+Comprehensions
+
+Syntax — List Comprehensions
+
+[ expr for ident in iterable if cond …]
+expr ⇒ value to be added to the list for each iteration.
+ident ⇒ name of each successive item from the iterable.
+iterable ⇒ any iterable sequence.
+cond ⇒ only add expr if condition is True.
+
+ print( [ 1          for x in range(10) ] )                   #1
+ print( [ "Hello"    for x in range(10) ] )                   #2
+ print( [ (x)        for x in range(10) ] )                   #3
+ print( [ (x,)       for x in range(10) ] )                   #4
+ print( [ (x, x * x) for x in range(10) ] )                   #5
+ print( [ {x:x * x}  for x in range(10) ] )                   #6
+ 
+ # on separate lines (for each `;`)
+ L = []; for x in range(10): L.append(1)       ; print(L)     #1 as loop
+ L = []; for x in range(10): L.append("Hello") ; print(L)     #2 as loop
+ L = []; for x in range(10): L.append(x)       ; print(L)     #3 as loop
+ L = []; for x in range(10): L.append((x,))    ; print(L)     #4 as loop
+ 
+ print ( [(x, y) for x in range(4) for y in range(3)] )
+ print ( [("#" * (x + 1), y) for x in range(3) for y in range(3)] )
+ 
+ squares = {i:"{} squared is {}".format(i, i**2) for i in range(10)}
+ gen = (x ** x for x in range(10))
+ print(gen)
+ L = list(gen)
+ for i in gen:
+    print(i)
 
 Tuesday
 
@@ -24,7 +172,7 @@ Tuesday
     print(i)
     continue
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  d = { "XYZ": 123, "JKL": 212, "ABC":324, "MNO": 321 }
  for k in d:
@@ -39,7 +187,7 @@ Tuesday
  for k in slok:
     print(k, d[k])
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  print(range(10))
  print(type(range(10)))
@@ -72,7 +220,7 @@ Tuesday
  print(list(d.keys()))
  print(list(d.items()))
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  if 1 <= number and number <= 10: ...
  if 1 <= number <= 10: ...
@@ -82,7 +230,7 @@ Tuesday
     print(i)
     i += 1
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  fruit = [
     ["Apples", 0.4],
@@ -101,7 +249,7 @@ Tuesday
     print(k, fruit[k])
  l = list(fruit.keys())
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  fruit = [
     ["Apples", 0.4],
@@ -191,7 +339,7 @@ scraps.py — A Example Python Script for Experimentation
  print('|{0:<10.2f}|\n|{0:^10.2f}|\n|{0:>10.2f}|'.format(pi))
  print(f'|{pi:<10.2f}|", f"|{pi:^10.2f}|", f"|{pi:>10.2f}|", sep="\n")
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  chcp 65001
 
@@ -203,14 +351,14 @@ Lists and Tuples
  print("{0} {1} {0}".format("||", "ABC"))
  print("{one} {two} {three} {one}".format(three=123, one=2.5, two="ABC"))
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  print("Text %d, %.2f; %s ... %c" % (12, 3.45678, "Hello", "A"))
  print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (12, 3.45678, "Hello", "A"))
  print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (123456, 3.45678, "Hello", "A"))
  print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (1234, 3.45678, "Hello", "A"))
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  def to_int (arg, fail=None):
     """
@@ -225,7 +373,7 @@ Lists and Tuples
  
  answer = 12 * to_int(inp, 1);
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  l = list()
  l = []
@@ -238,7 +386,7 @@ Lists and Tuples
  l.append(['F', 'G', 'H'])
  print(l)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  l = list("ABCDE")
  l[2:2] = "<X>"
@@ -293,7 +441,7 @@ list[start:end:step]
  b = a[:]
  c = a[::-1]
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  tag = '<a href="http://www.python.org">Python web site</a>'
  print(tag[9:30])
@@ -301,7 +449,7 @@ list[start:end:step]
  print("ABC" * 3)
  print("ABC" + "DEF")
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
  help(list)
  l = list()
@@ -320,38 +468,6 @@ ONI Guide
  print(repr("ABC"))
  print(str('ABC'))
  print(repr('ABC'))
-
-Windows Subsystem for Linux (WSL)
-
-First off, use a PowerShell sesssion, which can be the default PowerShell that is installed with Windows.
-
-To enable the use of WSL, run the following, after making some temporary directory your download directory with cd:
-
-Enable WSL (PowerShell)
-
- Enable-WindowsOptionalFeature -Online `
-    -FeatureName Microsoft-Windows-Subsystem-Linux
-
-Then, to download an Ubuntu 18.04 (LTS) image from the Windows App store:
-
-Download Ubuntu 18.04 (LTS) with PowerShell
-
- Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1608 `
-    -OutFile ubuntu-1804.appx -UseBasicParsing
-
-You can also use the built-in curl command:
-
-Alternative Download Method
-
- curl.exe -L -o ubuntu-1804.appx https://aka.ms/wsl-ubuntu-1804
-
-Now, you can install that ubuntu-1804.appx image with:
-
-Install Ubuntu Image (PowerShell)
-
- Add-AppxPackage .\ubuntu-1804.appx
-
-Once finished, you can run Ubuntu from the Start Menu, or the bash.exe executable (it's on your PATH).
 
 
 
