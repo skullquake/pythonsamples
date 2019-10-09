@@ -4,6 +4,8 @@
 """
 This is documentation for the *module* (the whole file)
 """
+import sys;
+import random;
 def main (args):
     """
     main() Needs more stuff here, in real life.
@@ -19,11 +21,17 @@ def main (args):
     ol.clear();
     ol=[a for a in il if a %2==0];
     print(ol);
+    #ctor lst compr cpy
+    ol.clear();
+    ol=[a for a in range(8) if True];
+    print(ol);
+    ol.clear();
+    ol=[a for a in il if random.randint(0,1)];
+    print(ol);
 
     return 0;
 
 
 if __name__ == "__main__":
-    import sys;
     sys.exit(main(sys.argv));
     sys.exit(0);
