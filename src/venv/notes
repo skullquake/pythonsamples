@@ -1,0 +1,17 @@
+
+
+> cd C:\Course\Work
+
+> python -m venv --prompt MYPY mypy
+
+> . .\mypy\Scripts\Activate.ps1
+
+> which python
+
+> pip list
+
+> python -m pip install pip --upgrade
+
+> pip list
+
+> deactivate

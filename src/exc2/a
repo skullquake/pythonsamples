@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+A [professional] Python program that prints a text-rendered triangle, given a height,
+which must be validated to be in the range [1..25]. It should optionally accept a
+command line argument for the height, or obtain it from the user. Optionally, you can
+allow a second argument or input that specifies the character used for rendering.
+Examples, for a given height (h), and # as the rendering character.
+"""
+
+
+def main(args):
+    """
+    main() function
+    """
+    if len(args) == 1:
+        print("Usage: {} width [character]".format(args[0]))
+        return -1
+    h_pylint = to_int(args[1]) if len(args) > 1 else 7
+    c_pylint = args[2] if len(args) > 2 else "#"
+    assert(h_pylint >= 1), "Invalid width"
+    assert(len(c_pylint) == 1), "Invalid character: use single character"
+    w_pylint = h_pylint*2+1
+    for a_pylint in range(h_pylint):
+        for b_pylint in range(w_pylint//2, 0, -1):
+            jirre_pylint=print(c_pylint, end='') if (a_pylint > b_pylint) else print(' ', end='')
+            del jirre_pylint
+        for b_pylint in range(w_pylint//2):
+            jirre_pylint=print(c_pylint, end='') if (a_pylint > b_pylint) else print(' ', end='')
+            del jirre_pylint
+        print('')
+    return 0
+
+
+def to_int(s_pylint, fail=None):
+    """
+    An exception-free "conversion" from a string to a "int". Optionally,
+    caller can specify what to return for invalid input (a default).
+    """
+    try:
+        return int(s_pylint)
+    except:
+        return fail
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(sys.argv))
+    sys.exit(0)
