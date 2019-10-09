@@ -489,7 +489,7 @@ tuples without parentheses
 swapping
 	a,b=1,2
 	a,b=b,a
-chaned assignment
+chained assignment
 	a=b=c=0
 	a,b,c=d,e,f=0,1,2
 * in lhs tuple assignment
@@ -512,6 +512,10 @@ if statements
 ternary operator:
 	a=0 if boolean else 1;
 	this is similar to the conditional operator in c/cpp
+  other exc
+	  print(0) if true else print(1) if True else print(3)
+		compare with
+		true?print(0):true?print(1):print(2);
 
 elif
 	this is similar to shell scripting
