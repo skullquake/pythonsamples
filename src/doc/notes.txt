@@ -1361,3 +1361,5 @@ with vs try
 												process(line)
 wsl x11
    https://askubuntu.com/questions/993225/whats-the-easiest-way-to-run-gui-apps-on-windows-subsystem-for-linux-as-of-2018
+   https://token2shell.com/howto/x410/setting-up-wsl-for-linux-gui-apps/
+   https://github.com/QMonkey/wsl-tutorial
