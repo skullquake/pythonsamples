@@ -885,6 +885,7 @@ interesting combination
 				# that the returned function references a scope
 				# and that the outer scope should not be destroyed
 				# this has to do with closure
+				# a closure is when an inner function accesses the outer ones scope
 				# python has to capture the scope
 				# read up on this
 				# you can use this to store variables, play with vars() and stuff
@@ -920,6 +921,7 @@ lambdas in python
 				you can hack a multiline with exec("""line...""") though
 argument parsing library
 				argparse
+				getopt
 vim can be extend
 				first check if vim is compiled with python
 				vim --version
@@ -936,3 +938,424 @@ vim can be extend
 				you can set up something like make if you run make
 				then it runs pylint and things for you
 				python might be a function in vim
+				py3 print("a")
+								how to get this into the screen
+				then there is also a python module for vim
+a good website
+				https://news.ycombinator.com
+unimplemented functions and classes
+				use pass
+				or raise exception
+								raise AssertionError('stub');
+another interesting one
+				def a():
+								return a();
+				print(a())
+				print(a()())
+				print(a()()())
+				print(a()()()()...)
+				this always goes on to return itself
+functions
+				def a(*b):
+								#b is list???
+								...
+				def a(**b):
+								#b is dict???
+								...
+function attributes
+				def a():
+								a.b='c'
+								a.d='e'
+								print(a.b)
+								print(a.d)
+				a()
+				#to maintain state
+				def a():
+								if not hasattr(a,'b'):
+												a.b=0
+								print(a.b)
+								a.b+=1;
+				#you can also manipulate function attributes from other functions
+				def a():
+								if not hasattr(a,'b'):
+												a.b=0
+								print(a.b)
+								a.b+=1;
+				def reseta():
+								a.b=0
+function factory
+				import random
+				def a():
+								b[]
+								def c():
+												print("c")
+												return
+								def d():
+												print("d")
+												return
+								b.append(c)
+								b.append(d)
+								b[random.randint(0,len(b)-1)]()
+				a()
+				a()
+				...
+you can also pass function
+nonlocal
+				for inner function in outer function use nonlocal to refer to 
+				names in the outer scope
+				def a():
+								b=0
+								def c():
+												nonlocal b
+												b=1
+								c()
+								print(b)
+				a()
+				#compare with
+				def a():
+								b=0
+								def c():
+												b=1
+								c()
+								print(b)
+				a()
+.vimrc
+				line continuation
+								\
+				check file type
+				:set ft ???
+				check see its python
+				take a look at the python configuration in the .vimrc
+								set foldcolumn=1 nofoldenable foldmethod=indent
+				use then for folding
+								z
+								zr
+								zm
+								zo
+								zc
+								shift m ???
+oop
+				python does not really have polymorphism
+				you get it for free
+								because python searches for a name in a dictionary
+								python just does a name lookup
+												a.foo
+												b.foo
+												...
+												z.foo
+												it does not matter if a,b...z has different types
+isinstance of
+				isinstance(a,b)
+				or
+				isinstance([],list)
+choice
+				import random
+				print(random.choice([0,1]))
+creating new objects
+				a=b()
+				# b returns an object
+declaring classes
+				class a:
+								pass
+				b=a()
+				print(a)
+repr and classes
+				class a:
+								def __str__(self):return "inst a"
+								pass
+				b=a()
+				print(a)
+				print(b)
+				print(dir(a))
+classes and self
+				class a:
+								def b(self):
+												self.c=0
+								def d(self):
+												self.c+=1
+								def e(self):
+												print(self.c)
+				b=a()
+				b.b()
+				b.d()
+				b.e()
+				class a:
+								def b(self,c=0):
+												self.c=c
+												pass
+								def d(self):
+												print(self.d)
+				b=a()
+				b.b()
+				b.d()
+class constructor
+				def a:
+								def __init__(self,c=0):
+												self.c=c
+								def ...
+example class
+				def Person:
+								__init__(self,name='',ssoc=''):
+												self.name=name
+												self.ssoc=ssoc
+								def setName(self,name):
+												self.name=name
+								def setSsoc(self,ssoc):
+												self.ssoc=ssoc
+								def print(self):
+												print("{}:{}".format(self.name,self.ssoc))
+				b=Person()
+				b.setName('qwer')
+				b.setSsoc('1234')
+				b.print()
+access specifiers
+				python has no concept public protected private
+				the convention is __
+				for example __init__
+								the intention is not for you to manually call it
+extends
+				this is another name for inheritence
+keepnote
+				research this
+				this is a note taking tool
+importing classes
+				read up on this
+.vimrc
+				set colorcolumn=84
+				how to set the color
+				research this
+
+docstrings and sphinx
+				python does not have a specification for docstrings
+				sphinx can use docstrings
+				you can follow the sphinx specification in order to generate documentation
+				from the source code
+exercise
+				compute circle varargs
+tmux
+				you can also configure
+				e.g. set colors
+				also google tmux 256 colors
+vim colors
+				set tco=256
+issues with pasting with vim
+				look at set paste
+arguments parsing pattern
+				bool_valid=True
+				if args[1:]:
+								#perform validation
+								#perform possible conversions, e.g. string to int or float
+												#also validate
+				else:
+								#no args
+raising exception pattern
+				try{
+								#...
+								raise ValueError("error")
+								#...
+				except ValueError as ex:
+								#handle
+finding out how many digits there is in a number
+				log(number)
+				this can be used for allignment
+you can create a class in a class
+				you will then access it with a.b.c. ... .z for example
+class variables
+				class a():
+								b=0
+								def c(self):
+												self.a+=1
+								def d(self):
+												print(self.b)
+				b=a()
+				c=a()
+				b.c()
+				c.c()
+				b.d()
+				c.d()
+inheritance
+				class a():pass;
+				class b(a):pass;
+				class c():pass;
+				class d():pass;
+				class e(c,d):pass;
+is sub class
+				issubclass(a,b)
+				issubclass(b,a)
+				similar to isinstance
+callable
+				test if name callable
+				print(callable(lambda x:x))
+annotations and abstract base classes
+				a special annotation is used to declare an abstract base class
+exceptions
+				there is a class with the name exception
+				all exceptions inherits from this class
+				manual
+								a=Exception('qwer')
+								raise a
+				you can generalize a class from Exception
+raise error from none
+				read up on this
+except else
+				try:
+								###
+				except:
+								###
+				else:
+								#only if no except
+except finally:
+				used especially for cleanup, close files, close connections
+				try:
+								###
+				except:
+								###
+				finally:
+								#always at end
+__getitem__
+				subscript overloading
+				read up on this
+__setitem__
+				subscript overloading
+				read up on this
+subclassing list dict and str
+				you can subclass these as well
+				you can use this a lot when extending things
+properties and getters
+				using a.b=c
+				instead of a.setB(c)
+				there exists decorators for this
+				class a():
+								def __init__(self):
+												pass
+								def b(self,c):
+												self.d=c
+								def e(self):
+												return self.d
+								f=property(b,e)#this is the important part
+				b=a()
+				b.d=8
+				print(b.d)
+
+returning a tuple
+				return (0,1)
+				or
+				return 0,1 # tuple unpacking, make sure about this
+static methods in classes
+				if the member function does not have the argument self, then it is
+				a static method
+				def a():
+								def b(self):
+												pass
+								def c():#static
+												pass
+				the correct usage is with decorators
+				def a():
+								def b(self):
+												pass
+								@staticmethod
+								def c():
+												pass
+								@classmethod
+								def d(cls):
+												pass
+				read up on this
+				you can also use decorators on properties
+				all that the decorators do is add boilerplate, make sure about this
+__getattr__ and __setattr__	 and __delattr__
+				read up on this
+				you can also override these
+								so you can for example override __delattr__ so that users
+								cannot delete attributes
+yield
+				yield works like return
+				generate list
+								def a():
+												yield 0
+												yield 1
+								print(list(a()))
+				a() will return a generator
+				yield saves the state
+				another example
+								def a(b):
+												while b>0:
+																yield b
+																b-=1
+								print(list(a(8))
+				this is very difficult and needs lots of revision!!!
+dir()
+				use dir on an object or name to figure out what it does
+where does the imports come from
+				python searches in sys.path
+								import sys
+								print(sys.path)
+				so you can modify this if you want to distribute you libraries
+				in a special way, and you can do this at runtime
+				it sill pick the first one it finds
+				also look into import overriding
+								e.g. loading from a file, or generated code
+how to find all the stuff in a module
+				import random
+				print(random.__all__)
+to find the file of a module
+				import random
+				print(random.__file__)
+get platform
+				import sys
+				print(sys.platform)
+the os module
+				import os
+				print(os.__all__)
+				print(os.system('ls'))
+				print(os.sep))
+				print(os.linesep))
+				#there are a lot of useful functions in the os module, investigate it
+the fileinput module
+				import fileinput
+				print(fileinput.__all__)
+				investigate this module
+				this module seems to take the input arg or args as files
+				and operate on them
+				this is for writing very short programs because you dont have to 
+				parse the arguments and things
+writing com
+				alternatives g++
+				etc
+				read up on this
+				read up on using this in rust etc
+set
+				dictionary withou values
+				has some things overrided
+								+ means union
+								intersections
+								etc
+heaps and deques
+				learn this
+read up on json parsing
+read up on shelve module
+				its a type of database
+				flat file database
+				this is a standard module so you have this without storing stuff
+				its a binary file format, .dat
+regular expressions
+				read up on this
+				this is in the re module
+other intersting modules
+				argparse
+				cmd
+				csv
+				datetime
+				difflib
+				enum
+				functools
+				itertools
+with vs try
+				with open(filename) as f:
+								while True:
+												char=f.read(1)
+												if not char:break
+												process(char)
+				read up on this
+				with open(filename) as f:
+								for line in f:
+												process(line)
