@@ -5,6 +5,7 @@
 This is documentation for the *module* (the whole file)
 """
 import random
+import math
 from flask import\
         Flask,\
         render_template,\
@@ -27,42 +28,50 @@ def a():
     print("########################################")
     ret=""
     pre=""
-    h_pylint = to_int(request.args.get('h')) if request.args.get('h') else 8;
-    c_pylint = request.args.get('c') if request.args.get('c') else "#";
-    bg_pylint = "#"+request.args.get('bg') if request.args.get('bg') else "000000";
-    fg_pylint = "#"+ request.args.get('fg') if request.args.get('fg') else "00FF00";
-    b_pylint=True
-    #assert(h_pylint >= 1), "Invalid width"
-    if h_pylint==None or not(h_pylint >= 1):
+    h = to_int(request.args.get('h')) if request.args.get('h') else 8;
+    c = request.args.get('c') if request.args.get('c') else "#";
+    bg = "#"+request.args.get('bg') if request.args.get('bg') else "000000";
+    fg = "#"+ request.args.get('fg') if request.args.get('fg') else "00FF00";
+    b=True
+    #assert(h >= 1), "Invalid width"
+    if h==None or not(h >= 1):
         pre="Invalid height"
-        b_pylint=False
-    if not (len(c_pylint) == 1):
+        b=False
+    if not (len(c) == 1):
         pre="Invalid character: use single character"
-        b_pylint=False
-    #assert(len(c_pylint) == 1), "Invalid character: use single character"
+        b=False
+    #assert(len(c) == 1), "Invalid character: use single character"
     m=[]
-    if b_pylint:
-        ml=[]
-        w_pylint = h_pylint*2+1
-        for a_pylint in range(h_pylint):
-            for b_pylint in range(w_pylint//2, 0, -1):
-                ml.append(c_pylint if (a_pylint > b_pylint) else ' ')
-            for b_pylint in range(w_pylint//2):
-                ml.append(c_pylint if (a_pylint > b_pylint) else ' ')
+    ml=None
+    if b:
+        w=h*2+1
+        for a in range(h):
+            ml=list()
+            for b in range(w//2, 0, -1):
+                ml.append(c if (a > b) else ' ')
+            for b in range(w//2):
+                ml.append(c if (a > b) else ' ')
             m.append(ml)
-#    if b_pylint:
-#        w_pylint = h_pylint*2+1
-#        for a_pylint in range(h_pylint):
-#            for b_pylint in range(w_pylint//2, 0, -1):
-#                pre+=c_pylint if (a_pylint > b_pylint) else ' '
-#            for b_pylint in range(w_pylint//2):
-#                pre+=c_pylint if (a_pylint > b_pylint) else ' '
-#            pre+="\n"
-    if b_pylint:
-        for asdf in m:
-            for qwer in asdf:
-                pre+=qwer
-        pre+="\n"
+    if b:
+        nrow=len(m)
+        r=0
+        g=0
+        b=0
+        ridx=0
+        cidx=0
+        for row in m:
+            ncol=len(row)
+            cidx=0
+            for col in row:
+                pre+=f"\x1b[38;2;{r};{g};{b}m"
+                pre+=col
+                pre+="\x1b[0m"
+                r=math.floor(255*ridx/nrow)
+                g=math.floor(255-255*ridx/nrow)
+                b=math.floor(255*cidx/ncol)
+                cidx+=1
+            pre+='\n'
+            ridx+=1
     if request.user_agent.string.upper().find("CURL")>=0:
         ret=pre
     else:
@@ -70,12 +79,20 @@ def a():
         r=0;
         g=255;
         b=255;
-        for asdf in pre:
-            #pre2+=f"<span style=\"color:rgba({255*r/h_pylint},{255*g/h_pylint},{255*b/h_pylint},1.0)\">{asdf}</span>"
-            pre2+=f"<span style=\"color:rgba({r},{g},{b},1.0)\">{asdf}</span>"
-            r+=0.1#255.0/h_pylint#random.randint(0,255)
-            g-=0.1#255.0/h_pylint#random.randint(0,255)
-            b-=0.1#255.0/h_pylint#random.randint(0,255)
+        nrow=len(m)
+        for row in m:
+            ncol=len(row)
+            ridx=0
+            cidx=0
+            for col in row:
+                pre2+=f"<span style=\"color:rgba({r},{g},{b},1.0)\">{str(col)}</span>"
+                r=ridx/nrow*255
+                g=cidx/ncol*255
+                b=255-cidx/ncol*255
+                ridx+=1
+                cidx+=1
+
+            pre2+="<br/>"
         pre=pre2
         ret=f"""
 <!DOCTYPE html>
@@ -83,8 +100,8 @@ def a():
     <head>
         <style>
             pre{{
-                background:{bg_pylint}!important;
-                color:{fg_pylint}!important;
+                background:{bg}!important;
+                color:{fg}!important;
             }}
             input.form-control{{
                 border:unset;
@@ -131,13 +148,13 @@ def main (args):
     app.run();
     return 0;
 
-def to_int(s_pylint, fail=None):
+def to_int(s, fail=None):
     """
     An exception-free "conversion" from a string to a "int". Optionally,
     caller can specify what to return for invalid input (a default).
     """
     try:
-        return int(s_pylint)
+        return int(s)
     except:
         return fail
 
