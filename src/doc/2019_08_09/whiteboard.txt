@@ -11,6 +11,45 @@ Whiteboard
 
 Welcome ‖ Python Course Notes ‖ Python Course Code
 
+Thursday
+
+$HOME/.vim/ftplugin/python.vim
+
+python.vim — Python-Specific Settings for Vim
+
+" Settings specific for Python files. This will only work if you have set
+" `filetype plugin indent on` in your `.vimrc` file.
+"
+if exists("b:did_python_ftplugin")
+   finish
+endif
+let b:did_python_ftplugin = 1
+setlocal cindent
+setlocal autoindent
+setlocal tabstop=8
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab
+setlocal smarttab
+setlocal formatoptions=croql
+setlocal backspace=indent,eol,start
+setlocal textwidth=88
+setlocal colorcolumn=+1
+
+https://vim.fandom.com/wiki/Python_-_check_syntax_and_run_script
+
+
+
+
+
+
+
+
+
+
+
+
+
 Wednesday
 
 Exercise
@@ -468,18 +507,6 @@ ONI Guide
  print(repr("ABC"))
  print(str('ABC'))
  print(repr('ABC'))
-
-
-
-
-
-
-
-
-
-
-
-
 
 © 2019 Incus Data (Pty) Ltd.   
 Made with Pandoc, Source, Fira & Iosevka

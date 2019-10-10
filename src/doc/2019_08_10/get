@@ -1,0 +1,2 @@
+#!/bin/bash
+w3m -dump "http://192.168.134.232:8008/pan/py/whiteboard.html">./whiteboard.txt
