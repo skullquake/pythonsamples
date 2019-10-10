@@ -29,6 +29,7 @@ Centurion, Gauteng, South Africa. This accompanies the Python Course Notes
   • Example Programs
       □ “Main” Pattern for Python Scripts
       □ Command Line Options
+      □ Circle with Functions
   • Example Solutions
       □ Simplest Triangle
       □ Triangle with Functions
@@ -390,6 +391,95 @@ Example command line options
 ^> python ejemplogetopt.py -o OUTFILE --infile INFILE
 ^> python ejemplogetopt.py --outfile OUTFILE -i INFILE -v
 
+Circle with Functions
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ Example solution to Circle Calculator program that expected validation
+ and repetition on invalid input (up to a maximum count). This is a more
+ “advanced” exercise than normally expected at this stage. This version
+ uses the “main pattern” as described in the course notes, and functions.
+ """
+ import sys
+ from math import pi as PI, log10 as LOG
+ 
+ 
+ def main(args):
+     """
+     By the time `main()` is called below, all names are visible in the
+     module's dictionary, so we can call `toFloat()`, even if defined after
+     `main()`.
+     """
+     max_attempts = 3  # maximum number of invalid input attempts allowed.
+     attempts = 0  # current attempt.
+     valid = False  # is input valid or not.
+ 
+     if args[1:]:
+         radius = to_float(args[1])
+         if to_float(radius) is not None and radius > 0.0:
+             valid = True
+ 
+     while not valid:
+         try:
+             attempts += 1
+             radius = to_float(input("Radius?: "))
+             if radius is None:
+                 raise ValueError("Garbage input")
+             if radius < 0.0:
+                 raise ValueError("Negative radius")
+         except ValueError as ex:
+             sys.stderr.write("ERROR: {}\n".format(ex))
+             if attempts > max_attempts:
+                 sys.stderr.write("Too many invalid inputs. Terminating\n")
+                 return 1
+             continue
+         valid = True
+ 
+     # At this point, we have a valid `RADIUS` (also not negative), and can
+     # continue to calculate, format and print, the area and circumference.
+ 
+     circum = circ_circum(radius)
+     area = circ_area(radius)
+     width = int(LOG(area) + 4)  # calculate width of output.
+     out = "{{:10}} = {{:{}.2F}}".format(width)
+ 
+     print(out.format("Radius", radius))
+     print(out.format("Circum.", circum))
+     print(out.format("Area", area))
+ 
+     return 0
+ 
+ def to_float(instr, default=None):
+     """
+     Converts `instr` to a `float`, or returns `None` (by default) for
+     invalid values that cannot be converted to `float`.
+     """
+     try:
+         result = float(instr)
+     except ValueError:
+         result = default
+     return result
+ 
+ def circ_area (radius):
+     """
+     Calculate the area of a circle, given a radius:
+     :param float radius: Must be positive.
+     """
+     assert radius >= 0.0, "Negative radius not allowed"
+     return PI * radius ** 2
+ 
+ def circ_circum (radius):
+     """
+     Calculate the circumference of a circle, given a radius:
+     :param float radius: Must be positive.
+     """
+     assert radius >= 0.0, "Negative radius not allowed"
+     return 2.0 * PI * radius
+ 
+ if __name__ == "__main__":
+     sys.exit(main(sys.argv))
+
 Example Solutions
 
 Simplest Triangle
@@ -567,6 +657,48 @@ fryangle.py — Triangle Solution with Functions
  
  if __name__ == '__main__':
      sys.exit(main(sys.argv[0], sys.argv[1:]))
+
+PyDoc output for the above program:
+
+Help on module fryangle:
+
+NAME
+    fryangle
+
+DESCRIPTION
+    Example Triangle solution. Optionally accepts a height from the command
+    line, otherwise prompts the user for a height.
+
+FUNCTIONS
+    errMsg(*lp, m='ERROR', **dp)
+        Prints and error message(s) to `sys.stderr`. Can be used exactly like
+        the `print` built-in function. But does have an additional keyword
+        parameter: `m`.
+
+    main(script, args)
+        Main logic. Checks for command line aguments, and use it, if any.
+        Otherwise, prompts the user for the height and read it. Then, after
+        validation, will render a triangle with the given height.
+
+    renderTriangleA(height)
+        Alternative triangle rendering algorithm #1.
+
+    renderTriangleB(height, fill='-', draw='X')
+        Alternative triangle rendering algorithm #2.
+
+    toInt(s, fail=None)
+        An exception-free “conversion” from a string to an `int`. User can
+        specify what to return for invalid input; default is `None`.
+
+DATA
+    DRAW_CH = 'X'
+    FILL_CH = '-'
+    MAX_HEIGHT = 24
+    MIN_HEIGHT = 1
+    MSG_INVALID = 'Invalid input. Must be positive integer.'
+
+FILE
+    /Users/.../frytriangle.py
 
 Table with Flexible Width
 

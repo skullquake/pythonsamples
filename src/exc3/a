@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+get circle circumference and area
+"""
+import math
+def main(args):
+    """
+    main function
+    """
+    del args#pylint
+    print(get_area(to_float(input("Enter an radius: "))))
+    print(get_circ(to_float(input("Enter an radius: "))))
+    return 0
+
+
+def get_area(r_pylint=None):
+    """
+    computes area
+    """
+    if isinstance(r_pylint, int) or isinstance(r_pylint, float):
+        #todo assert radius >= 0
+        return r_pylint*math.pow(math.pi, 2)
+    else:
+        raise AssertionError("Invalid radius")
+
+
+def get_circ(r_pylint=None):
+    """
+    computes circumference
+    """
+    if isinstance(r_pylint, int) or isinstance(r_pylint, float):
+        #todo assert radius >= 0
+        return 2*math.pi*r_pylint
+    raise AssertionError("Invalid radius")
+
+
+def to_float(s_pylint, fail=None):
+    """
+    convert to float
+    """
+    try:
+        return float(s_pylint)
+    except:
+        return fail
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(sys.argv))
+    sys.exit(0)

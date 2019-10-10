@@ -4,6 +4,7 @@
 """
 This is documentation for the *module* (the whole file)
 """
+import random
 from flask import\
         Flask,\
         render_template,\
@@ -21,44 +22,106 @@ app=Flask(
 );
 @app.route('/a', methods=['GET', 'POST'])
 def a():
+    print("########################################")
+    print(request.user_agent)
+    print("########################################")
     ret=""
+    pre=""
     h_pylint = to_int(request.args.get('h')) if request.args.get('h') else 8;
     c_pylint = request.args.get('c') if request.args.get('c') else "#";
     bg_pylint = "#"+request.args.get('bg') if request.args.get('bg') else "000000";
     fg_pylint = "#"+ request.args.get('fg') if request.args.get('fg') else "00FF00";
+    b_pylint=True
     #assert(h_pylint >= 1), "Invalid width"
     if h_pylint==None or not(h_pylint >= 1):
-        ret="Invalid height"
-        return ret
+        pre="Invalid height"
+        b_pylint=False
     if not (len(c_pylint) == 1):
-        ret="Invalid character: use single character"
-        return ret
+        pre="Invalid character: use single character"
+        b_pylint=False
     #assert(len(c_pylint) == 1), "Invalid character: use single character"
-    w_pylint = h_pylint*2+1
-    for a_pylint in range(h_pylint):
-        for b_pylint in range(w_pylint//2, 0, -1):
-            ret+=c_pylint if (a_pylint > b_pylint) else ' '
-        for b_pylint in range(w_pylint//2):
-            ret+=c_pylint if (a_pylint > b_pylint) else ' '
-        ret+="\n"
-    return f"""
+    m=[]
+    if b_pylint:
+        ml=[]
+        w_pylint = h_pylint*2+1
+        for a_pylint in range(h_pylint):
+            for b_pylint in range(w_pylint//2, 0, -1):
+                ml.append(c_pylint if (a_pylint > b_pylint) else ' ')
+            for b_pylint in range(w_pylint//2):
+                ml.append(c_pylint if (a_pylint > b_pylint) else ' ')
+            m.append(ml)
+#    if b_pylint:
+#        w_pylint = h_pylint*2+1
+#        for a_pylint in range(h_pylint):
+#            for b_pylint in range(w_pylint//2, 0, -1):
+#                pre+=c_pylint if (a_pylint > b_pylint) else ' '
+#            for b_pylint in range(w_pylint//2):
+#                pre+=c_pylint if (a_pylint > b_pylint) else ' '
+#            pre+="\n"
+    if b_pylint:
+        for asdf in m:
+            for qwer in asdf:
+                pre+=qwer
+        pre+="\n"
+    if request.user_agent.string.upper().find("CURL")>=0:
+        ret=pre
+    else:
+        pre2=''
+        r=0;
+        g=255;
+        b=255;
+        for asdf in pre:
+            #pre2+=f"<span style=\"color:rgba({255*r/h_pylint},{255*g/h_pylint},{255*b/h_pylint},1.0)\">{asdf}</span>"
+            pre2+=f"<span style=\"color:rgba({r},{g},{b},1.0)\">{asdf}</span>"
+            r+=0.1#255.0/h_pylint#random.randint(0,255)
+            g-=0.1#255.0/h_pylint#random.randint(0,255)
+            b-=0.1#255.0/h_pylint#random.randint(0,255)
+        pre=pre2
+        ret=f"""
 <!DOCTYPE html>
 <html>
     <head>
         <style>
-            *{{
+            pre{{
                 background:{bg_pylint}!important;
                 color:{fg_pylint}!important;
             }}
+            input.form-control{{
+                border:unset;
+                border-radius:unset;
+                background:rgba(255,255,255,0.1)!important;
+                color:rgba(255,255,255,0.5);
+
+            }}
+            input.form-control:hover{{
+                background:rgba(255,255,255,0.2)!important;;
+                color:rgba(255,255,255,0.6);
+            }}
         </style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.css?cb=1234"></link>
     </head>
     <body>
-        <pre>
-            {ret}
-        </pre>
+        <div class="container">
+            <pre>
+                {pre}
+            </pre>
+            <form action ="/a" method="GET">
+                <label for="h">Height</label>
+                <input class="form-control" name="h" value="8"></input>
+                <label for="h">Character</label>
+                <input class="form-control" name="c" value="#"></input>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>
-"""
+        """
+    return ret
 
 
 def main (args):

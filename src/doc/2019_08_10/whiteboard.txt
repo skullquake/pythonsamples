@@ -13,9 +13,145 @@ Welcome ‖ Python Course Notes ‖ Python Course Code
 
 Thursday
 
+Classes
+
+Person.py — Enhanced Person Class from Book
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ # vim: set ts=4 sw=4 et fenc=utf8 tw=88 cc=+1 fdm=indent fdc=1:
+ """
+ Enhanced example ‘Person’ class from ‘Beginning Python’. It uses Sphinx
+ style documentation in the docstrings.
+ """
+ 
+ class Person:
+    """
+    An example ‘plan’ (class) to create ‘Person’ objects.
+    """
+    def __init__(self, name="<unknown>"):
+       """Persion ‘constructor��� / ‘initialiser
+       :param str name: Name of a new `Person`. Default "<unknown>".
+       """
+       self.__name = name
+ 
+    def __str__(self):
+       """
+       Override conversion to string (`str`).
+       """
+       return "Name: {}".format(self.__name)
+ 
+    def __repr__(self):
+       """
+       Override conversion to a ‘representational’ string (`repr`). Same
+       effect as `str()` in our implementation.
+       """
+       return self.__str__()
+ 
+    def set_name(self, name):
+       """
+       Accessor (‘mutator’) for the the name of the `Person`.
+       :param str name: New value for the `__name` data member.
+       """
+       self.__name = name
+ 
+    def get_name(self):
+       """Accessor (‘getter’) for the name of the `Person`."""
+       return self.__name
+ 
+    def greet(self, greeting="Hello, World"):
+       """
+       ‘Custom’ method, specific to `Person` objects.
+       :param str greeting: Optional greeting as part of message.
+       """
+       print("{}! I'm {}.".format(greeting, self.__name))
+ 
+ if __name__ == "__main__":
+     # code to ‘exercise’ and test the `Person` class. this is absolutely
+     # not pylint-friendly (or ‘pythonic’ or PEP-8), we know.
+ 
+     juan = Person("Juan");          okki = Person("Ockert")
+     print(juan.get_name());         print(okki.get_name())
+     print(juan);                    print(okki)
+ 
+     # you can add attributes to any object, just like functions:
+     juan.tired = True
+     if hasattr(juan, "tired") and juan.tired:
+         print("Juan is tired?")
+     okki.busywith = "Unknown miscellanea"
+     print("Ockert is busy with: \"{}\"".format(okki.busywith))
+     del okki.busywith
+     if not hasattr(okki, "busywith"):
+         print("Ockert is not busy with anything")
+
+Help on module Person:
+
+NAME
+    Person
+
+FILE
+    .../Person.py
+
+DESCRIPTION
+    Enhanced example ‘Person’ class from ‘Beginning Python’. It uses Sphinx
+    style documentation in the docstrings.
+
+CLASSES
+    Person
+
+    class Person
+     |  An example ‘plan’ (class) to create ‘Person’ objects.
+     |
+     |  Methods defined here:
+     |
+     |  __init__(self, name='<unknown>')
+     |      Persion ‘constructor’ / ‘initialiser
+     |      :param str name: Name of a new `Person`. Default "<unknown>".
+     |
+     |  __repr__(self)
+     |      Override conversion to a ‘representational’ string (`repr`). Same
+     |      effect as `str()` in our implementation.
+     |
+     |  __str__(self)
+     |      Override conversion to string (`str`).
+     |
+     |  get_name(self)
+     |      Accessor (‘getter’) for the name of the `Person`.
+     |
+     |  greet(self, greeting='Hello, World')
+     |      ‘Custom’ method, specific to `Person` objects.
+     |      :param str greeting: Optional greeting as part of message.
+     |
+     |  set_name(self, name)
+     |      Accessor (‘mutator’) for the the name of the `Person`.
+     |      :param str name: New value for the `__name` data member.
+
+ class C:
+    def __init__(self, data=123):
+       self.data = data
+    def __str__(self): return "C Object; data = {}".format(self.data)
+    def __repr__(self): return "<C Object [{}]".format(self.data)
+    def method(self):
+       print("`method` of class C [{}] called.".format(self.data))
+    pass
+ 
+ obj = C()
+ print(obj);  print(repr(obj))
+ obj = C(345)
+ obj.method()
+ print(obj);  print(repr(obj))
+ bob = C()
+ bob.method()
+ print(bob)
+
+set foldcolumn=1 nofoldenable foldmethod=indent
+
+hi ColorColumn guifg=NONE guibg=#0F242E ctermbg=4
+
 $HOME/.vim/ftplugin/python.vim
 
 https://news.ycombinator.com/news
+http://learnvimscriptthehardway.stevelosh.com/
 
 python.vim — Python-Specific Settings for Vim
 

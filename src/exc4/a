@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+"""
+import Circle
+def main (args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    a=Circle.Circle(9)
+    print("\u001b[32m")
+    print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
+    print("          \"                  \"\"#          ");
+    print("  mmm   mmm     m mm   mmm     #     mmm  ");
+    print(" #\"  \"    #     #\"  \" #\"  \"    #    #\"  # ");
+    print(" #        #     #     #        #    #\"\"\"\" ");
+    print(" \"#mm\"  mm#mm   #     \"#mm\"    \"mm  \"#mm\" ");
+    print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
+    print("<C:{:.2f}, A:{:.2f}>".format(a.get_circ(),a.get_area()))
+    print("▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉")
+    print("\u001b[0m")
+    print("")
+    print(a);
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

@@ -615,13 +615,37 @@ if empty(mapcheck('<C-W>', 'i'))
 endif
 
 " -- our additions --
-" Default ‘tab’ behaviour.
-set et
-set ts=3
-set sw=3
+" Default ‘tab’ behaviour, and other modifications for ′quality of life’
+set expandtab
+set smarttab
+set tabstop=8
+set softtabstop=3
+set shiftwidth=3
+set nobackup nowritebackup noswapfile
+set autoread
+set hidden
+set whichwrap+=<,>,h,l,[,]
+set nobackup nowritebackup noswapfile
+set nostartofline
+set showcmd showmatch showmode
+set spell
+set spelllang=en_gb
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+set viminfo='40,"200,:40,%,<400,h,/20,!
+set viminfo^=h
+set ttimeout ttimeoutlen=100
+set timeout timeoutlen=600 " very personal.
+set virtualedit=onemore,block,insert
+set selection=exclusive
+set lazyredraw ttyfast
+set splitbelow splitright
+set switchbuf=useopen
+set shortmess=atI
+set title titlestring=%{expand(\"%:p:h\")}
 
-" Modify the colorscheme to taste.
+" Modify the colorscheme to taste, and customize some.
 colorscheme pablo
+hi ColorColumn guifg=NONE guibg=#0F242E ctermbg=4
 
 if has("autocmd")
    autocmd FileType python set ts=4 sw=4 et fenc=utf-8 tw=88 cc=+1
@@ -633,6 +657,24 @@ endif
 
 Place the above file in your $HOME directory on Linux or MacOS. On Windows,
 save in %USERPROFLE%\_vimrc.
+
+Here is some tmux settings our .vimrc (it may or may not work for you):
+
+" trying to get tmux colors
+"
+if &term =~ 'screen' || &term =~ 'tmux' || &term =~ 'xterm'
+   set term=xterm-256color
+   set t_Co=256
+   set background=dark | colorscheme base16-default-dark
+   set termguicolors
+   set t_AB= [48;5;%dm
+   set t_AF= [38;5;%dm
+   set t_ZH= [3m
+   set t_ZR= [23m
+   set t_8f= [38;2;%lu;%lu;%lum
+   set t_8b= [48;2;%lu;%lu;%lum
+   hi Comment cterm=italic
+endif
 
 Python Scripts
 
