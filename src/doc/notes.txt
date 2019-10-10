@@ -1359,3 +1359,5 @@ with vs try
 				with open(filename) as f:
 								for line in f:
 												process(line)
+wsl x11
+   https://askubuntu.com/questions/993225/whats-the-easiest-way-to-run-gui-apps-on-windows-subsystem-for-linux-as-of-2018
