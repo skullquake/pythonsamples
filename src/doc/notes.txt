@@ -808,7 +808,10 @@ collecting arguments
 								return;
 				b={'b':'b','c':'c','d','d'};
 				a(**b);
+				or
+				a({'b':'b','c':'c','d','d'});
 ** arg
+				#kwarg par
 				def a(**b):
 								print(b);
 				a(b=0,c=1,d=2);
@@ -833,6 +836,7 @@ send scope to fn
 				a(vars());
 				print(a);
 fn decl glob var
+				#talk out
 				def a():
 								global b;
 								b=0;
@@ -845,6 +849,8 @@ shadowing
 globals
 				globals() function returns dictionary of global variables
 				you can manipulate this
+				compare with vars()
+				run this in a function to see how it behaves
 function
 				creating a name with a callable value
 nesting functions
@@ -897,10 +903,13 @@ recursion
 				def a(b):
 								print("{}".format(b));
 								a(b-1) if b>0 else None;
+				there is nothing special about recursion as you can implement
+				it using standard things, setting up a stack manually etc
 map
-				def a(b):
-								return b*b;
-				list(map(a,[1,2,3]));
+				remaps values
+								def a(b):
+												return b*b;
+								list(map(a,[1,2,3]));
 filter
 				def a(b):
 								return b%2==0;
@@ -908,5 +917,22 @@ filter
 lambdas in python
 				are not so useful
 				it can only have one statement
+				you can hack a multiline with exec("""line...""") though
 argument parsing library
 				argparse
+vim can be extend
+				first check if vim is compiled with python
+				vim --version
+								check for -lpythonxxx linked in
+				read up on ftplugin
+								$HOME/.vim/ftplugin/python.vim
+								and then you can put stuff in your .vimra
+				just google how to write a python plugin for vim
+				:echo has('python')
+				or
+				:echo has('python3')
+				airline has a predecessor written in python
+				many plugins are in python
+				you can set up something like make if you run make
+				then it runs pylint and things for you
+				python might be a function in vim
