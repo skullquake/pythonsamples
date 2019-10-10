@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+getopt sample
+see also argparse
+"""
+import getopt
+def main (args):
+    """
+    main()
+    """
+    args='-a -b -cfoo -d bar a1 a2'.split()
+    optlist,args=getopt.getopt(args,"abc:d:")
+    print(optlist)
+    print(args)
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

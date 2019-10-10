@@ -1,0 +1,644 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+Incus Data   
+Codi Matters
+2019-10-07
+by-nc-sa
+Python
+  
+
+Course Code 2019-10-07 [Incus]
+
+Miscellaneous Code — Python Programming
+
+A collection of miscellaneous code snippets and examples related to Python,
+provided as sup­ple­men­ta­ry material for the convenience of attendees of a
+Python Programming course presented in August 2019 at Incus Data's premises,
+Centurion, Gauteng, South Africa. This accompanies the Python Course Notes
+2019-10-07. Code |permanent link|.
+
+[*] Table of Contents
+
+  • Snippets
+      □ Input from Standard Input
+      □ List of Keywords
+      □ Print Errors
+      □ Numeric Validation
+      □ Check Python Version
+      □ ANSI/VT100 Escape Sequences
+  • Example Programs
+      □ “Main” Pattern for Python Scripts
+      □ Command Line Options
+  • Example Solutions
+      □ Simplest Triangle
+      □ Triangle with Functions
+      □ Table with Flexible Width
+
+NOTICE
+
+This page is may be updated at times, so you could check back occasionally. The
+course notes related to this code, is on a separate page.
+
+Snippets
+
+This section contains random snippets, patterns and idioms, that are not
+necessarily complete scripts or programs, but nevertheless useful.
+
+Input from Standard Input
+
+To read from standard input in Python, you can use the input function. It
+optionally accepts a prompt string as argument, with the trailing newline
+removed.
+
+simple prompt, input, use pattern
+
+ name = input("Your name?: ")
+ print("So, hello {}!".format(name))       #←most common.
+ print(f"So, hello {name}!")               #←Python 3.6+ only.
+
+We use literal string interpolation in the string argument to the last print
+function call. This is avail­able only since Python 3.6.x.
+
+List of Keywords
+
+You do no need a reference manual to see the list of Python keyword — just use
+the keyword module!
+
+use python to list all keywords
+
+ import keyword
+ print("Keywords:", keyword.kwlist)
+
+Print Errors
+
+Good convention suggests that error messages should be printed to the system's
+standard error device. In Python, this means: sys.stderr, which in turn
+requires us to import the sys module.
+
+print error message to sys.stderr
+
+ import sys
+ error = ···
+ if error:
+    sys.stderr.write("Error message. Will not be redirected")
+    exit(1)
+ print("Normal output (stdout). Will be redirected")
+
+The reason we do this, is that when redirection is used in a shell, it only
+redirects standard output, which means that error messages will still be
+displayed in the terminal / console.
+
+Numeric Validation
+
+Python does not have a “isnumber” type of function. Depending on your needs,
+there are several options, all having pros and cons. The following functions
+are relatively simple, and the isFloat function works for fixed point and
+exponential notation.
+
+numeric validation example functions
+
+ def isInt (s):
+    """
+    Checks if string `s` can be converted to an `int`. Returns `True` or `False`.
+    """
+    try:
+       int(s)
+    except: #←*any* exception
+       return False
+    return True
+ 
+ def isFloat (s):
+    """
+    Checks if string `s` can be converted to a `float`. Returns `True` or `False`.
+    """
+    try:
+       float(s)
+    except: #←*any* exception
+       return False
+    return True
+
+Instead of catching any exception, we could have used: except ValueError:, but
+it seems a bit specific — any exception would still mean it cannot be converted
+for whatever reason. A faster option might be the following, but may not deal
+with all cases:
+
+numeric check, option #1
+
+ def isNumber (s):
+    """
+    Checks if string **`s`** contains only digits. Deals with integers, and fixed
+    point values, but will fail on exponential floating point notation and also
+    negative numbers (and on leading `+` sign too). Returns `True` or `False`.
+    """
+    return s.replace('.', '', 1).isdigit()
+
+You can deal with negative numbers by making it ignore leading plus and minus
+signs, at the expense of efficiency.
+
+numeric check, option #2
+
+ def isNumber (s):
+    """
+    Checks if string `s` contains only digits. Deals with integers, and fixed
+    point values, but will fail on exponential floating point notation.
+    Returns `True` or `False`.
+    """
+    return s.lstrip('-+').s.replace('.', '', 1).isdigit()
+
+Unless you really need the speed, stick with the first two examples, or… use a
+specialised module from PyPi, called fastnumbers.
+
+conversion to float, with optional ‘fail’ value
+
+ def toFloat(s, fail=None):
+    """
+    An exception-free “conversion” from a string to a `float`. Optionally,
+    caller can specify what to return for invalid input (a default).
+    """
+    try:
+       return float(s)
+    except:
+       return fail
+
+Its documentation for toFloat says it all, but you basically use it instead of
+the built-in float(), but unlike the latter, our toFloat() will not throw an
+exception on invalid strings. Instead, it returns None by default, or you can
+choose what to return:
+
+examples using toFloat() for validation
+
+ num = toFloat("garbage", fail=1.23)
+ print(f"num = {num}")
+ num = toFloat("garbage")
+ if not num:                             #← `None` is treated as `False`.
+    ···                                  #← error handling.
+ if num is None:                         #← Alternative check for `None`.
+    ···                                  #← error handling.
+ num = toFloat(input("Enter a float:"))  #← Prompt, read input, and convert.
+ if num is None:                         #← Alternative check for `None`.
+    ···                                  #← error handling.
+
+Check Python Version
+
+On the command line, you can run: python --version or python3 --version to get
+the version of Python that is current visible first in your PATH ($PATH, or
+$Env:PATH). To check at runtime, you need sys.version_info. It contains a named
+tuple.
+
+Print Python version information at runtime
+
+ import sys
+ print(f"Major version: {sys.version_info.major}")
+ print(f"Minor version: {sys.version_info.minor}")
+ print(f"Micro version: {sys.version_info.micro}")
+
+That should print (for our supplied Python) 3, 7 and 4 for major, minor and
+micro respectively.
+
+Terminate script if run with Python older than 3.6
+
+ # preamble of the script
+ from sys import version_info as ver
+ if ver.major < 3 or ver.major == 3 and ver.minor < 6:
+    sys.stderr.write("Sorry, this script runs only on Python 3.6 and later\n")
+    sys.stderr.write("You are running Python: {}\n".format(sys.version))
+    sys.exit(1)
+ # rest of the script
+
+This might be useful if your script uses, for example, ‘f-strings’, that is
+only available from 3.6.0, and you do not want your users to get strange
+errors, but rather a polite message. You can also wrap the logic in a function,
+for example:
+
+Function to check if f-strings are available
+
+ def has_fstrings() :
+    from sys import version_info as ver
+    if ver.major < 3 or ver.major == 3 and ver.minor < 6: return False
+    return True
+
+You can use it as follow, for example:
+
+ if has_fstrings():
+    print(f"ABC {2 * 3} {4 * 9}")
+ else:
+    print("ABC {} {}".format(2 * 3, 4 * 9))
+
+But, this is really more work than it is worth… if in doubt, just use str
+.format exclusively.
+
+ANSI/VT100 Escape Sequences
+
+See the Wikipedia ANSI/VT100 Escape Codes article for more sequences.
+
+first16colors.py — First 16 ANSI/VT100 Colours from 256-Colour Table
+
+ #!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ "Nothing fancy here, just print the colours"
+ print(r"\x1B[38;5;<fg>m & \x1B[48;5;‹bg›m:", end="\n\n")
+ for n in range(0,8):
+     print(f"\x1B[38;5;15m\x1B[48;5;{n}m  {n:2d}  \x1B[m", end=" ")
+ print()
+ for n in range(8,16):
+     print(f"\x1B[38;5;0m\x1B[48;5;{n}m  {n:2d}  \x1B[m", end=" ")
+ print()
+
+Of course, as ‘real’ Pythonistas, we would have used variables. We leave that
+as an exercise for the above script, but here are a few more examples:
+
+some example escape sequences
+
+ print("\x1B[2J\x1B[0;0H")                        #←clear screen and home cursor.
+ SGI = "\x1B["                                    #←lead-in sequence for most.
+ RST = "\x1Bm"                                    #←reset mode (colours) to normal.
+ RED = SGI + "91m"                                #←create a sequence for RED.
+ GREEN = SGI + "92m"                              #←create a sequence for GREEN.
+ print(RED + "RED TEXT" + RST)
+ print(f"{RED}RED TEXT{RST}")
+ print("{}RED TEXT{}", RED, RST)
+ print(GREEN + "GREEN TEXT" + RST)
+ print(f"{RED}GREEN TEXT{RST}")
+ print("{}GREEN TEXT{}", GREEN, RST)
+
+Example Programs
+
+These are complete scripts or programs that illustrate some point or the other.
+
+“Main” Pattern for Python Scripts
+
+Once we start writing scripts that are closer to complete programs, or when
+writing modules that can also be run as programs, optionally with testing code,
+the following pattern is very common. It simulates more traditional languages,
+in that we write a main function.
+
+argsdemotoo.py — Arguments Demo with Main Pattern
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ Another demonstration of command line argument retrieval in Python. This
+ program will also just simply list all the arguments passed, but serves
+ to demonstrate another pattern: `if __name__ == "__main__":…`. So, even
+ if you have not learned about functions yet, it is a *pattern* you can
+ easily employ for any script.
+ """
+ 
+ def main (args):
+     """
+     Like any function, `main()` must be documented with a ‘docstring’ as
+     we have done here.
+     """
+     # the first entry in the `sys.argv` list, is the script name.
+     #
+     print("Script name: {}".format(args[0]))
+ 
+     # the rest of the values in `sys.argv` are the arguments passed. they
+     # are all strings. to handle “options”/“switches”, you have to use a
+     # module to extract arguments starting with `-` (short options) or
+     # `--` (long options).
+     #
+     for i, arg in enumerate(args[1:]):
+         print("Argument #{} = {}".format(i+1, args[i+1]))
+ 
+     return 0
+ 
+ # when a script is `import`ed, its name will *not* be `"__main__"`. it
+ # will only have that specific name, when it is *executed* as a script.
+ #
+ if __name__ == "__main__":
+     import sys
+     sys.exit(main(sys.argv)) #←optional to call `sys.exit()`
+
+If the rest of your file also needed access to the sys module, you should use
+the import to the top of the file. Nothing else needs to change.
+
+Command Line Options
+
+Although other third party options are available, the standard Python getopt
+module suffices for most command line applications that want to give the use
+the ability to pass options ‘the Linux way’ (short options start with -, and
+long options with --, and some options may take arguments). Another options is
+the standard argparse module (it requires a bit more code to set up though).
+
+ejemplogetopt.py — Ejemplo opciones de línea de comando
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ Ejemplo usando el módulo `getopt` estándar de Python.
+ """
+ import sys, getopt
+ 
+ 
+ HELPMSG = '''
+ Example program using the standard `getopt` module.
+ 
+ Usage: python getoptexa.py -h|--help"
+        python getoptexa.py [-i|--infile <filename>] [-o|--infile] <filename>
+ '''
+ 
+ 
+ def main(argv):
+     """
+     Simply processes command line switches as example.
+     """
+ 
+     # set default values which a user may specify with command line options.
+     filauno = filados = 'nada'
+     verbosa = False
+ 
+     try: # process command line options.
+         opts, args = getopt.getopt(argv,
+             "i:o:hv", ["help", "infile=", "outfile=", "help", "verbose"])
+     except getopt.GetoptError:
+         print("Invalid option.", file=sys.stderr)
+         print(HELPMSG, file=sys.stderr)
+         sys.exit(1)
+ 
+     # check which options have been used.
+     for opt, arg in opts:
+         if opt == '-h' or opt == '--help':
+             print(HELPMSG)
+             sys.exit(0)
+         elif opt in ("-i", "--infile"):
+             filauno = arg
+         elif opt in ("-o", "--outfile"):
+             filados = arg
+         elif opt in ("-v", "--verbose"):
+             verbosa = True
+ 
+     # do something with the arguments.
+     print("Fila entrada: {}".format(filauno))
+     print("Fila salida : {}".format(filados))
+     if verbosa:
+         print("Salida detallada")
+     else:
+         print("Salida silenciosa")
+ 
+ 
+ if __name__ == "__main__":
+     sys.exit(main(sys.argv[1:]))
+
+You can run the above script with various arguments (options):
+
+Example command line options
+
+^> python ejemplogetopt.py --help
+^> python ejemplogetopt.py -h
+^> python ejemplogetopt.py -i INFILE
+^> python ejemplogetopt.py -o OUTFILE --infile INFILE
+^> python ejemplogetopt.py --outfile OUTFILE -i INFILE -v
+
+Example Solutions
+
+Simplest Triangle
+
+Write a Python script called triangle.py, that:
+
+  • Either get height from the command line, or prompt the user for a height.
+  • Validate the height (write error message and exit with non-zero exit code)
+      □ Must be an integer.
+      □ Must be in the range [1..24].
+  • Render a text isosceles triangle, based on the height.
+
+Example height (h):
+
+h = 3  #          h = 5  #                   h = 7 #              etc.
+      ###               ###                       ###
+     #####             #####                     #####
+                      #######                   #######
+                     #########                 #########
+                                              ###########
+                                             #############
+
+You are welcome to use incus.py as module. See hello_main_args.py for an
+example of a program that processes command line arguments.
+
+tryangle.py — Simplest Triangle Solution
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ Simplest triangle exercise solution.
+ 
+ It is “simple”, because it does not deal with exceptions, and does not
+ employ functions for better readability and/or maintainability. That will
+ come later, one we have learned about those topics.
+ 
+ It does add one practical pattern: “printing error messages correctly”,
+ which you may not yet have been informed of.
+ """
+ 
+ import sys                             #←for `sys.stderr` “file”.
+ 
+ MIN_HEIGHT = 1
+ MAX_HEIGHT = 20
+ 
+ height = int(input("Height?: ")) or 1
+ 
+ # Validation. Error messages should never go to `stdout`. Terminate the
+ # program on invalid input, after printing an error message to `stderr`.
+ #
+ if not (MIN_HEIGHT <= height <= MAX_HEIGHT):
+     print("Height not in [{0}..{1}]."
+         .format(MIN_HEIGHT, MAX_HEIGHT),
+         file=sys.stderr)
+     sys.exit(1)                        #←non-zero exit code.
+ 
+ # Algorighm to output an isosceles triangle to `stdout` (default output
+ # “file” for the `print()` function).
+ #
+ for line in range(height):
+     print(' ' *  (height - line), end='')
+     print('#' * (line * 2 + 1))
+ 
+ sys.exit(0)                            #←“success” exit code.
+
+Triangle with Functions
+
+This version of the ‘draw triangle’ exercise uses a couple of patterns from
+examples and previous exercises. In particular, it processes command line
+arguments, writes the standard error when necessary, and controls the process
+exit code.
+
+fryangle.py — Triangle Solution with Functions
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ Example Triangle solution. Optionally accepts a height from the command
+ line, otherwise prompts the user for a height.
+ """
+ import sys #← for `argv`, `stderr` and `exit`.
+ 
+ MIN_HEIGHT = 1
+ MAX_HEIGHT = 24
+ 
+ DRAW_CH = 'X'
+ FILL_CH = '-'
+ 
+ MSG_INVALID = 'Invalid input. Must be positive integer.'
+ 
+ 
+ def main (script, args):
+     """
+     Main logic. Checks for command line aguments, and use it, if any.
+     Otherwise, prompts the user for the height and read it. Then, after
+     validation, will render a triangle with the given height.
+     """
+     if len(args) > 0:
+         height = toInt(args[0])
+     else:
+         height = toInt(input('Height?: '))
+     if height is None:
+         errMsg("Invalid height (not an integer)")
+         return 1
+ 
+     ## Further validate the height for range.
+     if height < MIN_HEIGHT or height > MAX_HEIGHT:
+         errMsg('Invalid height. Must be in range [{}..{}]'
+             .format(MIN_HEIGHT, MAX_HEIGHT))
+         return 2
+ 
+     # At this point, we have a valid height. Render the triangle.
+     for line in range(height):
+         print(FILL_CH * (height - line), end='')
+         print(DRAW_CH * (line * 2 + 1), end='')
+         print(FILL_CH * (height - line))
+ 
+     # Alternative versions in functions.
+     renderTriangleA(height);
+     renderTriangleB(height, '.', '#');
+ 
+     return 0
+ 
+ 
+ def renderTriangleA (height):
+     """
+     Alternative triangle rendering algorithm #1.
+     """
+     for line in range(height):
+         for s in range(height - line):
+             print(FILL_CH, end='')
+         for x in range(line * 2 + 1):
+             print(DRAW_CH, end='')
+         for s in range(height - line):
+             print(FILL_CH, end='')
+         print()
+ 
+ 
+ def renderTriangleB (height, fill=FILL_CH, draw=DRAW_CH):
+     """
+     Alternative triangle rendering algorithm #2.
+     """
+     spc = fill * height
+     dch = draw
+     for line in range(height):
+         print(spc + dch + spc)
+         spc = spc[1:]
+         dch += 2 * draw
+ 
+ 
+ def errMsg(*lp, m='ERROR', **dp):
+     """
+     Prints and error message(s) to `sys.stderr`. Can be used exactly like
+     the `print` built-in function. But does have an additional keyword
+     parameter: `m`.
+     """
+     import sys
+     if m == 'ERROR' and dp:
+         m += ': '
+     print(m, *lp, **dp, file=sys.stderr)
+ 
+ 
+ def toInt (s, fail=None):
+    """
+    An exception-free “conversion” from a string to an `int`. User can
+    specify what to return for invalid input; default is `None`.
+    """
+    try:
+       return int(s)
+    except:
+       return fail
+ 
+ 
+ ## MAIN PATTERN ---------------------------------------------------------
+ 
+ if __name__ == '__main__':
+     sys.exit(main(sys.argv[0], sys.argv[1:]))
+
+Table with Flexible Width
+
+An ‘improved’ version of Listing 3-1 in Beginning Python. It uses the ‘main
+pattern’; it has documentation; it requests the table width from the user
+instead of using a hard-coded number (80); it optionally reads the table width
+from command line arguments, if any.
+
+tablefmt.py — Table Formatting
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ # vim: set ts=4 sw=4 et fenc=utf8 tw=88 cc=+1 :
+ """
+ Print a formatted price list with a given width. From ‘Beginning Python’.
+ """
+ 
+ def main(args):
+     """
+     Print table of prices using a command line argument for `width`,
+     else prompt the user for a `width`.
+     """
+     # use command line argument for `width`, else prompt user.
+     if len(args) > 1:
+         width = int(args[1]) + 2
+     else:
+         width = int(input('Please enter width: ')) + 2
+ 
+     # set up some variables for later use. create format strings.
+     price_width = 10
+     item_width  = width - price_width - 2
+     hdr_fmt = '│ {{:{}}} │ {{:>{}}} │'.format(item_width, price_width)
+     itm_fmt = '│ {{:{}}} │ {{:>{}.2f}} │'.format(item_width, price_width)
+ 
+     # functions can be defined in other functions (local functions)
+     def line(c1, c2, c3): #← helper line-drawing function
+         print(c1, end='')
+         print('─' * (item_width + 2), end='')
+         print(c2, end='')
+         print('─' * (price_width + 2), end='')
+         print(c3)
+ 
+     goods = {#← dictionary of grocery ‘goods’.
+         'Apples'                 :  0.40,
+         'Pears'                  :  0.50,
+         'Cantaloupes'            :  1.92,
+         'Dried Apricots (16 oz.)':  8.00,
+         'Prunes (4 lbs.)'        : 12.00,
+         }
+ 
+     line('┌', '┬', '┐')
+     print(hdr_fmt.format('Item', 'Price'))
+     line('├', '┼', '┤')
+     for (k, v) in goods.items():
+         print(itm_fmt.format(k, v))
+     line('└', '┴', '┘')
+ 
+     return 0
+ 
+ 
+ if __name__ == '__main__':
+     import sys
+     sys.exit(main(sys.argv))
+
+It was not required, by instead of a list, the above solution uses a dict
+ionary. Also, you were not expected to write functions, other than using the
+‘main pattern’. An option we decided not to use, but dearly wanted to, is
+Pyhthon 3.6 ‘f-strings’ for formatting. Other Python features we used that you
+might not yet be familiar with, include the for iteration statement.
+
+
+2019-10-07: Created. [brx]
+
+© 2019 Incus Data (Pty) Ltd.   
+Made with Pandoc, Source, Fira & Iosevka

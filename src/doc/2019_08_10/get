@@ -1,2 +1,4 @@
 #!/bin/bash
 w3m -dump "http://192.168.134.232:8008/pan/py/whiteboard.html">./whiteboard.txt
+w3m -dump "http://192.168.134.232:8008/pan/py/python-ipyp-20191007-notes.html">./notes.txt
+w3m -dump "http://192.168.134.232:8008/pan/py/python-ipyp-20191007-code.html">./code.txt

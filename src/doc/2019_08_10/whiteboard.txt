@@ -1,0 +1,515 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+Incus Data   
+Codi Matters
+2019-10-07
+by-nc-sa
+Python
+  
+
+Whiteboard
+
+Welcome ‖ Python Course Notes ‖ Python Course Code
+
+Thursday
+
+$HOME/.vim/ftplugin/python.vim
+
+https://news.ycombinator.com/news
+
+python.vim — Python-Specific Settings for Vim
+
+" Settings specific for Python files. This will only work if you have set
+" `filetype plugin indent on` in your `.vimrc` file.
+"
+if exists("b:did_python_ftplugin")
+   finish
+endif
+let b:did_python_ftplugin = 1
+setlocal cindent
+setlocal autoindent
+setlocal tabstop=8
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab
+setlocal smarttab
+setlocal formatoptions=croql
+setlocal backspace=indent,eol,start
+setlocal textwidth=88
+setlocal colorcolumn=+1
+
+https://vim.fandom.com/wiki/Python_-_check_syntax_and_run_script
+
+:py3 print("Hello")
+
+
+
+
+
+
+
+
+
+
+
+
+Wednesday
+
+Exercise
+
+Write a ‘professional’ Python program that prints a text-rendered triangle,
+given a height, which must be validated to be in the range [1..25]. It should
+optionally accept a command line argument for the height, or obtain it from the
+user. Optionally, you can allow a second argument or input that specifies the
+character used for rendering. Examples, for a given height (h), and # as the
+rendering character.
+
+h = 3   #       h = 5  #             h = 8  #
+       ###            ###                  ###
+      #####          #####                #####
+                    #######              #######
+                   #########            #########
+                                       ###########
+
+Functions
+
+ def loop(count, func):
+    print("WORK {}".format(count), end="...")
+    func()
+    if count - 1 > 0:
+       loop(count - 1, func)
+ 
+ def F (): print("Function F() called")
+ def G (): print("Function G() called")
+ 
+ loop(5, F)
+ loop(2, G)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def Outer():
+    def Inner():
+       print("Inner() called")
+    return Inner
+ 
+ F = Outer()
+ F()
+ Outer()()
+ G = Outer
+ G()()
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def f () :
+    global X
+    X = 234
+    print(X)
+ f()
+ print(X)
+
+ [ x for x in dir() if not x.startswith("_") ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def F (a, b, c):
+    ...
+ L = [ 11, 22, 33 ]
+ F(L[0], L[1], L[2])
+ F(*L)
+ F(a=L[0], b=L[1], c=L[2])
+ 
+ def G (*parm):
+    print(len(parm), parm[1])
+ 
+ G(L); G(1); G(); G(11), G(22, 33, 44, 55)
+ 
+ def H (*parm, other=999): ...
+ H(11, 22, 33, 44, 55)
+ H(other=10)
+ 
+ def K (other, *parm): ...
+ 
+ def F (a, b, c):...
+ 
+ D = {'a':11, 'b':22, 'c':33}
+ F (D['a'], D['b'], D['c'])
+ F(**D)
+ 
+ def F (**kwparm):
+    print(type(kwparm))
+ F(aaaa=11, bbb=22, blahblah=33)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ func_name = function (‹parm›) ‹code›
+ def func_name (‹parm›):
+    """
+    Documentation for the function.
+    """
+    ‹code>
+ 
+ hello('world')
+ hello(parm='world')
+ 
+ def func (a, b):
+    """
+    This is a demo function. It does not do much.
+    """
+    print(a, b)
+ 
+ func("ABC", "DEF")
+ func(a="ABC", b="DEF")
+ func(b="ABC", a="DEF")
+ help(func)
+ print(func.__docstring__)
+
+Exec Etc.
+
+ exec("x = 10")
+ print(x)
+
+Comprehensions
+
+Syntax — List Comprehensions
+
+[ expr for ident in iterable if cond …]
+expr ⇒ value to be added to the list for each iteration.
+ident ⇒ name of each successive item from the iterable.
+iterable ⇒ any iterable sequence.
+cond ⇒ only add expr if condition is True.
+
+ print( [ 1          for x in range(10) ] )                   #1
+ print( [ "Hello"    for x in range(10) ] )                   #2
+ print( [ (x)        for x in range(10) ] )                   #3
+ print( [ (x,)       for x in range(10) ] )                   #4
+ print( [ (x, x * x) for x in range(10) ] )                   #5
+ print( [ {x:x * x}  for x in range(10) ] )                   #6
+ 
+ # on separate lines (for each `;`)
+ L = []; for x in range(10): L.append(1)       ; print(L)     #1 as loop
+ L = []; for x in range(10): L.append("Hello") ; print(L)     #2 as loop
+ L = []; for x in range(10): L.append(x)       ; print(L)     #3 as loop
+ L = []; for x in range(10): L.append((x,))    ; print(L)     #4 as loop
+ 
+ print ( [(x, y) for x in range(4) for y in range(3)] )
+ print ( [("#" * (x + 1), y) for x in range(3) for y in range(3)] )
+ 
+ squares = {i:"{} squared is {}".format(i, i**2) for i in range(10)}
+ gen = (x ** x for x in range(10))
+ print(gen)
+ L = list(gen)
+ for i in gen:
+    print(i)
+
+Tuesday
+
+ for i in range(200):
+    print(i)
+    break
+ for in range(200):
+    print(i)
+    if i % 70 == 0:
+       break
+ for i in ragne(200):
+    print(i)
+    continue
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ d = { "XYZ": 123, "JKL": 212, "ABC":324, "MNO": 321 }
+ for k in d:
+    print(k)
+ print("-" * 20)
+ for k in sorted(d):
+    print(k)
+ for k in sorted(d):
+    print(k, d[k])
+ #----
+ slok = sorted(d)
+ for k in slok:
+    print(k, d[k])
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ print(range(10))
+ print(type(range(10)))
+ l = list(range(10))
+ print(l)
+ for i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:
+    print(i)
+ for i in range(10):
+    print(i)
+ for i in range(0, 10):
+    print(i)
+ for i in range(0, 10, 1):
+    print(i)
+ for i in range(10, 0, -1):
+    print(i)
+ l = [10, 11, 22, 33, 44, 55, 16, 17, 18, 19]
+ for i in range(len(l)):
+    print(i, l[i])
+ 
+ for i, v in enumerate(l):
+    print(i, v)
+ 
+ i = 0
+ for v in l:
+    print(i, v)
+    i += 1
+ 
+ d = {'x': 1, 'y': 2, 'z': 3}
+ print(list(d))
+ print(list(d.keys()))
+ print(list(d.items()))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ if 1 <= number and number <= 10: ...
+ if 1 <= number <= 10: ...
+ 
+ i = 5
+ while i > 0:
+    print(i)
+    i += 1
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ fruit = [
+    ["Apples", 0.4],
+    ["Pears",  0.5],
+    ["Oranges", 1.92],
+    ["Apricots", 8],
+    ["Prunes", 12]
+    ]
+ for k in fruit:
+    print(k, fruit[k])
+ for k, v in fruit.items():
+    print(k, v)
+ for i in fruit.items():
+    print(i[0], i[1])
+ for k in fruit.keys():
+    print(k, fruit[k])
+ l = list(fruit.keys())
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ fruit = [
+    ["Apples", 0.4],
+    ["Pears",  0.5],
+    ["Oranges", 1.92],
+    ["Apricots", 8],
+    ["Prunes", 12]
+    ]
+ print("{} {}".format(fruit[0][0], fruit[0][1]))
+ print("{} {}".format(fruit[1][0], fruit[1][1]))
+ print("{} {}".format(fruit[2][0], fruit[2][1]))
+ 
+ for i in range(len(fruit)):
+    print("{} {}".format(fruit[i][0], fruit[i][1]))
+ 
+ fruits = {
+    "Apples"   : 0.4,
+    "Pears"    :  0.5,
+    "Oranges"  : 1.92,
+    "Apricots" : 8,
+    "Prunes"   : 12
+    }
+ 
+ for fruit, price in fruit.items():
+    print("{} {}".format(fruit, price)
+    print(f"{fruit} {price}"
+ 
+ print(f"Price of Apples = {fruits["Apples"]}")
+ print("Price of Apples = {price}".format(price=fruits["Apples"]))
+
+Exercise — String Formatting Example
+
+Write a ‘better’ version of this Listing 3-1 from ‘Beginning Python’ on pg.51:
+
+listing_3-1.py — Listing 3-1 in Beginning Python
+
+ # Print a formatted price list with a given width
+ width = int(input('Please enter width: '))
+ price_width = 10
+ item_width  = width - price_width
+ header_fmt = '{{:{}}}{{:>{}}}'.format(item_width, price_width)
+ fmt        = '{{:{}}}{{:>{}.2f}}'.format(item_width, price_width)
+ print('=' * width)
+ print(header_fmt.format('Item', 'Price'))
+ print('-' * width)
+ print(fmt.format('Apples', 0.4))
+ print(fmt.format('Pears', 0.5))
+ print(fmt.format('Cantaloupes', 1.92))
+ print(fmt.format('Dried Apricots (16 oz.)', 8))
+ print(fmt.format('Prunes (4 lbs.)', 12))
+ print('=' * width)
+
+scraps.py — A Example Python Script for Experimentation
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ # vim: set ts=4 sw=4 et fenc=utf8 tw=88 cc=+1 :
+ """
+ Some Python snippets. Uses the ‘main’ pattern/convention.
+ """
+ 
+ from math import pi
+ 
+ def main(args):
+     """
+     Place to test some Python snippets and syntax.
+     """
+     print(f"#args = {len(args)-1}")  #← prevent `pylint` warnings.
+ 
+     #- implicit literal string concatenation.
+     myvar = "ABC" "DEF"
+     print(myvar)
+ 
+     #- some formatting examples.
+     print('|{0:<10.2f}|\n|{0:^10.2f}|\n|{0:>10.2f}|'.format(pi))
+     print(f"|{pi:<10.2f}|", f"|{pi:^10.2f}|", f"|{pi:>10.2f}|", sep="\n")
+ 
+     return 0  # ← ‘normal/success’ exit code.
+ 
+ 
+ if __name__ == "__main__":
+     import sys
+ 
+     sys.exit(main(sys.argv))
+
+ from math import pi
+ print('|{0:<10.2f}|\n|{0:^10.2f}|\n|{0:>10.2f}|'.format(pi))
+ print(f'|{pi:<10.2f}|", f"|{pi:^10.2f}|", f"|{pi:>10.2f}|", sep="\n")
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ chcp 65001
+
+Lists and Tuples
+
+ print("Text {}, {}; {} ... {}".format(12, 3.45678, "Hello", "A"))
+ print("Text {0}, {1}; {2} ... {3}".format(12, 3.45678, "Hello", "A"))
+ print("Text {3}, {1}; {1}, {0}, {2}, {2}".format(12, 3.45678, "Hello", "A"))
+ print("{0} {1} {0}".format("||", "ABC"))
+ print("{one} {two} {three} {one}".format(three=123, one=2.5, two="ABC"))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ print("Text %d, %.2f; %s ... %c" % (12, 3.45678, "Hello", "A"))
+ print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (12, 3.45678, "Hello", "A"))
+ print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (123456, 3.45678, "Hello", "A"))
+ print("Text |%-10d|, |%8.2f|; |%10s| ... |%c|" % (1234, 3.45678, "Hello", "A"))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ def to_int (arg, fail=None):
+    """
+    An exception-free “conversion” from a string to a `int`. Optionally,
+    caller can specify what to return for invalid input (a default).
+    """
+    try:
+       return int(s)
+    except:
+       return fail
+ inp = input("Enter an integer: ")
+ 
+ answer = 12 * to_int(inp, 1);
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ l = list()
+ l = []
+ l = tuple()
+ l = ()
+ l = (1,)
+ l = 1,
+
+ l = list("ABCDE")
+ l.append(['F', 'G', 'H'])
+ print(l)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ l = list("ABCDE")
+ l[2:2] = "<X>"
+ print(l)
+ 
+ l = list("ABCDE")
+ l[2:4] = []
+ print(l)
+ 
+ l = list("ABCDE")
+ l[2:4] = list("XYZ")
+ print(l)
+
+Exercise
+
+Make this ‘better’:
+
+ # Prints a sentence in a centered "box" of correct width
+ SCREEN_WIDTH = 80
+ sentence = input("Sentence: ")
+ text_width   = len(sentence)
+ box_width    = text_width + 6
+ left_margin  = (screen_width - box_width) // 2
+ print()
+ print(' ' * left_margin + '+'   + '-' * (box_width-2)  +   '+')
+ print(' ' * left_margin + '| ' + '' * text_width
+ print(' ' * left_margin + '| ' + sentence
+ print(' ' * left_margin + '| ' + '' * text_width
+ print(' ' * left_margin + '+' + '-' * (box_width-2) + '+') print()
+
+Unicode line-drawing characters: │ ─ ┌ ┬ ┐ ├ ┼ ┤ └ ┴ ┘
+
+Slice Syntax
+
+list[start:end:step]
+* start ⇒ by default: 0.
+* end ⇒ by default: length of list; never included in result.
+* end - start ⇒ number of items in result.
+* step ⇒ by default: 1 (increment).
+
+ from string import ascii_uppercase
+ print(ascii_uppercase[1:10])
+ print(ascii_uppercase[1:-16])
+ print(ascii_uppercase[-25:-16])
+ print(ascii_uppercase[-25:10])
+ print(ascii_uppercase[1:10:1])
+ print(ascii_uppercase[9:0:-1])
+ a = [1, 2, 3, 4 ,5]
+ b = a
+ a[2] = "XXX"
+ print(b)
+ b = a[:]
+ c = a[::-1]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ tag = '<a href="http://www.python.org">Python web site</a>'
+ print(tag[9:30])
+ print(month_name, ordinal, year)
+ print("ABC" * 3)
+ print("ABC" + "DEF")
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ help(list)
+ l = list()
+ type([])
+ l = [12, 34.5, "ABC", [ "DEF", 123 ]]
+
+Stuff
+
+ONI Guide
+
+ print(type(123))
+ print(type(1.23))
+ print(type("ABC")
+ print(type('DEF')
+ print(str("ABC"))
+ print(repr("ABC"))
+ print(str('ABC'))
+ print(repr('ABC'))
+
+© 2019 Incus Data (Pty) Ltd.   
+Made with Pandoc, Source, Fira & Iosevka

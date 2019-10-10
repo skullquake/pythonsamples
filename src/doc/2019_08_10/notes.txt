@@ -1,0 +1,2808 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+Incus Data   
+Codi Matters
+2019-10-07
+by-nc-sa
+Python
+  
+
+Course Notes 2019-10-07
+
+Python Programming Course Notes
+
+Collection of miscellaneous topics and examples related to Python, provided as
+sup­ple­men­ta­ry material for the convenience of attendees of a Python
+Programming course pre­sen­ted in August 2019 at Incus Data's premises,
+Centurion, Gauteng, South Africa. It has a permanent place on the internet.
+
+[*] Table of Contents
+
+  • Introduction
+      □ Python Background
+      □ Distributions of Python
+      □ WinPython Notes
+      □ Useful Utilities
+      □ Windows Subsystem for Linux (WSL)
+      □ Vim
+      □ Python Scripts
+      □ Python Launchers
+  • Python Features
+      □ Pythonic Pythonistas
+      □ Fundamental Characteristics
+      □ Keywords and Identifiers
+      □ Observations About Types
+      □ Literals
+      □ Standard Types
+      □ Virtual Environments
+  • Miscellaneous Topics
+      □ Package Management
+      □ Virtual Environments
+  • Functions
+      □ Documentation
+      □ Function Returns
+      □ Parameters
+      □ Functions as Objects
+      □ List Argument Unpacking
+      □ Dictionary Argument Unpacking
+      □ More on Functions are Values
+      □ Lambdas / Anonymous Functions
+      □ Achieving Closure
+      □ Scope and Functions
+      □ Recursion
+
+python-logo PREREQUISITES — You should already…
+
+  • have some programming experience in another language;
+
+Introduction
+
+Here is an overview of Python background, concepts, tools and distributions.
+
+About This Personalised Course Notes Page
+
+This page may still be updated in the future, so you may want to check back
+regularly. It is not a complete book. It does not cover every topic treated on
+the course. Some example code is on a separate page — it too may receive some
+updates. Some topics may have been moved to separate pages; check the front
+page.
+
+Conventions
+
+In our text, the ‘≡’ character means “equivalent to”; ‘–t→’ means “has the
+type”, and ‘–r→’ means “is read as”. In comments, we use ‘#⇒…’ to show the
+output of a statement, or the value of an expression.
+
+Any text between single guillemets like this: ident is a description; it must
+be replaced by a language element relevant to the syntax. This means that you
+must replace ident with a legal Python identifier (name). Any monospaced text
+must be entered verbatim.
+
+Python Background
+
+The Python programming language was created by Guido van Rossum (Benevolent
+Dictator for Life), first re­leas­ed in 1991, with Python development time
+sponsored by Google, where he worked for a period. Thanks Guido, and thanks
+Google, we guess. At the time of writing, Python 3.7.4 is available for
+down­load (see the list of available releases).
+
+Ubiquity
+
+Python, and most Python IDEs and libraries, run on Linux®, MacOS® and Windows®.
+It is a scripting lang­uage, with similar capabilities to the Perl programming
+language (Perl home), but has gained the at­ten­tion of the scientific and
+academic communities as an alternative to MatLab™, to the ex­tent that Python's
+popularity now far exceeds that of Perl. The even newer Julia pro­gram­ming
+lang­uage (Julia home) is beginning to encrouch somewhat on Python's new
+domain, especially for ap­pli­ca­tions involving numerical computation and
+research. It, too, can be used in the very popular IPython shell, which spawned
+the Jupyter browser-based environment (and the latest JupyterLab).
+
+Both Perl and Python are standard on typical distributions of Linux and also
+MacOS — even if they are not the latest versions. Many tools use shell scripts,
+Perl scripts or Python scripts to man­age their affairs. For other uses, most
+users will create personal Perl or Python installs (en­vi­ron­ments) with newer
+versions of either, without affecting the official versions that were
+in­stal­led as part of the operating system.
+
+The .NET & Java Connections
+
+Any .NET knowledge can be leveraged in Python, either via IronPython, which is
+a native .NET im­ple­men­ta­tion of Python, or Python for .NET, which is a
+Python library interfacing with the .NET Frame­work. There are several
+alternative implementations of the Python language available, each having
+varying degrees of com­pa­ti­bi­li­ty with CPython (the original, official, and
+most po­pu­lar, im­ple­ment­ed in the C language). Like IronPython, the Java
+afficionados can use Jython, an im­ple­men­ta­tion of Python in Java.
+
+Distributions of Python
+
+While python.org hosts compiled versions of Python for all supported platforms,
+it is fully open source, and several groups or individuals use that source to
+build their own Python interpreters and li­bra­ries. It is possible to embed
+Python in programs and applications, and even package a Python ap­pli­ca­tion
+as an ex­e­cu­ta­ble, so users with­out Python can still run the application.
+
+Snakepit
+
+We will be using the “official” CPython, which most of the major distributors
+of Python use. Just as a matter of interest, here is a list of alternative
+implementations of the language, or utilities that create executables
+(optionally, some also create installers). We omit IronPython and Jython from
+this list, since they are discussed above:
+
+  • CPython — For completeness, at the top of the list, the reference
+    implementation of Python, written in C. It is not terribly fast, but can
+    interface with C/C++ libraries, which are fast.
+
+  • Stackless Python — An enhanced version of Python improving performance with
+    threads, channels, scheduling and serialisation.
+
+  • PyPy — An alternative implementation that compiles Python code to native
+    machine code, using JIT (Just In Time) compilation. It is purportedly more
+    memory-efficient than CPython, and it uses Stackless' threads.
+
+  • Cython — An implementation of Python that statically compiles Python code,
+    with an extended syntax. It is generally faster than CPython, and easier to
+    interface with C code.
+
+  • MicroPython — A special implementation of Python geared towards embedded
+    systems, or small systems like the Raspberry Pi.
+
+  • PyRun — Although not supported (“yet”, they say) under Windows, it packages
+    Python and libraries into a single executable. This is very useful in the
+    environments where it is supported.
+
+Python Executable / Installer Packagers
+
+This is a non-exhaustive selection of tools that may help you create an
+executable from your Python program. They bundle the Python interpreter,
+standard Python libraries, and extra li­bra­ries to­geth­er into one or more
+executables and/or DLLs. At best, you can end up with a single executable, and
+at worst, a directory containing your executable, together with all the
+ancillary files.
+
+  • PyInstaller — Runs on Linux, MacOS, Solaris, FreeBSD. Can be installed with
+    pip (Python's of­fi­ci­al package installer) from PyPi.
+
+  • cx_Freeze — Works on any platform where Python is available.
+
+  • py2exe — This is a Windows-only solution. You can set a custom icon to be
+    embedded in the re­sult­ing ex­e­cu­ta­ble.
+
+  • Nuitka — Nuitka is unique in that it translates Python code to C/C++, which
+    can then be com­pil­ed to an executable with a compatible C/C++ compiler.
+    You can read their overview.
+
+  • pynsist — Works only on Windows, but makes it easy to create NSIS (Nullsoft
+    Scriptable In­stall Sys­tem) installers from your Python application.
+
+Larger Python Distributions
+
+This is, again, a non-exhaustive list of other Python distributions, and we
+omitted the com­mer­cial options:
+
+  • Anaconda — It has free and commercial versions, and is one of the
+    “batteries-included” scien­ti­fic­al­ly-minded distributions. It is
+    probably the most popular of the large distributions.
+
+  • Python(x,y) — “Python(x,y) is a free scientific and engineering development
+    software for nu­me­ri­cal computations, data analysis and data
+    visualization based on Python programming language, Qt graphical user
+    interfaces and Spyder IDE interactive scientific development
+    en­vi­ron­ment”.
+
+  • ActivePython — ActiveState provides free and commercial versions of various
+    tools and lan­gua­ges. It is probably one of the most newbie-friendly
+    options to get a working Python and some Windows-specific accoutrements.
+
+  • WinPython — Windows-only, with all the accessories you need, including
+    Spyder3. Its main ad­van­tage is that it does not require installation. Its
+    “installer” simply extracts all the parts to a directory of your choice.
+    Optionally, it can “register” itself with Windows to become your glo­bal
+    Python installation. Another advantage is that users can work with pip, in
+    addition to the custom GUI package manager of WinPython.
+
+Shells, IDEs and Other Environments
+
+Although you can get by writing Python scripts with any editor (preferably a “
+programmer's edi­tor” supporting Python syntax highlighting), and run the
+scripts on the command line (in a POSIX Shell, Windows Command Prompt, or
+PowerShell), it is possible to interactively run Python in its own shell,
+having a REPL (Read-Eval-Print-Loop). More involved environments allow you to
+debug your Python, and use mouse and graphical features to help make you more
+comfortable.
+
+  • CPython REPL — Just the normal CPython interpreter, but run without
+    arguments to interpret scripts. Instead, it will continuously allow you to
+    type in Python, which it interprets, and if any values result,
+    automatically prints them out for you… ready for the next input.
+
+  • IDLE — The same mechanics as the standard CPython REPL, but built as a
+    graphical ap­pli­ca­tion using the portable TkInter GUI library. It is
+    fairly capable in its newer incarnations, and is part of the standard
+    Python distribution.
+
+  • IPython — A much-enhanced and user-friendly alternative to the standard
+    CPython REPL. Highly recommended. It was originally known as the “IPython
+    Notebook”, but has been separated, with the generic part now called
+    Jupyter.
+
+  • ptpython — A popular enhanced shell, for POSIX shells, or the Windows
+    Command Prompt. It can also enhance IPython, via the ptipython program.
+
+  • Jupyter Notebook — The Jupyter Project is a generic set of technologies,
+    which allows you to interact with a variety of “kernels”, via a browser. Of
+    interest, of course, is the Python kernel, which allows you to interface
+    with IPython through the browser.
+
+  • QtConsole — The interface works exactly like IPython, but runs in a
+    graphical environment. This means plots, for example, can appear in the
+    same window as your code. From the same people who brought you Jupyter and
+    IPython.
+
+  • Spyder3 — A very popular IDE written in Python, using Qt libraries. It is
+    not half-bad, and if you have no preference, it should be the first one you
+    try. It may be all you ever need.
+
+  • PyCharm — Provides both commercial and free “community” editions. If you
+    like Jet­Brain's In­tel­liJ IDEA types of IDEs, this might be just your cup
+    of tea.
+
+  • Atom — This is a general programmer's editor, but with their python-tools,
+    you can use it as your Python IDE.
+
+  • Visual Studio Code — Like Atom, a free and gp]eneral-purpose programmer's
+    editor, with many plugins (extensions), including one for Python. See their
+    Getting Started with Python article for ideas. Be sure to also read Visual
+    Studio Code Tips and Tricks and Python settings reference.
+
+Any of these will work, but you should learn the basics of writing scripts with
+any editor, and run­ning them on the command line, using a standard REPL shell.
+Then, finally, you can graduate to an IDE that holds your hands and hides all
+complexity from you.
+
+Visual Studio Code and Python
+
+Microsoft's documentation, has a whole Python Editing chapter. If you are
+serious about using VSCode, especially with Python, you will have to put in
+some effort by yourself. In particular, be sure to read Editing Python in
+Visual Studio Code. There is also a Python Docstring Formatter extension you
+might find useful (which we did not install for you).
+
+Independent of VSCode, you can use several code formatters that is build on the
+spirit of PEP-8: yapf, autopep8 and black (read the docs). For checking code
+compliance with PEP-8, you can use any of these, but most common are flake8,
+pylint, pycodestyle and some others. VSCode can be configured to automatically
+use these for formatting and continuous error checking and/or ‘linting’.
+
+VSCode is quite an advanced editor, which inludes, for example, multipler
+cursors, but you can start with the basic Basic Editing page.
+
+Interactive Python
+
+The simplest way to get started with Python, is to use an interactive REPL
+(Repeat, Execute, Print, Loop) shell. Running the python executable without
+arguments, will result in such a shell, although friendlier ones like IPython,
+ptpython, or ptipython, are available, but is not installed by default.
+
+IDEs (Integrated Development Environments) like Spyder, also allow for
+interactive shell use, although many use the IPython shell (which is a ‘good
+thing’). Most tutorials shows the CPython REPL prompt as: >>>, which means it
+is ready for the next statement. The CPython shell is always available, whereas
+other shells require manual installation, unless it is installed by your chosen
+Python distribution (WinPython, Anaconda, ActivePython, etc.).
+
+In a Python shell, the cursor keys can be used to scroll through previous
+commands. A command can be edited, and is only executed when you press enter.
+Some commands may continue on the next line, and the prompt part will change to
+indicate that it is waiting for the rest of the code. This is a continuation
+prompt, normally: ...
+
+Unlike a Python script, where you must explicitly use print for visual output,
+a shell will automatically print the result of any expression. So, 2 + 3enter
+in a shell, will automatically print: 5, whereas in a script, you will have to
+write: print(2 + 3) for the same effect.
+
+Shells like IPython, have tab completion. This means that you can type one or
+two letters, and then press the tab key, which will list possible completions
+starting with the typed letters. You can normally select one of the
+possibilities with up or dn arrows, followed by enter.
+
+The dir() and help() functions are generally only useful in a shell, and will
+never be used in real application scripts. The IPython interface is used by the
+QT Console, and Jupyter Notebooks, so you might be well advised to read the
+IPython Documentation, in particular the useful Magic Functions or ‘magics’.
+Useful magics are:
+
+  • %ls — list files in current directory.
+  • %reset — delete all names (variables, functions, etc.)
+  • %clear — clear the screen (not %cls).
+  • %cd — change working directory.
+  • %pwd — print working directory.
+  • %run script.py — run a script in current dicectory.
+  • %edit script.py — edit a file in your designated editor ($EDITOR).
+
+While the IPython REPL supports dir() and help(), you also can get information
+summaries by appending a question mark after a word, and pressing ENTER, e.g.:
+print?ENTER. Also useful in IPython, is a line starting with an exclamation
+mark, can be followed by a operating system shell command… you can even run a
+shell, and when you exit it, you will be back into the IPython REPL.
+
+Python on Linux
+
+Python is installed by default on most Linux distributions. This is your
+“system Python”, and should never ever be modified or updated. In commercial
+situations, the Linux distributions used are very convervative in terms of
+version numbers — you will generally not find the latest version of anything,
+since the overriding concern is stability, not features.
+
+Practically then, for applications written in Python on Linux or for Linux,
+developers would want a later version than the system Python, but without
+affecting the system Python. This is en­tire­ly pos­si­ble, even if it may
+involve man­u­al­ly com­pi­ling CPython from source, and manually in­stal­ling
+any Python li­bra­ries a project may need.
+
+Available options will depend on your Linux distribution; it will not be
+possible to pro­vide a ge­ne­ral re­ci­pe. Even if you compile from scratch,
+you will still have to manage different ver­sions of the stan­dard C/C++
+li­bra­ries, ver­sions of com­pi­lers, etc. The price of choice. The concepts,
+how­ever, are generic — you want a newer/latest Python version, and you want to
+be able to use it without af­fect­ing the system Python.
+
+If you try this search, you will find many guides on how to install Python 3.6
+on Ubuntu 16.04 (Xenial) LTS (Long Term Support version). You can follow any
+guide that shows you a route to in­stall the pre­re­quis­ite compilers, build
+tools and libraries, followed by downloading the Python source code,
+configuring it, and compiling it. Or you can follow a guide that shows you ways
+to install a pre-compiled version from non-official sources (a PPA ­ Personal
+Package Archive). The two PPAs that are most commonly referenced with regard to
+Python, are from Jonathan F, and deadsnakes.
+
+Versionitus
+
+Due to some not-so-insignificant changes to the syntax of Python, we
+effectively have two major Python versions: the 2.7.x branch (Python2), which
+does not receive updates, only bug fixes; and the 3.5+ (currently 3.7.3)
+branch, AKA Python3, whose code is not compatible with Python2. Many older
+libraries, utilities, tools and Python programs, have not yet been updated to
+Python3; some never will be.
+
+This is a dilemma for users, and they must be aware that on their systems, just
+executing python may run Python2 or Python3. On some systems, with both Python2
+and Python3 installed, one may have python2 and python3 executables. Our
+guideline is to exclusively use Python3 unless you have a pressing reason not
+to — for example, you may be dependent on a Python2 library or tools that have
+not been ported to Python3. There is official advice on porting Python2 code to
+Python3. See Python-Future and Python-Modernize for different approaches to
+port code or at­tain com­pa­ti­bi­li­ty.
+
+Some libraries are continuously updated. So you should be aware of the version
+of any library that your current application requires. Newer versions of
+libraries are sometimes incompatible with the older versions. If the work is
+important, documentation should be kept re­gard­ing not only the ver­sion and
+variant of Python being used, but also the libraries and their versions that
+are employed.
+
+WinPython Notes
+
+WinPython is a very convenient distribution of Python for Windows™, in that it
+does not require installation, i.e., it is a portable application
+(relocateable) that does interfere with any installed Python.
+
+By default, it extracts to the directory where you copied the
+WinPython-3.7.4.0Ps2.exe executable, under the name WPy-3741. For your
+convenience, it provides a number of launcher executables, not all of which are
+relevant for our purposes:
+
+  • IDLE (Python GUI).exe — The official REPL GUI text shell for Python.
+  • Spyder.exe — Launches the Spyder IDE, which provides a Python editor, and a
+    shell.
+  • WinPython Command Prompt.exe — Opens a Command Prompt (cmd.exe), with
+    properly set PATH environment variable.
+  • WinPython Powershell Prompt.exe — Opens a PowerShell (powershell.exe), with
+    properly set PATH environment variable.
+  • WinPython Control Panel.exe — Optionally allows you to ‘register’ (install)
+    the WinPython distribution, with Start Menu shortcuts.
+  • Jupyter Notebook — Runs Python as a server, and allows you to write Python
+    Jupyter notebooks in your browser (formerly IPython Notebooks, now part of
+    the Jupyter Project).
+
+For educational purposes, we really only require a programmer's editor to write
+Python scripts, and to execute those scripts in a command line shell (Command
+Prompt, PowerShell, or a POSIX shell). For Windows, we sometimes create a batch
+file launcher as a matter of convenience.
+
+Python is very popular for interactive use, especially since it by default
+provides a REPL shell. Most prefer the IPython shell, and is the default for
+the Spyder IDE, and Jupyter Notebook. This is not part of the official CPython
+distribution, but can be easily installed in a standard Python installation.
+
+NOTE - WinPython on Course
+
+We extracted WinPython for you to: C:\Course\WPy-3741. Additionally, we created
+a directory for your Python scripts in C:\Course\Work, which we will call your
+“work directory”. You should place all your scripts in this directory.
+
+We also provided offline Python documentation via Zeal, which uses
+documentation sets (docsets) from the excellent MacOS-only Dash application.
+
+For your convenience, the ‘extractor’ executable of WinPython, and the zipped
+Zeal documentation, we left in your C:\Course directory, should you want to
+copy them for home use.
+
+Useful Utilities
+
+We provided copies of some utilities in C:\Course\rxutils, which will be in
+your PATH, or $Env.Path when you open a Command Prompt or PowerShell session
+from our shortcuts in C:\Course. Here is a short summary for the most useful
+ones:
+
+  • bat — Works like cat on Linux/Unix/MacOS systems (and the PowerShell cat
+    alias on Windows), except it syntax highlight the contents of files.
+
+  • less — A much better pager/file viewer than more (which is all you get with
+    Windows).
+
+  • rg (ripgrep) — Like a better recursive grep. Much better and much faster.
+
+  • fd — Recursive file finder. Fast.
+
+  • fzf — Fuzzy finder for files to process. Requires a Unix-like shell, or
+    PowerShell to use for full effect. For example, you can use it in
+    PowerShell to edit a file with our vscode alias like this:
+
+     vscode $(fzf)
+
+    The above command will run fzf first, which will allow you to easily select
+    a file, whose name is then placed in the command line, and which VSCode
+    will then open for editing. See this YouTube Video.
+
+    Instead of vscode or code, you can use any editor or command that needs to
+    edit or otherwise process one or more files returned by the fzf command…
+    like vim or gvim.
+
+Windows Subsystem for Linux (WSL)
+
+In case you want to use Python on Linux, one option is to enable Windows
+Subsystem for Linux (WSL), and install one of the available WSL distributions.
+We recommend Ubuntu 18.04 LTS. You can enable WSL and install a Linux image
+from the command line.
+
+First off, use a PowerShell sesssion, which can be the default PowerShell that
+is installed with Windows.
+
+To enable the use of WSL, run the following, after making some temporary
+directory your download directory with cd:
+
+Enable WSL (PowerShell)
+
+ Enable-WindowsOptionalFeature -Online `
+    -FeatureName Microsoft-Windows-Subsystem-Linux
+
+Then, to download an Ubuntu 18.04 (LTS) image from the Windows App store:
+
+Download Ubuntu 18.04 (LTS) with PowerShell
+
+ Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1608 `
+    -OutFile ubuntu-1804.appx -UseBasicParsing
+
+You can also use the built-in curl command (which is available in later builds
+of Windows):
+
+Alternative Download Method
+
+ curl.exe -L -o ubuntu-1804.appx https://aka.ms/wsl-ubuntu-1804
+
+Now, you can install that ubuntu-1804.appx image with:
+
+Install Ubuntu Image (PowerShell)
+
+ Add-AppxPackage .\ubuntu-1804.appx
+
+Once finished, you can run Ubuntu from the Start Menu, or the bash.exe
+executable (it's on your PATH).
+
+Vim
+
+If you are new to Vim, and have no .vimrc customisation file, here is a
+‘starter’ example, based on Tim Pope's sensible vim settings.
+
+.vimrc — Sensible Vim Settings Suitable for Python
+
+" sensible.vim - Defaults everyone can agree on
+" Maintainer:   Tim Pope <http://tpo.pe/>
+" Version:      1.2
+
+if exists('g:loaded_sensible') || &compatible
+  finish
+else
+  let g:loaded_sensible = 'yes'
+endif
+
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
+" Use :help 'option' to see the documentation for the given option.
+
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
+
+set nrformats-=octal
+
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
+
+set incsearch
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohls<C-R>=has('diff')?'<Bar>diff':''<CR><CR><C-L>
+endif
+
+if &synmaxcol == 3000
+  " Lowering this improves performance in files with long lines.
+  set synmaxcol=500
+endif
+
+set laststatus=2
+set ruler
+set wildmenu
+
+if !&scrolloff
+  set scrolloff=1
+endif
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+set display+=lastline
+
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
+
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+if has('path_extra')
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
+endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/usr/bin/env\ bash
+endif
+
+set autoread
+
+if &history < 1000
+  set history=1000
+endif
+if &tabpagemax < 50
+  set tabpagemax=50
+endif
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+set sessionoptions-=options
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+if empty(mapcheck('<C-U>', 'i'))
+  inoremap <C-U> <C-G>u<C-U>
+endif
+if empty(mapcheck('<C-W>', 'i'))
+  inoremap <C-W> <C-G>u<C-W>
+endif
+
+" -- our additions --
+" Default ‘tab’ behaviour.
+set et
+set ts=3
+set sw=3
+
+" Modify the colorscheme to taste.
+colorscheme pablo
+
+if has("autocmd")
+   autocmd FileType python set ts=4 sw=4 et fenc=utf-8 tw=88 cc=+1
+   autocmd FileType c, c++, java, javascript, cs set ts=3 sw=3 et fenc=utf-8 tw=72 cc=+1
+   autocmd FileType make set ts=4 sw=4 noet fenc=utf-8 tw=72 cc=+1
+endif
+
+" vim:set ft=vim et sw=2:
+
+Place the above file in your $HOME directory on Linux or MacOS. On Windows,
+save in %USERPROFLE%\_vimrc.
+
+Python Scripts
+
+Python code that is stored in a file, and is then generically called a Python
+script. The script may be a complete program, but generally, programs consist
+of several Python files and modules. A module is simply a Python script
+following certain conventions that makes it suitable for use with import.
+
+Hash-Bang / Shebang Comment
+
+The first comment may follow a POSIX convention. When followed by an
+exclamation mark (called ‘bang’ in this context), it is treated as the path to
+an interpreter to run the script with. This only has effect if the mode of the
+file contains x (executable), which can be changed with chmod. POSIX shells
+will treat the script the same as an executable.
+
+Encoding
+
+The encoding of the Python script should be UTF-8. You can tell Python that it
+is encoding as such, with another special comment:
+
+Python encoding specifier
+
+ # -*- coding utf-8 -*-
+
+This should follow the hash-bang line, although python will recognise it, even
+if it does not directly follow.
+
+Executable Scripts
+
+On POSIX systems, you can make a script executable (just like a compiled
+program), with:
+
+Make script executable
+
+^> chmod a+x script
+
+Now, instead of running a script with:
+
+Manually running a Python script
+
+^> python script
+
+you can run it in the current directory as follows (or if it is somewhere on
+your PATH, without the ./):
+
+Running an executable Python script
+
+^> ./script
+
+As a suggestion, keep your script with the .py extension, but create a symbolic
+or hard link to it with ln in some directory in your PATH, without the .py
+extension.
+
+You may also have to run python3, instead of python… and ipython3, pip3, etc.
+
+NOTE — Set Default Python on Ubuntu 18.04
+
+Ubuntu 18.04 (including the WSL version), does not install Python2 by default —
+Python3 (minimal) is installed. If you accidentally installed Python2, or some
+other installation switched the default to Python2, you can revert this with
+these commands:
+
+^> sudo apt purge python-2.x-minimal
+^> sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6
+20
+
+You could also try: sudo apt purge python2.x-minimal
+
+Python Launchers
+
+On Windows, and to some lesser extent on POSIX, we can create executable
+programs, batch files, or scripts that indirectly executes or luanches your
+Python scripts.
+
+By convention, even if not usable under Windows, you should start your scripts
+with a ‘hash bang’ (or she-bang) line:
+
+#!/usr/bin/env python3
+
+What you should also include, is the encoding, which should be UTF-8:
+
+# -*- coding: utf-8 -*-
+
+Here is an example ‘hello world’ script, which you can use as an example:
+
+hello.py — Traditional ‘Hello World’ Python Example
+
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ """
+ A simple ‘Hello, World’ program in Python
+ """
+ print('Hello, World!')
+ name = input("What's your name?: ")
+ print("Well, hello {0}!".format(name))
+
+The above script's style is suitable for ‘quick and dirty’ Python utilities and
+simple programs. However, sooner rather than later, learn to use the ‘main
+pattern. By the same token, do not get lured by ‘convenience’ to omit the .py
+extension, since many tools, including Python's import statements expects the
+.py (or .pyc to be exact).
+
+You can run the script with: python hello.py, or you can create a batch file on
+Windows, called hello.cmd, with the following content, and then just run hello.
+The hello.py should be in the same directory as hello.cmd.
+
+hello.cmd — Launcher Batch File for Windows
+
+@echo off && setlocal enableextensions
+:: This is a ‘launcher’ batch file for `hello.py`. Any arguments passed to
+:: this batch file, will be forwarded to the script, in case it cares.
+::
+python %~dp0hello.py %*
+
+You can use the above batch file as a template to create ‘launchers’ for your
+other scripts, otherwise you just run it with: python script-name.py. You can
+also use a shell script on POSIX systems to launch your Python program. Here is
+a simple example:
+
+hello — Shell Script Launcher
+
+ #!/usr/bin/env sh
+ # This is a ‘launcher’ script for `hello.py`. Any arguments passed to
+ # this shell script, will be forwarded to the Python script.
+ python3 ~/work/scripts/hello.py $@
+
+Getting the actual directory of a script, irrespective of the current directory
+(like %~dp0 in batch files), has no equivalent in POSIX. It is a non-trivial
+problem. If you are will to use a bash non POSIX-compliant feature, you can try
+this:
+
+hello — Bash-Specific Launcher
+
+ #!/usr/bin/env bash
+ # This is a ‘launcher’ script for `hello.py`. Any arguments passed to
+ # this shell script, will be forwarded to the Python script. Bash-specific.
+ SCRIPTPATH=$(dirname "$BASH_SOURCE")
+ python3 "${SCRIPTPATH}/hello.py" $@
+
+As with all scripts that are to be treated as executable, you should chmod a+x
+the shell script.
+
+You can put a “pause” in the script if you expect people will double-click on
+it. In POSIX shell scripts, you can simply use read, or in Window batch files,
+pause. If you do not, the operating system will automatically close the
+terminal or console it allocated for your script when it terminates. This is
+discretionary… not all scripts would need a pause; and you could also simply
+use a input() statement in your script.
+
+This is a portable PowerShell script, that will launch a Python3 script with
+the same basename, and in the same directory. You basically copy this
+pylauncher.ps1 file to: hello.ps1 (for example), which will then launch
+hello.py. Just as under Command Prompt, you do not have to specify the
+extension of executables or batch files, PowerShell does not require you to run
+a hello.ps1 with the extension… just hello will do (or .\hello if it is in the
+current directory, and not on your $Env:PATH).
+
+pylauncher.ps1 — PowerShell Script to Launch Python Script
+
+ # Launches `‹basename›.py`, expected to be in the same directory as this script,
+ # assuning it was renamed  `‹basename›.ps1`. Designed to be used from PowerShell.
+ #
+ $PyScript = [IO.Path]::ChangeExtension($PSCommandPath, "py")
+ if ($IsWindows) {
+    python $PyScript $args
+    }
+ else {
+    python3 $PyScript $args
+    }
+
+It is designed to be run from a PowerShell session, but you could put a
+hash-bang/shebang line in:
+
+ #!/usr/bin/env pwsh -NoLogo
+
+Then, you can run it from a Bash or other POSIX shell,… though you may want the
+remove the .ps1 extension in this case. And, do not forget to do chmod a+x 
+script. Optionally, for convenience, you could ensure that it can be found via
+your PATH.
+
+But, to be honest, on Linux and MacOS, the best solution is to keep your 
+basename.py files in your source directory; chmod a+x basename.py and make a
+symbolic link in some directory in your $PATH, like$HOME/bin/basename, Some
+people prefer $HOME/.local/bin for ‘personal’ binaries, where pip, also
+installs ‘local’ launchers for modules.
+
+Python Features
+
+This section will provide an overview of most of Python's features, starting
+with the char­ac­te­ris­tics that distinguish it from other languages you may
+be familiar with — or what is has in common with languages you know.
+
+Python is a computer programming language, and like human languages, have a
+vocabulary (keywords), a syntax and a grammar. Unlike a human language, the
+rules are unambiguous. Some rules are based on context (where the language
+element appears).
+
+Programming language works with values, and often values have types, as in
+Python. A type determines what operations can be performed on the value.
+Operations can be performed by operator, or built-in functions, or methods
+(special type-specific functions).
+
+Values can be compound (consist of other values). In Python, this can be
+attributes or properties of an object (value). Values can be arranged in
+collections with different characteristics. Lists and tuples in Python, have
+overlapping behaviour, but tuples are more memory efficient, though has fewer
+possible operations.
+
+Pythonic Pythonistas
+
+Since Python has some features not found in many other languages, and aspires
+to a ‘philosophy’, called “The Zen of Python”, neophytes are constantly
+reminded to follow the guidelines in Python Enhancement Proposal 8 (PEP 8), or
+check the PyCodeStyle, or even Google Python Style Guide
+
+Once programmers can demonstrate that they aspire to, and apply this
+philosophy, they may consider calling themselves ‘Pythonistas’, and their code
+reflecting this philosophy: ‘Pythonic’.
+
+From Wikipedia's Python page:
+
+A common neologism in the Python community is pythonic, which can have a wide
+range of meanings related to program style. To say that code is pythonic is to
+say that it uses Python idioms well, that it is natural or shows fluency in the
+language, that it conforms with Python's minimalist philosophy and emphasis on
+readability. In contrast, code that is difficult to understand or reads like a
+rough transcription from another programming language is called unpythonic.
+
+Furthermore, beginners will do well to at least once run ‘import this’ in a
+Python REPL shell. For your convenience, here is the output, and a link to PEP
+-20:
+
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+Convention Conformance
+
+Learn to use tools like pylint flake8, and black yapf at minimum, as soon as
+possible. This will help you create code with ‘acceptable’ style and
+indentation. In partuclar, pylint can point out some questionable practices.
+The black tool has very few customisation options, and as such we recommend it
+for newcomers.
+
+These are all third-party tools, and may not be available in your environment.
+However, you can install them locally (in your personal directory) with pip. If
+you are running in a virtual environment, you can install it there.
+
+Install some useful style-related and formatting modules locally
+
+pip install --user pylint flake8 black yapf
+
+At minimum, you need pylint and black. Both modules provide ‘launcher’
+executables with the same names. All tools base there rules on PEP-8 (Python
+Enhancement Proposal 8 — Style Guide for Python).
+
+Fundamental Characteristics
+
+Here are some fun­da­men­tal features of Python you need to be aware of, right
+from the start:
+
+  • UTF-8 encoding — By default, Python assumes your code and scripts are UTF-8
+    encoded. There is no reason to use any other encoding. Literal strings are
+    by default UTF-8 encoded as well.
+
+  • Case-sensitive — Python is case-sensitive, which means upper-case and
+    lower-case letters have different meanings.
+
+  • White-space aware — Whitespace (newlines, tabs, spaces) have semantic
+    importance in Python: a newline indicates the end of a statement, and
+    indentation (typically 4 spaces are recommended) forms a block or scope.
+    Python does try to be intelligent, and will allow line breaking where it is
+    clear that the statement is not complete (when inside paired delimiters
+    like (, [ and {), and before or after binary operators.
+
+  • Blocks — Python does not have block delimiters. A block is implied in a
+    context (e.g. after an if, while or for statement), and must be indented.
+    All statements that are indented at the same level, are part of the block.
+    The block ends with the first statement not indented, or the end of the
+    file.
+
+  • Comments — Python only has line comments: a hash character (#) and all
+    following text until the end of the line, will be treated as a comment and
+    ignored. A triple-quoted string at the be­gin­ning of a module, or after
+    the start of a function or class, is treated as documentation for the
+    class, which pydoc can extract and display.
+
+  • Line joining — Two lines can be joined, or continued, by ending the first
+    with a trailing back­slash character (\). Logically, the lines will become
+    one line. Several lines can be joined this way. Interactive Python shells
+    will change the prompt to show when a line is continued, for whatever
+    reason.
+
+  • Documentation Strings — Special docstrings are just string literals at the
+    beginning of a file, function, or class. These are actually stored as
+    documentation for the file, function or class. They are not comments in a
+    syntactical sense, but does ‘comment’, or rather document the code.
+
+  • Statements — Statements are generally terminated by a newline. This rule is
+    relaxed between the paired characters: (), [], and {}. In this case a
+    logical line may consist of several physical lines. Multiple physical lines
+    are always possible with the line-continuation syntax (backslash at the end
+    of a line).
+
+  • Statement separator — A semi-colon character (;) acts as separator between
+    multiple state­ments that appear on the same line. This is not recommended
+    practice, except maybe in­ter­ac­tive­ly.
+
+  • Names — What you may think of as a variable or a function in other
+    languages, is just a label in Python — just a name, in other words. A name
+    has no type, and can only ever represent a reference to an actual object.
+    At any point, it can be re-assigned to represent another object — even of a
+    different type. We indicate names formally as identifiers.
+
+  • Type safety — Python is a type-safe language. This means it has built-in
+    types, and you can cre­ate user-defined types. A piece of memory (object)
+    can only be of one type once created, and cannot be converted. Some types
+    can be converted to other types, but this still does not change the
+    original.
+
+  • Duck typing — Arguments passed to a function's parameter are not checked by
+    Python. The func­tion will work with any type, as long as the type provides
+    the methods, prop­er­ties or at­tri­but­es required by the code.
+    Wikipedia's entry
+
+  • Built-in functions — Unlike languages like C and C++, Python has a fair
+    number of built-in func­tions (and an extensive standard library).
+
+Keywords and Identifiers
+
+The reserved keywords in the language cannot be used as identifiers (names).
+They can only be used as per their formal syntax descriptions.
+
+Keywords
+
+There are not many keywords in Python, which is to its advantage…
+
+Syntax — Python Keywords
+
+False class finally is return
+None continue for lambda try
+True def from nonlocal while
+and del global not with
+as elif if or yield
+assert else import pass
+break except in raise
+
+The only purpose of the above table is to save you some time: avoid using them
+for your names (identifiers). You can ask Python to produce the above list
+with:
+
+Pattern: List Keywords
+
+ import keyword
+ print(keyword.kwlist)
+
+Although we will eventually cover all keywords, note that None is equivalent to
+nil, NULL, null or nullptr as found in other languages — representing the
+“absence of a value”. It has type NoneType (try: type(None)). Also note, that
+keyword.iskeyword(string) will return True if string is a keyword, else False.
+
+For interest's sake, to get a list of built-in functions do the following:
+
+Pattern: list Built-in Functions
+
+ import builtins
+ print(dir(builtins))
+
+You should thus also avoid user-defined identifiers that are built-in function
+names. The Python reflection module inspect provides the isbuiltin(obj) that
+can determine if obj is a built-in function, or not. Tools like Pylint and
+Flake8 (docs here) can check if your code conforms to PEP-8, and will warn you
+about identifiers that are built-in functions. You can configure some editors/
+IDEs like VSCode to automatically run pylint or flake8 on your code.
+
+Identifiers
+
+Your own names cannot start with a digit. Although starting a name with
+underscores is legal syn­tax, it should be avoided: names that begin with
+underscores are reserved for special purposes within Py­thon (you will be using
+this later). After the first character, you can use any UTF-8 al­pha­bet­ic
+letters, but should restrict yourself to ASCII characters, digits, and
+underscores.
+
+Apart from keywords, also do not use that names of built-in functions for your
+identifiers. This is not technically illegal, but constitutes bad programming
+practice if you do.
+
+Observations About Types
+
+The first four important types are: int, float, str and bool, meaning integer,
+floating point, string and boolean, respectively. You can ask Python to show
+you the type of any expression, using the type() built-in function.
+
+These are actually type functions (acting much like constructors in languages
+like C++, Java and C#). They can ‘construct’ or ‘convert’ many arguments types
+to the corresponding specific type. Absolutely any type is convertible to str
+(much like object.ToString() in other languages).
+
+The repr() function can also convert anything to a str, but the appearance of
+the result is more technical. This is the function Python REPLs use to
+automatically print the results of expressions; the print() function on the
+other hand, uses str on all its arguments.
+
+These types are enough to understand the fundamental literals, although with
+discuss it more deeply under the Standard Types heading.
+
+Literals
+
+Literals are values without a name. Python allows for string and numeric
+literals. You can treat True and False as literals as well, though Python calls
+them ‘constants’, as do many languages.
+
+The first literal you would usually encounter in learning a new language, is a
+string literal, as in "Hello World". Initial excursions with Python normally
+involve using it interactively as a cal­cu­la­tor, how­ever, which means
+numeric literals are usually elaborated first.
+
+For educational purposes, you can use the type(literal) function to inspect the
+type of any literal. In fact, you can use any object (value) in place of 
+literal; for that matter, any expression.
+
+Numeric Literals
+
+There are three types of numeric literals: integer, floating point, and
+imaginary (as in complex number). From Python 3.6, numeric literals may use
+underscores as digit separators.
+
+Literal numbers without a decimal sign, optionally prefixed with 0b (binary),
+0o (octal) or 0x (hex­a­dec­i­mal), are of type int. The unary minus (-) or
+unary plus (+) may appear right at the start. The default is +, so almost
+nobody ever writes it explicitly.
+
+Numbers that contain a decimal point are of type float. They can use fixed
+point notation, or exponential (scientific) notation.
+
+To get an imaginary number, use the suffix j. There is no type for an imaginary
+number, simply write it as a complex literal with the real part being 0: 0.12j,
+for example.
+
+Numeric literals can be converted to string representation. The default base is
+decimal, but the bin (), oct () and hex () functions can convert a number to a
+string representation in binary, octal and hexadecimal, respectively.
+
+Syntax — Floating Point Literals
+
+  • Exponential notation: +-digits[*].digits[+]e+-digits[+]
+      □ digits ⇒ 0…9
+  • Fixed point notation: +-digits[*].digits[*]
+      □ At least one digit on left or right of decimal point.
+
+Example numeric literals and their types in a Python shell
+
+^> type(123)
+^> type(123.)
+^> type(123.456)
+^> type(1.23456e2)
+^> type(0xFE)
+^> type(0b1010101)
+
+If you wanted similar results in a script, we would show it like this:
+
+Example numeric literals and their types as a Python snippet
+
+ print(type(123))              #←decimal int*
+ print(type(123.))             #←fixed point float*
+ print(type(123.456))          #←fixed point float*
+ print(type(1.23456e2))        #←fixed point exponential*
+ print(type(0xFE))             #←hexadecimal int*
+ print(type(0b1010101))        #←binary int*
+
+The int and float types support normal arithmetic operators (*, /, //, +, - the
+modulus/remainder operator: %), where / is always floating point division, and
+// always performs integer division (truncation) ← big change from Python2.
+
+Both types also supports the exponentiation or ‘to the power’ operator: **
+
+The int type uses processor 64-bit integer types until the results go out of
+range, in which case it switches over to an arbitrary precision integer type
+transparently.
+
+String Literals
+
+String literals are enclosed in either paired single quotes, or paired double
+quotes, and have type str. The single and double quote characters here are
+functionally equivalent (unlike your typical POSIX shell, where single-quoted
+strings ignore escape characters or variable interpolation, but double-quoted
+strings honour escape sequences, and allow interpolation). Strings are by
+default encoded in UTF-8 (Unicode).
+
+Python has no type to represent a single character, so a string containing one
+character is ef­fec­tive­ly a character. Literal strings can represent a
+sequence of bytes, by prefixing the literal with b or B. This is called a “byte
+string”, since every character is exactly one byte long, while in UTF-8
+encoding, a character can be one to 4 bytes long (variable width encoding).
+
+Multi-Line Strings
+
+String literals can be enclosed in triple quotes, in which case they may
+contain em­bed­ded new­lines. Prac­ti­cal­ly, this means such string literals
+can span several lines in your editor. You can use either single quotes or
+double quotes, for this purpose. Multi-line strings are also used as
+do­cu­men­ta­tion, and are in that context, called “docstrings”. Another
+“Python-only” term.
+
+Adjacent literal strings that are separated by (only) whitespace, including
+newlines, are im­pli­cit­ly con­ca­te­nat­ed, and will practically form one
+longer string.
+
+Implicit string concatenation spanning multiple lines
+
+ print ("this will "
+        "print as "
+        "one long line")
+
+This particular example works because Python does not consider end-of-line a
+state­ment ter­mi­nat­or when it appears between paired delimiters like
+parentheses, square brackets, and curly braces. The following will accordingly
+not work:
+
+Error: no parentheses or other brackets
+
+ result = "this will"
+    "cause a syntax"
+    "error!"
+
+Python will complain about ‘inconsistent indentation’, since it will see the
+above three lines, as three separate statements.
+
+Take note, that the following is not a syntax error, simply because a statement
+can consist of any single expression, even ‘useless’ expressions, but the
+result name, will only refer to "this will":
+
+Not useful code, but still legal (no syntax error)
+
+ result = "this will"                  #←`result` ⇒ `"this will"` 
+ "not cause a"                          #←‘useless’, but legal expression.
+ "syntax error"                         #←ditto.
+
+To solve the first problem and use implicit literal string concatenation across
+multiple lines, simply enclose it in parentheses:
+
+OK: parentheses around implicit literal string concatenation
+
+ result = (
+    "this will NOT"
+    "cause a syntax"
+    "error!"
+    )
+
+Remember, parentheses themselves do not create a tuple… in other words, (11) is
+not a tuple, but (11,) is — we just used the parentheses above, so that Python
+would allow us to continue the statement across several lines. If we separated
+the string literals with commas, then it would be a tuple, and we are not
+talking about implicit literal string concatenation anymore.
+
+Triple-Quoted Strings
+
+Strings can be delimited with three single quotes, or three double quotes
+(matched). In this case, the closing delimiter does not have to be on the same
+line as the opening delimiter. This is another way of saying the string can
+span across arbitrary lines; in this case, new line (linefeed) characters are
+inserted at each line break.
+
+Triple-quoted literal string example
+
+ result = '''This is a very
+ long string that
+ spans many lines'''
+
+The above statement associates the result name, with the following string
+representation:
+
+'This is a very\nlong string that\nspans many lines'
+
+For some situations, the triple-quoted strings are simply more readable. They
+also supports escaping, and can also be a prefixed with rR (raw string).
+
+If you like a ‘prettier’ application of triple-quoted string literals, the
+following is indeed more readable, but not that efficient:
+
+Triple-quoted literal string example with stripped newlines
+
+ result = '''
+ This is a very
+ long string that
+ spans many lines
+ '''.strip('\n')
+
+Not recommended, simply from a performance perspective, but you might see it
+now and again in example code, simply because it is easier to ‘see’ what the
+actual string contents look like.
+
+Escape Sequences
+
+An escape sequence, starting with a backslash (\), may appear in string
+literals — regardless of which quote character (or which triple-quote
+characters) are used. This can be used to represent unprintable characters, or
+Unicode characters by number. To get a single back­slash in­to memory, two
+backslashes must appear together: "C:\\Path\\file.txt".
+
+The predefined escape sequences mirror that of C (\t, \n, \xFF, 777, etc.), but
+Python also allows: "\N{unicode-char­ac­ter-name}", or \uFFFF and \UFFFFFFFF
+for Unicode hexadecimal code points. The \u must be followed by exactly 4 hex
+digits, while the \U must be followed by exactly 8 hex digits; upper or lower
+case values for A…F are legal.
+
+Raw Strings
+
+Escape sequences are ignored in a ‘raw string’, indicated when the string
+literal is prefixed with r or R. This means that a path, as shown previously,
+can instead be written as: r"C:\Path\file.txt". This can also be applied to
+triple-quoted-string literals.
+
+Formatted String Literal
+
+From Python 3.6, an ‘f’ or ‘F’ may prefix a string literal. This is a formatted
+string literal (or f-string), which may contain curly-brace delimited
+placeholders, inside which any Python ex­pre­ssion may appear. The whole
+placeholder sequence is replaced with the result of the expression, converted
+to a string.
+
+Some formatting is possible by suffixing the expression with a colon (:),
+fol­low­ed by for­mat­ting char­ac­ters. However, although the formatting
+characters are the same as used by str.format() (which leads to Format String
+Syntax), the results are not the same. To actually represent curly braces
+instead of them be­ing treat­ed as place­hold­er characters, use two in
+succession.
+
+Example: simple formatted strings (“f-strings”) and alternatives
+
+ uname = 'Michael'
+ f'User name: {uname}.'                #←result is 'User name: Michael.' (in REPL)
+ print(f'User name: {uname}.')         #←result is 'User name: Michael.' (in script)
+ text = f'User: {uname}.'              #←associated result with name `text`.
+ text = 'User: {0}.'.format(uname)     #←alternative formatting (pre-3.6.x)
+ text = 'User: {X}.'.format(X=uname)   #←keyword argument instead of offset (1)
+ text = 'User: %s.' % (uname)          #←much older alternative (python 2.x)
+
+(1) Notice that X above, can be any name.
+
+The ord function can be used to get the ordinal value of the first character in
+a string (a Unicode code point number). To obtain a character from its Unicode
+value, use the chr function.
+
+For formatted string literals, any expression may appear between the curly
+brace delimiters. This, for example, is perfectly legal:
+
+Arbitrary expression in placeholder of a formatted string literal
+
+ uname = 'Armand'
+ text = f'User: {(uname + " ") * 3}'
+ print(text)                            #⇒ User: Armand Armand Armand
+
+Other languages uses the term “string interpolation” for the same concept, as a
+matter of interest, so it is actually embarrassing that Python took so long to
+implement it.
+
+Print Function
+
+The most common function for beginners, is probably the print built-in. It is a
+very flexible function, in that you can pass it any type of arguments and an
+arbitrary number of them. By default it will separate each argument with a
+space character. It also automatically adds a newline after the last argument.
+
+Both of these default behaviours can be modified by passing keyword arguments
+(named parameters) after the list of arguments to print. The parameter names
+are sep to modify the separator, and end to modify the value printed after the
+last argument.
+
+Separator and ending with print keyword arguments
+
+ print("ABC", "DEF", "GHI")
+ print("JKL", "MNO", "PQR")
+ print("ABC", "DEF", "GHI", sep='---')
+ print("ABC", "DEF", "GHI", sep=', ')
+ print("ABC", "DEF", "GHI", sep=', ', end='')
+ print("JKL", "MNO", "PQR", sep=', ', end=' <done>\n')
+
+ABC DEF GHI
+JKL MNO PQR
+ABC---DEF---GHI
+ABC, DEF, GHI
+ABC, DEF, GHIJKL, MNO, PQR <done>
+
+You can also change where the output appears with a file keyword argument (the
+default is sys.stdout, i.e. standard output).
+
+Unlike printf-like functions in other languages, print performs no formatting…
+it simply converts all its arguments to str, and writes them to the destination
+file. You must use str.format to format arguments before passing to print, or
+use format-strings.
+
+Standard Types
+
+Python has a number of standard types. Every value, including literals, has a
+type. Names do not have types. If you are unsure about the type of an
+expression, you can use the [type function][pyd-fn-type] to determine its type
+and the result of that with the [is operator][pyd-op-is].
+
+The ‘is’ operator testing type equivalence
+
+ type(5) is int                         #←evaluates to True
+
+All types in Python, are classes. This means all values are objects, and have
+attributes in the form of a dictionary of names. These names can be associated
+with data or functions, which are in this case, called methods.
+
+Every type, can be ‘called’, i.e., they act like functions (initialisers or
+constructors) to create and initialise new objects. They can also be used as a
+result, to convert from any acceptable argument to the type being ‘called’.
+Examples:
+
+ number = int(12.34)                     #←convert `float` to `int`.
+ number = int("123")                     #←convert `str`ing to `int`.
+
+Other common types include: float, str, bool, list and tuple.
+
+Truthiness
+
+Truth is nebulous in Python (as in some other languages), and uses certain
+rules to establish the “truthiness” of an expression. Truth is not necessarily
+an absolute boolean value, but expressions can be tested for their “truthiness”
+values, with the bool(expr) function.
+
+Whenever the language expects a boolean value, this represents a boolean
+context. In a boolean context, any expression is treated as True or False,
+depending on some well-defined rules. The expression is treated as True unless
+it is one of the following values, in which case it is treated as False:
+
+Syntax — “Falsey” Expressions
+
+  • None — null reference,
+  • False — constant,
+  • '' "" — empty string,
+  • () tuple() — empty tuple,
+  • [] list() — empty list,
+  • {} dict() — empty dictionary,
+  • 0 0.0 0.0j — zero number of any type,
+  • Decimal(0),
+  • Fraction(0).
+
+Note that the True and False constants are available in cases where you want to
+be explicit, and some functions may return one or the other. The following
+example code will prove the above assertions:
+
+Verify all expressions that are ‘falsey’ by conversion to boolean
+
+ from decimal import Decimal
+ from fractions import Fraction
+ falsey = ['', "", (), [], {}, 0, 0.0, 0.0j, Decimal(0), Fraction(0)]
+ for F in falsey:
+    print(bool(F))
+
+The binary boolean operators (and and or) do not return boolean values. They
+return the result of one of their operands, which are expressions. Both the and
+operator and the or operator per­form short-circuit evaluation. This means
+that, although they will return the result of either the left-hand operand or
+the right-hand operand, they will not evaluate the right-hand operand at all,
+if they determine that the left-hand operand must be returned.
+
+Boolean Operators
+
+The Python boolean operators are not equivalent to C/C++/Java/C#, instead
+normal keywords and, or and not are used. They still act like operators, but
+again does not follow tradition in the actual values they result in — it is not
+necessarily of type bool.
+
+ Operator                        Description
+lhs and rhs Logical AND. Result is either rhs if “true”, else lhs
+lhs or rhs  Logical OR. Result is either lhs if “true”, else rhs
+not expr    Logical NOT. Result is either True or False.
+
+Example logical operators
+
+ print("FALSE:", 123 and 0)           #⇒FALSE: 0
+ print("FALSE:", 0 and 123)           #⇒FALSE: 0
+ print("TRUE :", 123 and 456)         #⇒TRUE : 456
+ print("TRUE :", 456 and 123)         #⇒TRUE : 123
+ print("FALSE:", None or 0)           #⇒FALSE: 0
+ print("FALSE:", 0 or None)           #⇒FALSE: None
+ print("TRUE :", 0 or 123)            #⇒TRUE : 123
+ print("TRUE :", 123 or 0)            #⇒TRUE : 123
+
+The or especially leads to an idiom that provides a default value, if some
+input is either invalid or empty:
+
+Idiom to provide a default value
+
+ user = input('What is your name?: ')
+ user = user or 'anonymous'
+
+If the user just pressed ENTER, the empty string returned will be treated as
+False, and the result of the or operator will be 'anonymous'.
+
+A somewhat more questionable idiom, is to use and to either call or not call a
+function to its right, depending on the return value of the function or
+expression used as the left hand operand.
+
+Idiom to optionally call a function
+
+ def SomeFunction ():
+    print("SomeFunction called")
+ True  and SomeFunction()             #←will call `SomeFunction`
+ False and SomeFunction()             #←will not call `SomeFunction`
+
+Of course, in real code, instead of True or False as left hand operand, you
+would use some expression, or call another function.
+
+Integral Integrity
+
+The int type is very common. It can be used as a function to convert strings to
+int, as long as the string contains a sequence of digit characters as specified
+in the Numeric Literals section above. It can also be used to truncate floating
+point values. Alternatively, use the trunc function from the math module. If
+truncation is too limiting, use floor, ceil, or the global round function.
+
+Integer types are represented as 64-bit values in the computer, but when values
+exceed that range, Python will automatically switch to arbitrary precision
+integers. This means Python can handle integer values of any size, which is
+useful for numerical work.
+
+Floating Point
+
+The float type is equivalent to double in many languages (a 64-bit IEEE754
+value). It can also be used as a function to “construct” floats, most commonly
+to convert strings (user input) to a val­ue of type float. The syntax of the
+characters in the string must follow the Python conventions, as described in
+Numeric Literals.
+
+WARNING — Floating Point Comparisons
+
+In case you are unaware, never compare floating point results with the equality
+operator; rather subtract them, and check if the absolute difference is small
+enough to sa­tis­fy your program's precision requirements. This is due to (very
+small) round-off errors that oc­cur due to the representation of floating point
+bits in a computer. If you want higher pre­ci­sion (at the expense of execution
+speed), use the decimal module — it is useful to represent currency, for
+example.
+
+Floating point values are sufficient for physical data and measurements. They
+are not well suited for currency work. For the connoisseur, there is always
+your trusty complex type.
+
+Virtual Environments
+
+There are several reasons why the concept of Python virtual environments
+exists. One reason is that you may want to run a newer Python on MacOS or
+Linux, and you do not want to, or cannot disturb the system Python — and you
+generally should not. Another reason may be to isolate package and module
+installation with pip, so that the installation can be easily repeated for new
+environments, or for packaging your program, so that only the requirements are
+installed (and not necessarily IDEs and other tools).
+
+An environment is a directory. This directory has subdirectories, with a
+specific structure. One important point to understand, is that a virtual
+environment is not a relocateable copy of Python. Only packages you install
+with pip, will be placed in this environment. This isolates the environment
+from the site environment. But the name and location of the environment is
+hard­coded in places, which means it cannot be copied, renamed, or moved.
+
+In almost all cases, you must recreate the environment elsewhere. To keep a new
+environment identical to the one you want to clone, you have to:
+
+  • Run ‘pip freeze > requirements.txt’ in the original environment (it being
+    active).
+  • Create your new bare-bones environment and activate it.
+  • Copy the requirements.txt file to this new environment.
+  • Run ‘pip install -r requirements.txt’ to re-install packages.
+
+Fairly tedious, but there seems to be no other really robust solution.
+
+Miscellaneous Topics
+
+Package installation can be done manually, but you probably do not want to
+manage de­pen­den­cies yourself. In conjunction with packages, you do not want
+a proliferation of packages in your global or system Python. For package
+management, there is pip. Virtual environments iso­late pack­age
+in­stal­la­tions, and solve the second problem.
+
+Package Management
+
+The only package manager really supported by Python.org, is pip. It installs
+packages with au­to­ma­tic de­pen­den­cy resolution from PyPI (Python Package
+Index). No update or upgrade command exists, but it does have an --upgrade
+switch; you have to run ‘pip install --upgrade ‹pkg-name›’. To upgrade pip
+itself, it is best to run (especially on Windows):
+
+python -m pip install pip --upgrade
+
+The -U switch is the shorter version of --upgrade, in case you are allergic to
+typing.
+
+A configuration file for pip can be placed in your home directory on POSIX
+systems, under a sub­di­rec­to­ry called .pip ($HOME/.pip). On Windows, you can
+create the %APPDATA%\pip directory (no leading period). The configuration file
+must be named pip.conf on Linux and pip.ini on Win­dows un­der the appropriate
+directory. If you use virtual environments, you may have a pip.conf in the
+virtual environment as well, which will override settings from your personal
+pip.conf.
+
+pip.conf — Pip Configuration File
+
+ [list]
+ format=legacy
+
+If you set the pip format option to legacy (or columns) in your pip.conf file,
+it will avoid the warn­ing you get when running ‘pip list’ (or you can set the
+PIP_FORMAT=legacy environment variable value).
+
+Some important pip commands and options, shown in terms of example command
+lines are:
+
+  • pip search ‹text› search for a package on PyPI.
+  • pip list list installed packages.
+  • pip freeze > requirements.txt save installed package list to
+    requirements.txt.
+  • pip install ‹package› install ‹package›.
+  • pip install ‹package› --upgrade upgrade installed ‹package›.
+  • pip install -r requirements.txt --upgrade upgrade all packages in
+    requirements.txt.
+  • pip uninstall ‹package› uninstall the ‹package›.
+
+Virtual Environments
+
+There are several reasons why the concept of Python virtual environments
+exists. One reason is that you may want to run a newer Python on MacOS or
+Linux, and you do not want to, or cannot disturb the system Python — and you
+generally should not. Another reason may be to isolate package and module
+installation with pip, so that the installation can be easily repeated for new
+environments, or for packaging your program, so that only the requirements are
+installed (and not necessarily IDEs and other tools).
+
+An environment is a directory. This directory has subdirectories, with a
+specific structure. One important point to understand, is that a virtual
+environment is not a relocateable copy of Python. Only packages you install
+with pip, will be placed in this environment. This isolates the environment
+from the site environment. But the name and location of the environment is
+hard­coded in places, which means it cannot be copied, renamed, or moved.
+
+In almost all cases, you must recreate the environment elsewhere. To keep a new
+environment identical to the one you want to clone, you have to:
+
+  • Run ‘pip freeze > requirements.txt’ in the original environment (it being
+    active).
+  • Create your new bare-bones environment and activate it.
+  • Copy the requirements.txt file to this new environment.
+  • Run ‘pip install -r requirements.txt’ to re-install packages.
+
+Fairly tedious, but there seems to be no other really robust solution.
+
+VirtualEnv
+
+The virtualenv tool has been around for a long time, and is still maintained.
+The last release is dated 2016-11-15, but that is not unusually old, in stable
+Linux distribution terms. The most basic use is simple: ‘virtualenv ‹env-dir›’,
+where ‹env-dir› is the base directory for your new Python vir­tual
+en­vi­ron­ment. It will by default install pip, setuptools, and wheel.
+
+There are virtualenv options to --clear an existing environment. Do not get too
+excited about the --relocatable option you will find when you run it with
+--help. Apparently it is slated to be deprecated, and has issues, which we can
+confirm.
+
+A virtualenv environment must be enabled by source'ing a shell script from your
+‹env-dir›/bin/ directory, called activate (or activate.fish, if you are using
+the fish shell). On Windows you must run the activate.bat file in that
+directory from a Command Prompt Console or PowerShell session.
+
+To deactivate the environment (reset any environment variables and your PATH
+en­vi­ron­ment va­ri­ab­le), simply run: deactivate. This command will work
+equally in any shell, including the Com­mand Prompt or PowerShell.
+
+Deleting an environment means you must find the correct environment under
+.virtualenvs. The environment directory name is normally displayed as part of
+your shell prompt.
+
+You can place a pip.conf (or pip.ini on Windows), in the ‹env-dir›ectory.
+
+Standard venv
+
+From around Python 3.3, the venv module became standard. It duplicates most, if
+not all, of the Virtualenv features. It also requires you to source an activate
+script in ‹env-dir› on POSIX, or run activate.bat on Windows, but it is stored
+in the ‹env-dir›\Scripts directory.
+
+Similarly, to restore your environment, you can simply run deactivate in any
+shell or operating system. The environment can be removed by deleting the ‹
+env-dir›ectory.
+
+Here is an example sequence of Windows PowerShell commands to create and
+experiment with a virtual environment using the standard venv:
+
+Example command sequence to create a virtual environment
+
+^> cd C:\Course\Work
+^> python -m venv --prompt MYPY mypy
+^> . .\mypy\Scripts\Activate.ps1
+^> which python
+^> pip list
+^> python -m pip install pip --upgrade
+^> pip list
+^> deactivate
+
+In a POSIX shell environment (Linux, MacOS, WSL, MSYS2, Cygwin), the commands
+are the same, except for two considirations:
+
+  • Set working directory: cd $HOME/course/work
+  • Activate environment: source $HOME/course/work/mypy/bin/activate
+
+NOTE — Ubuntu 18.04 and Venv
+
+Ubuntu 18.04 makes many standard Python modules installable packages (to be
+installed with apt). This is true for venv as well. Run sudo apt install
+python3-venv before you try the above commands.
+
+Obviously, at work or home, you can use any directory. If you are using WSL,
+you could use this starting directory on our course:
+
+  • Set working directory: cd /mnt/c/Course/Work
+  • Activate environment: source /mnt/c/Course/Work/mypy/bin/activate
+
+If you know your current working directory, you do not have to use absolute
+paths, of course. Furthermore, note that source is an alias for the ‘.’
+built-in command in POSIX shells; PowerShell does not have such a synonym, only
+‘.’.
+
+pipenv
+
+A newer option is pipenv. It seems to work well on Windows, too. It combines
+pip and virtualenv. It takes a slightly different approach with respect to
+where the Python and pip-specific files are stored, and how to activate and
+deactivate the virtual environment.
+
+The key here is to first create a directory: your ‹env-dir›ectory for your new
+environment. It should be empty. Set this directory as your current working
+directory (cd ‹env-dir›). Now, with pipenv hopefully on your PATH, run: pipenv
+--three to create a Python3 environment. You will only see a file called:
+Pipfile, in this directory after completion, keeping things nice and clean. The
+Python and library files are stored in a $HOME/.virtualenvs directory.
+
+To activate the environment, the ‹env-dir›ectory must be your current
+directory. Then you run pipenv shell, which will start a new shell, with the
+appropriate environment variables and PATH set. To deactivate the enviroment,
+simply exit this shell (run exit on either POSIX or Windows).
+
+To remove an environment, the easiest solution is to simply run ‘pipenv --rm’
+with the ‹env-dir›ectory as your current directory. It will not remove the
+current directory, only the Python and library files in the .virtualenvs
+directory.
+
+Development-Only Packages
+
+What is very useful with pipenv, is its --dev switch after the install command.
+This will still in­stall the ‹package›, but will mark it for development only;
+this means it is not part of the pro­gram you are developing. So testing
+packages, Python shells, and other development tools, should be installed with
+the --dev switch. This makes it easy to find the packages actually used by your
+program. So with a copy of your Pipfile and a new empty directory, running
+pipenv install will only in­stall non-de­ve­lop­ment pack­ag­es. Adding --dev
+will also install the development packages. And it will create a new
+environment for this directory.
+
+If you have problems with pipenv, it can sometimes be useful to add the
+--skip-lock option, for example:
+
+^> pipenv install black yapf pylint flake8 --skip-lock --dev
+
+Also understand, that you install pipenv in your ‘main’ or ‘user’ environment,
+and not run any pipenv command inside a virtual environment. And, do not use
+pip directly to install modules.
+
+To ‘activate’ the virtual environment, you run: pipenv shell, after making the
+environment directory, the current workign directory. Simply exit this new
+shell to ‘deactivate’ the environment.
+
+Running launchers like black or pylint, you can either run them outside the
+virtual environment using: pipenv run black, or pipenv run pylint, or after
+activating the virtual environment, you can run them as normal (just using
+black or pylint).
+
+NOTE — Managing Different Python Versions
+
+You can use pyenv to manage different versions of Python on Linux, MacOS, and
+WSL. It allows one to arbitrarily switch between any version, or even install
+any Python version. This is independent of virtual environments. On Windows,
+outside of WSL, a port of pyenv called pyenv-win is available (documentation
+here).
+
+Functions
+
+Functions are blocks of code created with the def keyword. Just like
+assignment, def creates a name, and associates the name with the code. Multiple
+names can reference the same function, just like multiple names can store
+references to the same list, tuple, dictionary, etc.
+
+We create functions to aid readability, and to facilitate reuse of code,
+without having to physically repeat the code. Functions are callable, and can
+be passed arguments, as long as the function has made provision for this by
+defining parameters. Functions can be recursive.
+
+A function must have at least one statement, even if it is just a null
+statement: pass.
+
+Syntax — Function Definition Syntax
+
+  • def ident (param[1] , param[2]…) :
+    """doc-string…"""
+    block pass
+
+  • def ident (param[1] , param[2]…) :
+    """doc-string…"""
+    statement[*]
+    return expr
+
+Unfortunately, Python does not require a doc-string, but it should be
+considered mandatory, and thus represents good programming practice when
+present.
+
+Also be sure to notice that the expr part after return is optional, in which
+case the function will still immediately return to the caller, but the return
+value, if used, will be None.
+
+Documentation
+
+Let us get the pain out of the way first — rip off that plaster quickly! As
+dictated by good coding convention, functions should be documented. As a
+professional, we know you appreciate the im­por­tance of this practice.
+Conventionally, in Python, this involves a docstring, which is a triple-quoted
+string literal immediately following the function header. The triple quotes is
+a convention.
+
+See Sphinx for further conventions on documenting Python code.
+
+Simple function features
+
+ def foo ():                    #←function header. no parameters.
+     """A documented function. It should be brief. Maybe not this brief."""
+     pass                       #←function "body" or "block"
+ 
+ goo = foo                      #←associate `goo` with same code as `foo`.
+ goo(); foo()                   #←call the same code, with different names.
+ 
+ print(foo.__doc__)             #←print the `foo` documentation.
+ print('-' * len(foo.__doc__))
+ help(foo)                      #←use a shell to print the docs.
+ 
+ foo = 123                      #←`foo` is just a name; it now points to a `int`.
+
+This will produce the following output:
+
+A documented function. It should be brief. Maybe not this brief.
+----------------------------------------------------------------
+Help on function foo in module __main__:
+
+foo()
+    A documented function. It should be brief. Maybe not this brief.
+
+Function Returns
+
+Functions without explicit return statements, return None automatically.
+Multiple return state­ments may appear in a function, as long as you remember
+that no further code in the function will execute — it is an execution transfer
+statement, just like break and continue.
+
+A function can return anything it likes. It can even return different types, at
+different times, as long as the caller can "handle" it. A return statement
+without an expr is also legal.
+
+Function returning a result
+
+ def goo ():
+     """
+     Function which takes no arguments, but does return a value. Not a
+     very exciting result, just “the answer”
+     """
+     return 42
+ 
+ result = goo()
+ print(result, end=', '); print(goo())
+
+This will produce the following output:
+
+42, 42
+
+Wherever the function ‘goo’ is called, the call expression will result in
+whatever the function returned. You do not necessarily have to assign its
+return value to a variable, unless you want to save it for some rea­son.
+Assigning the return value is actually very common — if the return value was
+not per­ti­nent, there would be no need for the function to return it, and
+probably little need for you to call the function.
+
+A function that has multiple return statements is shown below. For fun, it
+takes an argument, but that is not the focus of the example. Notice the use of
+the [is operator][pyd-op-is]; you may not have been aware of it.
+
+Function containing multiple return statements
+
+ def hoo (arg):
+     """
+     Function having multiple `return` statements. It has little purpose other
+     than to illustrate a function which has multiple `return` statements.
+     """
+     if type(arg) is int: return "It's an integer!"
+     if type(arg) is float: return "It's a float!"
+     return "Disappointment. Wanted a number."
+ 
+ print(hoo(123))
+ print(hoo(1.23))
+ print(hoo("ABC"))
+
+This will produce the following output:
+
+It's an integer!
+It's a float!
+Disappointment. Wanted a number.
+
+Parameters
+
+Functions can be defined with named parameters. They are, for all in­tents and
+pur­pos­es, va­ri­ab­les, and their scope is local to the function body. Any
+number of parameters can be defined, but for practical purposes, you should
+probably restrain yourself.
+
+Positional / Required Parameters
+
+By default and unless additional syntax is used, any parameters that have been
+defined must be passed. If a function defines 3 parameters, for example, 3
+arguments must be passed — they are required parameters. The ar­gu­ments are
+assigned to the parameter names in the order they were defined, i.e.,
+positionally.
+
+Parameters, with arguments passed positionally
+
+ def joo(a, b):
+     """
+     Function taking 2 mandatory arguments. Must be called with two arguments,
+     assigned consecutively (positionally) to `a`, then `b`. The argument values
+     passed to the parameter variables, are simply printed out by this function,
+     so the types of values passed are irrelevant.
+     """
+     print("a = '{}'".format(a))
+     print("b = '{}'".format(b))
+ 
+ joo(123, "ABC")
+ joo([11, 22, 33], ('AA', 44, 55.66))
+
+This will produce the following output:
+
+a = '123'
+b = 'ABC'
+a = '[11, 22, 33]'
+b = '('AA', 44, 55.66)'
+
+When a function is called, the arguments can be named. This is referred to as
+keyword arguments. For positional parameters like the joo function above, when
+all arguments are nam­ed, it does not matter in which order they appear in the
+function call.
+
+Passing arguments as “keyword arguments”
+
+ joo(b = "ABC", a = 123);            #←spaces around `=` are optional.
+
+This will produce the following output:
+
+a = '123'
+b = 'ABC'
+
+Note that while you can pass the first n arguments positionally and the rest by
+name, the reverse is not true: you cannot pass some arguments by name and then
+try and pass the remainder po­si­tion­al­ly.
+
+Optional / Default Parameters
+
+Python provides syntax for defining parameters with default values. From the
+caller's per­spec­tive, this means that passing arguments for those parameters
+is optional. However, you can only provide default values for parameters
+starting from the right of the parameter list, and you can­not skip any.
+Un­less named, arguments can also only be omitted from the right. The following
+is illegal, because parm3 must also be given a default value, if we insist on
+parm2 having a default (or we must change the order):
+
+Mixing positional and keyword arguments
+
+ # This would be illegal:
+ def f (parm1, parm2=11, parm3):...
+ # This would be legal:
+ def f (pos1, pos2=11, pos3=22):...
+
+An example is our function joo, that can take up to 3 arguments. The last two
+arguments have default values and are thus optional. We have more than 7
+options when passing arguments. All the calls at the end of the example have
+the same effect.
+
+Various examples of passing arguments
+
+ def joo (a, b=34, c=56):
+     """
+     This function requires one mandatory argument for `a`. Either an
+     argument for `c` can be omitted, or both `b` and `c` arguments may
+     be omitted. Just omitting `b` is only possible when using named
+     arguments (keyword arguments). There will always be 3 values.
+     """
+     print("a={}, b={}, c={}".format(a, b, c))
+ 
+ joo(12); joo(12, 34); joo(12, 34, 56) #- all calls have the same result.
+ joo(12, c=56); joo(c=56, a=12)        #
+ joo(b=34, a=12, c=56)                 #
+
+The output for all calls will be: ‘a=12, b=34, c=56’.
+
+Variable Number of Arguments
+
+A special syntax allows a parameter of a function to be a list of values. It
+does not matter what you pass, it will always be a list. This allows callers to
+call the function with a variable number of arguments. If no arguments are
+passed, it is effectively an empty list.
+
+Function with variable number of arguments
+
+ def koo (*args):
+     """
+     Function can be called with no arguments, or any number of arguments.
+     All the arguments will be collected into the list called `args` here.
+     """
+     if args:
+         print("No. of args:", len(args))
+         for i, v in enumerate(args):
+             print("arg #{} = '{}'".format(i+1, v))
+     else:
+         print("No arguments passed.")
+ 
+ koo(); koo(11); koo(11, 22); koo([11, 22])
+ koo([11, 22], (33, 44), "ABC", "DEF")
+
+This produces the following output:
+
+No arguments passed.
+No. of args: 1
+arg #1 = '11'
+No. of args: 2
+arg #1 = '11'
+arg #2 = '22'
+No. of args: 1
+arg #1 = '[11, 22]'
+No. of args: 4
+arg #1 = '[11, 22]'
+arg #2 = '(33, 44)'
+arg #3 = 'ABC'
+arg #4 = 'DEF'
+
+The *arg parameter will consume all arguments. Each argument becomes an element
+in the list. A function can only have one such parameter. If you have
+additional arguments, they must either (a) be compulsory and precede the list,
+or (b) if optional, be defined after the list, and can only be passed as
+keyword arguments after the list.
+
+Function with a variable parameter and named/optional parameters
+
+ def loo (*args, opta=12, optb=None):
+     """
+     Function can be called with no arguments, or any number of arguments.
+     All the arguments will be collected into the list called `args` here.
+     Additionally, `opta` and/or `optb` can be passed, but only as keyword
+     arguments, and only after all positional arguments.
+     """
+     print("No. of `args`: {}".format(len(args)) if len(args) else "No `args`.")
+     for i, v in enumerate(args):
+         print("arg #{} = '{}'".format(i+1, v))
+     print("opta =", opta)
+     if optb is not None:
+         print("optb =", optb)
+ 
+ loo(); loo(12, 34); loo(optb=False)
+ loo(12, 34, opta=45, optb=56)
+
+This produces the following output:
+
+No `args`.
+opta = 12
+No. of `args`: 2
+arg #1 = '12'
+arg #2 = '34'
+opta = 12
+No `args`.
+opta = 12
+optb = False
+No. of `args`: 2
+arg #1 = '12'
+arg #2 = '34'
+opta = 45
+optb = 56
+
+For interest's sake, this is how the print function has been defined (with
+different parameter names, of course).
+
+Keyword Dictionary Parameters
+
+Just like *args provides for a [list type][pyd-typ-list] parameter, it is
+possible to define a parameter with a leading **, in which case, it will always
+be a dictionary. This means that the arguments to be collected in such a
+parameter, must be passed as keyword arguments. It can be combined with a *args
+list argument, but then it must appear after it.
+
+Function with keyword dictionary parameter
+
+ moo_call_count = 0
+ 
+ def moo (**kwd):
+     """
+     Function that takes only keyword arguments. The `kwd` parameter is
+     *always* a `dict`ionary. Always. It may be empty, which means this
+     function may also be called without passing any arguments.
+     """
+     global moo_call_count
+     moo_call_count += 1
+     print("moo call #", moo_call_count, '-' * 10, sep='', end='')
+     print(" {} keyword arg(s):".format(len(kwd)))
+     for k, v in kwd.items():
+         print('{} = {}'.format(k, v))
+ 
+ moo()
+ moo(key='value')
+ moo(k1='val1', k2=222, k3=['ABC', 123], k4={'n':11, 'm':44})
+
+This produces the following output:
+
+moo call #1---------- 0 keyword arg(s):
+moo call #2---------- 1 keyword arg(s):
+key = value
+moo call #3---------- 4 keyword arg(s):
+k1 = val1
+k2 = 222
+k3 = ['ABC', 123]
+k4 = {'n': 11, 'm': 44}
+
+As we mentioned, you can combine a variable number of arguments parameter, with
+keyword arguments parameter:
+
+Function with variable parameter, and keyword parameter
+
+ noo_call_count = 0
+ 
+ def noo (*args, **kwd):
+     """
+     This function can be called with no arguments, any number of
+     arguments, or just keyword arguments, or with any number of
+     positional arguments, and any number of keyword arguments.
+     """
+     global noo_call_count
+     noo_call_count += 1
+     print("noo call #", noo_call_count, '-' * 10, sep='', end='')
+     print(" {} keyword arg(s):".format(len(kwd)))
+     print("No. of `args`: {}".format(len(args)) if len(args) else "No `args`.")
+     for i, v in enumerate(args):
+         print("arg #{} = '{}'".format(i+1, v))
+     for k, v in kwd.items():
+         print('{} = {}'.format(k, v))
+ 
+ noo(); noo(11, 22, 33); noo(44, 55, keya=66, keyb=77)
+
+This produces the following output:
+
+noo call #1---------- 0 keyword arg(s):
+No `args`.
+noo call #2---------- 0 keyword arg(s):
+No. of `args`: 33
+arg #1 = '11'
+arg #2 = '22'
+arg #3 = '33'
+noo call #3---------- 2 keyword arg(s):
+No. of `args`: 2
+arg #1 = '44'
+arg #2 = '55'
+keya = 66
+keyb = 77
+
+Functions as Objects
+
+It is often said, that in Python, functions are “first-class citizens”. This
+simply means that functions can be manipulated as value objects, i.e., they can
+be associated with a name, passed as arguments, returned from functions, stored
+in lists / tuples / dictionaries, etc. All of which is true for any type of
+value in Python.
+
+Function Dictionaries
+
+A function is ‘special kind of a class’ object; each function has its own
+attribute dictionary, which is how Python implements scope. Only functions and
+classes have scope, unlike language like the C-family where a compound
+statement block also forms a scope.
+
+Furthermore, you can add attributes to any function object, which will act much
+like static variables in the C-type languages. They are not scoped to the
+function, and are globally accessible. An unlike local variables, they will
+remain allocated, even after the function has returned.
+
+Adding an attribute to a function
+
+ def func (param):
+    """
+    Trivial function with an attribute that remains with the function. It
+    will add the attribute itself, if not set by its users.
+    """
+    if not hasattr(func, 'counter'):
+       func.counter = 0
+    else:
+       func.counter += 1
+    print("func({p})... {c}".format(p = param, c = func.counter))
+    if hasattr(func, 'other'):
+       print("other attribute =", func.other)
+       del func.other
+ 
+ func("ABC"); func("DEF"); func("GHI")
+ func.other = "Randomly added by code"
+ func.counter = 100
+ func("JKL"); func("MNO"); func("PQR")
+ func.other = "Recreated"; func("STU")
+ print("func.counter =", func.counter)
+
+func(ABC)... 0
+func(DEF)... 1
+func(GHI)... 2
+func(JKL)... 101
+other attribute = Randomly added by code
+func(MNO)... 102
+func(PQR)... 103
+func(STU)... 104
+other attribute = Recreated
+func.counter = 104
+
+This can clearly be abused, so use this feature sparingly. The
+
+Function Factories
+
+Functions that return functions, are often called function factories — this is
+not a syntax, just a common phrases meaning “functions that returns other
+functions”. Whether the function such a function factory returns, is a global
+function, or a local function, is immaterial.
+
+Function returning function objects
+
+ import random
+ def FuncFactory ():
+    """
+    Randomly return one of three possible functions, all defined locally.
+    """
+    def F1 ():
+       print("F1() called."); return 111
+    def F2 ():
+       print("F2() called."); return 222
+    def F3 ():
+       print("F3() called."); return 333
+ 
+    n = random.randint(0, 3)
+    if n == 0: return F1
+    if n == 1: return F2
+    if n == 2: return F3
+ 
+ ## call `FuncFactory` 10 times, and call the function it returns
+ for i in range(10):
+    f = FuncFactory()
+    print("f() returned: {}".format(f()))
+
+It might not seem useful, and the example above does not prove that it can be a
+useful technique, because we are focussed firstly on the fact that we can
+return functions.
+
+Passing Functions
+
+Similarly, we could pass functions as arguments to functions. When a function
+is passed as argument, it is often abstractly called a callback function, or a
+plugin function. The following example may not be useful in a practical sense,
+but does show that you can pass functions.
+
+Function with callable parameter
+
+ def TakeFunc (parm):
+    """
+    Function expecting to be passed a function as `parm`. It will simply
+    call the function passed.
+    """
+    print('TakeFunc() calling `parm`... ', end='')
+    parm()
+ 
+ def F ():
+    print('F() called.');  return 11
+ 
+ def G ():
+    print('G() called.');  return 22
+ 
+ def H ():
+    print('H() called.');  return 33
+ 
+ TakeFunc(G);  TakeFunc(F);  TakeFunc(H)
+
+The following example simply defines three functions, and then creates a ‘list
+of functions’, by arbitrarily adding them as items in a list. Then it iterates
+through the list, calling each function in turn.
+
+Playing with functions as values
+
+ def f (): print("f() called")
+ def g (): print("g() called")
+ def h (): print("h() called")
+ lof = [f, g, h, g, f, f]
+ lof[0]()
+ for x in lof: x()
+
+Passing functions is so useful, that several functions in the Python standard
+library accepts functions as arguments (sometimes they are optional). Common
+and very useful examples are, the [map function][pyd-fn-map], and the [filter
+function][pyd-fn-filter].
+
+Passing functions to map() and filter() example
+
+ def twice (x): return x * 2
+ def odd (x):   return x % 2 != 0
+ 
+ data = [1, 2, 3, 4]
+ result = list(map(twice, data))        #←“map `twice` onto `data`” &
+ print(result)                          # convert to a `list`.
+ 
+ result = list(filter(odd, data))       #←“filter on odd values” &
+ print(result)                          # convert to a `list`.
+
+Note that both filter and map return iterators, and not a complete list or
+tuple. They must be used in an iterable context to actually perform the
+iterations.
+
+Here is an trivial example of a user-defined function similar in operation to
+built-in functions like map and filter, in that it also takes a function as
+argument:
+
+Function taking ‘plugin function’ as argument
+
+ def dostuff (extra_stuff = None):
+    print("dostuff() doing stuff...", end='')
+    if extra_stuff:
+       extra_stuff()
+    else:
+       print()
+ 
+ dostuff()                             #←just do ‘normal’ stuff.
+ 
+ def more_work():
+    print("more_work() doing more work")
+ 
+ def other_work():
+    print("orther_work() doing more work")
+ 
+ dostuff(extra_stuff = more_work)
+ dostuff(extra_stuff = other_work)
+
+WARNING — Global reduce()/apply() Functions in Python3
+
+In Python3, the original built-in reduce and apply functions have been removed.
+If you require similar behaviour, use functools.reduce. The closes equivalent
+for apply, can be found in the multiprocessing module.
+
+Unfortunately, you will still see many references to, and examples of, the old
+reduce and apply functions. You should translate that to Python3 manually.
+
+Here is a simple example using functools.reduce to sum a sequence of values.
+For interest, we also passed a lambda expression to the function.
+
+Example use of functools.reduce
+
+ from functools import reduce
+ 
+ def add (a, b): return a + b
+ 
+ values = [11, 22, 33]
+ answer = reduce(add, values);                 #←pass custom function.
+ print("Sum = {}".format(answer))
+ answer = reduce(lambda a, b: a + b, values);  #←pass a lambda
+ print("Sum = {}".format(answer))
+
+List Argument Unpacking
+
+Assume you have a function like koo above, which can take a list of any number
+of arguments. And further assume you have a list of values like this:
+
+Typical list creation
+
+ lst = [11, 22, 33]
+
+Now you want to pass those values as positional arguments. One way to do this
+is as follows:
+
+Passing list items individually to a function
+
+ koo(lst[0], lst[1], lst[2])
+
+This produces the following output:
+
+No. of args: 3
+arg #1 = '11'
+arg #2 = '22'
+arg #3 = '33'
+
+This is not a very robust approach; consider the consequences if lst has fewer
+or more elements. Fortunately, Python offers a solution: list argument
+unpacking in the form: *lst (where lst must be a list or tuple). This syntax
+can only be used when passing arguments to a function that can take a variable
+number of arguments, or one that takes exactly that number of positional
+arguments (meaning the number of elements in the list must match the number of
+positional arguments).
+
+Unpacking a list as individual arguments #1
+
+ koo(*lst)
+
+This produces the following output:
+
+No. of args: 3
+arg #1 = '11'
+arg #2 = '22'
+arg #3 = '33'
+
+The joo function above can take 3 arguments. Let us see how this works out:
+
+Unpacking a list as individual arguments #2
+
+ joo(*lst)
+
+This produces the following output:
+
+a=11, b=22, c=33
+
+So, list argument unpacking is just list argument unpacking. It has no
+relationship with regard to how the parameters of a function were defined.
+
+Dictionary Argument Unpacking
+
+By the same token, assume you have a function like moo above, which is defined
+to take a dictionary parameter. And assume you have a dictionary like dic
+below:
+
+Typical dictionary for following examples
+
+ dic = {'keya':'value A', 'keyb':123}
+
+We can call moo by manually “unpacking” the keyword arguments, which is again
+not a very robust approach. The Python alternative is dictionary argument
+unpacking, using the **dic syntax, where dic must be a dictionary:
+
+Unpacking dictionary as individual keyword arguments
+
+ moo(keya=dic['keya'], keyb=dic['keyb'])   #←manual “unpacking”
+ moo(**dic)                                #←dictionary argument unpacking - so easy!
+
+The output is as follows:
+
+moo call #4---------- 2 keyword arg(s):
+keya = value A
+keyb = 123
+moo call #5---------- 2 keyword arg(s):
+keya = value A
+keyb = 123
+
+We should thus be able to call noo, which accepts both a variable number of
+arguments, and some keyword arguments. Yes we can, and just for fun, we also
+show you what it would look like if you had to manually unpack the lst and dic
+values:
+
+Unpacking a list and a dictionary as arguments
+
+ noo(*lst, **dic)                           #←The Python way
+ noo(lst[0], lst[1], lst[2], keya=dic['keya'], keyb=dic['keyb'])  #←manual unpacking
+
+These two function calls will produce the same output:
+
+noo call #4---------- 2 keyword arg(s):
+No. of `args`: 3
+arg #1 = '11'
+arg #2 = '22'
+arg #3 = '33'
+keya = value A
+keyb = 123
+noo call #5---------- 2 keyword arg(s):
+No. of `args`: 3
+arg #1 = '11'
+arg #2 = '22'
+arg #3 = '33'
+keya = value A
+keyb = 123
+
+If you have wondered before about the point of learning all the extra tedious
+syntax, you may now be convinced that you would not want to live without this
+unpacking functionality. But wait, there's more...
+
+More on Functions are Values
+
+The popular phrase for this concept is "functions are first class citizens".
+Honestly? Say that to a Python first-timer who has not heard the term before,
+and she might wonder if she has entered the twilight zone. It simply means that
+functions are values, just like any other type you have encountered before. And
+just like any type, you can assign it to a name (normally with def), or pass it
+as an argument, or return it from a function. No discrimination for this
+citizen!
+
+Function object can be associated with multiple names
+
+ def qoo ():
+     """
+     Phew. No fancy arguments for this function. We just needed a function
+     "value", associated with the name `qoo`. It will at least print some
+     message, just to show its co-operation as a good citizen.
+     """
+     print("qoo() called!", end='; ')
+ 
+ roo, soo = qoo, qoo
+ roo(); soo(); qoo()
+ print()
+
+qoo() called!; qoo() called!; qoo() called!;
+
+So far, so good. We can assign the same "function" to any name, or to many
+names. And applying the function call operator to any name that references a
+function, will call the function. Now, let us pass the function as a parameter
+to another function. We must, of course, first define a function that will call
+the argument passed to it:
+
+Functions can be passed to other functions
+
+ def callback (func):
+     """
+     This function will call `func`tions passed to it. Apart from whatever
+     else it may want to do. This means a call can "plug in" some extra
+     code, in addition to whatever algorithm this function is performing.
+     """
+     print("callback() calling `func`>>>[", end='')
+     func()
+     print("]<<< callback() returning now.")
+ 
+ callback(qoo)
+
+The result will look like this:
+
+callback() calling `func`>>>[qoo() called!; ]<<< callback() returning now.
+
+First class, indeed. Now, we will return a function. Considering the
+proliferation of functions in this section, we will write a function that
+returns one of the previously-defined functions, hmmmm, let's see..., ok joo
+will do.
+
+Function returning a function
+
+ def retfunc ():
+     """
+     Function taking no arguments, but its saving grace, is that it does return a
+     function, which is not a common thing, so it can hold its head high.
+     """
+     print("retfunc() called. just saying.")
+     return joo
+ 
+ result = retfunc()
+ print("calling whatever `retfunc` returned: ", end='')
+ result(12, 34, 56)
+ print("directly calling return value:\n    ", end='')
+ retfunc()(12, 34)
+
+And here is the output:
+
+retfunc() called. just saying.
+calling whatever `retfunc` returned: a=12, b=34, c=56
+directly calling return value:
+    retfunc() called. just saying.
+a=12, b=34, c=56
+
+If that does not prove that a function is just another type of object (value),
+we have one more possibility: what about a list of "functions"? Since you may
+have lost track by now of all the moo's and foo's above, we will start afresh
+with brand new functions, so you can focus on the code in just this context:
+
+Storing functions in a list
+
+ def f(): print("f() called")
+ def g(): print("g() called")
+ def h(): print("h() called")
+ 
+ lof = [f, h, g, h, f, g]
+ for i, x in enumerate(lof):
+     print("Calling #{}: ".format(i+1), end='')
+     x()
+
+Here is the result:
+
+Calling #1: f() called
+Calling #2: h() called
+Calling #3: g() called
+Calling #4: h() called
+Calling #5: f() called
+Calling #6: g() called
+
+That concludes our attempts to convince you that "functions are just values".
+As further proof, you can check for yourself that functions can be values in a
+dictionary. Right now, there is some more functional excitement we want to
+share.
+
+Lambdas / Anonymous Functions
+
+Clearly, you do not want to write “anonymous functions” all the time (and it
+should really be more correctly: “anonymous function expressions”), which is
+why somebody came up with an abbreviation: “lambda”. It certainly saves
+wear-and-tear on the keyboard and the fingers, but not sure what sheep have to
+do with it ...
+
+The lambda keyword can be used to represent a function without a name
+(anonymous). Since a function is a value, the whole lambda expression is a
+value. It can therefore be returned from a function, or passed to a function,
+or stored elsewhere. The basic syntax is as follows:
+
+Syntax — Lambda Expressions
+
+lambda parm-list : expression
+
+The parm-list does not have to be enclosed in parentheses. The expression
+automatically results in: return expression. There can only be one expression,
+so lambdas are convenient only for simple functionality. Anywhere you can use a
+function name (i.e. a name referencing a function), you can use a lambda and
+vice-versa.
+
+Functions and lambdas in various combinations
+
+ def taker (f):
+     """
+     Function taking a function as parameter. By now, you know it can also
+     be a lambda, which is after all just a function value without a name.
+     """
+     return f(4)                         #- just call whatever was passed,
+                                         #  and return its result.
+ 
+ def giver ():
+     """
+     Function returning a function... a `lambda` to be exact. It just as well
+     could have `return`ed `func` above, i.e.: `return func`, but `lambda`
+     wants its day...
+     """
+     return lambda : "Yippeee!"          #- lambda taking no arguments
+ 
+ sheep = lambda x : x * x * x            #- `sheep` references code now.
+ print(sheep(2))                         #- can call what it references.
+ print(taker(sheep))                     #- pass value in `sheep`.
+ print(taker(lambda x : x * x * x))      #- pass lambda value directly.
+ sheep = giver()                         #- store whatever `giver` returned.
+ print(sheep())                          #- call value in `sheep` & print.
+ print(giver()())                        #- directly call return value.
+
+And the output is ...
+
+8
+64
+64
+Yippeee!
+Yippeee!
+
+Note that we could have passed taker any name, as long as the name referenced a
+value, with type function, or more generically: anything which is callable by
+the function call operator, in­clu­ding an an­o­ny­mous function expression
+(lambda).
+
+Achieving Closure
+
+Weak heading, we know. Anyhow, this involves the fact that def is like
+assignment: it creates a name, and assigns a value. Since you presumably know
+that names can be created inside functions (local names), it stands to reason
+that you can create function names within a function. Practically, this means
+you get a "nested function", or a "function within a function". Neat. Like a
+private function, whose name is local, and can thus only be called from within
+the "outer" function -- unless it returns it, of course.
+
+The problem starts when the "inner" function references names of variables or
+parameters (which are variables) of the "outer" function. This is all good and
+well, until the "outer" function returns the "inner" function. What happens now
+to the "outer" variables (which died when the "outer" function returned), but
+which are referenced in the returned inner function? This is a conundrum, which
+Python (and other languages) solve by calling it a closure, which means it must
+capture the referenced variables of the ‘outer’ function somehow.
+
+Th term closure is the name for what Python does, but it does not explain what
+actually happens: Python copies (or captures) the values referenced by the
+inner function, so that when the returned inner function is eventually called,
+it has something to play with. Thus a closure remembers the context in which it
+was created.
+
+Capturing “outer” variables = closure
+
+ def outer(outer_param):
+     outer_var = 2
+     def inner (x):
+         return x * outer_var * outer_param
+     return inner
+ 
+ f = outer(3)
+ print("f(4) =", f(4))
+ print("outer(3)(4) =", outer(3)(4))
+
+This is what results:
+
+f(4) = 24
+outer(3)(4) = 24
+
+If inner did not reference any outer names, it would not be a closure. This one
+referenced two names from the outer function, but that does not make it any
+more, or any less of a closure. There is no degree of closure.
+
+Function Factories Revisited
+
+Closures are very common in creating ‘specialised’ function, where the ‘outer’
+function (the function factory), is passed one or more arguments, which are
+referenced in the ‘inner’ function's body, forming a closure.
+
+By passing different arguments to such a factory function, it can logically
+generate different functions.
+
+Multiplication factory function
+
+ def multiply_factory (multiplier):
+     def multiply_worker (multiplicant):
+         return multiplicant * multiplier
+     return multiply_worker
+ 
+ times_two = multiply_factory(2)
+ answer = times_two(3);     print(answer)    #⇒ 6
+ answer = times_two(9);     print(answer)    #⇒ 18
+ 
+ times_2p5 = multiply_factory(2.5)
+ answer = times_2p5(3);     print(answer)    #⇒ 7.5
+ answer = times_2p5(33);    print(answer)    #⇒ 82.5
+
+The multiply_factory function thus returns ‘worker’ functions that can multiply
+any argument by the multiplier passed during the factory call. They are
+effectively custom functions that, once defined, will always to the same job,
+but not necessarily the same job as the ‘co-workers’.
+
+For this to work, we need closures. Done.
+
+Scope and Functions
+
+A function body is a block. A block is a nested scope. It is nested inside
+another scope, normally the global scope, which is the area outside of other
+blocks (no indentation at all). Names created in a nested scope, are only
+visible in that scope, and in scopes nested within it. When a name is
+referenced, Python looks for the name starting in the current scope, then
+looking upwards to the next higher scope, and so on, until it reaches the
+global scope. If it cannot find it there, it will look in its list of built-in
+names.
+
+Functions can thus reference names at a higher scope. There is a conceptual
+problem though. When code inside a function uses assigment, which creates
+names, a new name is created every time, even if that name exists in a higher
+scope. This new name now hides, or "shadows" the higher-scoped name... until
+the new name goes out of scope (execution steps out of the block).
+
+What if, for some reason, a function wants to modify a global variable? Enter
+the global keyword. You can use it to inform Python of any global names you
+want to modify with assignment, and to not create a new name locally.
+
+Global statement prevents local name generation
+
+ gvar = 123                                #←global scope variable
+ 
+ def f ():                                 #←wants to modify `gvar`
+     global gvar                           #←informs Python of intentions.
+     gvar = 456                            #←does *not* create a name.
+ 
+ print('gvar =', gvar)                     #⇒`gvar = 123`.
+ f()
+ print('gvar =', gvar)                     #⇒`gvar = 456`.
+
+This will produce the following output:
+
+gvar = 123
+gvar = 456
+
+Quite tidy really, but probably not what you expected. This is normally because
+by this stage you might not yet have been convinced that a name is just a name,
+is just a name. You can call it a "variable", or a "function", as you like, but
+it is still: just. a. name. (Which references a value, like a string value, or
+a numeric value, or a function value).
+
+If gvar did not exist at the time when f was called, the gvar = 456 would have
+created the gvar globally! The first print above would have failed, but the
+second print would still have output 456.
+
+There is one more keyword to deal with: nonlocal. You might be thinking that if
+a name is not local, it must be global. But that is not necessarily true.
+Consider an inner function, nested in an outer function. The outer function
+defines some name for itself. The inner function wants to modify that name. But
+assignment creates names in the current scope. We need a way to specify that
+the inner function wants to modify the name in the outer function. And thus the
+need for the nonlocal keyword.
+
+Non-local referring to “outer" names
+
+ def outer ():
+     name = "value"
+     print("outer's `name` =", name)
+     def inner():
+         nonlocal name
+         name = name[::-1]
+     inner()
+     print("outer's `name` =", name)
+ 
+ outer()
+
+Can you predict the output?
+
+outer's `name` = value
+outer's `name` = eulav
+
+Exercise: What do you think will happen if you remove one line above: the
+nonlocal name line? Predict, test, evaluate.
+
+For now, we have covered the topic of scope. Only for now, because scope is
+also about names. And names are stored somewhere, and modules have names, and
+importing modules creates namespaces, which are named scopes. But more on that
+later.
+
+Recursion
+
+Python supports recursion, which means a function can call itself. Any
+recursive algorithm can be written iteratively (with loops) instead, making
+recursion optional. Nevertheless, some algorithms lends itself more ‘elegantly’
+to a recursive solution.
+
+Fundamentally though, recursion is just another way to iterate (loop).
+
+Recursion as iteration
+
+ def looper1 (n):
+    print("looper1: Recurse #{}".format(n))
+    if n > 0:
+       looper1 (n - 1)
+ 
+ def looper2 (n):
+    if n > 0:
+       looper2 (n - 1)
+    print("looper2: Recurse #{}".format(n))
+ 
+ looper1(5)
+ looper2(5)
+
+The interesting effect of the print function call in looper2, is that the
+‘work’ of the function, takes place in reverse, which makes recursion a
+technique to change the order in which actions take place.
+
+
+2019-10-07: Created. [brx]
+
+© 2019 Incus Data (Pty) Ltd.   
+Made with Pandoc, Source, Fira & Iosevka
