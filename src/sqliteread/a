@@ -1,0 +1,60 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+LUKK|Fifth Element|5  
+"""
+import os
+import sys
+import sqlite3
+DBNAME = "database.db"
+DBPATH = os.path.dirname(os.path.realpath(__file__)) + os.sep + DBNAME
+REFQRY = "SELECT * from data WHERE LOWER(ref) = '{patt}'"
+TXTQRY = "SELECT * from data WHERE LOWER(txt) like '%{patt}%'"
+SEQQRY = "SELECT * from data WHERE seq = patt"
+def main (args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    if args[1:]:
+        patt = args[1].lower()
+    else:
+        patt = input("Search ref/text?: ").lower()
+    try:
+        conn = sqlite3.connect(DBPATH)
+        curs = conn.cursor()
+        rows = curs.execute(REFQRY.format(patt=patt)).fetchall()
+        if not rows:
+            rows = curs.execute(TXTQRY.format(patt=patt)).fetchall()
+        if rows:
+            shdg = " {:4} {:24} {:3}".format("REF", "TEXT", "SEQ")
+            print(shdg + "\n-" + "-" * len(shdg))
+            for row in rows:
+                print(" {:4} {:24} {:3d}".format(row[0], row[1], row[2]))
+            print("-" + "-" * len(shdg))
+        else:
+            print("No records found.")
+        curs.close()
+    except Exception as ex:
+        sys.stderr.write(f"Something went wrong.\n{ex}\n")
+        return 1
+    finally:
+        if conn:
+            conn.close()
+
+    return 0;
+
+def insert(dbc, ref, txt, seq):
+    """
+    Helper function to insert one row into the `data` table. It must be
+    passed a valid `sqlite3` connection for the `dbc` parameter.
+    """
+    qry = INS.format(ref=ref, txt=txt, seq=seq)
+    dbc.execute(qry)
+    dbc.commit()
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

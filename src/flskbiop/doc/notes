@@ -1,0 +1,15 @@
+serves as example upload file and process
+
+installation
+install
+virtualenv ./
+source ./bin/activate
+pip3 install flask biopython
+./a
+
+fasta information
+   https://molb7621.github.io/workshop/Miscellaneous/data.html
+   http://www.cbs.dtu.dk/services/NetGene2/fasta.php
+   https://en.wikipedia.org/wiki/FASTA_format
+   https://www.researchgate.net/figure/A-sample-of-the-Multi-FASTA-file_fig1_309134977
+   https://zhanglab.ccmb.med.umich.edu/FASTA/

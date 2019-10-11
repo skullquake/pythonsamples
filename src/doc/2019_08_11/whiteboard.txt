@@ -1,0 +1,30 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 
+Incus Data   
+Codi Matters
+2019-10-07
+by-nc-sa
+Python
+  
+
+Whiteboard
+
+Welcome ‖ Python Course Notes ‖ Python Course Code
+
+Wrapping Up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+© 2019 Incus Data (Pty) Ltd.   
+Made with Pandoc, Source, Fira & Iosevka

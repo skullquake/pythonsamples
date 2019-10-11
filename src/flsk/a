@@ -4,6 +4,9 @@
 """
 This is documentation for the *module* (the whole file)
 """
+
+#modify to use globals here for config (PORT etc)
+
 import random
 import math
 from flask import\
@@ -21,6 +24,7 @@ app=Flask(
     static_folder="web/static",
     template_folder="web/templates"
 );
+#modify to use path parameters
 @app.route('/a', methods=['GET', 'POST'])
 def a():
     print("########################################")
@@ -140,7 +144,12 @@ def a():
         """
     return ret
 
-
+@app.route("/varpath/<name>")
+def hello_name(name):
+    return (
+        '<p><b style="font-size:2em;color:red;">Hello, {}!</b></p>\n'
+        '<p><a href="/">back</a></p>'.format(name)
+    )
 def main (args):
     """
     main() Needs more stuff here, in real life.

@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+"""
+import os
+import sys
+import sqlite3
+DBNAME = "database.db"
+DBPATH = os.path.dirname(os.path.realpath(__file__)) + os.sep + DBNAME
+DROPTABLE = "DROP TABLE IF EXISTS data"
+MAKETABLE = (
+    "CREATE TABLE data ("
+    "  ref VARCHAR(4) NOT NULL PRIMARY KEY,"
+    "  txt VARCHAR(32) NOT NULL,"
+    "  seq INTEGER )"
+)
+INS = "INSERT INTO data VALUES ('{ref}', '{txt}', {seq})"
+def main (args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    try:
+        conn = sqlite3.connect(DBPATH)
+        conn.execute(DROPTABLE)
+        conn.execute(MAKETABLE)
+        insert(conn, ref="AABC", txt="First Impression", seq=1)
+        insert(conn, ref="ZABC", txt="Fourth Protocol", seq=4)
+        insert(conn, ref="FFGH", txt="Second Sight", seq=2)
+        insert(conn, ref="GHIJ", txt="Seventh Heaven", seq=7)
+        insert(conn, ref="AAAA", txt="Ninth Court", seq=9)
+        insert(conn, ref="POLK", txt="Third Time Lucky", seq=3)
+        insert(conn, ref="SENV", txt="Sixth Sense", seq=6)
+        insert(conn, ref="LUKK", txt="Fifth Element", seq=5)
+        insert(conn, ref="HIJK", txt="Eight Bell", seq=8)
+        insert(conn, ref="BAKA", txt="Tenth Tithe", seq=10)
+    except sqlite3.Error as ex:
+        sys.stderr.write(f"Something went wrong.\n{ex}\n")
+        return 1
+    finally:
+        if conn:
+            conn.commit()
+            conn.close()
+    return 0;
+
+
+def insert(dbc, ref, txt, seq):
+    """
+    Helper function to insert one row into the `data` table. It must be
+    passed a valid `sqlite3` connection for the `dbc` parameter.
+    """
+    qry = INS.format(ref=ref, txt=txt, seq=seq)
+    dbc.execute(qry)
+    dbc.commit()
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
