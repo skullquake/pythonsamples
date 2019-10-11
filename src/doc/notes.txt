@@ -1267,6 +1267,13 @@ __getattr__ and __setattr__	 and __delattr__
 				you can also override these
 								so you can for example override __delattr__ so that users
 								cannot delete attributes
+__setattr__ example
+				class a():
+								__setattr__(a,b):
+												sel.__dict__[a]=b.upper()
+				b=a()
+				a.b='qwer'
+				print(a.b)#QWER
 yield
 				yield works like return
 				generate list
@@ -1283,6 +1290,28 @@ yield
 																b-=1
 								print(list(a(8))
 				this is very difficult and needs lots of revision!!!
+				another example
+								def a():
+										 b=0
+										 c=0
+										 d=[]
+										 while b<8:
+												 c=0
+												 b+=1
+												 e=[]
+												 while c<b:
+														 e.append(1 if len(e)<1 else c+e[len(e)-1])
+														 c+=1
+												 yield e
+								print(list(a()))
+				yield must be used in a function
+								it cannot be used outside a function
+				read up on usage of generator
+								all i know now is list(g())
+								and
+								for a in g():
+												print(a)
+
 dir()
 				use dir on an object or name to figure out what it does
 where does the imports come from
@@ -1359,6 +1388,11 @@ with vs try
 				with open(filename) as f:
 								for line in f:
 												process(line)
+				#with open print reversed example
+				with open("./Makefile") as a:
+								for b in a:
+												for c in reversed(b):
+																print(c,end="")
 wsl x11
    https://askubuntu.com/questions/993225/whats-the-easiest-way-to-run-gui-apps-on-windows-subsystem-for-linux-as-of-2018
    https://token2shell.com/howto/x410/setting-up-wsl-for-linux-gui-apps/

@@ -66,9 +66,9 @@ def a():
                 pre+=f"\x1b[38;2;{r};{g};{b}m"
                 pre+=col
                 pre+="\x1b[0m"
-                r=math.floor(255*ridx/nrow)
-                g=math.floor(255-255*ridx/nrow)
-                b=math.floor(255*cidx/ncol)
+                r=math.floor(ridx/nrow*255)
+                g=math.floor(cidx/ncol*255)
+                b=math.floor(255-cidx/ncol*255)
                 cidx+=1
             pre+='\n'
             ridx+=1
