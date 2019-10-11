@@ -1397,3 +1397,120 @@ wsl x11
    https://askubuntu.com/questions/993225/whats-the-easiest-way-to-run-gui-apps-on-windows-subsystem-for-linux-as-of-2018
    https://token2shell.com/howto/x410/setting-up-wsl-for-linux-gui-apps/
    https://github.com/QMonkey/wsl-tutorial
+x11
+				read up on the different implementations
+				look for what packages installs x11 core with xeyes just for a quick test
+system76 laptop
+				read up on this
+				open hardward etc
+book to read
+				godel escher bach
+				good book
+function decorators
+				manual
+								def a():
+												print("a")
+								def b(c)
+												print("b1")
+												c()
+												print("b2")
+								def c(d,args)
+												print("c1"+args)
+												d(args)
+												print("c2"+args)
+				decorated
+								read up on this
+								@xtracode
+								def b():
+												...
+				you can also use decorators for properties
+								def a():
+												...
+												@property
+												def b(self):
+																...
+												...
+												@b.setter
+												def bset(self,c):
+																...
+												@b.getter
+												def bget(self):
+																...
+				to find out about this read up on decorators in course notes
+				take special note of the examples
+static attributes
+				take a look at
+								def a():
+												def __init__(self):
+																...#create state variables
+												def __call__(self):
+																...#call
+								b=a()
+								b()#callable because __call__(self)
+								b()#callable
+								b()#callable
+vim
+				book
+								learn vimscript the hard way
+function attributes
+				read up on function attributes
+				note you can also delete properties , e.g. del a.b
+static local variables
+				this can be implemented with callable classes
+				e.g.
+								class a():
+												def __init__(self,init=0):
+																self.state=int(init)
+												def __call__(self):
+																print(self.state)
+																self.state+=1
+								b=a()
+								b()
+								b()
+								b()
+				you can also use a function generator
+				here you use yield, which will return an iterator
+				we can trigger the next step with next, or <obj>.__next__()
+				e.g.
+								def a(state=1):
+												_state=state
+												while True:
+																yield _state
+																_state+=1
+								b=a()
+								print(b.__next__())
+								print(b.__next__())
+								print(b.__next__())
+								#note on yield
+								# the yield returns _state, on next call the next line executed - _state+1
+								# and also the state of the function is maintainted
+when using a generator you need to store it
+				otherwise you use a new generator over and over and youll just get the old value
+you can also use closures to store the function state
+				e.g.
+								def a(b=0):
+												c=b
+												def d():
+																nonlocal c
+																c+=1
+																return c
+												return d
+properties with decorators
+				you can also use this inclasses
+web browser
+				pip install webbrowser
+string format
+				you can save first
+								qwer="qwer{qwer}qwer"
+								#then format
+								print(qwer.format(qwer=0))
+				take note of REFQRY and TXTQRY in notes for sqlite
+vim double paste issue
+				:%s/\n\n/\r/g
+decorators
+				note use of decorators in routes
+
+								b=a()
+								print(b())
+								print(b())
+								print(b())
