@@ -4,10 +4,12 @@
 """
 Module doc
 """
+from termcolor import colored
 def main (args):
     """
     main() doc
     """
+    print(colored('hello', 'red'), colored('world', 'green'))
     return 0;
 
 

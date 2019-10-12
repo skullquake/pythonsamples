@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+This is documentation for the *module* (the whole file)
+"""
+import termplotlib as tpl
+import numpy
+def main (args):
+    """
+    main() Needs more stuff here, in real life.
+    """
+    line()
+    hhist()
+    vhist()
+    return 0;
+def line():
+    x=numpy.linspace(0,2*numpy.pi,10)
+    y=numpy.sin(x)
+    fig=tpl.figure()
+    fig.plot(x,y,label="data",width=50,height=15)
+    fig.show()
+    return
+def hhist():
+    numpy.random.seed(123)
+    sample=numpy.random.normal(size=1000)
+    counts,bin_edges=numpy.histogram(sample)
+    fig=tpl.figure()
+    fig.hist(counts,bin_edges,orientation="horizontal",force_ascii=False)
+    fig.show()
+    return
+def vhist():
+    numpy.random.seed(123)
+    sample=numpy.random.normal(size=1000)
+    counts,bin_edges=numpy.histogram(sample,bins=40)
+    fig=tpl.figure()
+    fig.hist(counts,bin_edges,grid=[15,25],force_ascii=False)
+    fig.show()
+
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+

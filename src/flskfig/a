@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+module doc
+"""
+
+#modify to use globals here for config (PORT etc)
+
+import random
+import pyfiglet
+import math
+import os;
+from flask import\
+        Flask,\
+        render_template,\
+        jsonify,\
+        request\
+;
+assert(os.path.exists("web/static")),'no folder';
+assert(os.path.exists("web/templates")),'no folder';
+app=Flask(
+    __name__,
+    static_url_path="",
+    static_folder="web/static",
+    template_folder="web/templates"
+);
+#modify to use path parameters
+@app.route('/a', methods=['GET', 'POST'])
+def a():
+    ret=''
+    txt = request.args.get('txt')
+    if txt==None:
+        ret="No text\n"
+    else:
+        ret=pyfiglet.figlet_format(txt)
+    return ret
+
+def main (args):
+    """
+    main() doc
+    """
+    app.run();
+    return 0;
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+

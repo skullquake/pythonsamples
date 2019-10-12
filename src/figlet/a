@@ -2,12 +2,15 @@
 # -*- coding: utf-8 -*-
 # vim: ts=4 sw=4 et:
 """
-Module doc
+This is documentation for the *module* (the whole file)
 """
+import pyfiglet
 def main (args):
     """
-    main() doc
+    main() Needs more stuff here, in real life.
     """
+    ascii_banner = pyfiglet.figlet_format("Hello!!")
+    print(ascii_banner)
     return 0;
 
 

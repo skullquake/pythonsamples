@@ -30,6 +30,26 @@ fzf
 	sample usage
 		vim $(fzf)
 		this will help with search/open
+  fzf-tmux
+	  launch fzf in tmux pane
+		here you can type and it will fuzzy search
+		fzf --preview="head -$LINES {}"
+  htop
+	 search proc
+	   f3 pattern enter
+   sig proc
+	   f9 number enter
+   select multiple
+	   spacebar
+   show tree
+	   htop --tree
+   edit configuration
+	   f2
+		   e.g.
+			   colors
+				  scheme
+   configuration file
+	   ~/.config/htop/htoprc
 
 wsl as substitute for msys/cygwin
 	has package manager
@@ -67,18 +87,41 @@ jupyter notebook
 	charts and data
 	you can create notebooks
 		these can be used for learning materials as well
+  installation
+	 mkdir jupyter
+	 cd jupyter
+	 python -m venv ./
+	 source ./bin/activate
+	 LDFLAGS="-lm -lcompiler_rt" pip install jupyter
+	 #install extra packages
+	 LDFLAGS="-lm -lcompiler_rt" pip install numpy matplotlib
+	 #run
+	 jupyter notebook
+				you can run the terminal from the jupyter notebook
+				and do other stuff
 vim set color
 	:colorscheme industry
+	installing colorschemes
+				you can first get some colorschemes, for example flazz/vim-colorschemes
+				the files you can save in ~/.vim/colors
+				or you can save them in for example /usr/share/vim/vim81/colors
+				these files have a .vim extension
+
 python
 	module is a dictionary
 	dir lists the dictionary
 		import math;
 		print(dir(math));
+		The dir() method tries to return a list of valid attributes of the object.
 investigate cmath
 	this is for complex math
 	print(3j)
 	this also relates to coordinates
 		geographical programming
+  import cmath
+	print(cmath.pi)
+	dir(cmath)
+	cmath is always available
 the # comment in python
 	helps a lot with # as in bash
 python scripts in bash
@@ -1495,6 +1538,10 @@ you can also use closures to store the function state
 																c+=1
 																return c
 												return d
+								b=a()
+								print(b())
+								print(b())
+								print(b())
 properties with decorators
 				you can also use this inclasses
 web browser
@@ -1509,9 +1556,7 @@ vim double paste issue
 				:%s/\n\n/\r/g
 decorators
 				note use of decorators in routes
-
-								b=a()
-								print(b())
-								print(b())
-								print(b())
 renier.van.wyk@gmail.com
+plotting
+				you can use matplotlib for this
+				if you want to plot to the terminal, you can use termplotlib

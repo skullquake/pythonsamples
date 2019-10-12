@@ -1,0 +1,6 @@
+install
+				pkg install gnuplot
+				python3 -m venv ./
+				pip3 install numpy termplotlib
+see also
+				termgraph

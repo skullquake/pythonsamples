@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module description
+"""
+import termtables as tt
+import numpy
+def main (args):
+    """
+    main()
+    """
+    a()
+    b()
+    c()
+    return 0;
+def a():
+    numpy.random.seed(0)
+    data=numpy.random.rand(8, 4)
+    print(tt.to_string(data))
+    pass
+def b():
+    header=["a","bb","ccc"]
+    data=[[1,2,3],[613.23236243236,613.23236243236,613.23236243236]]
+    string=tt.to_string(
+        data,
+        header=header,
+        style=tt.styles.ascii_thin_double,
+        padding=(0,1),
+        alignment="lcr"
+    )
+    print(string)
+    pass
+def c():
+    header=["a","bb","ccc"]
+    data=[[1,2,3],[613.23236243236,613.23236243236,613.23236243236]]
+    string=tt.to_string(
+        data,
+        header=header,
+        style="x0123456789abcd"
+    )
+    print(string)
+    pass
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
