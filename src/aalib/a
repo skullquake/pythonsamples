@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import io
+#import urllib
+#import PIL.Image
+import aalib
+from PIL import Image
+import os
+def main (args):
+    """
+    main() doc
+    """
+    rows,cols=os.popen('stty size','r').read().split()
+    rows=int(rows)
+    cols=int(cols)
+    xa=-     2.0
+    xb=      1.0
+    ya=     -1.5
+    yb=      1.5
+    maxIt=   255
+    imgx=    cols*2
+    imgy=    rows*2
+    image=Image.new("RGB",(imgx,imgy))
+    for y in range(imgy):
+        zy=y*(yb-ya)/(imgy-1)+ya
+        for x in range(imgx):
+            zx=x*(xb-xa)/(imgx-1)+xa
+            z=zx+zy*1j
+            c=z
+            for i in range(maxIt):
+                if abs(z)>2.0:break
+                z=z*z+c
+            image.putpixel((x,y),(i%4*64,i%8*32,i%16*16))
+    screen=aalib.AsciiScreen(width=cols,height=rows)
+    image.resize(screen.virtual_size)
+    screen.put_image((0,0),image.convert('L'))
+    print(screen.render())
+    return 0;
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+
+

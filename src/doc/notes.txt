@@ -1560,3 +1560,12 @@ renier.van.wyk@gmail.com
 plotting
 				you can use matplotlib for this
 				if you want to plot to the terminal, you can use termplotlib
+pip install
+				some things you install with pip needs building (gcc/g++)
+				you can manipulate build flags as follows
+								LDFLAGS="-L/system/lib/" pip install  something
+pil
+				pythin image library
+								termux-chroot
+								#setup/enter venv
+								LDFLAGS="-L/system/lib/" pip install Pillow

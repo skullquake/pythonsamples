@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+from PIL import Image
+def main (args):
+    """
+    main() doc
+    """
+    try:
+        with Image.open("./a.png") as im:
+            print(im)
+    except IOError:
+        pass
+    return 0;
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

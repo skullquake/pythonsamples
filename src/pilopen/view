@@ -1,0 +1,2 @@
+#!/bin/bash
+convert mandel.png jpg:-|jp2a --colors -f -
