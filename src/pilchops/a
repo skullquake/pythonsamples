@@ -1,0 +1,108 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import io
+#import urllib
+#import PIL.Image
+import aalib
+from PIL import ImageChops
+from PIL import Image
+import os
+def main (args):
+    """
+    main() doc
+    """
+    w=320
+    h=200
+    #hbar
+    im000=Image.new("RGB",(w,h))
+    for x in range(0,im000.size[0]):
+        for y in range(0,im000.size[1]):
+                #img.putpixel((x,y0,(r,g,b))
+            im000.putpixel(\
+                    (x,y),\
+                    (\
+                        int(255*x/255),\
+                        int(255-255*y/255),\
+                        int(255-255*x/255)
+                    )\
+            )
+    im001=Image.new("RGB",(w,h))
+    for x in range(0,im001.size[0]):
+        for y in range(0,im001.size[1]):
+                #img.putpixel((x,y0,(r,g,b))
+            im001.putpixel(\
+                    (x,y),\
+                    (\
+                        int(255*x/255),\
+                        int(255-255*x/255),\
+                        int(255-255*y/255)
+                    )\
+            )
+    msk000=Image.new("L",(w,h))
+    for x in range(0,msk000.size[0]):
+        for y in range(0,msk000.size[1]):
+                #img.putpixel((x,y0,(r,g,b))
+            msk000.putpixel(\
+                    (x,y),\
+                    (\
+                        255*(1 if x>msk000.size[0]/2 else 0)
+                    )\
+            )
+    im002=ImageChops.add(im000,im001)
+    im003=ImageChops.add_modulo(im000,im001)
+    im004=ImageChops.blend(im000,im001,0.5)
+    im005=ImageChops.composite(im000,im001,msk000)
+    im006=ImageChops.constant(im000,(255))
+    im007=ImageChops.constant(im000,(128))
+    im008=ImageChops.darker(im000,im001)
+    im009=ImageChops.difference(im000,im001)
+    im010=ImageChops.invert(im000)
+    im011=ImageChops.lighter(im000,im001)
+    #im012=ImageChops.logical_and(msk000,msk000)        #???
+    #im013=ImageChops.logical_or(msk000,msk000)         #???
+    #im014=ImageChops.logical_multiply(msk000,msk000)   #???
+    im015=ImageChops.offset(im000,int(im000.size[0]/2),int(im000.size[1]/2))
+    im016=ImageChops.offset(im000,int(im000.size[0]/2),0)
+    im017=ImageChops.screen(im000,im001)
+    im018=ImageChops.subtract(im000,im001)
+    im019=ImageChops.subtract_modulo(im000,im001)
+    imfin=Image.new("RGB",(w*2,h*9))
+    imfin.paste(im000,(0*im000.size[0],0*im000.size[1],1*im000.size[0],1*im000.size[1]))
+    imfin.paste(im001,(1*im001.size[0],0*im001.size[1],2*im001.size[0],1*im001.size[1]))
+    imfin.paste(im002,(0*im002.size[0],1*im002.size[1],1*im002.size[0],2*im002.size[1]))
+    imfin.paste(im003,(1*im003.size[0],1*im003.size[1],2*im003.size[0],2*im003.size[1]))
+    imfin.paste(im004,(0*im004.size[0],2*im004.size[1],1*im004.size[0],3*im004.size[1]))
+    imfin.paste(im005,(1*im005.size[0],2*im005.size[1],2*im005.size[0],3*im005.size[1]))
+    imfin.paste(im006,(0*im006.size[0],3*im006.size[1],1*im006.size[0],4*im006.size[1]))
+    imfin.paste(im007,(1*im007.size[0],3*im007.size[1],2*im007.size[0],4*im007.size[1]))
+    imfin.paste(im008,(0*im008.size[0],4*im008.size[1],1*im008.size[0],5*im008.size[1]))
+    imfin.paste(im009,(1*im009.size[0],4*im009.size[1],2*im009.size[0],5*im009.size[1]))
+    imfin.paste(im010,(0*im010.size[0],5*im010.size[1],1*im010.size[0],6*im010.size[1]))
+    imfin.paste(im011,(1*im011.size[0],5*im011.size[1],2*im011.size[0],6*im011.size[1]))
+    imfin.paste(im015,(0*im015.size[0],6*im015.size[1],1*im015.size[0],7*im015.size[1]))
+    imfin.paste(im016,(1*im016.size[0],6*im016.size[1],2*im016.size[0],7*im016.size[1]))
+    imfin.paste(im017,(0*im017.size[0],7*im017.size[1],1*im017.size[0],8*im017.size[1]))
+    imfin.paste(im018,(1*im018.size[0],7*im018.size[1],2*im018.size[0],8*im018.size[1]))
+    imfin.paste(im019,(0*im019.size[0],8*im019.size[1],1*im019.size[0],9*im019.size[1]))
+    #2vtty
+    row,col=os.popen('stty size','r').read().split()#row/col
+    row=int(int(row)/2)
+    col=int(int(col)/2)
+    screen=aalib.AsciiScreen(width=col,height=row)
+    imfin.resize(screen.virtual_size)
+    screen.put_image((0,0),imfin.convert('L'))
+    print(screen.render())
+    #2png
+    imfin.save("a.png")
+    return 0;
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+
+

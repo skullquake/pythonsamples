@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import io
+#import urllib
+#import PIL.Image
+import aalib
+from PIL import Image
+import os
+def main (args):
+    """
+    main() doc
+    """
+    a=320
+    b=200
+    c=Image.new("RGBA",(a,b))
+    for d in range(0,b):
+        for e in range(0,a):
+                #img.putpixel((x,y0,(r,g,b))
+            c.putpixel(\
+                    (e,d),\
+                    (\
+                        int(255*e/255),\
+                        int(255-255*e/255),\
+                        int(255-255*d/255),\
+                        255*(int(d%32)>16)
+                    )\
+            )
+    f,g=os.popen('stty size','r').read().split()#row/col
+    f=int(int(f)/2)
+    g=int(int(g)/2)
+    screen=aalib.AsciiScreen(width=g,height=f)
+    c.resize(screen.virtual_size)
+    screen.put_image((0,0),c.convert('L'))
+    print(screen.render())
+    c.save("a.png")
+    return 0;
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+
+

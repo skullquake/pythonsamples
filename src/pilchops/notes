@@ -1,0 +1,7 @@
+pip install python-aalib
+aalib-1.4rc5.tar.gz
+  2 ./configure --build=i686-linux-gnu --host=i686-linux-gnu --without-x --prefix=/usr
+	~
+sample PIL.ImageChops
+Chops stands for channel operations
+these are the standard add subtract, and multiple operations for example
