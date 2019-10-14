@@ -1,0 +1,3 @@
+https://docs.locust.io/en/stable/quickstart.html
+https://docs.locust.io/en/stable/installation.html
+python3 -m pip install locustio
