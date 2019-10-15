@@ -1,0 +1,2 @@
+#!/bin/bash
+convert a.png jpg:-|jp2a --colors -f -

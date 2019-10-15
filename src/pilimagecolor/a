@@ -1,0 +1,49 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import io
+#import urllib
+#import PIL.Image
+import aalib
+from PIL import ImageChops
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageColor
+import os
+def main (args):
+    """
+    main() doc
+    """
+    w=320
+    h=200
+    #hbar
+    im=Image.new("RGB",(w,h))
+    #imgdraw
+    draw=ImageDraw.Draw(im)
+    for i in range(0,w):
+        draw.line(
+            (i,0)+(i,h),
+            fill="hsl({}, {}%, {}%)".format(i,100,50)
+        )
+    del draw
+    #2vtty
+    row,col=os.popen('stty size','r').read().split()#row/col
+    row=int(int(row)/2)
+    col=int(int(col)/2)
+    screen=aalib.AsciiScreen(width=col,height=row)
+    im.resize(screen.virtual_size)
+    screen.put_image((0,0),im.convert('L'))
+    print(screen.render())
+    #2png
+    im.save("a.png")
+    return 0;
+if __name__=="__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+
+
