@@ -1,3 +1,7 @@
+course notes etc
+	https://incusdata.site/
+	https://incusdata.site/pan/py/whiteboard.html
+
 try powershell core
 	cross platform
 	not profiles
@@ -1569,3 +1573,14 @@ pil
 								termux-chroot
 								#setup/enter venv
 								LDFLAGS="-L/system/lib/" pip install Pillow
+vim edit encrypted
+   vim -x myfile.txt
+   enter pass
+   edit
+   save
+   close
+   open
+   enter pass
+   edit
+   ...
+      pretty cool

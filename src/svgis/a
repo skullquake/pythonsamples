@@ -1,0 +1,2 @@
+#!/bin/bash
+svgis draw ./res/a.shp > ./out/a.svg

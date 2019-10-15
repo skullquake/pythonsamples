@@ -1,0 +1,10 @@
+qgis
+arcgis
+https://medium.com/@chrieke/essential-geospatial-python-libraries-5d82fcc38731
+   shapely.readthedocs.io/en/stable/manual.html
+   http://geopandas.org/
+   http://pandas.pydata.org/pandas-docs/stable/
+   https://mapbox.github.io/rasterio/intro.html
+   https://docs.scipy.org/doc/numpy-dev/user/quickstart.html#the-basics
+   https://matplotlib.org/index.html
+   http://www.gdal.org/

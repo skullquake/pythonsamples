@@ -1,0 +1,15 @@
+https://geohackweek.github.io/vector/04-geopandas-intro/
+install
+   sudo apt install libspatialindex-dev
+   sudo apt install libgeos-dev
+   sudo apt-get install libproj-dev
+   pip3 install cython
+   pip3 install fiona
+   pip3 install shapelee
+   pip3 install Rtree
+   pip3 install geoplot
+   pip3 install geopandas
+
+plotting:
+   https://residentmario.github.io/geoplot/quickstart/quickstart.html
+   https://wellsr.com/python/python-voronoi-diagram-with-geopandas-and-geoplot/

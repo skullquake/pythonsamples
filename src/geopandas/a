@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import csv
+import shapely
+from shapely.geometry import Point
+from shapely.geometry import mapping
+from fiona import collection
+import geopandas
+import geoplot
+import matplotlib.pyplot as plt
+
+def main (args):
+    """
+    main() doc
+    """
+    print('1');
+    world = geopandas.read_file(geopandas.datasets.get_path('naturalearth_lowres'))
+    #boroughs = geopandas.read_file(geoplot.datasets.get_path('nyc_boroughs'))
+    #collisions = geopandas.read_file(geoplot.datasets.get_path('nyc_injurious_collisions'))
+    geoplot.polyplot(world, figsize=(8, 4))
+    #geoplot.polyplot(boroughs , figsize=(8, 4))
+    #geoplot.polyplot(collisions, figsize=(8, 4))
+    #ax=geoplot.polyplot(
+    #    world,projection=geoplot.crs.Orthographic(), figsize=(8, 4)
+    #)
+    ax=geoplot.choropleth(
+        world,
+        hue=world['gdp_md_est']/world['pop_est'],
+        cmap='Greens',
+        projection=geoplot.crs.Orthographic(),
+        figsize=(8, 4)
+    )
+    ax.outline_patch.set_visible(True)
+    plt.title('a')
+    plt.savefig('./out/a.svg')
+    print('2');
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

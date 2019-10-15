@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import csv
+def main (args):
+    """
+    main() doc
+    """
+    with open('../res/worldcities.csv', 'r') as a:
+        b=csv.DictReader(a)
+        for c in b:
+            print(c)
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

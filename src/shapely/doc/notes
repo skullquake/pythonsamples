@@ -1,0 +1,3 @@
+https://www.datacamp.com/community/tutorials/geospatial-data-python
+install
+   pip3 install Shapely

@@ -1,0 +1,7 @@
+#!/bin/bash
+#   --scale 100000
+svgis \
+   draw \
+   ./out/a.shp\
+   >\
+   ./out/a.svg
