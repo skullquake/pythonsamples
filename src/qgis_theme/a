@@ -1,0 +1,15 @@
+myColor = Qt.white;
+
+# Write it to the project (will still need to be saved!)
+QgsProject.instance().writeEntry("Gui", "/CanvasColorRedPart", myColor.red())
+QgsProject.instance().writeEntry("Gui", "/CanvasColorGreenPart", myColor.green())
+QgsProject.instance().writeEntry("Gui", "/CanvasColorBluePart", myColor.blue())
+
+# And apply for the current session
+iface.mapCanvas().setCanvasColor(myColor);
+iface.mapCanvas().refresh()
+
+#or
+iface.mapCanvas().setCanvasColor(QtGui.QColor(255,255,0))
+iface.mapCanvas().refresh()
+

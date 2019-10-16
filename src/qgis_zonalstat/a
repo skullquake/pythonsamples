@@ -1,0 +1,16 @@
+import processing
+for a in QgsProject.instance().layerTreeRoot().children():
+    if a.name().startswith('PRISM'):
+        processing.runalg(
+            "qgis:zonalstatistics",
+            {
+                    'INPUT_RASTER':a.name(),
+                    'RASTER_BAND':1,
+                    'INPUT_VECTOR':'Zip_Codes',
+                    'COLUMN_PREFIX':a.name()[-6:-4]+'_',
+                    'GLOBAL_EXTENT': True
+            }
+        )
+print(processing.alglist())
+# arg: alglist entry end part (---> ...)
+print(processing.alghelp("qgis:zonalstatistics"))

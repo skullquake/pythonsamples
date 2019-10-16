@@ -1,0 +1,7 @@
+url="/home/skullquake/src/skullquake/pythonsamples/src/res/ne/packages/Natural_Earth_quick_start/50m_physical/ne_50m_lakes.shp"
+a=QgsVectorLayer(
+    url,
+    'a',
+    'ogr'
+)
+QgsMapLayerRegistry.instance().addMapLayer(a)

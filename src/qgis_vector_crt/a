@@ -1,0 +1,71 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+def main (args):
+    """
+    main()
+    """
+    import sys
+    from qgis.core import *
+    from PyQt4.QtCore import QFileInfo
+    app=QgsApplication([],True,None)
+    app.setPrefixPath("/usr",True)
+    app.initQgis()
+    sys.path.append('/usr/share/qgis/python/plugins')
+    from processing.core.Processing import Processing
+    from qgis.PyQt.QtCore import QVariant
+    from qgis.PyQt.QtCore import QPoint
+    proj=QgsProject.instance()
+    proj.setFileName("/tmp/tst.qgs")
+    print('generating')
+    for i in range(0,10):
+        vl=QgsVectorLayer("Point","temp"+str(i),"memory")
+        pr=vl.dataProvider()
+        pr.addAttributes(
+            [
+                QgsField("name", QVariant.String),
+                QgsField("age",  QVariant.Int),
+                QgsField("size", QVariant.Double)
+            ]
+        )
+        vl.updateFields()
+        #add point
+        f=QgsFeature()
+        #f.setGeometry(QgsGeometry.fromQPointF(QPoint(10,10)))
+        f.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(123, 456)))
+        f.setAttributes(["Ada L.", 2, 0.3])
+        if pr.addFeatures([f]):
+            print("feature added")
+        else:
+            print("feature not added")
+        if vl.updateExtents():
+            print("extents updated")
+        else:
+            print("extents not updated")
+        vl.commitChanges()
+        if vl.updateExtents():
+            print("commited")
+        else:
+            print("not commited")
+        vl.commitChanges()
+        QgsMapLayerRegistry.instance().addMapLayer(vl)
+    #style
+    QgsProject.instance().writeEntry("Gui", "/CanvasColorRedPart",32)
+    QgsProject.instance().writeEntry("Gui", "/CanvasColorGreenPart",32)
+    QgsProject.instance().writeEntry("Gui", "/CanvasColorBluePart",32)
+    #persist
+    print('saving')
+    if proj.write():
+        print('done saving')
+    else:
+        print('failed to save')
+    app.exitQgis()
+    return 0;
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+

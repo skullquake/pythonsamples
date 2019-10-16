@@ -1,0 +1,4 @@
+import processing
+print(processing.alglist())
+# arg: alglist entry end part (---> ...)
+print(processing.alghelp("saga:slopeaspectcurvature"))

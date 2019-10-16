@@ -1,0 +1,697 @@
+D-Infinity Avalanche Runout-------------------------->taudem:dinfinityavalancherunout
+D-Infinity Concentration Limited Accumulation-------->taudem:dinfinityconcentrationlimitedaccumulation
+D-Infinity Contributing Area------------------------->taudem:dinfinitycontributingarea
+D-Infinity Decaying Accumulation--------------------->taudem:dinfinitydecayingaccumulation
+D-Infinity Distance Down----------------------------->taudem:dinfinitydistancedown
+D-Infinity Distance Up------------------------------->taudem:dinfinitydistanceup
+D-Infinity Flow Directions--------------------------->taudem:dinfinityflowdirections
+D-Infinity Reverse Accumulation---------------------->taudem:dinfinityreverseaccumulation
+D-Infinity Transport Limited Accumulation------------>taudem:dinfinitytransportlimitedaccumulation
+D-Infinity Transport Limited Accumulation - 2-------->taudem:dinfinitytransportlimitedaccumulation2
+D-Infinity Upslope Dependence------------------------>taudem:dinfinityupslopedependence
+D8 Contributing Area--------------------------------->taudem:d8contributingarea
+D8 Distance To Streams------------------------------->taudem:d8distancetostreams
+D8 Extreme Upslope Value----------------------------->taudem:d8extremeupslopevalue
+D8 Flow Directions----------------------------------->taudem:d8flowdirections
+Gage Watershed--------------------------------------->taudem:gagewatershed
+Gage Watershed - 2----------------------------------->taudem:gagewatershed2
+Grid Network----------------------------------------->taudem:gridnetwork
+Length Area Stream Source---------------------------->taudem:lengthareastreamsource
+Move Outlets To Streams------------------------------>taudem:moveoutletstostreams
+Peuker Douglas--------------------------------------->taudem:peukerdouglas
+Pit Remove------------------------------------------->taudem:pitremove
+Select GT Threshold---------------------------------->taudem:selectgtthreshold
+Slope Area Combination------------------------------->taudem:slopeareacombination
+Slope Average Down----------------------------------->taudem:slopeaveragedown
+Slope Over Area Ratio-------------------------------->taudem:slopeoverarearatio
+Stream Definition By Threshold----------------------->taudem:streamdefinitionbythreshold
+Stream Drop Analysis--------------------------------->taudem:streamdropanalysis
+Stream Reach and Watershed--------------------------->taudem:streamreachandwatershed
+Topographic Wetness Index---------------------------->taudem:topographicwetnessindex
+Calculator------------------------------------------->modelertools:calculator
+Raster layer bounds---------------------------------->modelertools:rasterlayerbounds
+Vector layer bounds---------------------------------->modelertools:vectorlayerbounds
+Add autoincremental field---------------------------->qgis:addautoincrementalfield
+Add field to attributes table------------------------>qgis:addfieldtoattributestable
+Add unique value index field------------------------->qgis:adduniquevalueindexfield
+Advanced Python field calculator--------------------->qgis:advancedpythonfieldcalculator
+Bar plot--------------------------------------------->qgis:barplot
+Basic statistics for numeric fields------------------>qgis:basicstatisticsfornumericfields
+Basic statistics for text fields--------------------->qgis:basicstatisticsfortextfields
+Boundary--------------------------------------------->qgis:boundary
+Bounding boxes--------------------------------------->qgis:boundingboxes
+Build virtual vector--------------------------------->qgis:buildvirtualvector
+Check validity--------------------------------------->qgis:checkvalidity
+Clip------------------------------------------------->qgis:clip
+Concave hull----------------------------------------->qgis:concavehull
+Convert geometry type-------------------------------->qgis:convertgeometrytype
+Convex hull------------------------------------------>qgis:convexhull
+Count points in polygon------------------------------>qgis:countpointsinpolygon
+Count points in polygon(weighted)-------------------->qgis:countpointsinpolygonweighted
+Count unique points in polygon----------------------->qgis:countuniquepointsinpolygon
+Create constant raster layer------------------------->qgis:createconstantrasterlayer
+Create grid------------------------------------------>qgis:creategrid
+Create points along lines---------------------------->qgis:createpointsalonglines
+Create spatial index--------------------------------->qgis:createspatialindex
+Define current projection---------------------------->qgis:definecurrentprojection
+Delaunay triangulation------------------------------->qgis:delaunaytriangulation
+Delete column---------------------------------------->qgis:deletecolumn
+Delete duplicate geometries-------------------------->qgis:deleteduplicategeometries
+Delete holes----------------------------------------->qgis:deleteholes
+Densify geometries----------------------------------->qgis:densifygeometries
+Densify geometries given an interval----------------->qgis:densifygeometriesgivenaninterval
+Difference------------------------------------------->qgis:difference
+Dissolve--------------------------------------------->qgis:dissolve
+Distance matrix-------------------------------------->qgis:distancematrix
+Distance to nearest hub------------------------------>qgis:distancetonearesthub
+Eliminate sliver polygons---------------------------->qgis:eliminatesliverpolygons
+Execute SQL------------------------------------------>qgis:executesql
+Explode lines---------------------------------------->qgis:explodelines
+Export/Add geometry columns-------------------------->qgis:exportaddgeometrycolumns
+Extract by attribute--------------------------------->qgis:extractbyattribute
+Extract by expression-------------------------------->qgis:extractbyexpression
+Extract by location---------------------------------->qgis:extractbylocation
+Extract nodes---------------------------------------->qgis:extractnodes
+Field calculator------------------------------------->qgis:fieldcalculator
+Fill holes------------------------------------------->qgis:fillholes
+Fixed distance buffer-------------------------------->qgis:fixeddistancebuffer
+Frequency analysis----------------------------------->qgis:frequencyanalysis
+Generate points (pixel centroids) along line--------->qgis:generatepointspixelcentroidsalongline
+Generate points (pixel centroids) inside polygons---->qgis:generatepointspixelcentroidsinsidepolygons
+Hub lines-------------------------------------------->qgis:hublines
+Hypsometric curves----------------------------------->qgis:hypsometriccurves
+Import into PostGIS---------------------------------->qgis:importintopostgis
+Intersection----------------------------------------->qgis:intersection
+Join attributes by location-------------------------->qgis:joinattributesbylocation
+Join attributes table-------------------------------->qgis:joinattributestable
+Keep n biggest parts--------------------------------->qgis:keepnbiggestparts
+Line intersections----------------------------------->qgis:lineintersections
+Lines to polygons------------------------------------>qgis:linestopolygons
+List unique values----------------------------------->qgis:listuniquevalues
+Mean and standard deviation plot--------------------->qgis:meanandstandarddeviationplot
+Mean coordinate(s)----------------------------------->qgis:meancoordinates
+Merge lines------------------------------------------>qgis:mergelines
+Merge vector layers---------------------------------->qgis:mergevectorlayers
+Multipart to singleparts----------------------------->qgis:multiparttosingleparts
+Nearest neighbour analysis--------------------------->qgis:nearestneighbouranalysis
+Number of unique values in classes------------------->qgis:numberofuniquevaluesinclasses
+Oriented minimum bounding box------------------------>qgis:orientedminimumboundingbox
+Point on surface------------------------------------->qgis:pointonsurface
+Points displacement---------------------------------->qgis:pointsdisplacement
+Points layer from table------------------------------>qgis:pointslayerfromtable
+Points to path--------------------------------------->qgis:pointstopath
+Polar plot------------------------------------------->qgis:polarplot
+Polygon centroids------------------------------------>qgis:polygoncentroids
+Polygon from layer extent---------------------------->qgis:polygonfromlayerextent
+Polygonize------------------------------------------->qgis:polygonize
+Polygons to lines------------------------------------>qgis:polygonstolines
+PostGIS execute SQL---------------------------------->qgis:postgisexecutesql
+Random extract--------------------------------------->qgis:randomextract
+Random extract within subsets------------------------>qgis:randomextractwithinsubsets
+Random points along line----------------------------->qgis:randompointsalongline
+Random points in extent------------------------------>qgis:randompointsinextent
+Random points in layer bounds------------------------>qgis:randompointsinlayerbounds
+Random points inside polygons (fixed)---------------->qgis:randompointsinsidepolygonsfixed
+Random points inside polygons (variable)------------->qgis:randompointsinsidepolygonsvariable
+Random selection------------------------------------->qgis:randomselection
+Random selection within subsets---------------------->qgis:randomselectionwithinsubsets
+Raster layer histogram------------------------------->qgis:rasterlayerhistogram
+Raster layer statistics------------------------------>qgis:rasterlayerstatistics
+Rectangles, ovals, diamonds (fixed)------------------>qgis:rectanglesovalsdiamondsfixed
+Rectangles, ovals, diamonds (variable)--------------->qgis:rectanglesovalsdiamondsvariable
+Refactor fields-------------------------------------->qgis:refactorfields
+Regular points--------------------------------------->qgis:regularpoints
+Remove null geometries------------------------------->qgis:removenullgeometries
+Reproject layer-------------------------------------->qgis:reprojectlayer
+Reverse line direction------------------------------->qgis:reverselinedirection
+Save selected features------------------------------->qgis:saveselectedfeatures
+Select by attribute---------------------------------->qgis:selectbyattribute
+Select by attribute sum------------------------------>qgis:selectbyattributesum
+Select by expression--------------------------------->qgis:selectbyexpression
+Select by location----------------------------------->qgis:selectbylocation
+Set style for raster layer--------------------------->qgis:setstyleforrasterlayer
+Set style for vector layer--------------------------->qgis:setstyleforvectorlayer
+Simplify geometries---------------------------------->qgis:simplifygeometries
+Singleparts to multipart----------------------------->qgis:singlepartstomultipart
+Smooth geometry-------------------------------------->qgis:smoothgeometry
+Snap points to grid---------------------------------->qgis:snappointstogrid
+Split lines with lines------------------------------->qgis:splitlineswithlines
+Split vector layer----------------------------------->qgis:splitvectorlayer
+Statistics by categories----------------------------->qgis:statisticsbycategories
+Sum line lengths------------------------------------->qgis:sumlinelengths
+Symmetrical difference------------------------------->qgis:symmetricaldifference
+Text to float---------------------------------------->qgis:texttofloat
+Union------------------------------------------------>qgis:union
+Variable distance buffer----------------------------->qgis:variabledistancebuffer
+Vector grid------------------------------------------>qgis:vectorgrid
+Vector layer histogram------------------------------->qgis:vectorlayerhistogram
+Vector layer scatterplot----------------------------->qgis:vectorlayerscatterplot
+Voronoi polygons------------------------------------->qgis:voronoipolygons
+Zonal Statistics------------------------------------->qgis:zonalstatistics
+i.albedo - Computes broad band albedo from surface reflectance.--->grass7:i.albedo
+i.aster.toar - Calculates Top of Atmosphere Radiance/Reflectance/Brightness Temperature from ASTER DN.--->grass7:i.aster.toar
+i.atcorr - Performs atmospheric correction using the 6S algorithm.--->grass7:i.atcorr
+i.biomass - Computes biomass growth, precursor of crop yield calculation.--->grass7:i.biomass
+i.cca - Canonical components analysis (CCA) program for image processing.--->grass7:i.cca
+i.cluster - Generates spectral signatures for land cover types in an image using a clustering algorithm.--->grass7:i.cluster
+i.colors.enhance - Performs auto-balancing of colors for RGB images.--->grass7:i.colors.enhance
+i.eb.eta - Actual evapotranspiration for diurnal period (Bastiaanssen, 1995).--->grass7:i.eb.eta
+i.eb.evapfr - Computes evaporative fraction (Bastiaanssen, 1995) and root zone soil moisture (Makin, Molden and Bastiaanssen, 2001).--->grass7:i.eb.evapfr
+i.eb.hsebal01 - Computes sensible heat flux iteration SEBAL 01.--->grass7:i.eb.hsebal01
+i.eb.hsebal01.coords - Computes sensible heat flux iteration SEBAL 01. Inline coordinates--->grass7:i.eb.hsebal01.coords
+i.eb.netrad - Net radiation approximation (Bastiaanssen, 1995).--->grass7:i.eb.netrad
+i.eb.soilheatflux - Soil heat flux approximation (Bastiaanssen, 1995).--->grass7:i.eb.soilheatflux
+i.emissivity - Computes emissivity from NDVI, generic method for sparse land.--->grass7:i.emissivity
+i.evapo.mh - Computes evapotranspiration calculation modified or original Hargreaves formulation, 2001.--->grass7:i.evapo.mh
+i.evapo.pm - Computes potential evapotranspiration calculation with hourly Penman-Monteith.--->grass7:i.evapo.pm
+i.evapo.pt - Computes evapotranspiration calculation Priestley and Taylor formulation, 1972.--->grass7:i.evapo.pt
+i.evapo.time - Computes temporal integration of satellite ET actual (ETa) following the daily ET reference (ETo) from meteorological station(s).--->grass7:i.evapo.time
+i.fft - Fast Fourier Transform (FFT) for image processing.--->grass7:i.fft
+i.gensig - Generates statistics for i.maxlik from raster map.--->grass7:i.gensig
+i.gensigset - Generates statistics for i.smap from raster map.--->grass7:i.gensigset
+i.group - Regroup multiple mono-band rasters into a single multiband raster.--->grass7:i.group
+i.his.rgb - Transforms raster maps from HIS (Hue-Intensity-Saturation) color space to RGB (Red-Green-Blue) color space.--->grass7:i.his.rgb
+i.ifft - Inverse Fast Fourier Transform (IFFT) for image processing.--->grass7:i.ifft
+i.image.mosaic - Mosaics several images and extends colormap.--->grass7:i.image.mosaic
+i.in.spotvgt - Imports SPOT VGT NDVI data into a raster map.--->grass7:i.in.spotvgt
+i.landsat.acca - Performs Landsat TM/ETM+ Automatic Cloud Cover Assessment (ACCA).--->grass7:i.landsat.acca
+i.landsat.toar - Calculates top-of-atmosphere radiance or reflectance and temperature for Landsat MSS/TM/ETM+/OLI--->grass7:i.landsat.toar
+i.maxlik - Classifies the cell spectral reflectances in imagery data.--->grass7:i.maxlik
+i.modis.qc - Extracts quality control parameters from MODIS QC layers.--->grass7:i.modis.qc
+i.oif - Calculates Optimum-Index-Factor table for spectral bands--->grass7:i.oif
+i.pansharpen - Image fusion algorithms to sharpen multispectral with high-res panchromatic channels--->grass7:i.pansharpen
+i.pca - Principal components analysis (PCA) for image processing.--->grass7:i.pca
+i.rectify - Rectifies an image by computing a coordinate transformation for each pixel in the image based on the control points.--->grass7:i.rectify
+i.rgb.his - Transforms raster maps from RGB (Red-Green-Blue) color space to HIS (Hue-Intensity-Saturation) color space.--->grass7:i.rgb.his
+i.segment - Identifies segments (objects) from imagery data.--->grass7:i.segment
+i.smap - Performs contextual image classification using sequential maximum a posteriori (SMAP) estimation.--->grass7:i.smap
+i.tasscap - Performs Tasseled Cap (Kauth Thomas) transformation.--->grass7:i.tasscap
+i.topo.coor.ill - Creates illumination model for topographic correction of reflectance.--->grass7:i.topo.coor.ill
+i.topo.corr - Computes topographic correction of reflectance.--->grass7:i.topo.corr
+i.vi - Calculates different types of vegetation indices.--->grass7:i.vi
+i.zc - Zero-crossing "edge detection" raster function for image processing.--->grass7:i.zc
+m.cogo - A simple utility for converting bearing and distance measurements to coordinates and vice versa. It assumes a cartesian coordinate system--->grass7:m.cogo
+r.aspect - Generates raster maps of aspect from an elevation raster map.--->grass7:r.aspect
+r.basins.fill - Generates watershed subbasins raster map.--->grass7:r.basins.fill
+r.blend.combine - Blends color components of two raster maps by a given ratio and export into a unique raster.--->grass7:r.blend.combine
+r.blend.rgb - Blends color components of two raster maps by a given ratio and exports into three rasters.--->grass7:r.blend.rgb
+r.buffer - Creates a raster map layer showing buffer zones surrounding cells that contain non-NULL category values.--->grass7:r.buffer
+r.buffer.lowmem - Creates a raster map layer showing buffer zones surrounding cells that contain non-NULL category values (low-memory alternative).--->grass7:r.buffer.lowmem
+r.carve - Takes vector stream data, transforms it to raster and subtracts depth from the output DEM.--->grass7:r.carve
+r.category - Manages category values and labels associated with user-specified raster map layers.--->grass7:r.category
+r.category.out - Exports category values and labels associated with user-specified raster map layers.--->grass7:r.category.out
+r.circle - Creates a raster map containing concentric rings around a given point.--->grass7:r.circle
+r.clump - Recategorizes data in a raster map by grouping cells that form physically discrete areas into unique categories.--->grass7:r.clump
+r.coin - Tabulates the mutual occurrence (coincidence) of categories for two raster map layers.--->grass7:r.coin
+r.colors - Creates/modifies the color table associated with a raster map.--->grass7:r.colors
+r.colors.out - Exports the color table associated with a raster map.--->grass7:r.colors.out
+r.colors.stddev - Sets color rules based on stddev from a raster map's mean value.--->grass7:r.colors.stddev
+r.composite - Combines red, green and blue raster maps into a single composite raster map.--->grass7:r.composite
+r.contour.level - Create vector contour from raster at specified levels--->grass7:r.contour.level
+r.contour.step - Create vector contours from raster at specified steps--->grass7:r.contour.step
+r.cost.coordinates - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass7:r.cost.coordinates
+r.cost.points - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass7:r.cost.points
+r.cost.raster - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass7:r.cost.raster
+r.covar - Outputs a covariance/correlation matrix for user-specified raster layer(s).--->grass7:r.covar
+r.cross - Creates a cross product of the category values from multiple raster map layers.--->grass7:r.cross
+r.describe - Prints terse list of category values found in a raster layer.--->grass7:r.describe
+r.distance - Locates the closest points between objects in two raster maps.--->grass7:r.distance
+r.drain - Traces a flow through an elevation model on a raster map.--->grass7:r.drain
+r.fill.dir - Filters and generates a depressionless elevation layer and a flow direction layer from a given elevation raster layer.--->grass7:r.fill.dir
+r.fillnulls - Fills no-data areas in raster maps using spline interpolation.--->grass7:r.fillnulls
+r.flow - Construction of flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a raster digital elevation model (DEM).--->grass7:r.flow
+r.flow.aspect - Construction of flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a raster digital elevation model (DEM).--->grass7:r.flow.aspect
+r.flow.aspect.barrier - Construction of flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a raster digital elevation model (DEM).--->grass7:r.flow.aspect.barrier
+r.flow.barrier - Construction of flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a raster digital elevation model (DEM).--->grass7:r.flow.barrier
+r.grow - Generates a raster layer with contiguous areas grown by one cell.--->grass7:r.grow
+r.grow.distance - Generates a raster layer of distance to features in input layer.--->grass7:r.grow.distance
+r.gwflow - Numerical calculation program for transient, confined and unconfined groundwater flow in two dimensions.--->grass7:r.gwflow
+r.his - Generates red, green and blue raster layers combining hue, intensity and saturation (HIS) values from user-specified input raster layers.--->grass7:r.his
+r.horizon - Horizon angle computation from a digital elevation model.--->grass7:r.horizon
+r.horizon.height - Horizon angle computation from a digital elevation model.--->grass7:r.horizon.height
+r.in.lidar - Creates a raster map from LAS LiDAR points using univariate statistics.--->grass7:r.in.lidar
+r.in.lidar.info - Extract information from LAS file--->grass7:r.in.lidar.info
+r.info - Output basic information about a raster layer.--->grass7:r.info
+r.kappa - Calculate error matrix and kappa parameter for accuracy assessment of classification result.--->grass7:r.kappa
+r.lake.coords - Fills lake at given point to given level.--->grass7:r.lake.coords
+r.lake.layer - Fills lake at given point to given level.--->grass7:r.lake.layer
+r.latlong - Creates a latitude/longitude raster map.--->grass7:r.latlong
+r.li.cwed - Calculates contrast weighted edge density index on a raster map--->grass7:r.li.cwed
+r.li.cwed.ascii - Calculates contrast weighted edge density index on a raster map--->grass7:r.li.cwed.ascii
+r.li.dominance - Calculates dominance's diversity index on a raster map--->grass7:r.li.dominance
+r.li.dominance.ascii - Calculates dominance's diversity index on a raster map--->grass7:r.li.dominance.ascii
+r.li.edgedensity - Calculates edge density index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.edgedensity
+r.li.edgedensity.ascii - Calculates edge density index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.edgedensity.ascii
+r.li.mpa - Calculates mean pixel attribute index on a raster map--->grass7:r.li.mpa
+r.li.mpa.ascii - Calculates mean pixel attribute index on a raster map--->grass7:r.li.mpa.ascii
+r.li.mps - Calculates mean patch size index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.mps
+r.li.mps.ascii - Calculates mean patch size index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.mps.ascii
+r.li.padcv - Calculates coefficient of variation of patch area on a raster map--->grass7:r.li.padcv
+r.li.padcv.ascii - Calculates coefficient of variation of patch area on a raster map--->grass7:r.li.padcv.ascii
+r.li.padrange - Calculates range of patch area size on a raster map--->grass7:r.li.padrange
+r.li.padrange.ascii - Calculates range of patch area size on a raster map--->grass7:r.li.padrange.ascii
+r.li.padsd - Calculates standard deviation of patch area a raster map--->grass7:r.li.padsd
+r.li.padsd.ascii - Calculates standard deviation of patch area a raster map--->grass7:r.li.padsd.ascii
+r.li.patchdensity - Calculates patch density index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.patchdensity
+r.li.patchdensity.ascii - Calculates patch density index on a raster map, using a 4 neighbour algorithm--->grass7:r.li.patchdensity.ascii
+r.li.patchnum - Calculates patch number index on a raster map, using a 4 neighbour algorithm.--->grass7:r.li.patchnum
+r.li.patchnum.ascii - Calculates patch number index on a raster map, using a 4 neighbour algorithm.--->grass7:r.li.patchnum.ascii
+r.li.pielou - Calculates Pielou's diversity index on a raster map--->grass7:r.li.pielou
+r.li.pielou.ascii - Calculates Pielou's diversity index on a raster map--->grass7:r.li.pielou.ascii
+r.li.renyi - Calculates Renyi's diversity index on a raster map--->grass7:r.li.renyi
+r.li.renyi.ascii - Calculates Renyi's diversity index on a raster map--->grass7:r.li.renyi.ascii
+r.li.richness - Calculates richness index on a raster map--->grass7:r.li.richness
+r.li.richness.ascii - Calculates richness index on a raster map--->grass7:r.li.richness.ascii
+r.li.shannon - Calculates Shannon's diversity index on a raster map--->grass7:r.li.shannon
+r.li.shannon.ascii - Calculates Shannon's diversity index on a raster map--->grass7:r.li.shannon.ascii
+r.li.shape - Calculates shape index on a raster map--->grass7:r.li.shape
+r.li.shape.ascii - Calculates shape index on a raster map--->grass7:r.li.shape.ascii
+r.li.simpson - Calculates Simpson's diversity index on a raster map--->grass7:r.li.simpson
+r.li.simpson.ascii - Calculates Simpson's diversity index on a raster map--->grass7:r.li.simpson.ascii
+r.mapcalc - Raster map calculator.------------------->grass7:r.mapcalc
+r.mask.rast - Creates a MASK for limiting raster operation.--->grass7:r.mask.rast
+r.mask.vect - Creates a MASK for limiting raster operation with a vector layer.--->grass7:r.mask.vect
+r.median - Finds the median of values in a cover layer within areas assigned the same category value in a user-specified base layer.--->grass7:r.median
+r.mfilter - Performs raster map matrix filter.------->grass7:r.mfilter
+r.mfilter.fp - Raster map matrix filter.------------->grass7:r.mfilter.fp
+r.mode - Finds the mode of values in a cover layer within areas assigned the same category value in a user-specified base layer.--->grass7:r.mode
+r.neighbors - Makes each cell category value a function of the category values assigned to the cells around it--->grass7:r.neighbors
+r.null - Manages NULL-values of given raster map.---->grass7:r.null
+r.out.gridatb - Exports GRASS raster map to GRIDATB.FOR map file (TOPMODEL)--->grass7:r.out.gridatb
+r.out.ppm - Converts a raster layer to a PPM image file at the pixel resolution of the currently defined region.--->grass7:r.out.ppm
+r.out.vrml - Export a raster layer to the Virtual Reality Modeling Language (VRML)--->grass7:r.out.vrml
+r.param.scale - Extracts terrain parameters from a DEM.--->grass7:r.param.scale
+r.patch - Creates a composite raster layer by using one (or more) layer(s) to fill in areas of "no data" in another map layer.--->grass7:r.patch
+r.plane - Creates raster plane layer given dip (inclination), aspect (azimuth) and one point.--->grass7:r.plane
+r.profile - Outputs the raster layer values lying on user-defined line(s).--->grass7:r.profile
+r.quant - Produces the quantization file for a floating-point map.--->grass7:r.quant
+r.quantile - Compute quantiles using two passes.----->grass7:r.quantile
+r.random - Creates a raster layer and vector point map containing randomly located points.--->grass7:r.random
+r.random.cells - Generates random cell values with spatial dependence.--->grass7:r.random.cells
+r.random.raster - Create random raster--------------->grass7:r.random.raster
+r.random.surface - Generates random surface(s) with spatial dependence.--->grass7:r.random.surface
+r.reclass - Creates a new map layer whose category values are based upon a reclassification of the categories in an existing raster map layer.--->grass7:r.reclass
+r.reclass.area.greater - Reclassifies a raster layer, selecting areas larger than a user specified size--->grass7:r.reclass.area.greater
+r.reclass.area.lesser - Reclassifies a raster layer, selecting areas lower than a user specified size--->grass7:r.reclass.area.lesser
+r.recode - Recodes categorical raster maps.---------->grass7:r.recode
+r.regression.line - Calculates linear regression from two raster layers : y = a + b*x.--->grass7:r.regression.line
+r.regression.multi - Calculates multiple linear regression from raster maps.--->grass7:r.regression.multi
+r.relief - Creates shaded relief from an elevation layer (DEM).--->grass7:r.relief
+r.relief.scaling - Creates shaded relief from an elevation layer (DEM).--->grass7:r.relief.scaling
+r.report - Reports statistics for raster layers.----->grass7:r.report
+r.resamp.bspline - Performs bilinear or bicubic spline interpolation with Tykhonov regularization.--->grass7:r.resamp.bspline
+r.resamp.filter - Resamples raster map layers using an analytic kernel.--->grass7:r.resamp.filter
+r.resamp.interp - Resamples raster map to a finer grid using interpolation.--->grass7:r.resamp.interp
+r.resamp.rst - Reinterpolates using regularized spline with tension and smoothing.--->grass7:r.resamp.rst
+r.resamp.stats - Resamples raster layers to a coarser grid using aggregation.--->grass7:r.resamp.stats
+r.resample - GRASS raster map layer data resampling capability using nearest neighbors.--->grass7:r.resample
+r.rescale - Rescales the range of category values in a raster layer.--->grass7:r.rescale
+r.rescale.eq - Rescales histogram equalized the range of category values in a raster  layer.--->grass7:r.rescale.eq
+r.rgb - Splits a raster map into red, green and blue maps.--->grass7:r.rgb
+r.ros - Generates rate of spread raster maps.-------->grass7:r.ros
+r.series - Makes each output cell value a function of the values assigned to the corresponding cells in the input raster layers.--->grass7:r.series
+r.series.accumulate - Makes each output cell value an accumulation function of the values assigned to the corresponding cells in the input raster map layers.--->grass7:r.series.accumulate
+r.series.interp - Interpolates raster maps located (temporal or spatial) in between input raster maps at specific sampling positions.--->grass7:r.series.interp
+r.shade - Drapes a color raster over an shaded relief or aspect map.--->grass7:r.shade
+r.sim.sediment - Sediment transport and erosion/deposition simulation using path sampling method (SIMWE).--->grass7:r.sim.sediment
+r.sim.water - Overland flow hydrologic simulation using path sampling method (SIMWE).--->grass7:r.sim.water
+r.slope - Generates raster maps of slope from an elevation raster map.--->grass7:r.slope
+r.slope.aspect - Generates raster layers of slope, aspect, curvatures and partial derivatives from a elevation raster layer.--->grass7:r.slope.aspect
+r.solute.transport - Numerical calculation program for transient, confined and unconfined solute transport in two dimensions--->grass7:r.solute.transport
+r.spread - Simulates elliptically anisotropic spread.--->grass7:r.spread
+r.spreadpath - Recursively traces the least cost path backwards to cells from which the cumulative cost was determined.--->grass7:r.spreadpath
+r.statistics - Calculates category or object oriented statistics.--->grass7:r.statistics
+r.stats - Generates area statistics for raster layers.--->grass7:r.stats
+r.stats.quantile.out - Compute category quantiles using two passes and output statistics--->grass7:r.stats.quantile.out
+r.stats.quantile.rast - Compute category quantiles using two passes and output rasters.--->grass7:r.stats.quantile.rast
+r.stream.extract - Stream network extraction--------->grass7:r.stream.extract
+r.sun - Solar irradiance and irradiation model.------>grass7:r.sun
+r.sunhours - Calculates solar elevation, solar azimuth, and sun hours.--->grass7:r.sunhours
+r.sunmask.datetime - Calculates cast shadow areas from sun position and elevation raster map.--->grass7:r.sunmask.datetime
+r.sunmask.position - Calculates cast shadow areas from sun position and elevation raster map.--->grass7:r.sunmask.position
+r.support - Allows creation and/or modification of raster map layer support files (metadata).--->grass7:r.support
+r.surf.area - Surface area estimation for rasters.--->grass7:r.surf.area
+r.surf.contour - Surface generation program from rasterized contours.--->grass7:r.surf.contour
+r.surf.fractal - Creates a fractal surface of a given fractal dimension.--->grass7:r.surf.fractal
+r.surf.gauss - Creates a raster layer of Gaussian deviates.--->grass7:r.surf.gauss
+r.surf.idw - Surface interpolation utility for raster layers.--->grass7:r.surf.idw
+r.surf.random - Produces a raster layer of uniform random deviates whose range can be expressed by the user.--->grass7:r.surf.random
+r.terraflow - Flow computation for massive grids.---->grass7:r.terraflow
+r.texture - Generate images with textural features from a raster map.--->grass7:r.texture
+r.thin - Thins non-zero cells that denote linear features in a raster layer.--->grass7:r.thin
+r.tile - Splits a raster map into tiles-------------->grass7:r.tile
+r.tileset - Produces tilings of the source projection for use in the destination region and projection.--->grass7:r.tileset
+r.to.vect - Converts a raster into a vector layer.--->grass7:r.to.vect
+r.topidx - Creates topographic index layer from elevation raster layer--->grass7:r.topidx
+r.topmodel - Simulates TOPMODEL which is a physically based hydrologic model.--->grass7:r.topmodel
+r.topmodel.topidxstats - Builds a TOPMODEL topographic index statistics file.--->grass7:r.topmodel.topidxstats
+r.transect - Outputs raster map layer values lying along user defined transect line(s).--->grass7:r.transect
+r.univar - Calculates univariate statistics from the non-null cells of a raster map.--->grass7:r.univar
+r.uslek - Computes USLE Soil Erodibility Factor (K).--->grass7:r.uslek
+r.usler - Computes USLE R factor, Rainfall erosivity index.--->grass7:r.usler
+r.viewshed - Computes the viewshed of a point on an elevation raster map.--->grass7:r.viewshed
+r.volume - Calculates the volume of data "clumps".--->grass7:r.volume
+r.walk.coords - Creates a raster map showing the anisotropic cumulative cost of moving between different geographic locations on an input raster map whose cell category values represent cost from a list of coordinates.--->grass7:r.walk.coords
+r.walk.points - Creates a raster map showing the anisotropic cumulative cost of moving between different geographic locations on an input raster map whose cell category values represent cost from point vector layers.--->grass7:r.walk.points
+r.walk.rast - Creates a raster map showing the anisotropic cumulative cost of moving between different geographic locations on an input raster map whose cell category values represent cost from a raster.--->grass7:r.walk.rast
+r.water.outlet - Watershed basin creation program.--->grass7:r.water.outlet
+r.watershed - Watershed basin analysis program.------>grass7:r.watershed
+r.what.color - Queries colors for a raster map layer.--->grass7:r.what.color
+r.what.coords - Queries raster maps on their category values and category labels on a point.--->grass7:r.what.coords
+r.what.points - Queries raster maps on their category values and category labels on a layer of points.--->grass7:r.what.points
+v.buffer.column - Creates a buffer around features of given type.--->grass7:v.buffer.column
+v.buffer.distance - Creates a buffer around features of given type.--->grass7:v.buffer.distance
+v.build.check - Checks for topological errors.------->grass7:v.build.check
+v.build.polylines - Builds polylines from lines or boundaries.--->grass7:v.build.polylines
+v.class - Classifies attribute data, e.g. for thematic mapping.--->grass7:v.class
+v.clean - Toolset for cleaning topology of vector map.--->grass7:v.clean
+v.clean.advanced - Toolset for cleaning topology of vector map (Advanced).--->grass7:v.clean.advanced
+v.db.select - Prints vector map attributes----------->grass7:v.db.select
+v.delaunay - Creates a Delaunay triangulation from an input vector map containing points or centroids.--->grass7:v.delaunay
+v.dissolve - Dissolves boundaries between adjacent areas sharing a common category number or attribute.--->grass7:v.dissolve
+v.distance - Finds the nearest element in vector map 'to' for elements in vector map 'from'.--->grass7:v.distance
+v.drape - Converts vector map to 3D by sampling of elevation raster map.--->grass7:v.drape
+v.drape.where - Converts vector map to 3D by sampling of elevation raster map.--->grass7:v.drape.where
+v.edit - Edits a vector map, allows adding, deleting and modifying selected vector features.--->grass7:v.edit
+v.extract - Selects vector objects from a vector layer a new layer containing only the selected objects.--->grass7:v.extract
+v.extrude - Extrudes flat vector object to 3D with defined height.--->grass7:v.extrude
+v.generalize.displacement - Vector based displacement generalization.--->grass7:v.generalize.displacement
+v.generalize.network - Vector based network generalization.--->grass7:v.generalize.network
+v.generalize.simplify - Vector based simplification generalization.--->grass7:v.generalize.simplify
+v.generalize.smooth - Vector based smooth generalization.--->grass7:v.generalize.smooth
+v.hull - Produces a convex hull for a given vector map.--->grass7:v.hull
+v.in.ascii.points - Creates a vector map from an ASCII points file.--->grass7:v.in.ascii.points
+v.in.ascii.standard - Creates a vector map from an ASCII vector file.--->grass7:v.in.ascii.standard
+v.in.dxf - Converts files in DXF format to GRASS vector map format.--->grass7:v.in.dxf
+v.in.geonames - Imports geonames.org country files into a GRASS vector points map.--->grass7:v.in.geonames
+v.in.lidar - Converts LAS LiDAR point clouds to a GRASS vector map with libLAS.--->grass7:v.in.lidar
+v.in.lines - Import ASCII x,y[,z] coordinates as a series of lines.--->grass7:v.in.lines
+v.in.mapgen - Imports Mapgen or Matlab-ASCII vector maps into GRASS.--->grass7:v.in.mapgen
+v.in.wfs - Import GetFeature from WFS---------------->grass7:v.in.wfs
+v.info - Outputs basic information about a user-specified vector map.--->grass7:v.info
+v.kcv - Randomly partition points into test/train sets.--->grass7:v.kcv
+v.kernel.rast - Generates a raster density map from vector points map.--->grass7:v.kernel.rast
+v.kernel.vector - Generates a vector density map from vector points on a vector network.--->grass7:v.kernel.vector
+v.lidar.correction - Correction of the v.lidar.growing output. It is the last of the three algorithms for LIDAR filtering.--->grass7:v.lidar.correction
+v.lidar.edgedetection - Detects the object's edges from a LIDAR data set.--->grass7:v.lidar.edgedetection
+v.lidar.growing - Building contour determination and Region Growing algorithm for determining the building inside--->grass7:v.lidar.growing
+v.lrs.create - Creates Linear Reference System------->grass7:v.lrs.create
+v.lrs.segment - Creates points/segments from input lines, linear reference system and positions read from stdin or a file.--->grass7:v.lrs.segment
+v.lrs.where - Finds line id and real km+offset for given points in vector map using linear reference system.--->grass7:v.lrs.where
+v.mkgrid - Creates a GRASS vector layer of a user-defined grid.--->grass7:v.mkgrid
+v.neighbors - Makes each cell value a function of attribute values and stores in an output raster map.--->grass7:v.neighbors
+v.net.alloc - Allocates subnets for nearest centers (direction from center)--->grass7:v.net.alloc
+v.net.allpairs - Computes the shortest path between all pairs of nodes in the network--->grass7:v.net.allpairs
+v.net.arcs - Creates arcs from a file of points------>grass7:v.net.arcs
+v.net.articulation - Computes articulation points in the network--->grass7:v.net.articulation
+v.net.bridge - Computes bridges in the network.------>grass7:v.net.bridge
+v.net.centrality - Computes degree, centrality, betweeness, closeness and eigenvector centrality measures in the network.--->grass7:v.net.centrality
+v.net.components - Computes strongly and weakly connected components in the network.--->grass7:v.net.components
+v.net.connect - Connects points to nearest arcs in a network--->grass7:v.net.connect
+v.net.connectivity - Computes vertex connectivity between two sets of nodes in the network.--->grass7:v.net.connectivity
+v.net.distance - Computes shortest distance via the network between the given sets of features.--->grass7:v.net.distance
+v.net.flow - Computes the maximum flow between two sets of nodes in the network.--->grass7:v.net.flow
+v.net.iso - Splits network by cost isolines.--------->grass7:v.net.iso
+v.net.nodes - Creates points for each network arcs--->grass7:v.net.nodes
+v.net.nreport - Reports nodes information of a network--->grass7:v.net.nreport
+v.net.path - Finds shortest path on vector network--->grass7:v.net.path
+v.net.report - Reports lines information of a network--->grass7:v.net.report
+v.net.salesman - Creates a cycle connecting given nodes (Traveling salesman problem)--->grass7:v.net.salesman
+v.net.spanningtree - Computes minimum spanning tree for the network.--->grass7:v.net.spanningtree
+v.net.steiner - Creates Steiner tree for the network and given terminals--->grass7:v.net.steiner
+v.net.visibility - Performs visibility graph construction.--->grass7:v.net.visibility
+v.normal - Tests for normality for points.----------->grass7:v.normal
+v.out.dxf - Exports GRASS vector map layers to DXF file format.--->grass7:v.out.dxf
+v.out.pov - Converts to POV-Ray format, GRASS x,y,z -> POV-Ray x,z,y--->grass7:v.out.pov
+v.out.vtk - Converts a vector map to VTK ASCII output.--->grass7:v.out.vtk
+v.outlier - Removes outliers from vector point data.--->grass7:v.outlier
+v.overlay - Overlays two vector maps.---------------->grass7:v.overlay
+v.pack - Exports a vector map as GRASS GIS specific archive file.--->grass7:v.pack
+v.parallel - Creates parallel line to input vector lines.--->grass7:v.parallel
+v.patch - Create a new vector map layer by combining other vector map layers.--->grass7:v.patch
+v.perturb - Random location perturbations of GRASS vector points--->grass7:v.perturb
+v.qcount - Indices for quadrat counts of vector point lists.--->grass7:v.qcount
+v.random - Randomly generate a 2D/3D vector points map.--->grass7:v.random
+v.rast.stats - Calculates univariate statistics from a raster map based on vector polygons and uploads statistics to new attribute columns.--->grass7:v.rast.stats
+v.reclass - Changes vector category values for an existing vector map according to results of SQL queries or a value in attribute table column.--->grass7:v.reclass
+v.rectify - Rectifies a vector by computing a coordinate transformation for each object in the vector based on the control points.--->grass7:v.rectify
+v.report - Reports geometry statistics for vectors.--->grass7:v.report
+v.sample - Samples a raster layer at vector point locations.--->grass7:v.sample
+v.segment - Creates points/segments from input vector lines and positions.--->grass7:v.segment
+v.select - Selects features from vector map (A) by features from other vector map (B).--->grass7:v.select
+v.split.length - Split lines to shorter segments by length.--->grass7:v.split.length
+v.split.vert - Split lines to shorter segments by max number of vertices.--->grass7:v.split.vert
+v.surf.bspline - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass7:v.surf.bspline
+v.surf.bspline.lambda - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass7:v.surf.bspline.lambda
+v.surf.bspline.sparse - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass7:v.surf.bspline.sparse
+v.surf.idw - Surface interpolation from vector point data by Inverse Distance Squared Weighting.--->grass7:v.surf.idw
+v.surf.rst - Spatial approximation and topographic analysis using regularized spline with tension.--->grass7:v.surf.rst
+v.surf.rst.cvdev - Spatial approximation and topographic analysis using regularized spline with tension.--->grass7:v.surf.rst.cvdev
+v.surf.rst.line - Spatial approximation and topographic analysis using regularized spline with tension.--->grass7:v.surf.rst.line
+v.to.3d - Performs transformation of 2D vector features to 3D.--->grass7:v.to.3d
+v.to.lines - Converts vector polygons or points to lines.--->grass7:v.to.lines
+v.to.points - Create points along input lines-------->grass7:v.to.points
+v.to.rast.attribute - Converts (rasterize) a vector layer into a raster layer.--->grass7:v.to.rast.attribute
+v.to.rast.value - Converts (rasterize) a vector layer into a raster layer.--->grass7:v.to.rast.value
+v.transform - Performs an affine transformation on a vector layer.--->grass7:v.transform
+v.type - Change the type of geometry elements.------->grass7:v.type
+v.univar - Calculates univariate statistics for attribute. Variance and standard deviation is calculated only for points if specified.--->grass7:v.univar
+v.vect.stats - Count points in areas and calculate statistics.--->grass7:v.vect.stats
+v.voronoi - Creates a Voronoi diagram from an input vector layer containing points.--->grass7:v.voronoi
+v.voronoi.skeleton - Extract skeletons for input areas.--->grass7:v.voronoi.skeleton
+v.what.rast.centroids - Uploads raster values at positions of vector centroids to the table.--->grass7:v.what.rast.centroids
+v.what.rast.points - Uploads raster values at positions of vector points to the table.--->grass7:v.what.rast.points
+v.what.vect - Uploads vector values at positions of vector points to the table.--->grass7:v.what.vect
+las2lasPro_filter------------------------------------>lidartools:las2lasprofilter
+las2lasPro_project----------------------------------->lidartools:las2lasproproject
+las2lasPro_transform--------------------------------->lidartools:las2lasprotransform
+las2las_filter--------------------------------------->lidartools:las2lasfilter
+las2las_project-------------------------------------->lidartools:las2lasproject
+las2las_transform------------------------------------>lidartools:las2lastransform
+las2txt---------------------------------------------->lidartools:las2txt
+las2txtPro------------------------------------------->lidartools:las2txtpro
+lasdiff---------------------------------------------->lidartools:lasdiff
+lasindex--------------------------------------------->lidartools:lasindex
+lasindexPro------------------------------------------>lidartools:lasindexpro
+lasinfo---------------------------------------------->lidartools:lasinfo
+lasinfoPro------------------------------------------->lidartools:lasinfopro
+lasmerge--------------------------------------------->lidartools:lasmerge
+lasmergePro------------------------------------------>lidartools:lasmergepro
+lasprecision----------------------------------------->lidartools:lasprecision
+lasquery--------------------------------------------->lidartools:lasquery
+lasvalidate------------------------------------------>lidartools:lasvalidate
+lasvalidatePro--------------------------------------->lidartools:lasvalidatepro
+laszip----------------------------------------------->lidartools:laszip
+laszipPro-------------------------------------------->lidartools:laszippro
+txt2las---------------------------------------------->lidartools:txt2las
+txt2lasPro------------------------------------------->lidartools:txt2laspro
+Aspect----------------------------------------------->gdalogr:aspect
+Assign projection------------------------------------>gdalogr:assignprojection
+Buffer vectors--------------------------------------->gdalogr:buffervectors
+Build Virtual Raster--------------------------------->gdalogr:buildvirtualraster
+Build overviews (pyramids)--------------------------->gdalogr:overviews
+Clip raster by extent-------------------------------->gdalogr:cliprasterbyextent
+Clip raster by mask layer---------------------------->gdalogr:cliprasterbymasklayer
+Clip vectors by extent------------------------------->gdalogr:clipvectorsbyextent
+Clip vectors by polygon------------------------------>gdalogr:clipvectorsbypolygon
+Color relief----------------------------------------->gdalogr:colorrelief
+Contour---------------------------------------------->gdalogr:contour
+Convert format--------------------------------------->gdalogr:convertformat
+Create points along lines---------------------------->gdalogr:createpointsalonglines
+Dissolve polygons------------------------------------>gdalogr:dissolvepolygons
+Execute SQL------------------------------------------>gdalogr:executesql
+Extract projection----------------------------------->gdalogr:extractprojection
+Fill nodata------------------------------------------>gdalogr:fillnodata
+Grid (Data metrics)---------------------------------->gdalogr:griddatametrics
+Grid (Inverse distance to a power)------------------->gdalogr:gridinvdist
+Grid (Moving average)-------------------------------->gdalogr:gridaverage
+Grid (Nearest neighbor)------------------------------>gdalogr:gridnearestneighbor
+Hillshade-------------------------------------------->gdalogr:hillshade
+Import Vector into PostGIS database (available connections)--->gdalogr:importvectorintopostgisdatabaseavailableconnections
+Import Vector into PostGIS database (new connection)--->gdalogr:importvectorintopostgisdatabasenewconnection
+Import layer/table as geometryless table into PostgreSQL database--->gdalogr:importlayertableasgeometrylesstableintopostgresqldatabase
+Information------------------------------------------>gdalorg:rasterinfo
+Information------------------------------------------>gdalogr:information
+Merge------------------------------------------------>gdalogr:merge
+Near black------------------------------------------->gdalogr:nearblack
+PCT to RGB------------------------------------------->gdalogr:pcttorgb
+Polygonize (raster to vector)------------------------>gdalogr:polygonize
+Proximity (raster distance)-------------------------->gdalogr:proximity
+RGB to PCT------------------------------------------->gdalogr:rgbtopct
+Raster calculator------------------------------------>gdalogr:rastercalculator
+Rasterize (vector to raster)------------------------->gdalogr:rasterize
+Rasterize (write over existing raster)--------------->gdalogr:rasterize_over
+Retile----------------------------------------------->gdalogr:retile
+Roughness-------------------------------------------->gdalogr:roughness
+Sieve------------------------------------------------>gdalogr:sieve
+Single sided buffers (and offset lines) for lines---->gdalogr:singlesidedbuffersandoffsetlinesforlines
+Slope------------------------------------------------>gdalogr:slope
+TPI (Topographic Position Index)--------------------->gdalogr:tpitopographicpositionindex
+TRI (Terrain Ruggedness Index)----------------------->gdalogr:triterrainruggednessindex
+Tile Index------------------------------------------->gdalogr:tileindex
+Translate (convert format)--------------------------->gdalogr:translate
+Warp (reproject)------------------------------------->gdalogr:warpreproject
+gdal2tiles------------------------------------------->gdalogr:gdal2tiles
+gdal2xyz--------------------------------------------->gdalogr:gdal2xyz
+i.atcorr - Performs atmospheric correction using the 6S algorithm.--->grass:i.atcorr
+i.fft - Fast Fourier Transform (FFT) for image processing.--->grass:i.fft
+i.his.rgb - Transforms raster maps from HIS (Hue-Intensity-Saturation) color space to RGB (Red-Green-Blue) color space.--->grass:i.his.rgb
+i.ifft - Inverse Fast Fourier Transform (IFFT) for image processing.--->grass:i.ifft
+i.rgb.his - Transforms raster maps from RGB (Red-Green-Blue) color space to HIS (Hue-Intensity-Saturation) color space.--->grass:i.rgb.his
+i.zc - Zero-crossing "edge detection" raster function for image processing.--->grass:i.zc
+m.cogo - A simple utility for converting bearing and distance measurements to coordinates and vice versa. It assumes a cartesian coordinate system--->grass:m.cogo
+nviz------------------------------------------------->grass:nviz
+r.aspect - Generates raster maps of aspect from a elevation raster map.--->grass:r.aspect
+r.average - Finds the average of values in a cover raster layer  within areas assigned the same category value in a user-specified base layer.--->grass:r.average
+r.basins.fill - Generates watershed subbasins raster map.--->grass:r.basins.fill
+r.bilinear - Bilinear interpolation utility for raster map layers.--->grass:r.bilinear
+r.bitpattern - Compares bit patterns with a raster map.--->grass:r.bitpattern
+r.buffer - Creates a raster map layer showing buffer zones surrounding cells that contain non-NULL category values.--->grass:r.buffer
+r.carve - Takes vector stream data, transforms it to raster and subtracts depth from the output DEM.--->grass:r.carve
+r.circle - Creates a raster map containing concentric rings around a given point.--->grass:r.circle
+r.clump - Recategorizes data in a raster map by grouping cells that form physically discrete areas into unique categories.--->grass:r.clump
+r.coin - Tabulates the mutual occurrence (coincidence) of categories for two raster map layers.--->grass:r.coin
+r.composite - Combines red, green and blue raster maps into a single composite raster map.--->grass:r.composite
+r.contour.level - Create vector contour from raster at specified levels--->grass:r.contour.level
+r.contour.step - Create vector contours from raster at specified steps--->grass:r.contour.step
+r.cost - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass:r.cost
+r.cost.full - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass:r.cost.full
+r.cost.full.raster - Creates a raster layer of cumulative cost of moving across a raster layer whose cell values represent cost.--->grass:r.cost.full.raster
+r.covar - Outputs a covariance/correlation matrix for user-specified raster layer(s).--->grass:r.covar
+r.cross - Creates a cross product of the category values from multiple raster map layers.--->grass:r.cross
+r.describe - Prints terse list of category values found in a raster layer.--->grass:r.describe
+r.drain - Traces a flow through an elevation model on a raster map.--->grass:r.drain
+r.drain.coordinate - Traces a flow through an elevation model on a raster map.--->grass:r.drain.coordinate
+r.fill.dir - Filters and generates a depressionless elevation layer and a flow direction layer from a given elevation raster layer.--->grass:r.fill.dir
+r.fillnulls - Fills no-data areas in a raster layer using v.surf.rst splines interpolation or v.surf.bspline interpolation--->grass:r.fillnulls
+r.flow - Construction of slope curves (flowlines), flowpath lengths, and flowline densities (upslope areas) from a raster digital elevation model (DEM).--->grass:r.flow
+r.grow - Generates a raster layer with contiguous areas grown by one cell.--->grass:r.grow
+r.grow.distance - Generates a raster layer of distance to features in input layer.--->grass:r.grow.distance
+r.gwflow - Numerical calculation program for transient, confined and unconfined groundwater flow in two dimensions.--->grass:r.gwflow
+r.his - Generates red, green and blue raster layers combining hue, intensity and saturation (HIS) values from user-specified input raster layers.--->grass:r.his
+r.horizon - Horizon angle computation from a digital elevation model.--->grass:r.horizon
+r.horizon.height - Horizon angle computation from a digital elevation model.--->grass:r.horizon.height
+r.info - Output basic information about a raster layer.--->grass:r.info
+r.kappa - Calculate error matrix and kappa parameter for accuracy assessment of classification result.--->grass:r.kappa
+r.lake.coords - Fills lake at given point to given level.--->grass:r.lake.coords
+r.lake.layer - Fills lake at given point to given level.--->grass:r.lake.layer
+r.los - Line-of-sight raster analysis program.------->grass:r.los
+r.mapcalculator - Calculate new raster map from a r.mapcalc expression.--->grass:r.mapcalculator
+r.median - Finds the median of values in a cover layer within areas assigned the same category value in a user-specified base layer.--->grass:r.median
+r.mfilter - Performs raster map matrix filter.------->grass:r.mfilter
+r.mfilter.fp - Raster map matrix filter.------------->grass:r.mfilter.fp
+r.mode - Finds the mode of values in a cover layer within areas assigned the same category value in a user-specified base layer.--->grass:r.mode
+r.neighbors - Makes each cell category value a function of the category values assigned to the cells around it--->grass:r.neighbors
+r.out.gridatb - Exports GRASS raster map to GRIDATB.FOR map file (TOPMODEL)--->grass:r.out.gridatb
+r.out.ppm - Converts a raster layer to a PPM image file at the pixel resolution of the currently defined region.--->grass:r.out.ppm
+r.out.vrml - Export a raster layer to the Virtual Reality Modeling Language (VRML)--->grass:r.out.vrml
+r.out.xyz - Export a raster map to a text file as x,y,z values based on cell centers--->grass:r.out.xyz
+r.param.scale - Extracts terrain parameters from a DEM.--->grass:r.param.scale
+r.patch - Creates a composite raster layer by using one (or more) layer(s) to fill in areas of "no data" in another map layer.--->grass:r.patch
+r.plane - Creates raster plane layer given dip (inclination), aspect (azimuth) and one point.--->grass:r.plane
+r.profile - Outputs the raster layer values lying on user-defined line(s).--->grass:r.profile
+r.quant - Produces the quantization file for a floating-point map.--->grass:r.quant
+r.quantile - Compute quantiles using two passes.----->grass:r.quantile
+r.random - Creates a raster layer and vector point map containing randomly located points.--->grass:r.random
+r.random.cells - Generates random cell values with spatial dependence.--->grass:r.random.cells
+r.random.raster - Create random raster--------------->grass:r.random.raster
+r.reclass - Creates a new map layer whose category values are based upon a reclassification of the categories in an existing raster map layer.--->grass:r.reclass
+r.reclass.area.greater - Reclassifies a raster layer, selecting areas larger than a user specified size--->grass:r.reclass.area.greater
+r.reclass.area.lesser - Reclassifies a raster layer, selecting areas lower than a user specified size--->grass:r.reclass.area.lesser
+r.recode - Recodes categorical raster maps.---------->grass:r.recode
+r.regression.line - Calculates linear regression from two raster layers : y = a + b*x.--->grass:r.regression.line
+r.report - Reports statistics for raster layers.----->grass:r.report
+r.resamp.interp - Resamples a raster map layer to a finer grid using interpolation.--->grass:r.resamp.interp
+r.resamp.rst - Reinterpolates using regularized spline with tension and smoothing.--->grass:r.resamp.rst
+r.resamp.stats - Resamples raster layers to a coarser grid using aggregation.--->grass:r.resamp.stats
+r.resample - GRASS raster map layer data resampling capability using nearest neighbors.--->grass:r.resample
+r.rescale - Rescales the range of category values in a raster layer.--->grass:r.rescale
+r.rescale.eq - Rescales histogram equalized the range of category values in a raster  layer.--->grass:r.rescale.eq
+r.ros - Generates three, or four raster map layers showing 1) the base (perpendicular) rate of spread (ROS), 2) the maximum (forward) ROS, 3) the direction of the maximum ROS, and optionally 4) the maximum potential spotting distance.--->grass:r.ros
+r.series - Makes each output cell value a function of the values assigned to the corresponding cells in the input raster layers.--->grass:r.series
+r.shaded.relief - Creates shaded relief from an elevation layer (DEM).--->grass:r.shaded.relief
+r.sim.sediment - Sediment transport and erosion/deposition simulation using path sampling method (SIMWE).--->grass:r.sim.sediment
+r.sim.water - Overland flow hydrologic simulation using path sampling method (SIMWE).--->grass:r.sim.water
+r.slope - Generates raster maps of slope from a elevation raster map.--->grass:r.slope
+r.slope.aspect - Generates raster layers of slope, aspect, curvatures and partial derivatives from a elevation raster layer.--->grass:r.slope.aspect
+r.spread - Simulates elliptically anisotropic spread on a graphics window and generates a raster map of the cumulative time of spread, given raster maps containing the rates of spread (ROS), the ROS directions and the spread origins.--->grass:r.spread
+r.spreadpath - Recursively traces the least cost path backwards to cells from which the cumulative cost was determined.--->grass:r.spreadpath
+r.statistics - Calculates category or object oriented statistics.--->grass:r.statistics
+r.stats - Generates area statistics for raster layers.--->grass:r.stats
+r.sum - Sums up the raster cell values.-------------->grass:r.sum
+r.sun - Solar irradiance and irradiation model.------>grass:r.sun
+r.sunmask.datetime - Calculates cast shadow areas from sun position and elevation raster map.--->grass:r.sunmask.datetime
+r.sunmask.position - Calculates cast shadow areas from sun position and elevation raster map.--->grass:r.sunmask.position
+r.surf.area - Surface area estimation for rasters.--->grass:r.surf.area
+r.surf.contour - Surface generation program from rasterized contours.--->grass:r.surf.contour
+r.surf.gauss - Creates a raster layer of Gaussian deviates.--->grass:r.surf.gauss
+r.surf.idw - Surface interpolation utility for raster layers.--->grass:r.surf.idw
+r.surf.idw2 - Surface generation.-------------------->grass:r.surf.idw2
+r.surf.random - Produces a raster layer of uniform random deviates whose range can be expressed by the user.--->grass:r.surf.random
+r.terraflow - Flow computation for massive grids (float version).--->grass:r.terraflow
+r.terraflow.short - Flow computation for massive grids (integer version).--->grass:r.terraflow.short
+r.thin - Thins non-zero cells that denote linear features in a raster layer.--->grass:r.thin
+r.to.vect - Converts a raster into a vector layer.--->grass:r.to.vect
+r.topidx - Creates topographic index layer from elevation raster layer--->grass:r.topidx
+r.univar - Calculates univariate statistics from the non-null cells of a raster map.--->grass:r.univar
+r.volume - Calculates the volume of data "clumps".--->grass:r.volume
+r.walk - Outputs a raster layer showing the anisotropic cumulative cost of moving based on friction cost.--->grass:r.walk
+r.water.outlet - Watershed basin creation program.--->grass:r.water.outlet
+r.watershed - Watershed basin analysis program.------>grass:r.watershed
+v.buffer.column - Creates a buffer around features of given type.--->grass:v.buffer.column
+v.buffer.distance - Creates a buffer around features of given type.--->grass:v.buffer.distance
+v.class - Classifies attribute data, e.g. for thematic mapping.--->grass:v.class
+v.clean - Toolset for cleaning topology of vector map.--->grass:v.clean
+v.clean.advanced - Toolset for cleaning topology of vector map (Advanced).--->grass:v.clean.advanced
+v.db.select - Prints vector map attributes----------->grass:v.db.select
+v.delaunay - Creates a Delaunay triangulation from an input vector map containing points or centroids.--->grass:v.delaunay
+v.dissolve - Dissolves boundaries between adjacent areas sharing a common category number or attribute.--->grass:v.dissolve
+v.distance - Finds the nearest element in vector map 'to' for elements in vector map 'from'.--->grass:v.distance
+v.distance.toattr - Finds the nearest element in vector map 'to' for elements in vector map 'from'.--->grass:v.distance.toattr
+v.drape - Converts vector map to 3D by sampling of elevation raster map.--->grass:v.drape
+v.extract - Selects vector objects from a vector layer a new layer containing only the selected objects.--->grass:v.extract
+v.generalize - Vector based generalization.---------->grass:v.generalize
+v.hull - Produces a convex hull for a given vector map.--->grass:v.hull
+v.in.dxf - Converts files in DXF format to GRASS vector map format.--->grass:v.in.dxf
+v.in.wfs - Import GetFeature from WFS---------------->grass:v.in.wfs
+v.info - Outputs basic information about a user-specified vector map.--->grass:v.info
+v.kcv - Randomly partition points into test/train sets.--->grass:v.kcv
+v.kernel - Generates a raster density map from vector point data using a moving kernel or optionally generates a vector density map on a vector network.--->grass:v.kernel
+v.lidar.correction - Correction of the v.lidar.growing output. It is the last of the three algorithms for LIDAR filtering.--->grass:v.lidar.correction
+v.lidar.edgedetection - Detects the object's edges from a LIDAR data set.--->grass:v.lidar.edgedetection
+v.lidar.growing - Building contour determination and Region Growing algorithm for determining the building inside--->grass:v.lidar.growing
+v.mkgrid - Creates a GRASS vector layer of a user-defined grid.--->grass:v.mkgrid
+v.neighbors - Makes each cell value a function of attribute values and stores in an output raster map.--->grass:v.neighbors
+v.normal - Tests for normality for points.----------->grass:v.normal
+v.out.dxf - Exports GRASS vector map layers to DXF file format.--->grass:v.out.dxf
+v.out.pov - Converts to POV-Ray format, GRASS x,y,z -> POV-Ray x,z,y--->grass:v.out.pov
+v.outlier - Removes outliers from vector point data.--->grass:v.outlier
+v.overlay - Overlays two vector maps.---------------->grass:v.overlay
+v.parallel - Creates parallel line to input vector lines.--->grass:v.parallel
+v.patch - Create a new vector map layer by combining other vector map layers.--->grass:v.patch
+v.perturb - Random location perturbations of GRASS vector points--->grass:v.perturb
+v.qcount - Indices for quadrant counts of sites lists.--->grass:v.qcount
+v.random - Randomly generate a 2D/3D vector points map.--->grass:v.random
+v.reclass - Changes vector category values for an existing vector map according to results of SQL queries or a value in attribute table column.--->grass:v.reclass
+v.report - Reports geometry statistics for vectors.--->grass:v.report
+v.sample - Samples a raster layer at vector point locations.--->grass:v.sample
+v.segment - Creates points/segments from input vector lines and positions.--->grass:v.segment
+v.select - Selects features from vector map (A) by features from other vector map (B).--->grass:v.select
+v.split.length - Split lines to shorter segments by length.--->grass:v.split.length
+v.split.vert - Split lines to shorter segments by max number of vertices.--->grass:v.split.vert
+v.surf.bspline - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass:v.surf.bspline
+v.surf.bspline.lambda - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass:v.surf.bspline.lambda
+v.surf.bspline.sparse - Bicubic or bilinear spline interpolation with Tykhonov regularization.--->grass:v.surf.bspline.sparse
+v.surf.idw - Surface interpolation from vector point data by Inverse Distance Squared Weighting.--->grass:v.surf.idw
+v.surf.rst - Spatial approximation and topographic analysis using regularized spline with tension.--->grass:v.surf.rst
+v.surf.rst.cvdev - Spatial approximation and topographic analysis using regularized spline with tension.--->grass:v.surf.rst.cvdev
+v.surf.rst.cvdev.line - Spatial approximation and topographic analysis using regularized spline with tension.--->grass:v.surf.rst.cvdev.line
+v.surf.rst.line - Spatial approximation and topographic analysis using regularized spline with tension.--->grass:v.surf.rst.line
+v.to.points - Create points along input lines-------->grass:v.to.points
+v.to.rast.attribute - Converts (rasterize) a vector layer into a raster layer.--->grass:v.to.rast.attribute
+v.to.rast.value - Converts (rasterize) a vector layer into a raster layer.--->grass:v.to.rast.value
+v.transform - Performs an affine transformation on a vector layer.--->grass:v.transform
+v.transform.pointsfile - Performs an affine transformation on a vector layer, using a support point file.--->grass:v.transform.pointsfile
+v.univar - Calculates univariate statistics for attribute. Variance and standard deviation is calculated only for points if specified.--->grass:v.univar
+v.voronoi - Creates a Voronoi diagram from an input vector layer containing points.--->grass:v.voronoi
+

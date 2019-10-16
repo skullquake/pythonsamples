@@ -1,0 +1,14 @@
+You can start a pydoc server with the following
+
+pydoc -p 8080
+
+If your files are set up correctly you will see your classes in the list on the web page
+in the case of this source tree Person class can be browsed
+
+Generally speaking pydoc is the python documentation tool. In this source folder for example
+you can run pydoc Person. You can also search for keywords using the -k flag, although
+this takes very long to complete. There is also a small graphical utility, just look in the
+man pages.
+
+A useful feature is html documentation generation, which you can use the -w flag for,
+for example pydoc -w ./ will generate documentation for files in the current folder

@@ -1,0 +1,9 @@
+with open('/tmp/a.txt','a') as a:
+        a.seek(0)
+        for b in iface.activeLayer().getFeatures():
+            a.write(str(b['name'].encode('utf-8')))
+            a.write(',')
+            a.write(str(b.geometry().asPoint().x()))
+            a.write(',')
+            a.write(str(b.geometry().asPoint().y()))
+            a.write('\n')

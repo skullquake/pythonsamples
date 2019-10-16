@@ -6,8 +6,10 @@ Module doc
 """
 def main (args):
     """
-    main()
+    main() doc
     """
+    with open('/tmp/a.txt') as a:
+        a.write('test')
     return 0;
 
 

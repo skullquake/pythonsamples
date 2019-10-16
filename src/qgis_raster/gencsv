@@ -2,12 +2,16 @@
 # -*- coding: utf-8 -*-
 # vim: ts=4 sw=4 et:
 """
-Module doc
+Generate sample csv
 """
 def main (args):
     """
     main()
     """
+    with open("./a.csv","w") as a:
+        a.write("\"lat\",\"lng\"\n")
+        for b in range(0,32,1):
+            a.write("{},{}\n".format(b,b))
     return 0;
 
 

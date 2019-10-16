@@ -1,0 +1,3 @@
+for a in QgsProject.instance().layerTreeRoot().children():
+    print(a.name())
+

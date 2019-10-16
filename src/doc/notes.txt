@@ -1584,3 +1584,8 @@ vim edit encrypted
    edit
    ...
       pretty cool
+ipython use specific version of python
+	e.g.
+		python /usr/local/bin/ipython
+		or
+		python `which ipython`

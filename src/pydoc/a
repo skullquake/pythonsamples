@@ -4,10 +4,15 @@
 """
 Module doc
 """
+from Person import Person
 def main (args):
     """
     main()
     """
+    juan=Person('Juan');
+    okki=Person('Ockert');
+    juan.greet();
+    okki.greet();
     return 0;
 
 

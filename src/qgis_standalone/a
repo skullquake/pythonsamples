@@ -1,0 +1,52 @@
+#!/usr/bin/python2
+# -*- coding: utf-8 -*-
+"""
+Sample standalong qgis processing example
+"""
+import qgis
+from qgis.core import *
+import sys
+app = QgsApplication([],True, None)
+app.setPrefixPath("/usr", True)
+app.initQgis()
+sys.path.append('/usr/share/qgis/python/plugins')
+from processing.core.Processing import Processing
+Processing.initialize()
+from processing.tools import *
+def main (args):
+    """
+    main() function
+    ;args - cli args
+    """
+    url="file:///home/skullquake/src/skullquake/pythonsamples/src/qgis_standalone/a.csv?delimiter=%s&xField=%s&yField=%s"%(",","lat","lng")
+    print(url)
+    a=QgsVectorLayer(
+            url,
+            'NewCSV',
+            'delimitedtext'
+    )
+    QgsMapLayerRegistry.instance().addMapLayer(a)
+    print(a);
+    print(str(a.getFeatures()));
+    print(a.extent())
+    print(a.extent().xMaximum())
+    print(a.extent().xMinimum())
+    print(a.extent().yMaximum())
+    print(a.extent().yMinimum())
+
+    #print(dir(layer));
+    #print(dir(a.getFeatures()));
+    #print(a.getFeatures().__sizeof__())
+    #print(type(a.getFeatures()))
+    for b in a.getFeatures():
+        #print(b.geometry())
+        print("{},{}".format(b['lng'],b['lng']))
+    QgsApplication.exitQgis()
+    return 0;
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+
+
+
