@@ -13,8 +13,8 @@ def main (args):
     with open('../res/worldcities.csv', 'r') as a:
         b=csv.DictReader(a)
         for c in b:
-            #print(f"{c['lat']},{c['lng']}\n")
             d=Point(float(c['lat']), float(c['lng']))
+            print(d)
     return 0;
 
 
