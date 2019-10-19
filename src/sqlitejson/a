@@ -1,0 +1,60 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+convert json into sqlite3 database
+not fully dynamic
+https://medium.com/@mokashitejas/fetch-data-using-json-api-and-insert-into-sqlite3-db-83f25bc49864
+"""
+import json
+import requests
+import datetime
+import sqlite3
+def main (args):
+    """
+    main()
+    """
+    url = "https://www.quandl.com/api/v3/datatables/SHARADAR/SFP.json?api_key=sCJNpBm_3CDYKxgRbMFS"
+    content = requests.get(url).content
+    dataset = json.loads(content)
+    dataframe=list()
+    for row in dataset["datatable"]["data"]:
+        date=datetime.datetime.strptime(row[1],"%Y-%m-%d")
+        date1=datetime.datetime.strptime(row[9],"%Y-%m-%d")
+        data=(str(row[0]),date,float(row[2]),float(row[3]),float(row[4]),float(row[5]),float(row[6]),float(row[7]),float(row[8]),date1)
+        dataframe.append(data)
+    try:
+        db = sqlite3.connect("./db/a.db")
+        cursor = db.cursor()
+        cursor.execute("""create table stocks (ticker varchar(50),date datetime,open float,high float, low float,
+        close float,volume float,dividends float,closeunadj float,lastupdated datetime)""")
+
+    except Exception as E:
+        print("Error :", E)
+    else:
+        print("table created")
+    try:
+        cursor.executemany("insert into stocks values(?,?,?,?,?,?,?,?,?,?)", dataframe)
+    except Exception as E:
+        print("Error : ", E)
+    else:
+        db.commit()
+        print("data inserted")
+    db.close()
+    try:
+        db = sqlite3.connect("./db/a.db")
+        cursor = db.cursor()
+        cursor.execute("""SELECT * FROM stocks """)
+    except Exception as E:
+        print ("Error: ", E)
+    else:
+        for row in cursor.fetchall():
+            print (row)
+            db.close()
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

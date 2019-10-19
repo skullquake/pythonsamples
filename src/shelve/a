@@ -1,0 +1,70 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+shelve example
+"""
+import shelve
+import random
+from src.Person import Person
+def main (args):
+    """
+    main()
+    """
+    a=shelve.open("./res/a.dat")
+    a['a']=0
+    a['b']=1
+    a['c']=2
+    a['d']=3
+    a.close()
+    a=shelve.open("./res/a.dat")
+    print('individual gets:')
+    print(a.get('a'))
+    print(a.get('b'))
+    print(a.get('c'))
+    print(a.get('d'))
+    print('keys:')
+    print(list(a.keys()))
+    print('items:')
+    print(list(a.items()))
+    lst={
+        'e':random.randint(0,8),
+        'f':random.randint(0,8),
+        'g':random.randint(0,8),
+        'h':random.randint(0,8)
+    }
+    print('executing update')
+    a.update(
+            lst
+    )
+    print('popping list')
+    for b in lst:
+        print(a.pop(b))
+    p=a.get('person')
+    if p==None:
+        print('creating new person')
+        p=Person()
+        a['person']=p
+    else:
+        print(p)
+        print('modifying person')
+        p.setName('personModified['+str(random.randint(0,8))+']')
+        a['person']=p
+    buf=a.get('buf')
+    if buf==None:
+        print('creating new buffer')
+        a['buf']=[]
+    print("updating buffer")
+    buf.append(len(buf)+1)
+    a['buf']=buf
+    print(a['buf'])
+
+    a.close()
+
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);

@@ -1589,3 +1589,16 @@ ipython use specific version of python
 		python /usr/local/bin/ipython
 		or
 		python `which ipython`
+nasa mission data
+	https://solarsystem.nasa.gov/missions/pioneer-11/in-depth/
+	https://spdf.sci.gsfc.nasa.gov/pub/data/pioneer/
+sqlite[3] notes
+	https://chrisostrouchov.com/post/python_sqlite/
+	https://stackoverflow.com/questions/39319280/python-sqlite-json1-load-extension
+	https://charlesleifer.com/blog/using-the-sqlite-json1-and-fts5-extensions-with-python/
+	https://community.esri.com/groups/appstudio/blog/2018/08/21/working-with-json-in-sqlite-databases
+fossil
+	dscm with build-int wiki,http interface and server, tickets database
+	sqlite uses this for their source management
+	needed to use this to get sqlite and compile for json1 support
+		see https://charlesleifer.com/blog/using-the-sqlite-json1-and-fts5-extensions-with-python/

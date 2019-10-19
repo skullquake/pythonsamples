@@ -1,0 +1,217 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Daemon test server
+links:
+    https://news.ycombinator.com/item?id=19277809
+    https://chrisostrouchov.com/post/python_sqlite/
+    https://medium.com/@mokashitejas/fetch-data-using-json-api-and-insert-into-sqlite3-db-83f25bc49864
+    http://timmyreilly.azurewebsites.net/flask-socketio-and-more/
+    https://socket.io/docs/emit-cheatsheet/
+    https://stackoverflow.com/questions/34581255/python-flask-socketio-send-message-from-thread-not-always-working
+    https://github.com/miguelgrinberg/Flask-SocketIO/issues/862
+    https://github.com/miguelgrinberg/python-socketio/issues/16
+    https://medium.com/@abhishekchaudhary_28536/building-apps-using-flask-socketio-and-javascript-socket-io-intro-f1e5804ac259
+    https://medium.com/@abhishekchaudhary_28536/building-apps-using-flask-socketio-and-javascript-socket-io-part-1-ae448768643
+    https://flask-socketio.readthedocs.io/en/latest/
+This is documentation for the *module* (the whole file)
+"""
+#modify to use globals here for config (PORT etc)
+from flask import\
+        Flask,\
+        render_template,\
+        jsonify,\
+        request,\
+        Response,\
+        g
+from datetime import datetime
+import time
+import sqlite3
+import json
+import random
+import os
+from flask_socketio import\
+        SocketIO,\
+        emit
+#--------------------------------------------------------------------------------
+DATABASE='./db/a.db'
+#--------------------------------------------------------------------------------
+app=Flask(
+    __name__,
+    static_url_path="",
+    static_folder="web/static",
+    template_folder="web/templates"
+);
+socketio = SocketIO(app)
+#--------------------------------------------------------------------------------
+def get_db():
+    db=getattr(g,'_database',None)
+    if db is None:
+        db=g._database=sqlite3.connect(DATABASE)
+    return db
+@app.teardown_appcontext
+def close_connection(exception):
+    db=getattr(g,'_database',None)
+    if db is not None:
+        db.close()
+#--------------------------------------------------------------------------------
+@app.route('/a', methods=['GET', 'POST'])
+def a():
+    cur=get_db().cursor()
+    cur.execute('drop table if exists a')
+    import string
+    sql='create table if not exists a('
+    arrattr=[]
+    for a in string.ascii_lowercase:
+        arrattr.append(f"{a} varchar(255)")
+    sql+=','.join(arrattr)
+    sql+=')'
+    cur.execute(sql)
+    cur.execute('PRAGMA table_info(a)')
+    dictval={}
+    for b in cur:
+        dictval[b[1]]=None
+    for a in range(512):
+        for b in dictval.keys():
+            dictval[b]=str(random.randint(0,8))
+        sql='insert into a('
+        sql+=','.join(dictval.keys())
+        sql+=')values('
+        sql+=','.join(dictval.values())
+        sql+=')'
+        cur.execute(sql)
+    get_db().commit()
+    #for a in range(8):
+    #    cur.execute(f"insert into a(a)values ('{a}')")
+    r=''
+    r+='<table>\n'
+    cur.execute('select * from a')
+    for a in cur:
+        r+='\t<tr>\n'
+        for b in a:
+            r+=f'\t\t<td>\n\t\t\t{b}\n\t\t</td>\n'
+        r+='\t</tr>\n'
+    r+='</table>\n'
+    return r
+@app.route('/monitor', methods=['POST'])
+def monitorPost():
+    cur=get_db().cursor()
+    try:
+        cur.execute('create table if not exists data(value text)')
+    except Exception as E:
+        print(E)
+    else:
+        get_db().commit()
+    try:
+        cur.executemany("insert into data(value)values(?)",[(str(request.get_json()),)])
+        try:
+            if request.get_json()['msg']=='data':
+                socketio.emit(
+                    'log',
+                    {
+                        'data':request.get_json()['time']+'\t'+
+                            request.get_json()['msg']+'\t'+
+                            str(request.get_json()['cpu'])+'\t'+
+                            str(request.get_json()['cpu_stat'])
+                    },
+                    broadcast=True
+                )
+            else:
+                socketio.emit(
+                    'log',
+                    {
+                        'data':request.get_json()['time']+'\t'+
+                            request.get_json()['msg']
+                    },
+                    broadcast=True
+                )
+        except Exception as E:
+            print(E)
+
+    except Exception as E:
+        print(E)
+    else:
+        get_db().commit()
+    return ''
+@app.route("/b/<name>")
+def b():
+    return c
+@app.route('/monitor', methods=['GET'])
+def monitorGet():
+    print('monitorget')
+    r=''
+    r+='<table>\n'
+    cur=get_db().cursor()
+    cur.execute('select * from data')
+    for a in cur:
+        r+='\t<tr>\n'
+        for b in a:
+            r+=f'\t\t<td>\n\t\t\t{b}\n\t\t</td>\n'
+        r+='\t</tr>\n'
+    r+='</table>\n'
+    return r
+#--------------------------------------------------------------------------------
+@app.route('/')
+def index():
+    return render_template('index.html')
+#--------------------------------------------------------------------------------
+@app.route('/chart-data')
+def chart_data():
+    def generate_random_data():
+        while True:
+            json_data = json.dumps(
+                {'time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'), 'value': random.random() * 100})
+            yield f"data:{json_data}\n\n"
+            time.sleep(1)
+
+    return Response(generate_random_data(), mimetype='text/event-stream')
+#--------------------------------------------------------------------------------
+#@socketio.on('log', namespace='/test')
+#def a(data):
+#    pass
+#@socketio.on('my_event', namespace='/test')
+@socketio.on('my_event')
+def test_message(message):
+    print('socketio: my event')
+    emit('log', {'data': message['data']})
+
+#@socketio.on('my broadcast event', namespace='/test')
+@socketio.on('my broadcast event')
+def test_message(message):
+    print('socketio: my broadcast event')
+    emit('log', {'data': message['data']}, broadcast=True)
+
+#@socketio.on('connect', namespace='/test')
+@socketio.on('connect')
+def test_connect():
+    print('socketio: connect')
+    emit('log', {'data': 'Connected'})
+
+#@socketio.on('disconnect', namespace='/test')
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')
+#--------------------------------------------------------------------------------
+def main (args):
+    """
+    main()
+    """
+    assert(os.path.exists("web/static")),'no folder';
+    assert(os.path.exists("web/templates")),'no folder';
+    socketio.run(
+        app,
+        host='0.0.0.0',
+        port=5000
+    )
+    #app.run(
+    #    host='0.0.0.0',
+    #    port='5000'
+    #);
+    return 0;
+#--------------------------------------------------------------------------------
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+#--------------------------------------------------------------------------------

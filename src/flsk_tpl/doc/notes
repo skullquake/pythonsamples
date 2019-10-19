@@ -1,0 +1,5 @@
+install
+virtualenv ./
+source ./bin/activate
+pip3 install flask
+./a

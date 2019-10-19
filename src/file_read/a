@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+def main (args):
+    """
+    main() doc
+    """
+    with open('../res/1973096_p11_hvm_ip_15min.asc') as a:
+        for b in a:
+            print(b.split()[0])
+    return 0;
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
