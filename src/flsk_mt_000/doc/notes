@@ -1,0 +1,7 @@
+install
+virtualenv ./
+source ./bin/activate
+pip3 install flask eventlet flask_socketio
+./a
+
+for background threading socket emission, take not of async_mode in Socketio ctor
