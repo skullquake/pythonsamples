@@ -451,16 +451,19 @@ pre {
 	<script>
 		$(document).ready(
 			function(){
-							logbuf=[];
-							loglen=24;
-								function log(msg){
-												logbuf.unshift(msg)
-												logbuf=logbuf.slice(0,16)
-																$('#log').text('')
-												logbuf.forEach(function(a,b){
-																$('#log').prepend(a+'\n');
-												});
-							}
+						logbuf=[];
+						vbuf=[];
+						loglen=8;//24
+						function log(msg){
+								vbuf=vbuf.slice(0,loglen-1)
+								vbuf.push(Math.random())
+								logbuf.push(msg)
+								logbuf=logbuf.slice(0,loglen)
+								$('#log').text('')
+								logbuf.forEach(function(a,b){
+									$('#log').prepend(a+'\n');
+								});
+						}
 				//var socket=io.connect('http://'+document.domain+':'+location.port+'/test');
 				var socket=io.connect('http://'+document.domain+':'+location.port);
 				socket.on(
@@ -485,19 +488,33 @@ pre {
 
 
 				);
-function draw() {
   var canvas = $('#canvas')[0];
+  var ctx=null;
   if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
-				ctx.fillStyle = "blue";
-				ctx.fillRect(0, 0,150,150);
-    //ctx.clearRect(0,0,150,150);
-    for(var i=0;i<150;i++){
-			  ctx.strokeStyle = "#FF0000";
-				ctx.moveTo(i,150);
-				ctx.lineTo(i,150-Math.random()*150);//Math.foor(Math.random()*150),i);
-				ctx.stroke();
-    }
+  }
+var drawn=false;
+var x=0;
+var y=0;
+function draw() {
+	console.log(new Date().getTime())
+	if(ctx!=null&&!drawn){
+          ctx.clearRect(0,0,150,150);
+	  var r=0;//Math.random()*255;
+	  var g=0;//Math.random()*255;
+	  var b=0;//Math.random()*255;
+	  var a=1;//Math.random()*1;
+	  ctx.fillStyle=`rgba(${r},${g},${b},${a})`;
+          ctx.fillRect(0,0,150,150);
+	  for(var i=0;i<vbuf.length;i++){
+		ctx.beginPath()
+		ctx.strokeStyle = "#FF0000";
+		ctx.moveTo(i,150);
+		ctx.lineTo(i,150-vbuf[i]*150);
+		ctx.stroke();
+		ctx.closePath()
+	  }
+		//drawn=true;
   }
 }
 draw();
