@@ -471,7 +471,7 @@
 							vbuf=vbuf.slice(1)
 						}
 						try{
-							vbuf.push(JSON.parse(msg).cpu)
+							vbuf.push(msg)
 						}catch(e){
 							$('#status').text(e)
 						}
