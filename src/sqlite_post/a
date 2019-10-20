@@ -1,0 +1,71 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+"""
+Module doc
+"""
+import sqlite3
+import urllib.request
+import json
+import datetime
+URL="http://localhost:5000/monitor"
+def post(msg):
+    body=msg.encode('utf-8')
+    req=urllib.request.Request(URL)
+    req.add_header(\
+        'Content-Type',\
+        'application/json; charset=utf-8'\
+    )
+    req.add_header(\
+        'Content-Length',\
+        len(body)
+    )
+    try:
+        response=urllib.request.urlopen(\
+            req,\
+            body,\
+            1\
+        )
+    except Exception as E:
+        print(E)
+    return
+    
+def main (args):
+    """
+    main()
+    """
+    con=sqlite3.connect("./db/a.db")
+    cur=con.cursor()
+    #cur.execute('create table if not exists buffer(ID INTEGER PRIMARY KEY AUTOINCREMENT,value text)')
+    cur.execute('create table if not exists buffer(id integer primary key autoincrement,value text)')
+    con.commit()
+    batch=[]
+    for a in range(512):
+        batch.append(
+            (
+                json.dumps(
+                    {
+                        'time':datetime.datetime.now().isoformat(),
+                        'msg':'data',
+                        'cpu':'cpu',
+                        'cpu_stat':'cpu_stat'
+                    }
+                ),
+            )
+        )
+    cur.executemany(
+        "insert into buffer(value)values(?)",
+        batch
+    )
+    con.commit()
+    for row in cur.execute('select * from buffer'):
+        print(row[1])
+        post(row[1])
+    return 0;
+
+
+if __name__ == "__main__":
+    import sys;
+    sys.exit(main(sys.argv));
+    sys.exit(0);
+

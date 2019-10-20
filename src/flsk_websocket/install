@@ -1,0 +1,5 @@
+#!/bin/bash
+virtualenv ./
+source ./bin/activate
+pip3 install flask
+chmod ugo+rwx ./a

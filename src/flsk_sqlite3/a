@@ -96,6 +96,7 @@ def a():
     return r
 @app.route('/monitor', methods=['POST'])
 def monitorPost():
+    print(f'mon: {datetime.now()}')
     cur=get_db().cursor()
     try:
         cur.execute('create table if not exists data(value text)')

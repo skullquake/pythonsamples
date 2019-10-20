@@ -1,15 +1,6 @@
 #!/usr/bin/python3
-""" An example of a Linux daemon written in Python.
-
-Based on http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
-
-The changes are:
-1 - Uses file open context managers instead of calls to file().
-2 - Forces stdin to /dev/null. stdout and stderr go to log files.
-3 - Uses print instead of sys.stdout.write prior to pointing stdout to the log file.
-4 - Omits try/excepts if they only wrap one error message w/ another.
-
-i - http://stackoverflow.com/questions/3263672/python-the-difference-between-sys-stdout-write-and-print
+"""
+Daemon
 """
 import atexit
 import datetime
@@ -23,79 +14,122 @@ import time
 import urllib.request
 import json
 import psutil
+import sqlite3
+#-------------------------------------------------------------------------------
+PERIOD=1.00
+DATABASE="./db/a.db"
+#-------------------------------------------------------------------------------
 class Daemon(object):
     """ Linux Daemon boilerplate. """
-
+    #---------------------------------------------------------------------------
+    #ctor
+    #---------------------------------------------------------------------------
     def __init__(
         self,
-        pid_file,
-        stdout="/var/log/daemon_example_out.log",
-        stderr="/var/log/daemon_example_err.log",
+        pid_fileP,
+        stdoutP="/var/log/daemon_example_out.log",
+        stderrP="/var/log/daemon_example_err.log",
+        srvurlP="http://localhost:5000/monitor"
     ):
-        self.stdout = stdout
-        self.stderr = stderr
-        self.pid_file = pid_file
+        self.stdout=stdoutP
+        self.stderr=stderrP
+        self.pid_file=pid_fileP
+        self.srvurl=srvurlP
+        self.db=None
+        self.db_init()
+    #---------------------------------------------------------------------------
+    #database related
+    #---------------------------------------------------------------------------
+    def get_db(self):
+        """get database"""
+        if self.db is None:
+            self.db=sqlite3.connect(DATABASE)
+        return self.db
+    def close_connection(self):
+        """close database connection"""
+        if self.db is not None:
+            self.db.close()
+        pass
+    def db_init(self):
+        """initialize database"""
+        con=self.get_db()
+        cur=con.cursor()
+        try:
+            #cur.execute('create table if not exists buffer(id integer,value text)')
+            cur.execute('create table if not exists buffer(ID INTEGER PRIMARY KEY AUTOINCREMENT,value text)')
+        except Exception as E:
+            self.log(str(E))
+        else:
+            con.commit()
+            self.log('Database initialized')
+        pass
+    def db_insert(self,val):
+        """insert database"""
+        con=self.get_db()
+        cur=con.cursor()
+        try:
+            cur.executemany(
+                    'insert into buffer(value)values(?)',\
+                    [\
+                        (\
+                            str(val),
+                        )\
+                    ]\
+            )
+        except Exception as E:
+            self.log(str(E))
+        else:
+            con.commit()
+            self.log('Value buffered')
+        return
 
+
+    #---------------------------------------------------------------------------
+    #config related
+    #---------------------------------------------------------------------------
+    def lod_cfg(self,cfgPathP="./cfg/a.yaml"):
+        """ Load yaml config """
+        bool_ret=False
+        bool_ret=True
+        return bool_ret
+    def buffer_db(self,data):
+        """buffer line to db"""
+        pass
+    #---------------------------------------------------------------------------
+    #daemon ctl
+    #---------------------------------------------------------------------------
     def del_pid(self):
         """ Delete the pid file. """
         os.remove(self.pid_file)
-
     def daemonize(self):
-        """ There shined a shiny daemon, In the middle, Of the road... """
-        # fork 1 to spin off the child that will spawn the deamon.
+        """ Init daemon """
         if os.fork():
             sys.exit()
-
-        # This is the child.
-        # 1. cd to root for a guarenteed working dir.
-        # 2. clear the session id to clear the controlling TTY.
-        # 3. set the umask so we have access to all files created by the daemon.
         os.chdir("/")
         os.setsid()
         os.umask(0)
-
-        # fork 2 ensures we can't get a controlling ttd.
         if os.fork():
             sys.exit()
-
-        # This is a child that can't ever have a controlling TTY.
-        # Now we shut down stdin and point stdout/stderr at log files.
-
-        # stdin
-        with open("/dev/null", "r") as dev_null:
-            os.dup2(dev_null.fileno(), sys.stdin.fileno())
-
-        # stderr - do this before stdout so that errors about setting stdout write to the log file.
-        #
-        # Exceptions raised after this point will be written to the log file.
+        with open("/dev/null","r") as dev_null:
+            os.dup2(dev_null.fileno(),sys.stdin.fileno())
         sys.stderr.flush()
-        with open(self.stderr, "a+") as stderr:
-            os.dup2(stderr.fileno(), sys.stderr.fileno())
-
-        # stdout
-        #
-        # Print statements after this step will not work. Use sys.stdout
-        # instead.
+        with open(self.stderr,"a+") as stderr:
+            os.dup2(stderr.fileno(),sys.stderr.fileno())
         sys.stdout.flush()
-        with open(self.stdout, "a+") as stdout:
+        with open(self.stdout,"a+") as stdout:
             os.dup2(stdout.fileno(), sys.stdout.fileno())
-
-        # Write pid file
-        # Before file creation, make sure we'll delete the pid file on exit!
         atexit.register(self.del_pid)
         pid = str(os.getpid())
-        with open(self.pid_file, "w+") as pid_file:
+        with open(self.pid_file,"w+") as pid_file:
             pid_file.write("{0}".format(pid))
-
     def get_pid_by_file(self):
         """ Return the pid read from the pid file. """
         try:
             with open(self.pid_file, "r") as pid_file:
-                pid = int(pid_file.read().strip())
+                pid=int(pid_file.read().strip())
             return pid
         except IOError:
             return
-
     def start(self):
         """ Start the daemon. """
         print("Starting...")
@@ -106,12 +140,64 @@ class Daemon(object):
                 )
             )
             sys.exit(1)
-
+        body={
+            "msg":'start',
+            "time":datetime.datetime.now().isoformat()
+        }
+        myurl="http://localhost:5000/monitor"
+        req=urllib.request.Request(myurl)
+        req.add_header(\
+            'Content-Type',\
+            'application/json; charset=utf-8'\
+        )
+        jsondata=json.dumps(body)
+        jsondataasbytes=jsondata.encode('utf-8')
+        req.add_header(\
+            'Content-Length',\
+            len(jsondataasbytes)
+        )
+        try:
+            response=urllib.request.urlopen(\
+                req,\
+                jsondataasbytes,\
+                1\
+            )
+        except Exception as E:
+            syslog.syslog(\
+                syslog.LOG_INFO,\
+                str(E)+"\n"
+            )
         self.daemonize()
         self.run()
-
     def stop(self):
         """ Stop the daemon. """
+        body = {
+            "msg":'shutdown',
+            "time":datetime.datetime.now().isoformat()
+        }
+        myurl="http://localhost:5000/monitor"
+        req=urllib.request.Request(myurl)
+        req.add_header(\
+            'Content-Type',\
+            'application/json; charset=utf-8'\
+        )
+        jsondata=json.dumps(body)
+        jsondataasbytes=jsondata.encode('utf-8')
+        req.add_header(\
+            'Content-Length',\
+            len(jsondataasbytes)\
+        )
+        try:
+            response=urllib.request.urlopen(\
+                req,\
+                jsondataasbytes,\
+                1\
+            )
+        except Exception as E:
+            syslog.syslog(\
+                syslog.LOG_INFO,\
+                str(E)+"\n"\
+            )
         print("Stopping...")
         syslog.syslog("Stopping...")
         pid = self.get_pid_by_file()
@@ -122,11 +208,9 @@ class Daemon(object):
                 )
             )
             return
-
-        # Time to kill.
         try:
             while 1:
-                os.kill(pid, signal.SIGTERM)
+                os.kill(pid,signal.SIGTERM)
                 time.sleep(0.1)
         except OSError as err:
             if "No such process" in err.strerror and os.path.exists(self.pid_file):
@@ -134,70 +218,145 @@ class Daemon(object):
             else:
                 print(err)
                 sys.exit(1)
-
     def restart(self):
         """ Restart the deamon. """
         self.stop()
         self.start()
-
+    #---------------------------------------------------------------------------
+    #do work
+    #---------------------------------------------------------------------------
     def run(self):
         """ The main loop of the daemon. """
         syslog.syslog("Starting...")
-        schedule.every(1).seconds.do(job)
+        schedule.every(PERIOD).seconds.do(self.job)
         while 1:
             schedule.run_pending()
-            time.sleep(1)
-
-
-def job():
-    syslog.syslog(syslog.LOG_INFO, datetime.datetime.now().isoformat() + "\n")
-    disks=[];
-    i=0
-    for disk in psutil.disk_partitions():
-        diskobj=disk._asdict()
-        diskobj["usage"]=psutil.disk_usage(i)._asdict()
-        disks.append(diskobj)
-        #i+=1
-    procs=[];
-    for proc in psutil.process_iter():
-        procs.append(proc.cmdline())
-    body = {
-            'name':'tst',
-            "time":datetime.datetime.now().isoformat(),
-            "cpu":psutil.cpu_percent(),
-            "cpu_stat":psutil.cpu_stats()._asdict(),
-            "cpu_timex":psutil.cpu_times()._asdict(),
-            "disks":disks,
-            "procs":procs
-    }
-    myurl = "http://localhost:8080"
-    req = urllib.request.Request(myurl)
-    req.add_header('Content-Type', 'application/json; charset=utf-8')
-    jsondata = json.dumps(body)
-    jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
-    req.add_header('Content-Length', len(jsondataasbytes))
-    #print (jsondataasbytes)
-    response = urllib.request.urlopen(req, jsondataasbytes)
-
-
-
-if __name__ == "__main__":
-
-
+            time.sleep(PERIOD)
+    def log(self,msg):
+        """ Syslogging """
+        syslog.syslog(\
+                syslog.LOG_INFO,\
+                msg\
+        )
+        pass
+    def post(self,msg):
+        """ post message to server """
+        bool_ret=False
+        myurl="http://localhost:5000/monitor"
+        req=urllib.request.Request(myurl)
+        req.add_header(\
+            'Content-Type',\
+            'application/json; charset=utf-8'\
+        )
+        req.add_header(\
+            'Content-Length',\
+            len(msg)\
+        )
+        try:
+            response=urllib.\
+            request.\
+            urlopen(\
+                req,\
+                jsondataasbytes,\
+                1
+            )
+            bool_ret=True
+        except Exception as E:
+            syslog.syslog(\
+                self.log(str(E))\
+            )
+        return bool_ret
+    def job(self):
+        syslog.syslog(syslog.LOG_INFO, datetime.datetime.now().isoformat() + "\n")
+        disks=[];
+        i=0
+        for disk in psutil.disk_partitions():
+            diskobj=disk._asdict()
+            diskobj["usage"]=psutil.disk_usage(i)._asdict()
+            disks.append(diskobj)
+            #i+=1
+        procs=[];
+        for proc in psutil.process_iter():
+            procs.append(proc.cmdline())
+        body={
+                'msg':'data',
+                'name':'tst',
+                "time":datetime.datetime.now().isoformat(),
+                "cpu":psutil.cpu_percent(),
+                "cpu_stat":psutil.cpu_stats()._asdict(),
+                "cpu_timex":psutil.cpu_times()._asdict(),
+                "disks":disks,
+                "procs":procs
+        }
+        myurl="http://localhost:5000/monitor"
+        req=urllib.request.Request(myurl)
+        req.add_header(\
+            'Content-Type',\
+            'application/json; charset=utf-8'\
+        )
+        jsondata=json.dumps(body)
+        jsondataasbytes=jsondata.encode('utf-8')   # needs to be bytes
+        req.add_header(\
+            'Content-Length',\
+            len(jsondataasbytes)\
+        )
+        try:
+            response=urllib.request.urlopen(\
+                req,\
+                jsondataasbytes,\
+                1
+            )
+            con=self.get_db()
+            cur=con.cursor()
+            # handle buffer
+            cur.execute("select * from buffer")
+            for row in cur:
+                self.log('flushing buffer '+str(row[0]))
+                try:
+                    req=urllib.request.Request(myurl)
+                    req.add_header(\
+                        'Content-Type',\
+                        'application/json; charset=utf-8'\
+                    )
+                    jsondataasbytes=str(row[1])
+                    req.add_header(\
+                        'Content-Length',\
+                        len(jsondataasbytes)\
+                    )
+                    response=urllib.request.urlopen(\
+                        req,\
+                        jsondataasbytes.encode('utf-8'),\
+                        1
+                    )
+                except Exception as E:
+                    self.log(str(E))
+                finally:
+                    cur.executemany(\
+                        "delete from buffer where id=?",\
+                        [\
+                            (\
+                                row[0],
+                            )\
+                        ]\
+                    )
+                    con.commit()
+        except Exception as E:
+            self.db_insert(jsondataasbytes)
+            syslog.syslog(\
+                syslog.LOG_INFO,\
+                str(E)+"\n"\
+            )
+if __name__=="__main__":
     if len(sys.argv) < 2:
         print("Usage: {0} start|stop|restart".format(sys.argv[0]))
         sys.exit(2)
-
-    daemon = Daemon("/tmp/daemon_example_p3.pid")
-    if "start" == sys.argv[1]:
+    daemon=Daemon("/tmp/daemon_example_p3.pid")
+    if "start"==sys.argv[1]:
         daemon.start()
-    elif "stop" == sys.argv[1]:
+    elif "stop"==sys.argv[1]:
         daemon.stop()
-    elif "restart" == sys.argv[1]:
+    elif "restart"==sys.argv[1]:
         daemon.restart()
     else:
         print("Unknown command '{0}'".format(sys.argv[1]))
         sys.exit(2)
-
-
-
