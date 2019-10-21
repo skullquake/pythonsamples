@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+export FLASK_APP=main.py
+export FLASK_DEBUG=0
+export MAIL_SERVER=smtp.googlemail.com
+export MAIL_PORT=587
+export MAIL_USE_TLS=1
+export MAIL_USERNAME=ha
+export MAIL_PASSWORD=ha
+flask run

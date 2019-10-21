@@ -1,0 +1,37 @@
+install
+virtualenv ./
+source ./bin/activate
+pip3 install flask eventlet flask_socketio
+pip3 install flask-wtf
+pip3 install flask-sqlalchemy
+pip3 install flask-migrate
+pip3 install flask-shell-ipython
+pip3 install flask-login
+./a
+
+create migration scripts
+	FLASK_APP=main flask db init
+	./mkmgr
+	./migrations tree created
+	clean with ./rmmgr
+perform migration
+	e.g.
+		FLASK_APP=main flask db migrate -m "users table"
+		available in ./mgrmgr
+		verify
+			 ./app.db ".schema"
+upgrade database
+	flask db upgrade
+		FLASK_APP=main flask db upgrade
+		available at ./ugrmgr
+		verify
+			 ./app.db ".schema"
+database procedure
+	update model
+	migrate (mgrmgr)
+	upgrade (ugrmgr)
+enter flask shell
+	flask shell
+	FLASK_APP=main flask db migrate -m "users table"
+	available at ./fshell
+
