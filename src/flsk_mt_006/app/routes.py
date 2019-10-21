@@ -9,14 +9,16 @@ from app import\
 from app.forms import\
 	LoginForm,\
 	RegistrationForm,\
-	EditProfileForm
+	EditProfileForm,\
+	PostForm
 from flask_login import\
 	current_user,\
 	login_user,\
 	logout_user,\
 	login_required
 from app.models import\
-	User
+	User,\
+	Post
 from werkzeug.urls import\
 	url_parse
 from app import \
@@ -24,23 +26,33 @@ from app import \
 from datetime import\
 	datetime
 @app.route('/')
-@app.route('/index')
+@app.route('/index',methods=['GET','POST'])
 @login_required
 def index():
-	user={'username': 'Miguel'}
-	posts=[]
-	for a in range(0,10):
-		posts.append(
-			{
-				'author':{'username':f'author {a}'},
-				'body':f'post {a}'
-			}
-		)
+	form=PostForm()
+	if form.validate_on_submit():
+		post = Post(body=form.post.data, author=current_user)
+		db.session.add(post)
+		db.session.commit()
+		flash('Your post is now live!')
+		return redirect(url_for('index'))
+	posts = [
+		{
+			'author': {'username': 'John'},
+			'body': 'Beautiful day in Portland!'
+		},
+		{
+			'author': {'username': 'Susan'},
+			'body': 'The Avengers movie was so cool!'
+		}
+	]
 	return render_template(
-		'index.html',
-		title='Home',
+		"index.html",
+		title='Home Page',
+		form=form,
 		posts=posts
 	)
+
 @app.route('/login',methods=['GET','POST'])
 def login():
 	if current_user.is_authenticated:
