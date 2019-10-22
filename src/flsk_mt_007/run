@@ -5,5 +5,5 @@
 #export MAIL_PORT=587
 #export MAIL_USE_TLS=1
 #export MAIL_USERNAME=ockert8080@gmail.com
-#export MAIL_PASSWORD=1234!@#$qwerQWER
+#export MAIL_PASSWORD=
 flask run

@@ -17,6 +17,6 @@ class Config(object):
 	MAIL_PORT=587
 	MAIL_USE_TLS=1
 	MAIL_USERNAME='ockert8080@gmail.com'
-	MAIL_PASSWORD='4321$#@!rewqREWQ'
+	MAIL_PASSWORD=''
 
 	POSTS_PER_PAGE=5
