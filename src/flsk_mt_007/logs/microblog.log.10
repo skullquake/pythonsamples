@@ -1,0 +1,99 @@
+2019-10-22 00:29:41,508 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-22 00:30:19,089 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-22 01:24:36,050 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:31:40,107 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:33:53,311 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:41:22,565 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:42:30,624 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:43:50,215 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:45:02,680 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:46:53,840 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:46:57,072 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:47:08,491 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:47:46,871 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:48:45,174 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:48:50,875 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:49:47,544 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:50:09,539 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:50:23,501 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:50:42,845 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:56:07,611 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:56:29,704 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 01:58:35,594 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 02:19:13,002 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 02:20:14,288 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:53]
+2019-10-22 03:55:26,755 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
+2019-10-22 03:58:30,311 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
+2019-10-22 03:58:59,595 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
+2019-10-22 03:59:22,321 ERROR: Exception on /register [POST] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 580, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 88, in register
+    if form.validate_on_submit():
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/forms.py", line 29, in validate_username
+    user=User.query.filter_by(username=username.data).first()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3240, in first
+    ret = list(self[0:1])
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3018, in __getitem__
+    return list(res)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3342, in __iter__
+    return self._execute_and_instances(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3367, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1253, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 580, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('ockert', 1, 0)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-10-22 03:59:40,048 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
+2019-10-22 03:59:45,367 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]

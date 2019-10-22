@@ -1,13 +1,18 @@
-2019-10-21 04:03:54,016 ERROR: Exception on /edit_profile [POST] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 580, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
-
-The above exception was the direct cause of the following exception:
-
+2019-10-21 22:57:58,775 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 22:57:59,968 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 22:58:22,537 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 22:58:23,594 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 22:58:28,933 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:00:52,187 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:01:06,831 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:01:07,747 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:17:21,618 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:17:36,614 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:18:29,815 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:19:00,182 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:19:27,283 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:22:11,095 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:22:13,871 ERROR: Exception on /index [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -23,53 +28,69 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_004/app/routes.py", line 98, in edit_profile
-    db.session.commit()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
-    self.transaction.commit()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 494, in commit
-    self._prepare_impl()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
-    self.session.flush()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2470, in flush
-    self._flush(objects)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2608, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
-    raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 2568, in _flush
-    flush_context.execute()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
-    rec.execute(self)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 589, in execute
-    uow,
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 236, in save_obj
-    update,
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 996, in _emit_update_statements
-    statement, multiparams
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 988, in execute
-    return meth(self, multiparams, params)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
-    distilled_params,
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1253, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/routes.py", line 53, in index
+    posts=posts
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 580, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
-[parameters: ('b', 'lorem ipsum\r\nlorem ipsum\r\nlorem ipsum\r\n\r\n', 1)]
-(Background on this error at: http://sqlalche.me/e/gkpj)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/templates/base.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/templates/index.html", line 17, in block "content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable
+2019-10-21 23:22:35,109 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:23:34,157 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:27:02,016 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:28:03,699 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:30:16,823 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:33:53,086 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:33:58,485 ERROR: Exception on /index [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/routes.py", line 54, in index
+    next_url=next_url,
+NameError: name 'next_url' is not defined
+2019-10-21 23:34:35,141 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/__init__.py:51]
+2019-10-21 23:34:36,727 ERROR: Exception on /index [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_006/app/routes.py", line 44, in index
+    next_url=url_for('index',page=posts.next_num)if posts.has_next else None
+UnboundLocalError: local variable 'posts' referenced before assignment
