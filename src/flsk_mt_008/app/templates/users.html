@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Icon</th>
+						<th scope="col">Name</th>
+						<th scope="col">Followers</th>
+						<th scope="col">Following</th>
+						<th scope="col">About</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr class="table-active">
+							<td><img src="{{ user.avatar(128) }}" style="width:32px;height:auto;"></td>
+							<td>{{ user.username }}</td>
+							<td>{{ user.followers.count() }}</td>
+							<td>{{ user.followed.count() }}</td>
+							<td>{{ user.about_me }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="pagination">
+				{% if prev_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&laquo;</a>
+					</li>
+				{% endif %}
+				<li class="page-item active">
+					<a class="page-link" href="#">1</a>
+				</li>
+				{% if next_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ next_url }}">&raquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&raquo;</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}

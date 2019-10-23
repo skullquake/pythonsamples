@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+	{% for post in posts %}
+		<div class="card">
+			{% include '_post.html' %}
+		</div><br/>
+	{% endfor %}
+	<ul class="pagination">
+		{% if prev_url %}
+			<li class="page-item">
+				<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#">&laquo;</a>
+			</li>
+		{% endif %}
+		<li class="page-item active">
+			<a class="page-link" href="#">1</a>
+		</li>
+		{% if next_url %}
+			<li class="page-item">
+				<a class="page-link" href="{{ next_url }}">&raquo;</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#">&raquo;</a>
+			</li>
+		{% endif %}
+	</ul>
+	{% if form %}
+		<form action="" method="post">
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.post(cols=32, rows=1,class_="form-control",placeholder="Your Message...") }}<br>
+				{% for error in form.post.errors %}
+				<span style="color: red;">[{{ error }}]</span>
+				{% endfor %}
+			</p>
+			<p>{{ form.submit(class_="btn btn-default") }}</p>
+		</form>
+	{% endif %}
+{% endblock %}
+
