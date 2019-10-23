@@ -1,0 +1,114 @@
+2019-10-23 19:13:21,786 ERROR: Exception on /test [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_008/app/routes.py", line 307, in test
+    prev_url=prev_url
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_008/app/templates/test.html", line 1, in template
+    {% endblock %}
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'.
+2019-10-23 19:13:41,790 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_008/app/__init__.py:57]
+2019-10-23 19:14:37,890 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_008/app/__init__.py:57]
+2019-10-23 19:33:04,663 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-23 19:33:49,004 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-23 19:35:15,869 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:61]
+2019-10-23 19:57:47,921 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:61]
+2019-10-23 20:02:16,002 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:61]
+2019-10-23 20:02:20,439 ERROR: Exception on /login [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 82, in login
+    return render_template('login.html', title='Sign In', form=form)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/login.html", line 14, in root
+    {{ form.password(size=32,class_="form-control") }}
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 65, in root
+    </li>
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/login.html", line 25, in block_content
+    </form>
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/wtforms/fields/core.py", line 393, in __html__
+    return self()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/wtforms/fields/core.py", line 402, in __call__
+    return widgets.HTMLString('<label %s>%s</label>' % (attributes, text or self.text))
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_babel/speaklater.py", line 23, in __str__
+    return text_type(self._func(*self._args, **self._kwargs))
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_babel/__init__.py", line 552, in gettext
+    t = get_translations()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_babel/__init__.py", line 227, in get_translations
+    [get_locale()],
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_babel/__init__.py", line 257, in get_locale
+    rv = babel.locale_selector_func()
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py", line 64, in get_locale
+    return request.accep_language.best_match(app.config['LANGUAGES'])
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/werkzeug/local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'accep_language'
+2019-10-23 20:02:45,752 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:61]

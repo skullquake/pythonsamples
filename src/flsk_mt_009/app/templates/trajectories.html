@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-hover table-sm">
+				<thead>
+					<tr>
+						<th scope="col">YYYY</th>
+						<th scope="col">MM</th>
+						<th scope="col">DD</th>
+						<th scope="col">VENAU</th>
+						<th scope="col">SECLAT</th>
+						<th scope="col">SECLON</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for trajectory in trajectories %}
+						<tr class="table-active">
+							<td>{{ trajectory.YYYY }}</td>
+							<td>{{ trajectory.MM }}</td>
+							<td>{{ trajectory.DD }}</td>
+							<td>{{ trajectory.VENAU }}</td>
+							<td>{{ trajectory.SECLAT }}</td>
+							<td>{{ trajectory.SECLON }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="pagination">
+				{% if prev_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&laquo;</a>
+					</li>
+				{% endif %}
+				<li class="page-item active">
+					<a class="page-link" href="#">1</a>
+				</li>
+				{% if next_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ next_url }}">&raquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&raquo;</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+
+{% endblock %}

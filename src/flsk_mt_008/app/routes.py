@@ -149,9 +149,9 @@ def user(username):
 	)
 @app.before_request
 def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
+	if current_user.is_authenticated:
+		current_user.last_seen = datetime.utcnow()
+		db.session.commit()
 @app.route('/edit_profile',methods=['GET','POST'])
 @login_required
 def edit_profile():
@@ -276,6 +276,32 @@ def trajectories():
 	prev_url=url_for('trajectories',page=trajectories.prev_num)if trajectories.has_prev else None
 	return render_template(
 		'trajectories.html',
+		trajectories=trajectories.items,
+		next_url=next_url,
+		prev_url=prev_url
+	)
+
+@app.route('/test')
+@login_required
+def test():
+	headings=[]
+	for a in Trajectory.__table__.columns:
+		headings.append(a.name)
+	page=request.args.get(
+		'page',
+		1,
+		type=int
+	)
+	trajectories=Trajectory.query.paginate(
+		page,
+		10,#app.config['POSTS_PER_PAGE'],
+		False
+	)
+	next_url=url_for('test',page=trajectories.next_num)if trajectories.has_next else None
+	prev_url=url_for('test',page=trajectories.prev_num)if trajectories.has_prev else None
+	return render_template(
+		'test.html',
+		headings=headings,
 		trajectories=trajectories.items,
 		next_url=next_url,
 		prev_url=prev_url
