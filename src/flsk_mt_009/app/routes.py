@@ -318,8 +318,7 @@ def cpu():
 @app.route('/cpu', methods=['POST'])
 def cpu_post():
 	try:
-
-		print(request.get_json()['ts'])
+		print(json.dumps(request.get_json(),indent=4))
 		c=Cpu(
 			ts=parse(request.get_json()['ts']),
 			cpu=request.get_json()['cpu']

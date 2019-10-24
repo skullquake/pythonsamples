@@ -1,75 +1,4 @@
-2019-10-24 03:08:10,102 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 425, in _psutil
-    indent=4
-  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
-    **kw).encode(obj)
-  File "/usr/lib/python3.6/json/encoder.py", line 201, in encode
-    chunks = list(chunks)
-  File "/usr/lib/python3.6/json/encoder.py", line 430, in _iterencode
-    yield from _iterencode_dict(o, _current_indent_level)
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 325, in _iterencode_list
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 437, in _iterencode
-    o = _default(o)
-  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
-    o.__class__.__name__)
-TypeError: Object of type 'Process' is not JSON serializable
-2019-10-24 03:08:13,171 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 425, in _psutil
-    indent=4
-  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
-    **kw).encode(obj)
-  File "/usr/lib/python3.6/json/encoder.py", line 201, in encode
-    chunks = list(chunks)
-  File "/usr/lib/python3.6/json/encoder.py", line 430, in _iterencode
-    yield from _iterencode_dict(o, _current_indent_level)
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 325, in _iterencode_list
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 437, in _iterencode
-    o = _default(o)
-  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
-    o.__class__.__name__)
-TypeError: Object of type 'Process' is not JSON serializable
-2019-10-24 03:08:47,264 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:08:47,793 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 03:09:07,222 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
     return fun(self, *args, **kwargs)
@@ -105,5 +34,61 @@ Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1516, in wrapper
     raise AccessDenied(self.pid, self._name)
 psutil.AccessDenied: psutil.AccessDenied (pid=1)
-2019-10-24 03:08:56,521 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:09:07,009 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 03:09:12,913 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 03:09:13,190 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 350, in _psutil
+    _proc['memory_percent']=proc.percent()
+AttributeError: 'Process' object has no attribute 'percent'
+2019-10-24 03:09:25,287 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 03:09:25,632 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
+    return fun(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 2073, in connections
+    ret = _connections.retrieve(kind, self.pid)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 950, in retrieve
+    inodes = self.get_proc_inodes(pid)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 772, in get_proc_inodes
+    for fd in os.listdir("%s/%s/fd" % (self._procfs_path, pid)):
+PermissionError: [Errno 13] Permission denied: '/proc/1/fd'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 349, in _psutil
+    _proc['connections']=proc.connections()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1278, in connections
+    return self._proc.connections(kind)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1516, in wrapper
+    raise AccessDenied(self.pid, self._name)
+psutil.AccessDenied: psutil.AccessDenied (pid=1)
+2019-10-24 03:09:33,941 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]

@@ -5,6 +5,7 @@ from app.models import\
 	Post,\
 	Trajectory,\
 	Cpu
+from app import cli
 @app.shell_context_processor
 def make_shell_context():
 	"""
@@ -17,4 +18,3 @@ def make_shell_context():
 		'Trajectory':Trajectory,
 		'Cpu':Cpu
 	}
-
