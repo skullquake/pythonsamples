@@ -61,7 +61,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="{{url_for('index')}}">Home</a>
+						<a class="nav-link" href="{{url_for('index')}}">{{_('Home')}}</a>
 					</li>
 					{% if current_user.is_anonymous %}
 					<li class="nav-item">
@@ -70,9 +70,6 @@
 					{% else %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">{{_('Profile')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{url_for('logout')}}">{{_('Logout')}}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{url_for('explore')}}">{{_('Explore')}}</a>
@@ -84,7 +81,13 @@
 						<a class="nav-link" href="{{url_for('trajectories')}}">{{_('Trajectories')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{url_for('test')}}">{{_('Test')}}</a>
+						<a class="nav-link" href="{{url_for('cpu')}}">{{_('CPU')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('_psutil')}}">{{_('PSUTIL')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('logout')}}">{{_('Logout')}}</a>
 					</li>
 					{% endif %}
 				</ul>

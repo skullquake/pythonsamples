@@ -3,7 +3,8 @@ from app import\
 from app.models import\
 	User,\
 	Post,\
-	Trajectory
+	Trajectory,\
+	Cpu
 @app.shell_context_processor
 def make_shell_context():
 	"""
@@ -13,6 +14,7 @@ def make_shell_context():
 		'db':db,
 		'User':User,
 		'Post': Post,
-		'Trajectory':Trajectory
+		'Trajectory':Trajectory,
+		'Cpu':Cpu
 	}
 

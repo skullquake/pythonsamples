@@ -106,6 +106,10 @@ class Trajectory(UserMixin,db.Model):
 	VENAU=db.Column(db.Float)
 	SECLAT=db.Column(db.Float)
 	SECLON=db.Column(db.Float)
+class Cpu(UserMixin,db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	ts=db.Column(db.DateTime,default=datetime.utcnow)
+	cpu=db.Column(db.String)
 @login.user_loader
 def load_user(id):
 	return User.query.get(int(id))

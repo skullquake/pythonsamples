@@ -19,13 +19,16 @@ from flask_login import\
 from app.models import\
 	User,\
 	Post,\
-	Trajectory
+	Trajectory,\
+	Cpu
 from werkzeug.urls import\
 	url_parse
 from app import \
 	db
 from datetime import\
 	datetime
+from dateutil.parser import\
+	parse
 from app.forms import\
 	ResetPasswordRequestForm,\
 	ResetPasswordForm
@@ -33,6 +36,10 @@ from app.email import\
 	send_password_reset_email
 from flask_babel import \
 	_
+import psutil
+import sys
+import json
+import time
 @app.route('/')
 @app.route('/index',methods=['GET','POST'])
 @login_required
@@ -283,29 +290,111 @@ def trajectories():
 		prev_url=prev_url
 	)
 
-@app.route('/test')
+@app.route('/cpu', methods=['GET'])
 @login_required
-def test():
+def cpu():
 	headings=[]
-	for a in Trajectory.__table__.columns:
+	for a in Cpu.__table__.columns:
 		headings.append(a.name)
 	page=request.args.get(
 		'page',
 		1,
 		type=int
 	)
-	trajectories=Trajectory.query.paginate(
+	rows=Cpu.query.order_by(Cpu.ts.desc()).paginate(
 		page,
 		10,#app.config['POSTS_PER_PAGE'],
 		False
 	)
-	next_url=url_for('test',page=trajectories.next_num)if trajectories.has_next else None
-	prev_url=url_for('test',page=trajectories.prev_num)if trajectories.has_prev else None
+	next_url=url_for('cpu',page=rows.next_num)if rows.has_next else None
+	prev_url=url_for('cpu',page=rows.prev_num)if rows.has_prev else None
 	return render_template(
-		'test.html',
+		'cpu.html',
 		headings=headings,
-		trajectories=trajectories.items,
+		rows=rows.items,
 		next_url=next_url,
 		prev_url=prev_url
 	)
+@app.route('/cpu', methods=['POST'])
+def cpu_post():
+	try:
+
+		print(request.get_json()['ts'])
+		c=Cpu(
+			ts=parse(request.get_json()['ts']),
+			cpu=request.get_json()['cpu']
+		)
+		db.session.add(c)
+		db.session.commit()
+	except Exception as E:
+		print(E)
+	#print(request.get_json()['cpu'])
+	return {'msg':'ok'}
+@app.route('/psutil', methods=['GET'])
+@login_required
+def _psutil():
+	disks=[];
+	i=0
+	for disk in psutil.disk_partitions():
+		diskobj=disk._asdict()
+		diskobj["usage"]=psutil.disk_usage(i)._asdict()
+		disks.append(diskobj)
+	procs=[];
+	for proc in psutil.process_iter():
+		_proc={}
+		_proc['cmdline']=proc.cmdline()
+		_proc['create_time']=proc.create_time()
+		_proc['is_running']=proc.is_running()
+		_proc['cpu_percent']=proc.cpu_percent()
+		#_proc['connections']=proc.connections()
+		_proc['cwd']=proc.cwd()
+		_proc['memory_percent']=proc.memory_percent()
+		_proc['num_threads']=proc.num_threads()
+		#_proc['parent']=proc.parent()
+		_proc['pid']=proc.pid
+		_proc['username']=proc.username()
+		#_proc['open_files']=proc.open_files()
+		procs.append(_proc)
+		#procs.append(proc.cmdline())
+	psdat=json.dumps(
+		{
+			'cpu_percent': psutil.cpu_percent(),
+			'memory_percent': psutil.virtual_memory().percent,
+			'cache_percent': psutil.virtual_memory().cached / psutil.virtual_memory().total * 100,
+			'swap_percent': psutil.swap_memory().percent,
+			'disk_percent': psutil.disk_usage('/').percent,
+			#'bytes_in': bytes_in - bytes_in_last,
+			#'bytes_out': bytes_out - bytes_out_last,
+			'net_fds': len(psutil.net_connections()),
+			'pids': len(psutil.pids()),
+			'boot_time':psutil.boot_time(),
+			'cpu_count':psutil.cpu_count(),
+			'cpu_stats':psutil.cpu_stats(),
+			'cpu_times':psutil.cpu_times(),
+			'cpu_times_percent':psutil.cpu_times_percent(),
+			'disk_io_counters':psutil.disk_io_counters(),
+			'disk_partitions':psutil.disk_partitions(),
+			'getloadavg':psutil.getloadavg(),
+			'net_if_addrs':psutil.net_if_addrs(),
+			'net_if_stats':psutil.net_if_stats(),
+			'net_io_counters':psutil.net_io_counters(),
+			'pids':psutil.pids(),
+			'sensors_battery()':psutil.sensors_battery(),
+			'sensors_fans':psutil.sensors_fans(),
+			'sensors_temperatures':psutil.sensors_temperatures(),
+			#'swap_memory':psutil.swap_memory(),
+			'virtual_memory':psutil.virtual_memory(),
+			#'wait_procs':psutil.wait_procs(),
+			#'cpu_freq':psutil.cpu_freq(),
+			'procs':procs,
+			'disks':disks
+		},
+		sort_keys=True,
+		indent=4
+	)
+	return render_template(
+		'psutil.html',
+		psutil=psdat
+	)
+
 

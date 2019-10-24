@@ -6,4 +6,5 @@
 #export MAIL_USE_TLS=1
 #export MAIL_USERNAME=ockert8080@gmail.com
 #export MAIL_PASSWORD=
-flask run
+APP_RUN_PORT=8000
+flask run --port=5000 --host=0.0.0.0

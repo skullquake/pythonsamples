@@ -21,10 +21,9 @@ from flask_babel import\
 	Babel
 import os
 app=Flask(
-    __name__,
-    static_url_path="/",
-    static_folder="static",
-    template_folder="templates"
+	__name__,
+	static_url_path="/",
+	template_folder="templates"
 )
 app.config.from_object(Config)
 db=SQLAlchemy(app)
@@ -61,4 +60,5 @@ if not app.debug:
 	app.logger.info('Microblog startup')
 @babel.localeselector
 def get_locale():
-	return request.accept_languages.best_match(app.config['LANGUAGES'])
+	#return request.accept_languages.best_match(app.config['LANGUAGES'])
+	return 'af'

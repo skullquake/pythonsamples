@@ -1,25 +1,4 @@
-2019-10-23 05:14:09,739 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:24,840 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:29,506 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:33,956 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:38,890 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:43,775 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:48,650 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:52,177 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:14:55,966 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:16:25,320 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:16:37,880 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:17:13,754 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:17:18,960 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:19:47,955 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:19:52,979 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:21:45,458 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:22:22,708 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:22:32,596 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:22:58,394 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:23:18,111 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:27:10,563 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:27:21,307 ERROR: Exception on /trajectories [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 02:47:22,177 ERROR: Exception on / [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -35,16 +14,40 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 269, in trajectories
-    trajectories=Trajectory.query.paginate(
-NameError: name 'Trajectory' is not defined
-2019-10-23 05:27:36,192 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:28:40,647 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:29:13,114 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:29:20,095 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:30:09,966 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:30:53,148 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:30:53,589 ERROR: Exception on /trajectories [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 72, in index
+    prev_url=prev_url
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 87, in top-level template code
+    <a class="nav-link" href="{{url_for('psutil')}}">{{_('PSUTIL')}}</a>
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'psutil'. Did you mean '_psutil' instead?
+2019-10-24 02:47:37,832 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:50:33,015 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:52:51,391 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:58:03,530 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:58:10,673 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -60,11 +63,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 270, in trajectories
-    trajectories=Trajectory.items.query.paginate(
-AttributeError: type object 'Trajectory' has no attribute 'items'
-2019-10-23 05:32:22,310 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:32:23,311 ERROR: Exception on /trajectories [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 373, in _psutil
+    'wait_procs':psutil.wait_procs(),
+TypeError: wait_procs() missing 1 required positional argument: 'procs'
+2019-10-24 02:58:18,639 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:58:19,287 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -80,6 +83,13 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 270, in trajectories
-    trajectories=Trajectory.items.query.paginate(
-AttributeError: type object 'Trajectory' has no attribute 'items'
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'cpu_freq':psutil.cpu_freq(),
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1985, in cpu_freq
+    ret = _psplatform.cpu_freq()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 698, in cpu_freq
+    "can't find current frequency file")
+NotImplementedError: can't find current frequency file
+2019-10-24 02:58:31,712 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:58:45,631 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 03:00:33,487 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]

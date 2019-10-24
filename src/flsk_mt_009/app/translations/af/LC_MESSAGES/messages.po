@@ -1,0 +1,273 @@
+# Afrikaans translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-10-24 01:26-0700\n"
+"PO-Revision-Date: 2019-10-24 01:06-0700\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: af\n"
+"Language-Team: af <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: app/forms.py:21 app/forms.py:26 app/forms.py:40
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: app/forms.py:22 app/forms.py:28 app/forms.py:65
+msgid "Password"
+msgstr "Wagwoord"
+
+#: app/forms.py:23
+msgid "RememberMe"
+msgstr "Onthou my"
+
+#: app/forms.py:24
+msgid "SignIn"
+msgstr "Teken In"
+
+#: app/forms.py:27 app/forms.py:61
+msgid "Email"
+msgstr "Epos"
+
+#: app/forms.py:29 app/forms.py:69
+msgid "Repeat Password"
+msgstr "Herhaal Wagwoord"
+
+#: app/forms.py:30 app/templates/register.html:4
+msgid "Register"
+msgstr "Registreer"
+
+#: app/forms.py:34 app/forms.py:50
+msgid "Please use a different username."
+msgstr "Kies 'n ander gebruikersnaam"
+
+#: app/forms.py:38
+msgid "Please use a different email address."
+msgstr "Kies 'n ander epos address"
+
+#: app/forms.py:41
+msgid "About me"
+msgstr "Omtrent my"
+
+#: app/forms.py:42 app/forms.py:59
+msgid "Submit"
+msgstr "Voer in"
+
+#: app/forms.py:53
+msgid "Say something"
+msgstr "Vertel iets"
+
+#: app/forms.py:62 app/forms.py:75
+msgid "Request Password Reset"
+msgstr "Versoek Wagwoord Herstel"
+
+#: app/routes.py:45
+msgid "Your post is now live!"
+msgstr "Jou storie is nou publiseer!"
+
+#: app/routes.py:75
+msgid "Invalid username or password"
+msgstr "Verkeerde gebruikersnaam of wagwoord"
+
+#: app/routes.py:97
+msgid "Congratulations, you are now a registered user!"
+msgstr "Geluk, jy is nou 'n registreerder gebruiker!"
+
+#: app/routes.py:165
+msgid "Your changes have been saved."
+msgstr "Jou veranderinge is gestoor."
+
+#: app/routes.py:176 app/routes.py:190
+#, python-format
+msgid "User %(username)s not found."
+msgstr "Gebruiker %(username)s was nie gevind nie."
+
+#: app/routes.py:179
+msgid "You cannot follow yourself!"
+msgstr "Jy kan nie jouself volg nie!"
+
+#: app/routes.py:183
+#, python-format
+msgid "You are following %(username)s!"
+msgstr "Jy vold nout %(username)s!"
+
+#: app/routes.py:193
+msgid "You cannot unfollow yourself!"
+msgstr "Jy kan nie jouself volg nie!"
+
+#: app/routes.py:197
+#, python-format
+msgid "You are not following %(username)s."
+msgstr "Jy volg nie meer %(username)s."
+
+#: app/routes.py:241
+msgid "Check your email for the instructions to reset your password"
+msgstr "Kyk in jou epos vir instruksies om die wagwoord te hersel"
+
+#: app/routes.py:259
+msgid "Your password has been reset."
+msgstr "Jou wagwoord is herstel."
+
+#: app/templates/404.html:2
+msgid "File Not Found"
+msgstr "Leer Nie Gevind Nie"
+
+#: app/templates/404.html:3 app/templates/500.html:5
+msgid "Back"
+msgstr "Terug"
+
+#: app/templates/500.html:3
+msgid "An unexpected error has occurred"
+msgstr "'n Onverwagste fout het plaasgevind"
+
+#: app/templates/500.html:4
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "Die administrateur is ingelig. Jammer"
+
+#: app/templates/_post.html:7
+msgid "says"
+msgstr "se"
+
+#: app/templates/base.html:11
+msgid "Microblog"
+msgstr "Mikroblog"
+
+#: app/templates/base.html:13
+msgid "Welcome to Microblog"
+msgstr "Welkom by Mikroblog"
+
+#: app/templates/base.html:64
+msgid "Home"
+msgstr "Tuis"
+
+#: app/templates/base.html:68
+msgid "Login"
+msgstr "Teken In"
+
+#: app/templates/base.html:72
+msgid "Profile"
+msgstr "Profiel"
+
+#: app/templates/base.html:75
+msgid "Logout"
+msgstr "Teken Uit"
+
+#: app/templates/base.html:78
+msgid "Explore"
+msgstr "Verken"
+
+#: app/templates/base.html:81
+msgid "Users"
+msgstr "Gebruikers"
+
+#: app/templates/base.html:84
+msgid "Trajectories"
+msgstr "Trajekte"
+
+#: app/templates/base.html:87
+msgid "CPU"
+msgstr "SPE"
+
+#: app/templates/base.html:95
+msgid "Hi"
+msgstr "Hello"
+
+#: app/templates/edit_profile.html:3
+msgid "Edit Profile"
+msgstr "Redigeer Profiel"
+
+#: app/templates/index.html:35
+msgid "Your Message..."
+msgstr "Jou Boodskap..."
+
+#: app/templates/login.html:4
+msgid "Sign In"
+msgstr "Teken In"
+
+#: app/templates/login.html:23
+msgid "New User"
+msgstr "Nuwe Gebruiker"
+
+#: app/templates/login.html:23
+msgid "Click to Register"
+msgstr "Kliek om te Registreer"
+
+#: app/templates/login.html:24
+msgid "Click to Reset It"
+msgstr "Kliek om te Herstel"
+
+#: app/templates/reset_password.html:3
+msgid "Reset Your Password"
+msgstr "Herstel Jou Wagwoord"
+
+#: app/templates/reset_password_request.html:3
+msgid "Reset Password"
+msgstr "Herstel Wagwoord"
+
+#: app/templates/user.html:6
+msgid "User"
+msgstr "Gebruiker"
+
+#: app/templates/user.html:8 app/templates/user.html:24
+msgid "Edit your profile"
+msgstr "Redigeer jou profiel"
+
+#: app/templates/user.html:13
+msgid "No about info"
+msgstr "Geen informasie"
+
+#: app/templates/user.html:16 app/templates/user.html:19
+msgid "Last seen on"
+msgstr "Laaste gesien op"
+
+#: app/templates/user.html:22
+msgid "followers"
+msgstr "folgers"
+
+#: app/templates/user.html:22
+msgid "following"
+msgstr "volgelinge"
+
+#: app/templates/user.html:26
+msgid "Follow"
+msgstr "Volg"
+
+#: app/templates/user.html:28
+msgid "Unfollow"
+msgstr "Onvolg"
+
+#: app/templates/users.html:8
+msgid "Icon"
+msgstr "Ikoon"
+
+#: app/templates/users.html:9
+msgid "Name"
+msgstr "Naam"
+
+#: app/templates/users.html:10
+msgid "Followers"
+msgstr "Volgelinge"
+
+#: app/templates/users.html:11
+msgid "Following"
+msgstr "Volg"
+
+#: app/templates/users.html:12
+msgid "About"
+msgstr "Omtrent"
+
+#~ msgid "Test"
+#~ msgstr "Toets"
+
+#~ msgid "Foobar"
+#~ msgstr "Foobar"
+

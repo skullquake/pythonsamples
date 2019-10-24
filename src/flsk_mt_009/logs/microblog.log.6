@@ -1,4 +1,6 @@
-2019-10-22 06:01:59,010 ERROR: Exception on /users [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 02:25:36,483 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:26:33,104 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:26:33,425 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,32 +16,12 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 120, in users
-    prev_url=prev_url
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/templates/users.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/templates/base.html", line 104, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/templates/users.html", line 5, in block "content"
-    {% for user in users %}
-TypeError: 'Pagination' object is not iterable
-2019-10-22 06:02:15,983 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-22 06:06:35,775 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-22 06:08:01,755 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 03:23:39,194 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 03:24:07,819 ERROR: Exception on /reset_password_request [POST] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 336, in psutil
+    psdat=json.dumps({'cpu':psutil.cpu_percent()})
+AttributeError: 'function' object has no attribute 'cpu_percent'
+2019-10-24 02:26:55,224 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:27:40,318 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:27:40,788 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -53,45 +35,57 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/routes.py", line 237, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/email.py", line 28, in send_password_reset_email
-    html_body=render_template('email/reset_password.html',user=user,token=token)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/email.py", line 17, in send_email
-    Thread(Target=send_async_email,args=(app,msg)).start()
-TypeError: __init__() got an unexpected keyword argument 'Target'
-2019-10-23 03:24:22,961 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 03:45:43,444 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 03:59:26,238 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:00:20,058 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:00:28,251 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:00:40,852 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:04:04,941 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:04:40,922 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:05:04,072 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:05:06,302 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:05:16,369 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:05:24,838 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:05:50,805 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:06:01,795 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:06:09,849 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:06:20,377 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:06:35,117 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 04:06:46,204 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:05:06,823 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:06:23,273 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:07:25,937 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:07:46,127 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:08:25,872 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:08:38,841 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:08:50,574 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:09:09,730 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:09:17,529 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:09:39,427 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:10:44,512 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:11:23,513 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:11:59,197 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:12:52,913 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:13:14,583 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:13:30,500 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
-2019-10-23 05:13:49,704 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_007/app/__init__.py:54]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 342, in _psutil
+    'bytes_in': bytes_in - bytes_in_last,
+NameError: name 'bytes_in' is not defined
+2019-10-24 02:27:52,822 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:28:55,680 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:30:34,267 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:47:17,034 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 02:47:19,653 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 364, in _psutil
+    psutil=psdat
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/psutil.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 87, in top-level template code
+    <a class="nav-link" href="{{url_for('psutil')}}">{{_('PSUTIL')}}</a>
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'psutil'. Did you mean '_psutil' instead?
