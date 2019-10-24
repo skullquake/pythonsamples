@@ -27,7 +27,8 @@ class Daemon(object):
         pid_fileP,
         stdoutP="/var/log/daemon_example_out.log",
         stderrP="/var/log/daemon_example_err.log",
-        srvurlP="http://localhost:5000/monitor"
+        #srvurlP="http://localhost:5000/monitor"
+        srvurlP="http://192.168.2.228:5000/cpu"
     ):
         self.stdout=stdoutP
         self.stderr=stderrP
@@ -90,7 +91,7 @@ class Daemon(object):
             "msg":'start',
             "time":datetime.datetime.now().isoformat()
         }
-        myurl="http://localhost:5000/monitor"
+        myurl=self.srvurl#"http://localhost:5000/monitor"
         req=urllib.request.Request(myurl)
         req.add_header(\
             'Content-Type',\
@@ -121,7 +122,7 @@ class Daemon(object):
             "msg":'shutdown',
             "time":datetime.datetime.now().isoformat()
         }
-        myurl="http://localhost:5000/monitor"
+        myurl=self.srvurl
         req=urllib.request.Request(myurl)
         req.add_header(\
             'Content-Type',\
@@ -188,7 +189,7 @@ class Daemon(object):
     def post(self,msg):
         """ post message to server """
         bool_ret=False
-        myurl="http://localhost:5000/monitor"
+        myurl=self.srvurl
         req=urllib.request.Request(myurl)
         req.add_header(\
             'Content-Type',\
@@ -225,16 +226,10 @@ class Daemon(object):
         for proc in psutil.process_iter():
             procs.append(proc.cmdline())
         body={
-                'msg':'data',
-                'name':'tst',
-                "time":datetime.datetime.now().isoformat(),
-                "cpu":psutil.cpu_percent(),
-                "cpu_stat":psutil.cpu_stats()._asdict(),
-                "cpu_timex":psutil.cpu_times()._asdict(),
-                "disks":disks,
-                "procs":procs
+                "ts":datetime.datetime.now().isoformat(),
+                "cpu":psutil.cpu_percent()
         }
-        myurl="http://localhost:5000/monitor"
+        myurl=self.srvurl
         req=urllib.request.Request(myurl)
         req.add_header(\
             'Content-Type',\

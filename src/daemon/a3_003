@@ -14,8 +14,10 @@ import time
 import urllib.request
 import json
 import psutil
+import sqlite3
 #-------------------------------------------------------------------------------
 PERIOD=1.00
+DATABASE="./db/a.db"
 #-------------------------------------------------------------------------------
 class Daemon(object):
     """ Linux Daemon boilerplate. """
@@ -33,6 +35,55 @@ class Daemon(object):
         self.stderr=stderrP
         self.pid_file=pid_fileP
         self.srvurl=srvurlP
+        self.db=None
+        self.db_init()
+    #---------------------------------------------------------------------------
+    #database related
+    #---------------------------------------------------------------------------
+    def get_db(self):
+        """get database"""
+        if self.db is None:
+            self.db=sqlite3.connect(DATABASE)
+        return self.db
+    def close_connection(self):
+        """close database connection"""
+        if self.db is not None:
+            self.db.close()
+        pass
+    def db_init(self):
+        """initialize database"""
+        con=self.get_db()
+        cur=con.cursor()
+        try:
+            #cur.execute('create table if not exists buffer(id integer,value text)')
+            cur.execute('create table if not exists buffer(ID INTEGER PRIMARY KEY AUTOINCREMENT,value text)')
+        except Exception as E:
+            self.log(str(E))
+        else:
+            con.commit()
+            self.log('Database initialized')
+        pass
+    def db_insert(self,val):
+        """insert database"""
+        con=self.get_db()
+        cur=con.cursor()
+        try:
+            cur.executemany(
+                    'insert into buffer(value)values(?)',\
+                    [\
+                        (\
+                            str(val),
+                        )\
+                    ]\
+            )
+        except Exception as E:
+            self.log(str(E))
+        else:
+            con.commit()
+            self.log('Value buffered')
+        return
+
+
     #---------------------------------------------------------------------------
     #config related
     #---------------------------------------------------------------------------
@@ -41,6 +92,9 @@ class Daemon(object):
         bool_ret=False
         bool_ret=True
         return bool_ret
+    def buffer_db(self,data):
+        """buffer line to db"""
+        pass
     #---------------------------------------------------------------------------
     #daemon ctl
     #---------------------------------------------------------------------------
@@ -252,7 +306,42 @@ class Daemon(object):
                 jsondataasbytes,\
                 1
             )
+            con=self.get_db()
+            cur=con.cursor()
+            # handle buffer
+            cur.execute("select * from buffer")
+            for row in cur:
+                self.log('flushing buffer '+str(row[0]))
+                try:
+                    req=urllib.request.Request(myurl)
+                    req.add_header(\
+                        'Content-Type',\
+                        'application/json; charset=utf-8'\
+                    )
+                    jsondataasbytes=str(row[1])
+                    req.add_header(\
+                        'Content-Length',\
+                        len(jsondataasbytes)\
+                    )
+                    response=urllib.request.urlopen(\
+                        req,\
+                        jsondataasbytes.encode('utf-8'),\
+                        1
+                    )
+                except Exception as E:
+                    self.log(str(E))
+                finally:
+                    cur.executemany(\
+                        "delete from buffer where id=?",\
+                        [\
+                            (\
+                                row[0],
+                            )\
+                        ]\
+                    )
+                    con.commit()
         except Exception as E:
+            self.db_insert(jsondataasbytes)
             syslog.syslog(\
                 syslog.LOG_INFO,\
                 str(E)+"\n"\
