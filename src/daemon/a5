@@ -47,6 +47,7 @@ class Daemon(object):
 		stdoutP="/var/log/daemon_example_out.log",
 		stderrP="/var/log/daemon_example_err.log",
 		srvurlP="http://localhost:5000/cpu"
+		#http://102.164.81.11:7080/InovoCentralMonitor/AgentLog
 		#srvurlP="http://192.168.2.228:5000/cpu"
 	):
 		self.stdout=stdoutP
@@ -269,8 +270,8 @@ class Daemon(object):
 			syslog.syslog(syslog.LOG_INFO,'body:start')
 			body={
 					"Agent": {
-							"AgentType": "ServerMonitor",
-							"AgentVersion": "1.0.1.6",
+							"AgentType": "PythonServerMonitor",
+							"AgentVersion": "0.0.0.1",
 							"Hostname": socket.gethostname(),#"IHS-CCAPP01",
 							"Hosttype": psutil.os.name,#"Microsoft Windows NT 6.1.7601 Service Pack 1",
 							"IP": "172.28.157.86",
