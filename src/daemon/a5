@@ -1,0 +1,341 @@
+#!/usr/bin/python3
+"""
+Daemon
+"""
+import atexit
+import datetime
+import os
+import signal
+import sys
+import time
+import syslog
+import schedule
+import time
+import urllib.request
+import json
+import psutil
+import socket
+import uuid
+#-------------------------------------------------------------------------------
+PERIOD=5.00
+TIMEOUT=5
+def timesince(dt, default="now"):
+	now = datetime.datetime.now()
+	diff = now - dt
+	periods = (
+		(diff.days / 365, "year", "years"),
+		(diff.days / 30, "month", "months"),
+		(diff.days / 7, "week", "weeks"),
+		(diff.days, "day", "days"),
+		(diff.seconds / 3600, "hour", "hours"),
+		(diff.seconds / 60, "minute", "minutes"),
+		(diff.seconds, "second", "seconds"),
+	)
+	for period, singular, plural in periods:
+		if period >= 1:
+			return "%d %s ago" % (period, singular if period == 1 else plural)
+	return default
+#-------------------------------------------------------------------------------
+class Daemon(object):
+	""" Linux Daemon boilerplate. """
+	#---------------------------------------------------------------------------
+	#ctor
+	#---------------------------------------------------------------------------
+	def __init__(
+		self,
+		pid_fileP,
+		stdoutP="/var/log/daemon_example_out.log",
+		stderrP="/var/log/daemon_example_err.log",
+		srvurlP="http://localhost:5000/cpu"
+		#srvurlP="http://192.168.2.228:5000/cpu"
+	):
+		self.stdout=stdoutP
+		self.stderr=stderrP
+		self.pid_file=pid_fileP
+		self.srvurl=srvurlP
+	#---------------------------------------------------------------------------
+	#config related
+	#---------------------------------------------------------------------------
+	def lod_cfg(self,cfgPathP="./cfg/a.yaml"):
+		""" Load yaml config """
+		bool_ret=False
+		bool_ret=True
+		return bool_ret
+	#---------------------------------------------------------------------------
+	#daemon ctl
+	#---------------------------------------------------------------------------
+	def del_pid(self):
+		""" Delete the pid file. """
+		os.remove(self.pid_file)
+	def daemonize(self):
+		""" Init daemon """
+		if os.fork():
+			sys.exit()
+		os.chdir("/")
+		os.setsid()
+		os.umask(0)
+		if os.fork():
+			sys.exit()
+		with open("/dev/null","r") as dev_null:
+			os.dup2(dev_null.fileno(),sys.stdin.fileno())
+		sys.stderr.flush()
+		with open(self.stderr,"a+") as stderr:
+			os.dup2(stderr.fileno(),sys.stderr.fileno())
+		sys.stdout.flush()
+		with open(self.stdout,"a+") as stdout:
+			os.dup2(stdout.fileno(), sys.stdout.fileno())
+		atexit.register(self.del_pid)
+		pid = str(os.getpid())
+		with open(self.pid_file,"w+") as pid_file:
+			pid_file.write("{0}".format(pid))
+	def get_pid_by_file(self):
+		""" Return the pid read from the pid file. """
+		try:
+			with open(self.pid_file, "r") as pid_file:
+				pid=int(pid_file.read().strip())
+			return pid
+		except IOError:
+			return
+	def start(self):
+		""" Start the daemon. """
+		print("Starting...")
+		if self.get_pid_by_file():
+			print(
+				"PID file {0} exists. Is the deamon already running?".format(
+					self.pid_file
+				)
+			)
+			sys.exit(1)
+		body={
+			"msg":'start',
+			"time":datetime.datetime.now().isoformat()
+		}
+		myurl=self.srvurl#"http://localhost:5000/monitor"
+		req=urllib.request.Request(myurl)
+		req.add_header(\
+			'Content-Type',\
+			'application/json; charset=utf-8'\
+		)
+		jsondata=json.dumps(body)
+		jsondataasbytes=jsondata.encode('utf-8')
+		req.add_header(\
+			'Content-Length',\
+			len(jsondataasbytes)
+		)
+		try:
+			response=urllib.request.urlopen(\
+				req,\
+				jsondataasbytes,\
+				TIMEOUT\
+			)
+		except Exception as E:
+			syslog.syslog(\
+				syslog.LOG_INFO,\
+				str(E)+"\n"
+			)
+		self.daemonize()
+		self.run()
+	def stop(self):
+		""" Stop the daemon. """
+		body = {
+			"msg":'shutdown',
+			"time":datetime.datetime.now().isoformat()
+		}
+		myurl=self.srvurl
+		req=urllib.request.Request(myurl)
+		req.add_header(\
+			'Content-Type',\
+			'application/json; charset=utf-8'\
+		)
+		jsondata=json.dumps(body)
+		jsondataasbytes=jsondata.encode('utf-8')
+		req.add_header(\
+			'Content-Length',\
+			len(jsondataasbytes)\
+		)
+		try:
+			response=urllib.request.urlopen(\
+				req,\
+				jsondataasbytes,\
+				TIMEOUT
+			)
+		except Exception as E:
+			syslog.syslog(\
+				syslog.LOG_INFO,\
+				str(E)+"\n"\
+			)
+		print("Stopping...")
+		syslog.syslog("Stopping...")
+		pid = self.get_pid_by_file()
+		if not pid:
+			print(
+				"PID file {0} doesn't exist. Is the daemon not running?".format(
+					self.pid_file
+				)
+			)
+			return
+		try:
+			while 1:
+				os.kill(pid,signal.SIGTERM)
+				time.sleep(0.1)
+		except OSError as err:
+			if "No such process" in err.strerror and os.path.exists(self.pid_file):
+				os.remove(self.pid_file)
+			else:
+				print(err)
+				sys.exit(1)
+	def restart(self):
+		""" Restart the deamon. """
+		self.stop()
+		self.start()
+	#---------------------------------------------------------------------------
+	#do work
+	#---------------------------------------------------------------------------
+	def run(self):
+		""" The main loop of the daemon. """
+		syslog.syslog("Starting...")
+		schedule.every(PERIOD).seconds.do(self.job)
+		while 1:
+			schedule.run_pending()
+			time.sleep(PERIOD)
+	def log(self,msg):
+		""" Syslogging """
+		syslog.syslog(\
+				syslog.LOG_INFO,\
+				msg\
+		)
+		pass
+	def post(self,msg):
+		""" post message to server """
+		bool_ret=False
+		myurl=self.srvurl
+		req=urllib.request.Request(myurl)
+		req.add_header(\
+			'Content-Type',\
+			'application/json; charset=utf-8'\
+		)
+		req.add_header(\
+			'Content-Length',\
+			len(msg)\
+		)
+		try:
+			response=urllib.\
+			request.\
+			urlopen(\
+				req,\
+				jsondataasbytes,\
+				TIMEOUT
+			)
+			bool_ret=True
+		except Exception as E:
+			syslog.syslog(\
+				self.log(str(E))\
+			)
+		return bool_ret
+	def job(self):
+		syslog.syslog(syslog.LOG_INFO,'job:start\n')
+		syslog.syslog(syslog.LOG_INFO, datetime.datetime.now().isoformat() + "\n")
+		disks=[];
+		i=0
+		syslog.syslog(syslog.LOG_INFO,'disk:start\n')
+		for disk in psutil.disk_partitions(all=True):
+			try:
+				_usage=psutil.disk_usage(disk.mountpoint)
+				_disk=disk._asdict()
+				_disk["deviceid"]=disk.mountpoint
+				_disk["label"]=disk.device
+				_disk["format"]=disk.fstype
+				_disk["size"]=_usage.total
+				_disk["freespace"]=_usage.free
+				_disk["usedspace"]=_usage.used
+				_disk["usage"]=_usage.percent
+				disks.append(_disk)
+			except Exception as E:
+				syslog.syslog(syslog.LOG_INFO,str(E))
+		procs=[];
+		syslog.syslog(syslog.LOG_INFO,'procs:start')
+		for proc in psutil.process_iter():
+			_proc={
+				"DisplayName": proc.name(),#cmdline(),#"Presence Server",
+				"Status": proc.status(),#"Running",
+				"Name": proc.name(),#"NTPresenceServer",
+				"FileVersion": proc.exe(),#None,
+				"ProductVersion": None,
+				"ExtendedInfo": None
+			}
+			procs.append(_proc)
+		body={}
+		try:
+			syslog.syslog(syslog.LOG_INFO,'body:start')
+			body={
+					"Agent": {
+							"AgentType": "ServerMonitor",
+							"AgentVersion": "1.0.1.6",
+							"Hostname": socket.gethostname(),#"IHS-CCAPP01",
+							"Hosttype": psutil.os.name,#"Microsoft Windows NT 6.1.7601 Service Pack 1",
+							"IP": "172.28.157.86",
+							"SiteID": "Imperial Health",
+							"Sitetype": "Presence Avaya",
+							"UpdateId": str(uuid.uuid4())#"c0be6a9f-d36d-421c-b7ee-da23d839f1f7"
+					},
+					"Uptime": "Uptime: "+timesince(datetime.datetime.fromtimestamp(psutil.boot_time())),#"Uptime: 59 days, 16 hours, 48 minutes",
+					"service": procs,
+					"disk": disks,
+					"memory": {
+							"TotalVisibleMemorySize": psutil.virtual_memory().total,#25747206144,
+							"FreePhysicalMemory":  psutil.virtual_memory().free,#18177589248,
+							"UsedPhysicalMemory":  psutil.virtual_memory().used#7569616896
+					},
+					"cpu": {
+							"LoadPercentage": psutil.cpu_percent(),#14,
+							"Status": "OK"
+					},
+					"ts":datetime.datetime.now().isoformat(),
+					"cpu":psutil.cpu_percent()
+			}
+			syslog.syslog(syslog.LOG_INFO,'body:end\n')
+		except Exception as E:
+			syslog.syslog(\
+				syslog.LOG_INFO,\
+				str(E)+"\n"\
+			)
+		myurl=self.srvurl
+		req=urllib.request.Request(myurl)
+		req.add_header(\
+			'Content-Type',\
+			'application/json; charset=utf-8'\
+		)
+		jsondata=json.dumps(body,sort_keys=True,indent=4)
+		jsondataasbytes=jsondata.encode('utf-8')   # needs to be bytes
+		req.add_header(\
+			'Content-Length',\
+			len(jsondataasbytes)\
+		)
+		try:
+			response=urllib.request.urlopen(\
+				req,\
+				jsondataasbytes,\
+				TIMEOUT
+			)
+		except Exception as E:
+			syslog.syslog(\
+				syslog.LOG_INFO,\
+				str(E)+"\n"\
+			)
+if __name__=="__main__":
+	if len(sys.argv) < 2:
+		print("Usage: {0} start|stop|restart".format(sys.argv[0]))
+		sys.exit(2)
+	daemon=Daemon("/tmp/daemon_example_p3.pid")
+	if "start"==sys.argv[1]:
+		daemon.start()
+	elif "stop"==sys.argv[1]:
+		daemon.stop()
+	elif "restart"==sys.argv[1]:
+		daemon.restart()
+	else:
+		print("Unknown command '{0}'".format(sys.argv[1]))
+		sys.exit(2)
+
+
+

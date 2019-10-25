@@ -1,118 +1,107 @@
-2019-10-24 03:09:34,152 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 22:27:33,952 ERROR: Exception on /tables [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 2073, in connections
-    ret = _connections.retrieve(kind, self.pid)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 950, in retrieve
-    inodes = self.get_proc_inodes(pid)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 772, in get_proc_inodes
-    for fd in os.listdir("%s/%s/fd" % (self._procfs_path, pid)):
-PermissionError: [Errno 13] Permission denied: '/proc/1/fd'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 349, in _psutil
-    _proc['connections']=proc.connections()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1278, in connections
-    return self._proc.connections(kind)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1516, in wrapper
-    raise AccessDenied(self.pid, self._name)
-psutil.AccessDenied: psutil.AccessDenied (pid=1)
-2019-10-24 03:09:41,416 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:09:48,182 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:09:48,620 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 427, in tables
+    tables=tables
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 14, in root
+    </tbody>
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 82, in root
+    </li>
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 29, in block_content
+    </li>
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/runtime.py", line 262, in call
+    return __obj(*args, **kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'table' with values ['table_name']. Did you mean 'tables' instead?
+2019-10-24 22:27:36,822 ERROR: Exception on /tables [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 353, in _psutil
-    _proc['pid']=proc.pid()
-TypeError: 'int' object is not callable
-2019-10-24 03:09:55,730 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:03,469 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:09,730 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:16,220 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:16,518 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 427, in tables
+    tables=tables
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 354, in _psutil
-    _proc['pid']=proc.pid()
-TypeError: 'int' object is not callable
-2019-10-24 03:10:29,017 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:51,547 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:10:52,158 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 2026, in open_files
-    files = os.listdir("%s/%s/fd" % (self._procfs_path, self.pid))
-PermissionError: [Errno 13] Permission denied: '/proc/1/fd'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 14, in root
+    </tbody>
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 82, in root
+    </li>
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 29, in block_content
+    </li>
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/runtime.py", line 262, in call
+    return __obj(*args, **kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 356, in _psutil
-    _proc['open_files']=proc.open_files()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1254, in open_files
-    return self._proc.open_files()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1516, in wrapper
-    raise AccessDenied(self.pid, self._name)
-psutil.AccessDenied: psutil.AccessDenied (pid=1)
-2019-10-24 03:11:04,307 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 04:44:51,783 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 05:17:36,940 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 05:45:52,857 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'table' with values ['table_name']. Did you mean 'tables' instead?
+2019-10-24 22:30:44,334 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]

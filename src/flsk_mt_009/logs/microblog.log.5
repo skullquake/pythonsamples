@@ -1,107 +1,125 @@
-2019-10-24 03:00:34,195 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 15:53:22,098 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 344, in _psutil
-    procs.append(proc.as_dict())#cmdline())
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 638, in as_dict
-    ret = meth()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1233, in memory_maps
-    it = self._proc.memory_maps()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1842, in memory_maps
-    data[b'Rss:'],
-KeyError: b'Rss:'
-2019-10-24 03:00:40,942 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'disk_io_counters':psutil.disk_io_counters(),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
+    rawdict = _psplatform.disk_io_counters(**kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
+    for entry in gen:
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
+    raise ValueError("not sure how to interpret line %r" % line)
+ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 447051.003\n'
+2019-10-24 15:53:22,935 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 344, in _psutil
-    procs.append(proc.as_dict())#cmdline())
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 638, in as_dict
-    ret = meth()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1233, in memory_maps
-    it = self._proc.memory_maps()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1842, in memory_maps
-    data[b'Rss:'],
-KeyError: b'Rss:'
-2019-10-24 03:01:07,241 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:01:07,631 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'disk_io_counters':psutil.disk_io_counters(),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
+    rawdict = _psplatform.disk_io_counters(**kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
+    for entry in gen:
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
+    raise ValueError("not sure how to interpret line %r" % line)
+ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 447051.840\n'
+2019-10-24 15:53:23,615 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 344, in _psutil
-    procs.append(proc.as_dict())#cmdline())
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 638, in as_dict
-    ret = meth()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1233, in memory_maps
-    it = self._proc.memory_maps()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1842, in memory_maps
-    data[b'Rss:'],
-KeyError: b'Rss:'
-2019-10-24 03:02:27,017 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:02:28,760 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'disk_io_counters':psutil.disk_io_counters(),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
+    rawdict = _psplatform.disk_io_counters(**kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
+    for entry in gen:
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
+    raise ValueError("not sure how to interpret line %r" % line)
+ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 447052.520\n'
+2019-10-24 15:53:24,441 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 345, in _psutil
-    _proc.cmdline=proc.cmdline()
-AttributeError: 'dict' object has no attribute 'cmdline'
-2019-10-24 03:02:39,149 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:03:08,453 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:03:49,746 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:04:02,733 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:04:29,770 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'disk_io_counters':psutil.disk_io_counters(),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
+    rawdict = _psplatform.disk_io_counters(**kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
+    for entry in gen:
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
+    raise ValueError("not sure how to interpret line %r" % line)
+ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 447053.347\n'
+2019-10-24 15:53:25,078 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 374, in _psutil
+    'disk_io_counters':psutil.disk_io_counters(),
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
+    rawdict = _psplatform.disk_io_counters(**kwargs)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
+    for entry in gen:
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
+    raise ValueError("not sure how to interpret line %r" % line)
+ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 447053.984\n'

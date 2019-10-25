@@ -36,6 +36,10 @@ from app.email import\
 	send_password_reset_email
 from flask_babel import \
 	_
+from sqlalchemy import create_engine
+from sqlalchemy import MetaData
+from sqlalchemy import Table
+
 import psutil
 import sys
 import json
@@ -395,5 +399,66 @@ def _psutil():
 		'psutil.html',
 		psutil=psdat
 	)
+@app.route('/tables', methods=['GET'])
+@login_required
+def tables():
+#	tables=[]
+#	m=MetaData()
+#	m.reflect(db.engine)
+#	_tables=m.tables
+#	for t in _tables:
+#		table={}
+#		table['name']=_tables[t].name
+#		table['cols']=[]
+#		for c in _tables[t].columns:
+#			table['cols'].append(c.name)
+#		tables.append(table)
+	tables=[]
+	for t in db.Model._decl_class_registry.values():
+		try:
+			table={}
+			table['name']=t.__name__
+			table['cols']=t.__table__.columns.keys()
+			tables.append(table)
+		except Exception as E:
+			print(str(E))		
+	return render_template(
+		'tables.html',
+		tables=tables
+	)
+#for o in db.Model._decl_class_registry.values():
+#...:     try:
+#...:         r=o.query.all()
+#...:     except Exception as E:
+#...:         print(E)
+#...:
+#...:
+# db.Model._decl_class_registry.get('Post')
+#Trajectory.__table__.columns.keys()
+@app.route('/table/<tablename>')
+@login_required
+def show_table(username):
+	headings=[]
 
+	for a in db.Model._decl_class_registry.get(tablename).__table__.columns:
+		headings.append(a.name)
+	page=request.args.get(
+		'page',
+		1,
+		type=int
+	)
+	rows=db.Model._decl_class_registry.get(tablename).query.order_by(Cpu.ts.desc()).paginate(
+		page,
+		10,#app.config['POSTS_PER_PAGE'],
+		False
+	)
+	next_url=url_for('table',tablename=tablename,page=rows.next_num)if rows.has_next else None
+	prev_url=url_for('table',tablename=tablename,page=rows.prev_num)if rows.has_prev else None
+	return render_template(
+		'table.html',
+		headings=headings,
+		rows=rows.items,
+		next_url=next_url,
+		prev_url=prev_url
+	)
 

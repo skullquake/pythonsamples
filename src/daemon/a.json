@@ -1,0 +1,82 @@
+{
+  "Agent": {
+    "AgentType": "ServerMonitor",
+    "AgentVersion": "1.0.1.6",
+    "Hostname": "IHS-CCAPP01",
+    "Hosttype": "Microsoft Windows NT 6.1.7601 Service Pack 1",
+    "IP": "172.28.157.86",
+    "SiteID": "Imperial Health",
+    "Sitetype": "Presence Avaya",
+    "UpdateId": "c0be6a9f-d36d-421c-b7ee-da23d839f1f7"
+  },
+  "Uptime": "Uptime: 59 days, 16 hours, 48 minutes",
+  "service": [
+    {
+      "DisplayName": "Presence Server",
+      "Status": "Running",
+      "Name": "NTPresenceServer",
+      "FileVersion": null,
+      "ProductVersion": null,
+      "ExtendedInfo": null
+    },
+    {
+      "DisplayName": "Presence Scheduler Server",
+      "Status": "Running",
+      "Name": "Presence Scheduler Server",
+      "FileVersion": null,
+      "ProductVersion": null,
+      "ExtendedInfo": null
+    },
+    {
+      "DisplayName": "Presence Intelligent Routing Server",
+      "Status": "Running",
+      "Name": "RouterServiceDM",
+      "FileVersion": null,
+      "ProductVersion": null,
+      "ExtendedInfo": null
+    },
+    {
+      "DisplayName": "Presence Messaging Server",
+      "Status": "Running",
+      "Name": "SDMCorreo",
+      "FileVersion": null,
+      "ProductVersion": null,
+      "ExtendedInfo": null
+    },
+    {
+      "DisplayName": "Presence Statistics Server",
+      "Status": "Running",
+      "Name": "SDMEstadisticas",
+      "FileVersion": null,
+      "ProductVersion": null,
+      "ExtendedInfo": null
+    }
+  ],
+  "disk": [
+    {
+      "deviceid": "C:",
+      "label": "",
+      "format": "NTFS",
+      "size": 597996597248,
+      "freespace": 360679936000,
+      "usedspace": 237316661248
+    },
+    {
+      "deviceid": "E:",
+      "label": "Seagate Expansion Drive",
+      "format": "NTFS",
+      "size": 3000579911680,
+      "freespace": 114322210816,
+      "usedspace": 2886257700864
+    }
+  ],
+  "memory": {
+    "TotalVisibleMemorySize": 25747206144,
+    "FreePhysicalMemory": 18177589248,
+    "UsedPhysicalMemory": 7569616896
+  },
+  "cpu": {
+    "LoadPercentage": 14,
+    "Status": "OK"
+  }
+}

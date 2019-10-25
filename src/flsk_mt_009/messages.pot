@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 01:26-0700\n"
+"POT-Creation-Date: 2019-10-24 21:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,50 +69,50 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
-#: app/routes.py:45
+#: app/routes.py:56
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/routes.py:75
+#: app/routes.py:86
 msgid "Invalid username or password"
 msgstr ""
 
-#: app/routes.py:97
+#: app/routes.py:108
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/routes.py:165
+#: app/routes.py:176
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/routes.py:176 app/routes.py:190
+#: app/routes.py:187 app/routes.py:201
 #, python-format
 msgid "User %(username)s not found."
 msgstr ""
 
-#: app/routes.py:179
+#: app/routes.py:190
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/routes.py:183
+#: app/routes.py:194
 #, python-format
 msgid "You are following %(username)s!"
 msgstr ""
 
-#: app/routes.py:193
+#: app/routes.py:204
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/routes.py:197
+#: app/routes.py:208
 #, python-format
 msgid "You are not following %(username)s."
 msgstr ""
 
-#: app/routes.py:241
+#: app/routes.py:252
 msgid "Check your email for the instructions to reset your password"
 msgstr ""
 
-#: app/routes.py:259
+#: app/routes.py:270
 msgid "Your password has been reset."
 msgstr ""
 
@@ -157,26 +157,34 @@ msgid "Profile"
 msgstr ""
 
 #: app/templates/base.html:75
-msgid "Logout"
-msgstr ""
-
-#: app/templates/base.html:78
 msgid "Explore"
 msgstr ""
 
-#: app/templates/base.html:81
+#: app/templates/base.html:78
 msgid "Users"
 msgstr ""
 
-#: app/templates/base.html:84
+#: app/templates/base.html:81
 msgid "Trajectories"
 msgstr ""
 
-#: app/templates/base.html:87
+#: app/templates/base.html:84
 msgid "CPU"
 msgstr ""
 
-#: app/templates/base.html:95
+#: app/templates/base.html:87
+msgid "PSUTIL"
+msgstr ""
+
+#: app/templates/base.html:90
+msgid "Tables"
+msgstr ""
+
+#: app/templates/base.html:93
+msgid "Logout"
+msgstr ""
+
+#: app/templates/base.html:101
 msgid "Hi"
 msgstr ""
 
