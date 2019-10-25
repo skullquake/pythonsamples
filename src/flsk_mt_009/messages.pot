@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 21:34+0200\n"
+"POT-Creation-Date: 2019-10-25 03:11-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "About me"
 msgstr ""
 
-#: app/forms.py:42 app/forms.py:59
+#: app/forms.py:42 app/forms.py:59 app/forms.py:78
 msgid "Submit"
 msgstr ""
 
@@ -67,6 +67,10 @@ msgstr ""
 
 #: app/forms.py:62 app/forms.py:75
 msgid "Request Password Reset"
+msgstr ""
+
+#: app/forms.py:77
+msgid "Foo"
 msgstr ""
 
 #: app/routes.py:56
@@ -81,7 +85,7 @@ msgstr ""
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/routes.py:176
+#: app/routes.py:176 app/routes.py:491
 msgid "Your changes have been saved."
 msgstr ""
 
@@ -114,6 +118,10 @@ msgstr ""
 
 #: app/routes.py:270
 msgid "Your password has been reset."
+msgstr ""
+
+#: app/routes.py:495 app/templates/ajaxtest.html:3 app/templates/base.html:93
+msgid "Ajax Test"
 msgstr ""
 
 #: app/templates/404.html:2
@@ -180,11 +188,11 @@ msgstr ""
 msgid "Tables"
 msgstr ""
 
-#: app/templates/base.html:93
+#: app/templates/base.html:96
 msgid "Logout"
 msgstr ""
 
-#: app/templates/base.html:101
+#: app/templates/base.html:104
 msgid "Hi"
 msgstr ""
 
@@ -218,6 +226,22 @@ msgstr ""
 
 #: app/templates/reset_password_request.html:3
 msgid "Reset Password"
+msgstr ""
+
+#: app/templates/table.html:19
+msgid "View"
+msgstr ""
+
+#: app/templates/tables.html:8
+msgid "Table Name"
+msgstr ""
+
+#: app/templates/tables.html:9
+msgid "Fields"
+msgstr ""
+
+#: app/templates/tables.html:10
+msgid "Count"
 msgstr ""
 
 #: app/templates/user.html:6

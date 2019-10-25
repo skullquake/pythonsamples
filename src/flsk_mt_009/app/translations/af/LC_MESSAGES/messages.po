@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-24 21:34+0200\n"
+"POT-Creation-Date: 2019-10-25 03:11-0700\n"
 "PO-Revision-Date: 2019-10-24 01:06-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: af\n"
@@ -58,7 +58,7 @@ msgstr "Kies 'n ander epos address"
 msgid "About me"
 msgstr "Omtrent my"
 
-#: app/forms.py:42 app/forms.py:59
+#: app/forms.py:42 app/forms.py:59 app/forms.py:78
 msgid "Submit"
 msgstr "Voer in"
 
@@ -69,6 +69,10 @@ msgstr "Vertel iets"
 #: app/forms.py:62 app/forms.py:75
 msgid "Request Password Reset"
 msgstr "Versoek Wagwoord Herstel"
+
+#: app/forms.py:77
+msgid "Foo"
+msgstr "Foo"
 
 #: app/routes.py:56
 msgid "Your post is now live!"
@@ -82,7 +86,7 @@ msgstr "Verkeerde gebruikersnaam of wagwoord"
 msgid "Congratulations, you are now a registered user!"
 msgstr "Geluk, jy is nou 'n registreerder gebruiker!"
 
-#: app/routes.py:176
+#: app/routes.py:176 app/routes.py:491
 msgid "Your changes have been saved."
 msgstr "Jou veranderinge is gestoor."
 
@@ -116,6 +120,10 @@ msgstr "Kyk in jou epos vir instruksies om die wagwoord te hersel"
 #: app/routes.py:270
 msgid "Your password has been reset."
 msgstr "Jou wagwoord is herstel."
+
+#: app/routes.py:495 app/templates/ajaxtest.html:3 app/templates/base.html:93
+msgid "Ajax Test"
+msgstr "Ajax Toets"
 
 #: app/templates/404.html:2
 msgid "File Not Found"
@@ -175,17 +183,17 @@ msgstr "SPE"
 
 #: app/templates/base.html:87
 msgid "PSUTIL"
-msgstr ""
+msgstr "PSUTIL"
 
 #: app/templates/base.html:90
 msgid "Tables"
 msgstr "Tabelle"
 
-#: app/templates/base.html:93
+#: app/templates/base.html:96
 msgid "Logout"
 msgstr "Teken Uit"
 
-#: app/templates/base.html:101
+#: app/templates/base.html:104
 msgid "Hi"
 msgstr "Hello"
 
@@ -220,6 +228,22 @@ msgstr "Herstel Jou Wagwoord"
 #: app/templates/reset_password_request.html:3
 msgid "Reset Password"
 msgstr "Herstel Wagwoord"
+
+#: app/templates/table.html:19
+msgid "View"
+msgstr "Besigtig"
+
+#: app/templates/tables.html:8
+msgid "Table Name"
+msgstr "Tabel Naam"
+
+#: app/templates/tables.html:9
+msgid "Fields"
+msgstr "Velde"
+
+#: app/templates/tables.html:10
+msgid "Count"
+msgstr "Telling"
 
 #: app/templates/user.html:6
 msgid "User"

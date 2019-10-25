@@ -110,6 +110,10 @@ class Cpu(UserMixin,db.Model):
 	id=db.Column(db.Integer,primary_key=True)
 	ts=db.Column(db.DateTime,default=datetime.utcnow)
 	cpu=db.Column(db.String)
+class Test(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	ts=db.Column(db.DateTime,default=datetime.utcnow)
+	cpu=db.Column(db.String)
 @login.user_loader
 def load_user(id):
 	return User.query.get(int(id))

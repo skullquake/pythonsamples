@@ -16,7 +16,7 @@
 					{% for user in users %}
 						<tr class="table-active">
 							<td><img src="{{ user.avatar(128) }}" style="width:32px;height:auto;"></td>
-							<td>{{ user.username }}</td>
+							<td><a href="{{url_for('follow', username=user.username)}}">{{ user.username }}</a></td>
 							<td>{{ user.followers.count() }}</td>
 							<td>{{ user.followed.count() }}</td>
 							<td>{{ user.about_me }}</td>

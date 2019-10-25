@@ -1,3 +1,4 @@
+import flask
 from flask import\
 	render_template,\
 	flash,\
@@ -10,7 +11,8 @@ from app.forms import\
 	LoginForm,\
 	RegistrationForm,\
 	EditProfileForm,\
-	PostForm
+	PostForm,\
+	AjaxTestForm
 from flask_login import\
 	current_user,\
 	login_user,\
@@ -44,6 +46,7 @@ import psutil
 import sys
 import json
 import time
+import requests
 @app.route('/')
 @app.route('/index',methods=['GET','POST'])
 @login_required
@@ -414,11 +417,30 @@ def tables():
 #			table['cols'].append(c.name)
 #		tables.append(table)
 	tables=[]
+	db.metadata.reflect(db.engine)
 	for t in db.Model._decl_class_registry.values():
 		try:
 			table={}
 			table['name']=t.__name__
 			table['cols']=t.__table__.columns.keys()
+			table['count']=db.session.query(t).count()
+			tables.append(table)
+		except Exception as E:
+			print(str(E))		
+	table={}
+	table['name']='----'
+	table['cols']=[]
+	table['count']='---'
+	tables.append(table)
+	for t in db.metadata.tables:
+		try:
+			db.metadata.tables[t]
+			table={}
+			table['name']=db.metadata.tables[t].name
+			table['cols']=[]
+			for col in db.metadata.tables[t].columns:
+				table['cols'].append(col.name)
+			table['count']=0
 			tables.append(table)
 		except Exception as E:
 			print(str(E))		
@@ -426,20 +448,10 @@ def tables():
 		'tables.html',
 		tables=tables
 	)
-#for o in db.Model._decl_class_registry.values():
-#...:     try:
-#...:         r=o.query.all()
-#...:     except Exception as E:
-#...:         print(E)
-#...:
-#...:
-# db.Model._decl_class_registry.get('Post')
-#Trajectory.__table__.columns.keys()
-@app.route('/table/<tablename>')
+@app.route('/show_table/<tablename>',methods=['GET'])
 @login_required
-def show_table(username):
+def show_table(tablename):
 	headings=[]
-
 	for a in db.Model._decl_class_registry.get(tablename).__table__.columns:
 		headings.append(a.name)
 	page=request.args.get(
@@ -447,18 +459,143 @@ def show_table(username):
 		1,
 		type=int
 	)
-	rows=db.Model._decl_class_registry.get(tablename).query.order_by(Cpu.ts.desc()).paginate(
+	rows=db.Model._decl_class_registry.get(tablename).query.paginate(
 		page,
-		10,#app.config['POSTS_PER_PAGE'],
+		10,
 		False
 	)
-	next_url=url_for('table',tablename=tablename,page=rows.next_num)if rows.has_next else None
-	prev_url=url_for('table',tablename=tablename,page=rows.prev_num)if rows.has_prev else None
+	next_url=url_for('show_table',tablename=tablename,page=rows.next_num)if rows.has_next else None
+	prev_url=url_for('show_table',tablename=tablename,page=rows.prev_num)if rows.has_prev else None
 	return render_template(
 		'table.html',
+		tablename=tablename,
 		headings=headings,
 		rows=rows.items,
 		next_url=next_url,
 		prev_url=prev_url
 	)
+@app.route('/show_row/<tablename>/<rowid>',methods=['GET'])
+@login_required
+def show_row(tablename,rowid):
+	headings=[]
+	for a in db.Model._decl_class_registry.get(tablename).__table__.columns:
+		headings.append(a.name)
+	row=db.Model._decl_class_registry.get(tablename).query.filter_by(id=rowid).first()
+	return render_template(
+		'row.html',
+		row=row,
+		headings=headings
+	)
+@app.route('/ajaxtest',methods=['GET'])
+@login_required
+def ajaxtest():
+	form=AjaxTestForm()
+	if form.validate_on_submit():
+		flash(_('Your changes have been saved.'))
+		return redirect(url_for('ajaxtest'))
+	#elif request.method=='GET':
+		#form.foo='test'
+	return render_template(
+		'ajaxtest.html',
+		form=form
+	)
+@app.route('/rest',methods=['GET'])
+def rest_get():
+	print('rest_get')
+	res=flask.Response()
+	res.headers['Content-type'] = 'application/json'
+	try:
+		hdr={'Content-type':'application/json'}
+		dat={'qwer':'asdf'}
+		req=requests.post('http://localhost:5000/rest',headers=hdr,data=dat)
+		res.set_data(json.dumps({"msg":json.loads(req.content)}))
+	except Exception as E:
+		res.set_data(json.dumps({"err":str(E)}))
+	return res
+@app.route('/rest',methods=['POST'])
+def rest_post():
+	print('rest_post')
+	r=flask.Response()
+	r.headers['Content-type'] = 'application/json'
+	#return resp
+	try:
+		rjsonrequest.get_json();
+	except Exception as E:
+		r.set_data(json.dumps({"err":str(E)}))
+	r.set_data(json.dumps({"msg":"post ok"}))
+	return r
+
+
+
+
+#for o in db.Model._decl_class_registry.values():
+#...:	 try:
+#...:		 r=o.query.all()
+#...:	 except Exception as E:
+#...:		 print(E)
+#...:
+#...:
+# db.Model._decl_class_registry.get('Post')
+#Trajectory.__table__.columns.keys()
+#url_for('table', tablename=tablename) 
+#----------------------------------------
+#from sqlalchemy import Table
+#from sqlalchemy import MetaData
+#m=MetaData()
+#t=Table('User',m,autoload_with=db.engine)
+#for col in t.columns:
+#	print(col)
+#for tbl in m.tables:
+#	print(tbl)
+##metadata m will be incrementally extended with Table calls
+#t=Table('Post',m,autoload_with=db.engine)
+#for col in t.columns:
+#	print(col)
+#for tbl in m.tables:
+#	print(m.tables[tbl].name)
+#	print(m.tables[tbl].fullname)
+#	for col in m.tables[tbl].columns:
+#		print(col)
+#----------------------------------------
+#from sqlalchemy import MetaData
+#from sqlalchemy import Table
+#from sqlalchemy import Column
+#from sqlalchemy import Integer
+#t=Table('words',db.metadata,Column('id',Integer,primary_key=True)
+#t.create(db.engine)
+#----------------------------------------
+#from sqlalchemy import Integer
+#from sqlalchemy import String
+#from sqlalchemy import Float
+#class Test1(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#class Test2(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#	name=db.Column(db.String)
+#class Test3(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#	name=db.Column(db.String)
+#	val=db.Column(db.Float)
+#----------------------------------------
+#after restart to get at the dynamically created stuff
+#from sqlalchemy import MetaData
+#m=MetaData()
+#m.reflect(db.engine)
+#print(list(m.tables))
+#----------------------------------------
+#inspector
+#from sqlalchemy import inspector
+#print(inspect(db.engine).get_table_names())
+#for tblnam in inspect(db.engine).get_table_names():
+#	print(inspect(db.engine).get_columns(tblnam))
+#----------------------------------------
+#select
+#for a in db.metadata.tables['user'].select().execute():
+#	print(a)
+#----------------------------------------
+#example request[s]
+#----------------------------------------
+#import requests
+#auth = {'Ocp-Apim-Subscription-Key': app.config['MS_TRANSLATOR_KEY']}
+#r = requests.get('https://api.microsofttranslator.com/v2/Ajax.svc/Translate?text={}&from={}&to={}'.format(text, source_language, dest_language),headers=auth)
 

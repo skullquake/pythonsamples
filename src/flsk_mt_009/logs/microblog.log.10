@@ -1,4 +1,4 @@
-2019-10-24 03:04:30,145 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-24 22:34:39,090 ERROR: Exception on /tables [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,33 +14,39 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 349, in _psutil
-    _proc['as_dict']=proc.as_dict()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 638, in as_dict
-    ret = meth()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1233, in memory_maps
-    it = self._proc.memory_maps()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1842, in memory_maps
-    data[b'Rss:'],
-KeyError: b'Rss:'
-2019-10-24 03:04:47,399 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:06:29,167 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:06:29,590 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1513, in wrapper
-    return fun(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 2073, in connections
-    ret = _connections.retrieve(kind, self.pid)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 950, in retrieve
-    inodes = self.get_proc_inodes(pid)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 772, in get_proc_inodes
-    for fd in os.listdir("%s/%s/fd" % (self._procfs_path, pid)):
-PermissionError: [Errno 13] Permission denied: '/proc/1/fd'
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 427, in tables
+    tables=tables
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 115, in top-level template code
+    {% block content %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 6, in block "content"
+    <h3><a href="{{ url_for('table',tablename=tablename) }}">{{ table.name }}</a></h3>
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'table' with values ['tablename']. Did you mean 'tables' instead?
+2019-10-24 22:35:42,244 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-24 22:35:44,427 ERROR: Exception on /tables [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -56,46 +62,35 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 349, in _psutil
-    _proc['connections']=proc.connections()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/__init__.py", line 1278, in connections
-    return self._proc.connections(kind)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/psutil/_pslinux.py", line 1516, in wrapper
-    raise AccessDenied(self.pid, self._name)
-psutil.AccessDenied: psutil.AccessDenied (pid=1)
-2019-10-24 03:08:05,991 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 03:08:06,935 ERROR: Exception on /psutil [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 427, in tables
+    tables=tables
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 115, in top-level template code
+    {% block content %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 6, in block "content"
+    <h3><a href="{{ url_for('table',tablename=table.name) }}">{{ table.name }}</a></h3>
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2215, in handle_url_build_error
     reraise(exc_type, exc_value, tb)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 425, in _psutil
-    indent=4
-  File "/usr/lib/python3.6/json/__init__.py", line 238, in dumps
-    **kw).encode(obj)
-  File "/usr/lib/python3.6/json/encoder.py", line 201, in encode
-    chunks = list(chunks)
-  File "/usr/lib/python3.6/json/encoder.py", line 430, in _iterencode
-    yield from _iterencode_dict(o, _current_indent_level)
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 325, in _iterencode_list
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 404, in _iterencode_dict
-    yield from chunks
-  File "/usr/lib/python3.6/json/encoder.py", line 437, in _iterencode
-    o = _default(o)
-  File "/usr/lib/python3.6/json/encoder.py", line 180, in default
-    o.__class__.__name__)
-TypeError: Object of type 'Process' is not JSON serializable
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/werkzeug/routing.py", line 2020, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'table' with values ['tablename']. Did you mean 'tables' instead?
+2019-10-24 22:38:02,956 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{_('Ajax Test')}}</h1>
+	<form action="" method="post">
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.foo(size=32,class_="form-control",id="foo") }}<br>
+			{% for error in form.foo.errors %}
+				<div class="alert alert-danger">{{ error }}</span>
+			{% endfor %}
+		</p>
+		<div>
+			{{ form.submit(class_="btn btn-default") }}
+		</div>
+		<div>
+			<a class="btn btn-default" href="#" id="btn000">{{ _('Ajax Test') }}</a>
+		</div>
+	</form>
+	<script>
+		$(document).ready(
+			function(){
+				$("#btn000").click(function(){
+					window._=$;
+					$.post('/rest',{}).done(function(r){
+						$("#foo").val(JSON.stringify(r))
+					}).fail(function(e){
+						$("#foo").val(e.toString())
+					})
+				})
+			}
+		)
+	</script>
+{% endblock %}

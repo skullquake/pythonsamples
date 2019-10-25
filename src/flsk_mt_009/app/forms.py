@@ -73,3 +73,6 @@ class ResetPasswordForm(FlaskForm):
 		]
 	)
 	submit=SubmitField(_l('Request Password Reset'))
+class AjaxTestForm(FlaskForm):
+	foo=StringField(_l('Foo'),validators=[DataRequired()])
+	submit=SubmitField(_l('Submit'))

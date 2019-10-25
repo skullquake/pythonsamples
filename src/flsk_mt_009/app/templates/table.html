@@ -5,20 +5,24 @@
 			<table class="table table-hover table-sm">
 				<thead>
 					<tr>
-
+						{% if headings %}
 						{% for heading in headings %}
 							<th scope="col">{{ heading }}</th>
 						{% endfor %}
+						{% endif %}
 					</tr>
 				</thead>
 				<tbody>
+					{% if rows %}
 					{% for row in rows %}
 						<tr class="table-active">
+							<td><a href="{{url_for('show_row',tablename=tablename,rowid=row['id'])}}">{{ _('View') }}</a></td>
 							{% for heading in headings %}
 								<td>{{ row[heading] }}</td>
 							{% endfor %}
 						</tr>
 					{% endfor %}
+					{% endif %}
 				</tbody>
 			</table>
 		</div>

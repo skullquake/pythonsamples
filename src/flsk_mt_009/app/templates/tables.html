@@ -2,18 +2,28 @@
 {% block content %}
 	<div class="row">
 		<div class="col-sm-12">
-			{% for table in tables %}
-			<h3><a href="{{ url_for('table',tablename=table.name) }}">{{ table.name }}</a></h3>
 			<table class="table table-hover table-sm">
-				<tbody>
-					<tr class="table-active">
-						{% for col in table.cols %}
-							<td>{{ col }}</td>
-						{% endfor %}
+				<thead>
+					<tr>
+						<th scope="col">{{_('Table Name')}}</th>
+						<th scope="col">{{_('Fields')}}</th>
+						<th scope="col">{{_('Count')}}</th>
 					</tr>
+				</thead>
+				<tbody>
+					{% for table in tables %}
+						<tr class="table-active">
+							<td><a href="{{ url_for('show_table',tablename=table.name) }}">{{table.name}}</a></td>
+							<td>
+								{% for col in table.cols %}
+									<span class="badge badge-primary">{{col}}</span>
+								{% endfor %}
+							</td>
+							<td>{{table.count}}</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
-			{% endfor %}
 		</div>
 	</div>
 	<div class="row">

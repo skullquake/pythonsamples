@@ -1,79 +1,88 @@
-2019-10-24 21:45:24,844 ERROR: Exception on /tables [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+2019-10-25 03:20:39,719 ERROR: Exception on /ajaxtest [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 413, in tables
-    str_ret+=t+'\n'
-UnboundLocalError: local variable 'str_ret' referenced before assignment
-2019-10-24 21:45:45,908 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 21:49:04,689 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 22:19:08,122 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 22:19:54,462 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 22:25:19,412 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 22:26:10,965 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
-2019-10-24 22:26:13,032 ERROR: Exception on /tables [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 427, in tables
-    tables=tables
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 496, in ajaxtest
+    return render_template('ajaxtest.html',title=_('Ajax Test'),form=form)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
     ctx.app,
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
     rv = template.render(context)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
     return original_render(self, *args, **kwargs)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
     return self.environment.handle_exception(exc_info, True)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 1, in top-level template code
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/ajaxtest.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
-    return concat(self.root_render_func(self.new_context(vars)))
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 14, in root
-    </tbody>
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 82, in root
-    </li>
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/tables.html", line 29, in block_content
-    </li>
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/jinja2/runtime.py", line 262, in call
-    return __obj(*args, **kwargs)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 118, in top-level template code
+    {% block content %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/ajaxtest.html", line 8, in block "content"
+    {{ form.foo(size=32,class_="form-control") }}<br>
+TypeError: 'str' object is not callable
+2019-10-25 03:21:08,797 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:21:38,126 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:21:51,916 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:22:02,174 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:22:46,869 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:25:29,432 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:25:33,365 ERROR: Exception on /ajaxtest [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'show_table' with values ['table_name']. Did you forget to specify values ['tablename']?
-2019-10-24 22:27:29,927 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/routes.py", line 498, in ajaxtest
+    form=form
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/ajaxtest.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/base.html", line 118, in top-level template code
+    {% block content %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/templates/ajaxtest.html", line 8, in block "content"
+    {{ form.foo(size=32,class_="form-control") }}<br>
+TypeError: 'str' object is not callable
+2019-10-25 03:26:17,075 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:27:09,591 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:28:11,660 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:38:19,661 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:40:06,134 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:41:23,625 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 03:44:20,277 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
+2019-10-25 04:09:29,504 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_009/app/__init__.py:60]
