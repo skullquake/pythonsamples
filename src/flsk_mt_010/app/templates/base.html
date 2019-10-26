@@ -5,10 +5,11 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<link rel="icon" href="/favicon.ico" type="image/png">
 		<link rel="stylesheet" href="/bootstrap/slate/bootstrap.css">
-		<script src="/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="/datables/dataTables.bootstrap4.min.css">
+		<script src="/jquery/3.3.1/jquery-3.3.1.js"></script>
 		<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="/brython/brython.js"></script>
-
+		<script src="/datatables/jquery.dataTables.js"></script>
+		<script src="/datatables/dataTables.bootstrap4.min.js"></script>
 		{% if title %}
 		<title>{{ title }} - {{_('Microblog')}}</title>
 		{% else %}
@@ -124,12 +125,5 @@
 				</div>
 		</div>
 		<button id="mybutton" class="btn btn-default">Brython</button>
-		<script>
-			brython()
-		</script>
-		<script type="text/python">
-from browser import document,window,alert,map
-alert("test")
-		</script>
 	</body>
 </html>

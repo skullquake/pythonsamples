@@ -2,12 +2,13 @@
 {% block content %}
 	<div class="row">
 		<div class="col-sm-12">
-			<table class="table table-hover table-sm">
+			<table class="table table-hover table-sm" id="table_id">
 				<thead>
 					<tr>
+						<th></th>
 						{% if headings %}
 						{% for heading in headings %}
-							<th scope="col">{{ heading }}</th>
+							<th>{{ heading }}</th>
 						{% endfor %}
 						{% endif %}
 					</tr>
@@ -54,4 +55,9 @@
 			</ul>
 		</div>
 	</div>
+	<script>
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+	</script>
 {% endblock %}
