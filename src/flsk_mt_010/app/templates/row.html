@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+		{% for heading in headings %}
+			<div class="form-group">
+				<label for="exampleInputEmail1">{{ heading }}</label>
+				<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Empty" value="{{row[heading]}}">
+				<!-- <small id="emailHelp" class="form-text text-muted">info</small> -->
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+{% endblock %}

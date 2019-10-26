@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-4">
+			<img src="{{ user.avatar(128) }}"><br/>
+			<h1>{{_('User')}}: {{ user.username }}</h1>
+			{% if user == current_user %}
+				<p><a href="{{ url_for('main.edit_profile') }}">{{_('Edit your profile')}}</a></p>
+			{% endif %}
+			{% if user.about_me %}
+				<p>{{ user.about_me }}</p>
+			{% else %}
+				<p>{{_('No about info')}}</p>
+			{% endif %}
+			{% if user.last_seen %}
+				<p>{{_('Last seen on')}}: {{ moment(user.last_seen).format('LLL') }}</p>
+
+			{% else %}
+				<p{{_('Last seen on')}}>: ???</p>
+			{% endif %}
+			<hr>
+			<p>{{ user.followers.count() }} {{_('followers')}}, {{ user.followed.count() }} {{_('following')}}.</p>
+			{% if user == current_user %}
+				<p><a href="{{ url_for('main.edit_profile') }}">{{_('Edit your profile')}}</a></p>
+			{% elif not current_user.is_following(user) %}
+				<p><a href="{{ url_for('main.follow', username=user.username) }}">{{_('Follow')}}</a></p>
+			{% else %}
+				<p><a href="{{ url_for('main.unfollow', username=user.username) }}">{{_('Unfollow')}}</a></p>
+			{% endif %}
+			<hr>
+		</div>
+		<div class="col-sm-8">
+	{% for post in posts %}
+		<div class="card">
+			{% include '_post.html' %}
+		</div><br/>
+	{% endfor %}
+	<ul class="pagination">
+		{% if prev_url %}
+			<li class="page-item">
+				<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#">&laquo;</a>
+			</li>
+		{% endif %}
+		<li class="page-item active">
+			<a class="page-link" href="#">1</a>
+		</li>
+		{% if next_url %}
+			<li class="page-item">
+				<a class="page-link" href="{{ next_url }}">&raquo;</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" href="#">&raquo;</a>
+			</li>
+		{% endif %}
+	</ul>
+		</div>
+	</div>
+{% endblock %}

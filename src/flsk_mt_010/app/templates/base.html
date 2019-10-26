@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+		<link rel="icon" href="/favicon.ico" type="image/png">
+		<link rel="stylesheet" href="/bootstrap/slate/bootstrap.css">
+		<script src="/jquery/3.2.1/jquery.min.js"></script>
+		<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/brython/brython.js"></script>
+
+		{% if title %}
+		<title>{{ title }} - {{_('Microblog')}}</title>
+		{% else %}
+		<title>{{_('Welcome to Microblog')}}</title>
+		{% endif %}
+		<style>
+			.custom-control-label::after {
+				background-color: #3A3F44;
+			}
+			.jumbotron{
+				border: unset!important;
+				border-radius: unset!important;
+			}
+			html>body{
+				margin-top: 55px;
+			}
+			/* ---------------------------------------- */
+			/* posts previews                           */
+			/* ---------------------------------------- */
+			.pst{
+			}
+			.pst>.img{
+				margin-right:8px;
+				display:inline;
+			}
+			.pst>.usr{
+				padding:8px;
+				display:inline;
+			}
+			.pst>.join{
+				padding:8px;
+				display:inline;
+			}
+			.pst>.bdy{
+				padding:8px;
+				display:inline;
+			}
+			.pst>.dat{
+				padding:8px;
+				text-align:right;
+				display:inline;
+				float:right;
+			}
+		</style>
+	</head>
+	<body onload="test()">
+		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+			<a class="navbar-brand" href="#"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.index')}}">{{_('Home')}}</a>
+					</li>
+					{% if current_user.is_anonymous %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('auth.login')}}">{{_('Login')}}</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('main.user', username=current_user.username) }}">{{_('Profile')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.explore')}}">{{_('Explore')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.users')}}">{{_('Users')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.trajectories')}}">{{_('Trajectories')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.cpu')}}">{{_('CPU')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main._psutil')}}">{{_('PSUTIL')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.tables')}}">{{_('Tables')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('main.ajaxtest')}}">{{_('Ajax Test')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('auth.logout')}}">{{_('Logout')}}</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+		{% if current_user and current_user.username %}
+		<div class="jumbotron">
+			<h1>{{_('Hi')}}, {{ current_user.username }}!</h1>
+		</div>
+		{% endif %}
+		<div class="container">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+				<div class="alert alert-dismissible alert-primary">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<strong>{{message}}</strong>
+				</div>
+				{% endfor %}
+			{% endif %}
+			{% endwith %}
+			{% block content %}
+			{% endblock %}
+				<div id="scripts">
+					{{ moment.include_moment() }}
+				</div>
+		</div>
+		<button id="mybutton" class="btn btn-default">Brython</button>
+		<script>
+			brython()
+		</script>
+		<script type="text/python">
+from browser import document,window,alert,map
+alert("test")
+		</script>
+	</body>
+</html>

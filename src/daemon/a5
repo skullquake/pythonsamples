@@ -46,8 +46,9 @@ class Daemon(object):
 		pid_fileP,
 		stdoutP="/var/log/daemon_example_out.log",
 		stderrP="/var/log/daemon_example_err.log",
-		srvurlP="http://localhost:5000/cpu"
-		#http://102.164.81.11:7080/InovoCentralMonitor/AgentLog
+		#srvurlP="http://localhost:5000/cpu"
+                srvurlP="http://102.164.81.12:7080/InovoCentralMonitor/AgentLog"
+		#
 		#srvurlP="http://192.168.2.228:5000/cpu"
 	):
 		self.stdout=stdoutP

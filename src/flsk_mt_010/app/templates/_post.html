@@ -1,0 +1,15 @@
+<div class="pst">
+	<img src="{{ post.author.avatar(36) }}" class="img">
+	<div class="usr">
+		<a href="{{ url_for('main.user', username=post.author.username) }}">{{ post.author.username }}</a>
+	</div>
+	<div class="join">
+		{{_('says')}}:
+	</div>
+	<div class="bdy">
+		{{ post.body |truncate(16,true,'')}}
+	</div>
+	<div class="dat">
+		{{ moment(post.timestamp).format('LLL') }}
+	</div>
+</div>

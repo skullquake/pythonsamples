@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-hover table-sm">
+				<thead>
+					<tr>
+						<th scope="col">{{_('Table Name')}}</th>
+						<th scope="col">{{_('Fields')}}</th>
+						<th scope="col">{{_('Count')}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for table in tables %}
+						<tr class="table-active">
+							<td><a href="{{ url_for('main.show_table',tablename=table.name) }}">{{table.name}}</a></td>
+							<td>
+								{% for col in table.cols %}
+									<span class="badge badge-primary">{{col}}</span>
+								{% endfor %}
+							</td>
+							<td>{{table.count}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="pagination">
+				{% if prev_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&laquo;</a>
+					</li>
+				{% endif %}
+				<li class="page-item active">
+					<a class="page-link" href="#">1</a>
+				</li>
+				{% if next_url %}
+					<li class="page-item">
+						<a class="page-link" href="{{ next_url }}">&raquo;</a>
+					</li>
+				{% else %}
+					<li class="page-item disabled">
+						<a class="page-link" href="#">&raquo;</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
