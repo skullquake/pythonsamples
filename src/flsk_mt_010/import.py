@@ -2,17 +2,20 @@
 from datetime import\
 	datetime,\
 	timedelta
-from app import\
-	app,\
-	db
 from flask_mail import\
 	Message
 from app.models import\
 	Trajectory
+from app import\
+        create_app,\
+	db
+from flask import\
+	current_app
 import sys
 if __name__=='__main__':
 	"""
 	"""
+	app=create_app()
 	with app.app_context():
 		with open("/home/skullquake/dat/nasa/spdf.sci.gsfc.nasa.gov/pub/data/pioneer/pioneer_venus/traj/pvotrja.asc") as f:
 			arr_traj=[]
