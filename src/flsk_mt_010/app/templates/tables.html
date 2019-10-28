@@ -13,7 +13,9 @@
 				<tbody>
 					{% for table in tables %}
 						<tr class="table-active">
-							<td><a href="{{ url_for('main.show_table',tablename=table.name) }}">{{table.name}}</a></td>
+							<td>
+								<a href="{{ url_for('main.show_table',tablename=table.name) }}">{{table.name}}</a>
+								<a href="{{ url_for('main.show_datatable',tablename=table.name) }}">{{_('Datatable')}}</a></td>
 							<td>
 								{% for col in table.cols %}
 									<span class="badge badge-primary">{{col}}</span>

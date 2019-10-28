@@ -400,6 +400,32 @@ def show_table(tablename):
 		next_url=next_url,
 		prev_url=prev_url
 	)
+@bp.route('/show_datatable/<tablename>',methods=['GET'])
+@login_required
+def show_datatable(tablename):
+	headings=[]
+	for a in db.Model._decl_class_registry.get(tablename).__table__.columns:
+		headings.append(a.name)
+	page=request.args.get(
+		'page',
+		1,
+		type=int
+	)
+	rows=db.Model._decl_class_registry.get(tablename).query.paginate(
+		page,
+		10,
+		False
+	)
+	next_url=url_for('main.show_datatable',tablename=tablename,page=rows.next_num)if rows.has_next else None
+	prev_url=url_for('main.show_datatable',tablename=tablename,page=rows.prev_num)if rows.has_prev else None
+	return render_template(
+		'datatable.html',
+		tablename=tablename,
+		headings=headings,
+		rows=rows.items,
+		next_url=next_url,
+		prev_url=prev_url
+	)
 @bp.route('/show_row/<tablename>/<rowid>',methods=['GET'])
 @login_required
 def show_row(tablename,rowid):
@@ -450,10 +476,38 @@ def rest_post():
 		r.set_data(json.dumps({"err":str(E)}))
 	r.set_data(json.dumps({"msg":"post ok"}))
 	return r
-
-
-
-
+@bp.route('/ajax/datatable',methods=['POST'])
+def ajax_datatables_post():
+	print('-----Datatable-----')
+	print('-----json-----')
+	print(json.dumps(request.get_json(),indent=4))
+	print('-----raw-----')
+	print(request.get_data())#json.dumps(request.get_json(),indent=4))
+	print('-----form-----')
+	print(request.form)#json.dumps(request.get_json(),indent=4))
+	print('-----/Datatable-----')
+	r=flask.Response()
+	r.headers['Content-type']='application/json'
+	data=[
+		[
+			"Tiger Nixon",
+			"System Architect",
+			"Edinburgh",
+			"5421",
+			"2011/04/25",
+			"$3,120"
+		],
+		[
+			"Garrett Winters",
+			"Director",
+			"Edinburgh",
+			"8422",
+			"2011/07/25",
+			"$5,300"
+		]
+	]
+	r.set_data(json.dumps(data))#{"msg":"post ok"}))
+	return r
 #for o in db.Model._decl_class_registry.values():
 #...:	 try:
 #...:		 r=o.query.all()

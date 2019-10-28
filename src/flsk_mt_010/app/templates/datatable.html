@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+	<div>
+		<div></div>
+		{% if headings %}
+		{% for heading in headings %}
+			<div>{{ heading }}</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-hover table-sm" id="table_id">
+				<thead>
+					<th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</th>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script>
+		/*
+$('#table_id')
+.DataTable(
+	{
+		"serverSide": true,
+		"ajax":{
+			"url": '/ajax/datatable',
+			"type":"POST",
+			'contentType':'application/json',
+			'dataType':'json',
+			'data':function(d){
+				return JSON.stringify(d)
+			}
+		},
+		//'dataType':'json',
+		//'async':false
+		"columns":[
+			{"data":"first_name"},
+			{"data": "last_name" },
+			{"data": "position"},
+			{"data":"office"},
+			{"data":"start_date"},
+			{"data":"salary" }
+		]
+	}
+);
+		*/
+	data=[
+		[
+			"Tiger Nixon",
+			"System Architect",
+			"Edinburgh",
+			"5421",
+			"2011/04/25",
+			"$3,120"
+		],
+		[
+			"Garrett Winters",
+			"Director",
+			"Edinburgh",
+			"8422",
+			"2011/07/25",
+			"$5,300"
+		]
+	];
+$('#table_id')
+.DataTable( {
+	    data: data
+} );
+
+
+	</script>
+{% endblock %}
+

@@ -1,5 +1,4 @@
-2019-10-26 12:47:24,828 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 12:47:35,992 ERROR: Exception on /show_table/Cpu [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+2019-10-27 08:43:04,692 ERROR: Exception on /ajax/datatable [POST] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,46 +12,41 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/main/routes.py", line 393, in show_table
-    next_url=url_for('show_table',tablename=tablename,page=rows.next_num)if rows.has_next else None
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/werkzeug/routing.py", line 2020, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'show_table' with values ['page', 'tablename']. Did you mean 'main.show_table' instead?
-2019-10-26 12:48:02,839 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 12:57:17,846 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 12:58:41,275 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:00:02,331 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:00:52,494 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:03:14,606 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:04:32,549 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:05:05,596 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:06:24,271 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:07:46,044 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:08:05,654 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:08:44,123 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:09:08,053 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:09:51,819 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 13:10:34,909 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 04:40:16,844 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:14:40,026 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:15:37,790 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:16:19,512 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:18:09,745 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:19:33,398 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:20:43,513 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:22:15,501 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:23:06,515 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:23:56,558 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:25:50,982 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:26:52,338 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
-2019-10-26 05:28:39,403 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+  File "/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/main/routes.py", line 484, in ajax_datatables_post
+    rjsonrequest.get_json();
+NameError: name 'rjsonrequest' is not defined
+2019-10-27 08:43:22,199 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:44:05,153 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:49:11,677 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:51:29,348 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:56:16,639 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:59:09,006 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 08:59:37,788 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:00:11,434 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:01:32,921 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:02:19,867 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:02:56,930 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:05:26,530 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:06:01,346 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:06:54,913 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:07:08,934 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:07:43,033 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:13:29,729 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:14:13,059 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:15:17,857 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:16:00,470 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:16:26,633 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:16:51,863 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:17:12,785 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:18:13,492 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:18:54,824 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:19:34,879 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:20:44,355 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:21:01,615 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 09:21:25,319 INFO: Microblog startup [in /home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 14:33:07,440 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 14:36:16,333 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 15:09:16,125 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 15:13:41,447 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 15:14:13,946 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
+2019-10-27 15:16:13,660 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:65]
