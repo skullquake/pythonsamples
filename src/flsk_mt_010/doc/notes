@@ -39,4 +39,74 @@ enter flask shell
 	flask shell
 	FLASK_APP=main flask db migrate -m "users table"
 	available at ./fshell
+#for o in db.Model._decl_class_registry.values():
+#...:	 try:
+#...:		 r=o.query.all()
+#...:	 except Exception as E:
+#...:		 print(E)
+#...:
+#...:
+# db.Model._decl_class_registry.get('Post')
+#Trajectory.__table__.columns.keys()
+#url_for('table', tablename=tablename) 
+#----------------------------------------
+#from sqlalchemy import Table
+#from sqlalchemy import MetaData
+#m=MetaData()
+#t=Table('User',m,autoload_with=db.engine)
+#for col in t.columns:
+#	print(col)
+#for tbl in m.tables:
+#	print(tbl)
+##metadata m will be incrementally extended with Table calls
+#t=Table('Post',m,autoload_with=db.engine)
+#for col in t.columns:
+#	print(col)
+#for tbl in m.tables:
+#	print(m.tables[tbl].name)
+#	print(m.tables[tbl].fullname)
+#	for col in m.tables[tbl].columns:
+#		print(col)
+#----------------------------------------
+#from sqlalchemy import MetaData
+#from sqlalchemy import Table
+#from sqlalchemy import Column
+#from sqlalchemy import Integer
+#t=Table('words',db.metadata,Column('id',Integer,primary_key=True)
+#t.create(db.engine)
+#----------------------------------------
+#from sqlalchemy import Integer
+#from sqlalchemy import String
+#from sqlalchemy import Float
+#class Test1(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#class Test2(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#	name=db.Column(db.String)
+#class Test3(db.Model):
+#	id=db.Column(db.Integer,primary_key=True)	
+#	name=db.Column(db.String)
+#	val=db.Column(db.Float)
+#----------------------------------------
+#after restart to get at the dynamically created stuff
+#from sqlalchemy import MetaData
+#m=MetaData()
+#m.reflect(db.engine)
+#print(list(m.tables))
+#----------------------------------------
+#inspector
+#from sqlalchemy import inspector
+#print(inspect(db.engine).get_table_names())
+#for tblnam in inspect(db.engine).get_table_names():
+#	print(inspect(db.engine).get_columns(tblnam))
+#----------------------------------------
+#select
+#for a in db.metadata.tables['user'].select().execute():
+#	print(a)
+#----------------------------------------
+#example request[s]
+#----------------------------------------
+#import requests
+#auth = {'Ocp-Apim-Subscription-Key': app.config['MS_TRANSLATOR_KEY']}
+#r = requests.get('https://api.microsofttranslator.com/v2/Ajax.svc/Translate?text={}&from={}&to={}'.format(text, source_language, dest_language),headers=auth)
 

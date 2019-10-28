@@ -6,8 +6,6 @@ from flask import\
 	url_for,\
 	request,\
 	current_app
-#from app import\
-#	app
 from app.main.forms import\
 	EditProfileForm,\
 	PostForm,\
@@ -42,6 +40,7 @@ import json
 import time
 import requests
 from app.main import bp
+import random
 @bp.route('/')
 @bp.route('/index',methods=['GET','POST'])
 @login_required
@@ -254,7 +253,7 @@ def cpu_post():
 		print(json.dumps(request.get_json(),indent=4))
 		c=Cpu(
 			ts=parse(request.get_json()['ts']),
-			cpu=request.get_json()['main.cpu']
+			cpu=request.get_json()['cpu']
 		)
 		db.session.add(c)
 		db.session.commit()
@@ -476,8 +475,8 @@ def rest_post():
 		r.set_data(json.dumps({"err":str(E)}))
 	r.set_data(json.dumps({"msg":"post ok"}))
 	return r
-@bp.route('/ajax/datatable',methods=['POST'])
-def ajax_datatables_post():
+@bp.route('/ajax/datatable2',methods=['POST'])
+def ajax_datatables_post2():
 	print('-----Datatable-----')
 	print('-----json-----')
 	print(json.dumps(request.get_json(),indent=4))
@@ -488,94 +487,133 @@ def ajax_datatables_post():
 	print('-----/Datatable-----')
 	r=flask.Response()
 	r.headers['Content-type']='application/json'
-	data=[
-		[
-			"Tiger Nixon",
-			"System Architect",
-			"Edinburgh",
-			"5421",
-			"2011/04/25",
-			"$3,120"
-		],
-		[
-			"Garrett Winters",
-			"Director",
-			"Edinburgh",
-			"8422",
-			"2011/07/25",
-			"$5,300"
+	data={
+		"draw": int(request.get_json()['start']/request.get_json()['length'])+1,
+		"recordsTotal": 57,
+		"recordsFiltered": 57,
+		"data": [
+			[
+				"Airi",
+				"Satou",
+				"Accountant",
+				"Tokyo",
+				"28th Nov 08",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Angelica",
+				"Ramos",
+				"Chief Executive Officer (CEO)",
+				"London",
+				"9th Oct 09",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Ashton",
+				"Cox",
+				"Junior Technical Author",
+				"San Francisco",
+				"12th Jan 09",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Bradley",
+				"Greer",
+				"Software Engineer",
+				"London",
+				"13th Oct 12",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Brenden",
+				"Wagner",
+				"Software Engineer",
+				"San Francisco",
+				"7th Jun 11",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Brielle",
+				"Williamson",
+				"Integration Specialist",
+				"New York",
+				"2nd Dec 12",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Bruno",
+				"Nash",
+				"Software Engineer",
+				"London",
+				"3rd May 11",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Caesar",
+				"Vance",
+				"Pre-Sales Support",
+				"New York",
+				"12th Dec 11",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Cara",
+				"Stevens",
+				"Sales Assistant",
+				"New York",
+				"6th Dec 11",
+				f"${random.randint(0,200000)}"#"$162,700"
+			],
+			[
+				"Cedric",
+				"Kelly",
+				"Senior Javascript Developer",
+				"Edinburgh",
+				"29th Mar 12",
+				f"${random.randint(0,200000)}"#"$162,700"
+			]
 		]
-	]
+	}
 	r.set_data(json.dumps(data))#{"msg":"post ok"}))
 	return r
-#for o in db.Model._decl_class_registry.values():
-#...:	 try:
-#...:		 r=o.query.all()
-#...:	 except Exception as E:
-#...:		 print(E)
-#...:
-#...:
-# db.Model._decl_class_registry.get('Post')
-#Trajectory.__table__.columns.keys()
-#url_for('table', tablename=tablename) 
-#----------------------------------------
-#from sqlalchemy import Table
-#from sqlalchemy import MetaData
-#m=MetaData()
-#t=Table('User',m,autoload_with=db.engine)
-#for col in t.columns:
-#	print(col)
-#for tbl in m.tables:
-#	print(tbl)
-##metadata m will be incrementally extended with Table calls
-#t=Table('Post',m,autoload_with=db.engine)
-#for col in t.columns:
-#	print(col)
-#for tbl in m.tables:
-#	print(m.tables[tbl].name)
-#	print(m.tables[tbl].fullname)
-#	for col in m.tables[tbl].columns:
-#		print(col)
-#----------------------------------------
-#from sqlalchemy import MetaData
-#from sqlalchemy import Table
-#from sqlalchemy import Column
-#from sqlalchemy import Integer
-#t=Table('words',db.metadata,Column('id',Integer,primary_key=True)
-#t.create(db.engine)
-#----------------------------------------
-#from sqlalchemy import Integer
-#from sqlalchemy import String
-#from sqlalchemy import Float
-#class Test1(db.Model):
-#	id=db.Column(db.Integer,primary_key=True)	
-#class Test2(db.Model):
-#	id=db.Column(db.Integer,primary_key=True)	
-#	name=db.Column(db.String)
-#class Test3(db.Model):
-#	id=db.Column(db.Integer,primary_key=True)	
-#	name=db.Column(db.String)
-#	val=db.Column(db.Float)
-#----------------------------------------
-#after restart to get at the dynamically created stuff
-#from sqlalchemy import MetaData
-#m=MetaData()
-#m.reflect(db.engine)
-#print(list(m.tables))
-#----------------------------------------
-#inspector
-#from sqlalchemy import inspector
-#print(inspect(db.engine).get_table_names())
-#for tblnam in inspect(db.engine).get_table_names():
-#	print(inspect(db.engine).get_columns(tblnam))
-#----------------------------------------
-#select
-#for a in db.metadata.tables['user'].select().execute():
-#	print(a)
-#----------------------------------------
-#example request[s]
-#----------------------------------------
-#import requests
-#auth = {'Ocp-Apim-Subscription-Key': app.config['MS_TRANSLATOR_KEY']}
-#r = requests.get('https://api.microsofttranslator.com/v2/Ajax.svc/Translate?text={}&from={}&to={}'.format(text, source_language, dest_language),headers=auth)
-
+@bp.route('/ajax/datatable/',methods=['POST'])
+def ajax_datatables_post():
+	#print('-----Datatable-----')
+	#print('-----json-----')
+	#print(json.dumps(request.get_json(),indent=4))
+	#print('-----raw-----')
+	#print(request.get_data())#json.dumps(request.get_json(),indent=4))
+	#print('-----form-----')
+	#print(request.form)#json.dumps(request.get_json(),indent=4))
+	#print('-----/Datatable-----')
+	r=flask.Response()
+	r.headers['Content-type']='application/json'
+	tablename=request.get_json()['tablename'];
+	headings=[]
+	for a in db.Model._decl_class_registry.get(tablename).__table__.columns:
+		headings.append(a.name)
+	page=int(request.get_json()['start']/request.get_json()['length'])+1;
+	rows=db.Model._decl_class_registry.get(tablename).query.paginate(
+		page,
+		request.get_json()['length'],
+		False
+	)
+	rowcount=db.Model._decl_class_registry.get(tablename).query.count()
+	#print('----------------------------------------')
+	#print('PAGINATE')
+	#print(len(rows.items))
+	#print('----------------------------------------')
+	jsondataarr=[]
+	for row in rows.items:
+		jsondata=[]
+		for heading in headings:
+			jsondata.append(str(getattr(row,heading)))
+		jsondataarr.append(jsondata)
+	data={
+		"draw":request.get_json()['draw'],
+		"recordsTotal":rowcount,
+		"recordsFiltered": rowcount,#57,
+		"data": jsondataarr
+	}
+	r.set_data(json.dumps(data))#{"msg":"post ok"}))
+	return r

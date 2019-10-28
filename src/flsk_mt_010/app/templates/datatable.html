@@ -1,33 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-	<div>
-		<div></div>
-		{% if headings %}
-		{% for heading in headings %}
-			<div>{{ heading }}</div>
-		{% endfor %}
-		{% endif %}
-	</div>
 	<div class="row">
 		<div class="col-sm-12">
 			<table class="table table-hover table-sm" id="table_id">
 				<thead>
-					<th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</th>
+					<tr>
+						{% if headings %}
+						{% for heading in headings %}
+							<th>{{ heading }}</th>
+						{% endfor %}
+						{% endif %}
+					</tr>
 				</thead>
-				<tbody>
-				</tbody>
+				<tfoot>
+
+						{% if headings %}
+						{% for heading in headings %}
+							<th>{{ heading }}</th>
+						{% endfor %}
+						{% endif %}
+				</tfoot>
 			</table>
 		</div>
 	</div>
 	<script>
-		/*
+$(document).ready(
+	function(){
+		$('#table_id').DataTable(
+			{
+				"processing": true,
+				"serverSide": true,
+				"ajax":{
+					"url":"/ajax/datatable",
+					"type":"POST",
+					'contentType':'application/json',
+					'dataType':'json',
+					'data':function(d){
+						d.tablename="{{ tablename }}"
+						return JSON.stringify(d);
+					}
+				}
+			}
+		);
+	} 
+);
+	/*
 $('#table_id')
 .DataTable(
 	{
@@ -53,7 +70,6 @@ $('#table_id')
 		]
 	}
 );
-		*/
 	data=[
 		[
 			"Tiger Nixon",
@@ -76,8 +92,7 @@ $('#table_id')
 .DataTable( {
 	    data: data
 } );
-
-
+		*/
 	</script>
 {% endblock %}
 

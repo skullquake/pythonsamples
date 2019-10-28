@@ -53,9 +53,22 @@
 				display:inline;
 				float:right;
 			}
+.dataTables_processing.card[style*="display: none"]{
+  display:block!important;  
+  background:unset!important;
+  box-shadow:unset;
+  color:rgba(255,255,255,0.0);
+}
+.dataTables_processing.card:not([style*="display: none"]){
+  display:block!important;  
+  background:green!important;
+  background:unset!important;
+  box-shadow:unset;
+}
+
 		</style>
 	</head>
-	<body onload="test()">
+	<body>
 		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
 			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,7 +124,7 @@
 			{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for message in messages %}
-				<div class="alert alert-dismissible alert-primary">
+				<div class="alert alert-dismissible alert-primary" style="margin-top:80px;">
 					<button type="button" class="close" data-dismiss="alert">×</button>
 					<strong>{{message}}</strong>
 				</div>
@@ -124,6 +137,5 @@
 					{{ moment.include_moment() }}
 				</div>
 		</div>
-		<button id="mybutton" class="btn btn-default">Brython</button>
 	</body>
 </html>
