@@ -33,3 +33,6 @@ NameError: name 'dstw' is not defined
 2019-10-29 06:47:46,955 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
 2019-10-29 06:48:38,489 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
 2019-10-29 06:49:12,151 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 15:58:38,795 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 16:42:52,236 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 16:42:54,627 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
