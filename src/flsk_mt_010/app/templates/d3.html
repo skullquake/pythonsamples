@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+	<style>
+		.line {
+			fill: none;
+			stroke: steelblue;
+			stroke-width: 2px;
+		}
+
+		.axisSteelBlue text{
+			fill: steelblue;
+		}
+
+		.axisRed text{
+			fill: red;
+		}
+
+svg {
+	padding: 30px;
+	width:100%;
+	background-color:rgba(0,0,0,0.2)
+}
+
+path {
+    fill: #4682b482;
+    stroke: steelblue;
+    stroke-width: 2;
+}
+
+.axis path, .axis line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: #BBB;
+    stroke-width: 1;
+}
+
+.axis text {
+    fill: #766;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 12px;
+}
+.domain{
+  stroke:steelblue!important;
+}
+svg text{
+  fill:steelblue!important;
+}
+	</style>
+	<!-- 
+	<script src="/d3/d3.v5.min.js"></script> 
+	-->
+	<script src="/d3/d3.v4.js"></script> 
+	<div class="row">
+		table:{{table}}<br/>
+		attr:{{attr}}<br/>
+		</div>
+	</div>
+<script>
+	var width = 800;
+	var height = 300;
+
+	var x = d3.scaleLinear().range([0, width]);
+	var y = d3.scaleLinear().range([height, 0]);
+
+	var xAxis = d3.axisBottom()
+	    .scale(x)
+	    .ticks(5);
+
+	var yAxis = d3.axisLeft()
+	    .scale(y)
+	    .ticks(5);
+
+	var valueline = d3.line()
+	    .x(function (d) {
+		return x(d.xVal);
+	    })
+	    .y(function (d) {
+		return y(d.yVal);
+	    });
+
+	var svg = d3.select("body")
+	    .append("svg")
+	    .attr("width", width)
+	    .attr("height", height+100)
+	    .append("g");
+
+	d3.json("/d3/data?t={{table}}&a={{attr}}", (error, data) => {
+		// Scale the range of the data
+		x.domain(d3.extent(data,
+		    function (d) {
+			return d.xVal;
+		    }));
+		y.domain([
+		    0, d3.max(data,
+			function (d) {
+			    return d.yVal;
+			})
+		]);
+
+		svg.append("path") // Add the valueline path.
+		    .attr("d", valueline(data));
+
+		svg.append("g") // Add the X Axis
+		    .attr("class", "x axis")
+		    .attr("transform", "translate(0," + height + ")")
+		    .call(xAxis);
+
+		svg.append("g") // Add the Y Axis
+		    .attr("class", "y axis")
+		    .call(yAxis);
+		}
+	)
+</script>
+{% endblock %}
+

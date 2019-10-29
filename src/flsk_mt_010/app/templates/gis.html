@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+    <link rel="stylesheet" href="/openlayer/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="/openlayer/ol.js"></script>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="map" class="map"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var map = new ol.Map({
+			target: 'map',
+			layers: [
+				new ol.layer.Tile(
+					{
+						source: new ol.source.Stamen(
+							{
+								layer: 'watercolor'
+							}
+						)
+					}
+				)
+			],
+			view: new ol.View({
+				center: ol.proj.fromLonLat([37.41, 8.82]),
+				zoom: 4
+			})
+		});
+/*
+var extent = [0, 0, 512, 512];
+var projection = new ol.proj.Projection({
+  code: 'static-image',
+  units: 'pixels',
+  extent: extent
+});
+
+var map = new ol.Map({
+  layers: [
+    new ol.layer.Image({
+      source: new ol.source.ImageStatic({
+        url: '/worldHigh.svg',
+        projection: projection,
+        imageExtent: extent
+      })
+    })
+  ],
+  target: 'map',
+  view: new ol.View({
+    projection: projection,
+    center: ol.extent.getCenter(extent),
+    zoom: 0
+  })
+});
+var extent = [0, 0, 512, 512];
+var projection = new ol.proj.Projection({
+  code: 'static-image',
+  units: 'pixels',
+  extent: extent
+});
+
+var map = new ol.Map({
+  layers: [
+    new ol.layer.Image({
+      source: new ol.source.ImageStatic({
+        url: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Ghostscript_Tiger.svg',
+        projection: projection,
+        imageExtent: extent,
+        imageLoadFunction: function (image, src) {
+           image.getImage().src = src;
+           image.getImage().width = ol.extent.getWidth(extent);
+           image.getImage().height = ol.extent.getHeight(extent);
+        }
+      })
+    })
+  ],
+  target: 'map',
+  view: new ol.View({
+    projection: projection,
+    center: ol.extent.getCenter(extent),
+    zoom: 0
+  })
+});
+                 var map = new ol.Map({
+                   layers: [
+                         new ol.layer.Tile({
+                                 source: new ol.source.XYZ({
+                                         url: '/map/{z}/{x}/{y}.jpg'
+					})
+                           })
+                   ],
+                   controls: [],
+                   target: 'map',
+                   view: new ol.View({
+                         center: ol.proj.fromLonLat([11.622789, 48.052647]),
+                         zoom: 1,
+                         minZoom: 1,
+                         maxZoom: 20
+                   })
+                 });
+
+                 var map = new ol.Map({
+
+                layers: [
+                    new ol.layer.VectorTile({
+                        source: new ol.source.VectorTile({
+                            format: new ol.format.MVT(),
+                            url:'https://osm.tegola.io/maps/osm/{z}/{x}/{y}.pbf'
+                            #url:'/app/static/map/countries/{z}/{x}/{y}.pbf'
+                        })
+                    })
+                ],
+
+                   controls: [],
+                   target: 'map',
+                   view: new ol.View({
+                         center: ol.proj.fromLonLat([11.622789, 48.052647]),
+                         zoom: 1,
+                         minZoom: 1,
+                         maxZoom: 20
+                   })
+                 });
+*/
+
+	</script>
+{% endblock %}

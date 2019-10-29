@@ -20,6 +20,7 @@ from flask_moment import\
 from flask_babel import\
 	Babel
 import os
+import flask_excel as excel
 db=SQLAlchemy()
 migrate=Migrate()
 login=LoginManager()
@@ -48,12 +49,21 @@ def create_app(config_class=Config):
 	mail.init_app(app)
 	moment.init_app(app)
 	babel.init_app(app)
+	excel.init_excel(app) # required since version 0.0.7
 	from app.errors import bp as errors_bp
 	app.register_blueprint(errors_bp)
 	from app.auth import bp as auth_bp
 	app.register_blueprint(auth_bp,url_prefix='/auth')
 	from app.main import bp as main_bp
 	app.register_blueprint(main_bp)
+	from app.gis import bp as gis_bp
+	app.register_blueprint(gis_bp,url_prefix='/gis')
+	from app.d3 import bp as d3_bp
+	app.register_blueprint(d3_bp,url_prefix='/d3')
+	from app.gfx import bp as gfx_bp
+	app.register_blueprint(gfx_bp,url_prefix='/gfx')
+	from app.excel import bp as excel_bp
+	app.register_blueprint(excel_bp,url_prefix='/excel')
 	if not app.debug:
 		if not os.path.exists('logs'):
 			os.mkdir('logs')

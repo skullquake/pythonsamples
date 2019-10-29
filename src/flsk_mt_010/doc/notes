@@ -12,7 +12,11 @@ pip3 install pyjwt
 pip3 install flask-moment
 pip3 install flask-babel
 pip3 install brython
-./a
+pip3 install heatmap
+pip3 install Flask-Excel
+pip3 install pyexcel-xls
+pip3 install pyexcel-xlsx
+pip3 install XlsxWriter
 
 create migration scripts
 	FLASK_APP=main flask db init

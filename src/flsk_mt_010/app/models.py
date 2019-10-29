@@ -192,6 +192,16 @@ class P10HvmPls(UserMixin,db.Model):
 	F18=db.Column(db.Float)
 	F19=db.Column(db.Float)
 	F20=db.Column(db.Float)
+class P6IMFBRRTN(UserMixin,db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	YYYY=db.Column(db.Integer)
+	DOY=db.Column(db.Integer)
+	HR=db.Column(db.Integer)
+	RTN=db.Column(db.Float)
+class Vec2F(UserMixin,db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	X=db.Column(db.Float)
+	Y=db.Column(db.Float)
 @login.user_loader
 def load_user(id):
 	return User.query.get(int(id))
