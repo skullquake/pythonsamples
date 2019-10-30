@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 	<div class="row">
-         <img src="http://localhost:5000/gfx/line?tbl=Mag&atr=BT&cmx=100&w=1600&h=600" style="width:100%;height:auto;"></img>
+		<div>
+			<img src="http://localhost:5000/gfx/line" style="width:100%;height:auto;"></img>
+		</div>
+		<div>
+			<img src="http://localhost:5000/gfx/plot" style="width:100%;height:auto;"></img>
+		</div>
+		<div>
+			<img src="http://localhost:5000/gfx/simplex" style="width:100%;height:auto;"></img>
+		</div>
+		<div>
+			<img src="http://localhost:5000/gfx/noise?f=0.02" style="width:100%;height:auto;"></img>
+		</div>
 	</div>
 {% endblock %}
 

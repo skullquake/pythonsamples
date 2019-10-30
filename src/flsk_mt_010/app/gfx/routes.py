@@ -45,6 +45,29 @@ import random
 import math
 from opensimplex import\
 	OpenSimplex
+from noise import\
+	pnoise2
+import colorsys
+def serve_pil_image(pil_img):
+	#img_io = StringIO()
+	img_io = BytesIO()
+	#pil_img.save(img_io, 'JPEG', quality=70)
+	pil_img.save(img_io, 'PNG')
+	img_io.seek(0)
+	#return send_file(img_io, mimetype='image/jpeg')
+	return send_file(img_io, mimetype='image/png')
+def genvec():
+	_min=-8
+	_max=8
+	db.session.query(db.Model._decl_class_registry.get('Vec2F')).delete()
+	db.session.commit()
+	for a in range(1024):
+		b=db.Model._decl_class_registry.get('Vec2F')(
+			X=random.random()*(abs(_min-_max))+_min,
+			Y=random.random()*(abs(_min-_max))+_min
+		)
+		db.session.add(b)
+	db.session.commit()
 @bp.route('/home',methods=['GET'])
 @login_required
 def home():
@@ -170,8 +193,8 @@ def plot():
 @bp.route('/simplex',methods=['GET'])
 @login_required
 def simplex():
-	w=512
-	h=512
+	w=256
+	h=256
 	s=OpenSimplex()
 	im=Image.new("L",(w,h))
 	for y in range(0,h):
@@ -180,23 +203,104 @@ def simplex():
 			col=int(val+1)*128
 			im.putpixel((x,y),col)
 	return serve_pil_image(im)
-def serve_pil_image(pil_img):
-	#img_io = StringIO()
-	img_io = BytesIO()
-	#pil_img.save(img_io, 'JPEG', quality=70)
-	pil_img.save(img_io, 'PNG')
-	img_io.seek(0)
-	#return send_file(img_io, mimetype='image/jpeg')
-	return send_file(img_io, mimetype='image/png')
-def genvec():
-	_min=-8
-	_max=8
-	db.session.query(db.Model._decl_class_registry.get('Vec2F')).delete()
-	db.session.commit()
-	for a in range(1024):
-		b=db.Model._decl_class_registry.get('Vec2F')(
-			X=random.random()*(abs(_min-_max))+_min,
-			Y=random.random()*(abs(_min-_max))+_min
-		)
-		db.session.add(b)
-	db.session.commit()
+class Biome:
+	WATER=0
+	BEACH=1
+	FOREST=2
+	JUNGLE=4
+	SAVANNAH=5
+	DESERT=6
+	SNOW=7
+def getBiome(a):
+	if a<0.1:
+		return Biome.WATER
+	elif a<0.2:
+		return Biome.BEACH
+	elif a<0.3:
+		return Biome.FOREST
+	elif a<0.5:
+		return Biome.JUNGLE
+	elif a<0.7:
+		return Biome.SAVANNAH
+	elif a<0.9:
+		return Biome.DESERT
+	return Biome.SNOW
+@bp.route('/noise',methods=['GET'])
+@login_required
+def noise():
+	w=request.args.get('w',256,type=int)
+	h=request.args.get('h',256,type=int)
+	f=request.args.get('f',1,type=float)
+	xoff=request.args.get('x',random.randint(0,1042),type=float)
+	yoff=request.args.get('y',random.randint(0,1042),type=float)
+	p=request.args.get('p',random.random(),type=float)
+	l=request.args.get('l',0,type=int)
+	b=request.args.get('b',random.random(),type=float)
+	o=request.args.get('o',1,type=int)
+	vpow=request.args.get('pow',1,type=float)
+	im=Image.new("RGB",(w,h))
+	vmin=None
+	vmax=None
+	for y in range(0,h):
+		for x in range(0,w):
+			#val=pnoise2(float(x),float(y),octaves=1,persistence=0.5,lacunarity=1,repeatx=w,repeaty=h,base=1)
+			val=pnoise2(
+				f*float(xoff+x),
+				f*float(yoff+y),
+				#f*(0.5+float(xoff+x)),
+				#f*(0.5+float(yoff+y)),
+				#octaves=int(o),
+				#persistance=int(p),
+				#lacunarity=l
+			)
+			val=math.pow(val,vpow) if val >0 else math.pow(-val,vpow)
+			vmin=val if vmin==None else val if val<vmin else vmin
+			vmax=val if vmax==None else val if val>vmin else vmin
+			col=None
+			#col=colorsys.hls_to_rgb(abs(val),0.5,0.5)#(val,0,0)
+			b=getBiome(val)
+			if b==Biome.WATER:
+				#col=colorsys.hls_to_rgb(1.0,0.0,0.0)#(val,0,0)
+				col=(4,4,4)
+			elif b==Biome.BEACH:
+				#col=colorsys.hls_to_rgb(1.0,0.1,0.0)#(val,0,0)
+				col=(8,8,8)
+			elif b==Biome.FOREST:
+				#col=colorsys.hls_to_rgb(1.0,0.2,0.0)#(val,0,0)
+				col=(16,16,16)
+			elif b==Biome.JUNGLE:
+				#col=colorsys.hls_to_rgb(1.0,0.5,0.0)#(val,0,0)
+				col=(32,32,32)
+			elif b==Biome.SAVANNAH:
+				#col=colorsys.hls_to_rgb(1.0,0.6,0.0)#(val,0,0)
+				col=(64,64,64)
+			elif b==Biome.DESERT:
+				#col=colorsys.hls_to_rgb(1.0,0.7,0.0)#(val,0,0)
+				col=(128,128,128)
+			elif b==Biome.SNOW:
+				#col=colorsys.hls_to_rgb(0.9,0.9,0.0)#(val,0,0)
+				col=(255,255,255)
+			#col=(int(col[0]*255),int(col[1]*255),int(col[2]*255))
+			#print(val)
+			im.putpixel((x,y),col)
+	draw=ImageDraw.Draw(im,'RGBA')
+	fnt=ImageFont.truetype("./res/ProggyClean.ttf",32)
+#	draw.text(
+#		(0,0),
+#		'test',
+#		font=fnt,
+#		fill=(255,255,255,32)
+#	)
+	draw.multiline_text(
+		(0,0),
+		f"min:{vmin}\nmax:{vmax}",
+		font=fnt,
+		fill=(255,255,255,8),
+		anchor=(0,0),
+		align='left'
+	)
+
+	del draw
+
+	return serve_pil_image(im)
+

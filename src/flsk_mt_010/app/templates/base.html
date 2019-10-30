@@ -125,7 +125,7 @@
 			</div>
 		</nav>
 		{% if current_user and current_user.username %}
-		<div class="jumbotron">
+		<div class="jumbotron" style="display:none;">
 			<h1>{{_('Hi')}}, {{ current_user.username }}!</h1>
 		</div>
 		{% endif %}

@@ -1,4 +1,4 @@
-2019-10-29 02:33:22,519 ERROR: Exception on /gfx/test [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-29 22:30:19,133 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,34 +14,24 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 58, in test
-    im=Image.new("RGB",(w,h))
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/PIL/Image.py", line 2505, in new
-    return im._new(core.fill(mode, size, color))
-TypeError: integer argument expected, got float
-2019-10-29 02:33:33,884 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:71]
-2019-10-29 02:36:18,419 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:71]
-2019-10-29 03:20:22,221 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:73]
-2019-10-29 03:22:48,662 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:24:39,742 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:25:20,308 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:25:43,781 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:28:17,389 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:28:26,586 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:28:28,348 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:28:31,387 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:28:35,324 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:29:21,627 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:29:29,590 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:30:06,274 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:30:14,176 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:31:10,964 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:31:34,088 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:31:53,037 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:31:57,761 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:33:36,626 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:36:23,354 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:36:25,670 ERROR: Exception on /gfx/plot [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 213, in noise
+    val=pnoise2(x,y,octaves=1,persistenc=1,lacunarity=1,repeatx=w,repeaty=h,base=1)
+TypeError: 'persistenc' is an invalid keyword argument for this function
+2019-10-29 22:30:30,804 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:31:51,332 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:33:01,786 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:33:53,401 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:35:11,040 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:35:59,065 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:36:33,023 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:36:48,232 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:37:00,178 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:37:17,508 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:37:32,947 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:37:45,130 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:38:09,579 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:39:16,130 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:39:20,798 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,11 +47,14 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 161, in plot
-    x=int(getattr(r,x))
-TypeError: getattr(): attribute name must be string
-2019-10-29 03:37:15,278 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 03:37:19,393 ERROR: Exception on /gfx/plot [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 217, in noise
+    im.putpixel((x,y),col)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/PIL/Image.py", line 1753, in putpixel
+    return self.im.putpixel(xy, value)
+TypeError: function takes exactly 1 argument (3 given)
+2019-10-29 22:40:11,082 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:46:02,248 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:46:07,808 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -77,10 +70,17 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 161, in plot
-    x=int(getattr(r,x))
-TypeError: getattr(): attribute name must be string
-2019-10-29 03:37:22,784 ERROR: Exception on /gfx/plot [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 217, in noise
+    col=(int(col([0]*255),int(col[1]*255),int(col[2]*255)))
+TypeError: 'tuple' object is not callable
+2019-10-29 22:46:36,035 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:46:55,745 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:47:08,031 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:47:48,758 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:48:10,903 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:48:42,264 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:48:57,621 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 22:48:58,010 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -96,7 +96,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 161, in plot
-    x=int(getattr(r,x))
-TypeError: getattr(): attribute name must be string
-2019-10-29 03:38:30,655 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 215, in noise
+    val=pnoise2(float(x)/10,float(y)/10,seed=random.randint(0,100))
+TypeError: 'seed' is an invalid keyword argument for this function
+2019-10-29 22:49:34,679 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 23:38:58,784 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
