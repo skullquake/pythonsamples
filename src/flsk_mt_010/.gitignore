@@ -6,5 +6,4 @@
 **/local/**
 **/share/**
 **/res/**
-*.db
 /app.db
