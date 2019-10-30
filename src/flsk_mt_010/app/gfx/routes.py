@@ -43,7 +43,8 @@ from PIL import ImageFont
 import os
 import random 
 import math
-
+from opensimplex import\
+	OpenSimplex
 @bp.route('/home',methods=['GET'])
 @login_required
 def home():
@@ -114,8 +115,9 @@ def line():
 @bp.route('/plot',methods=['GET'])
 @login_required
 def plot():
-	w=request.args.get('w',800,type=int)
-	h=request.args.get('h',800,type=int)
+	genvec()
+	w=request.args.get('w',600,type=int)
+	h=request.args.get('h',300,type=int)
 	t=request.args.get('tbl',default='Vec2F',type=str)
 	atx=request.args.get('x',default='X',type=str)
 	aty=request.args.get('y',default='Y',type=str)
@@ -156,14 +158,27 @@ def plot():
 	idx=0
 	fill=(255,32,32,255)
 	csz=2
+	#print(rows.items[0])
 	for r in rows.items:
-		x=int(scale*(getattr(r,atx)))
-		y=int(scale*(getattr(r,aty)))
-		#print(f"{x}:{y}")
+		x=int(scale*(getattr(r,atx)-xmin))
+		y=int(scale*(getattr(r,aty)-ymin))
 		draw.line((x,y+csz)+(x,y-csz),fill=fill)
 		draw.line((x+csz,y)+(x-csz,y),fill=fill)
 		idx+=1
 	del draw
+	return serve_pil_image(im)
+@bp.route('/simplex',methods=['GET'])
+@login_required
+def simplex():
+	w=512
+	h=512
+	s=OpenSimplex()
+	im=Image.new("L",(w,h))
+	for y in range(0,h):
+		for x in range(0,w):
+			val=s.noise2d(x,y)
+			col=int(val+1)*128
+			im.putpixel((x,y),col)
 	return serve_pil_image(im)
 def serve_pil_image(pil_img):
 	#img_io = StringIO()
@@ -173,3 +188,15 @@ def serve_pil_image(pil_img):
 	img_io.seek(0)
 	#return send_file(img_io, mimetype='image/jpeg')
 	return send_file(img_io, mimetype='image/png')
+def genvec():
+	_min=-8
+	_max=8
+	db.session.query(db.Model._decl_class_registry.get('Vec2F')).delete()
+	db.session.commit()
+	for a in range(1024):
+		b=db.Model._decl_class_registry.get('Vec2F')(
+			X=random.random()*(abs(_min-_max))+_min,
+			Y=random.random()*(abs(_min-_max))+_min
+		)
+		db.session.add(b)
+	db.session.commit()

@@ -17,6 +17,9 @@ pip3 install Flask-Excel
 pip3 install pyexcel-xls
 pip3 install pyexcel-xlsx
 pip3 install XlsxWriter
+pip3 install opensimplex
+pip3 install noise
+pip3 install vec-noise
 
 create migration scripts
 	FLASK_APP=main flask db init

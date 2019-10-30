@@ -1,38 +1,77 @@
-2019-10-29 06:13:01,609 ERROR: Exception on /gfx/plot [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-29 18:39:01,930 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:39:42,316 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:40:34,194 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:42:23,565 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:42:24,397 ERROR: Exception on /gfx/plot [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 132, in plot
-    scale=min(dstw/srcw,dsth/srch)
-NameError: name 'dstw' is not defined
-2019-10-29 06:13:24,685 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:14:21,409 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:26:41,757 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:27:11,186 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:28:18,520 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:31:05,065 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:34:17,824 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:37:40,129 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:41:36,993 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:42:59,168 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:44:12,395 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:45:44,344 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:46:30,848 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:47:46,955 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:48:38,489 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:49:12,151 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 15:58:38,795 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 16:42:52,236 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 16:42:54,627 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 117, in plot
+    genvec()
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 179, in genvec
+    db.session.query(Vec2F).delete()
+NameError: name 'Vec2F' is not defined
+2019-10-29 18:43:44,174 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:43:46,194 ERROR: Exception on /gfx/plot [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 117, in plot
+    genvec()
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 179, in genvec
+    db.session.query(Vec2F).delete()
+NameError: name 'Vec2F' is not defined
+2019-10-29 18:44:12,588 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:44:38,220 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:45:07,361 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:46:52,386 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 18:49:00,056 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 19:32:48,847 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 19:32:57,641 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 19:33:09,560 ERROR: Exception on /gfx/simplex [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 181, in simplex
+    im.putpixel((x,y),col)
+  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/PIL/Image.py", line 1753, in putpixel
+    return self.im.putpixel(xy, value)
+IndexError: image index out of range
+2019-10-29 19:33:36,278 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+2019-10-29 19:34:00,319 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
