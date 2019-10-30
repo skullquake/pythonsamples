@@ -7,7 +7,10 @@ from app.models import\
 	Post,\
 	Trajectory,\
 	Cpu,\
-	PvoMgd
+	PvoMgd,\
+	Department,\
+	Employee,\
+	Schedule
 app=create_app()
 cli.register(app)
 @app.shell_context_processor
@@ -20,6 +23,9 @@ def make_shell_context():
 		'Post': Post,\
 		'Trajectory':Trajectory,\
 		'Cpu':Cpu,\
-		'PvoMgd':PvoMgd
+		'PvoMgd':PvoMgd,\
+		'Department':Department,\
+		'Schedule':Employee,\
+		'Employee':Schedule
 	}
 

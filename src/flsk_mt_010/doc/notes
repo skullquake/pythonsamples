@@ -117,3 +117,5 @@ enter flask shell
 #auth = {'Ocp-Apim-Subscription-Key': app.config['MS_TRANSLATOR_KEY']}
 #r = requests.get('https://api.microsofttranslator.com/v2/Ajax.svc/Translate?text={}&from={}&to={}'.format(text, source_language, dest_language),headers=auth)
 
+
+https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-25 03:11-0700\n"
+"POT-Creation-Date: 2019-10-30 04:57-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,182 +17,190 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: app/forms.py:21 app/forms.py:26 app/forms.py:40
+#: app/auth/forms.py:21 app/auth/forms.py:26 app/forms.py:21
+#: app/main/forms.py:21 app/midi/forms.py:21
 msgid "Username"
 msgstr ""
 
-#: app/forms.py:22 app/forms.py:28 app/forms.py:65
-msgid "Password"
-msgstr ""
-
-#: app/forms.py:23
-msgid "RememberMe"
-msgstr ""
-
-#: app/forms.py:24
-msgid "SignIn"
-msgstr ""
-
-#: app/forms.py:27 app/forms.py:61
-msgid "Email"
-msgstr ""
-
-#: app/forms.py:29 app/forms.py:69
-msgid "Repeat Password"
-msgstr ""
-
-#: app/forms.py:30 app/templates/register.html:4
-msgid "Register"
-msgstr ""
-
-#: app/forms.py:34 app/forms.py:50
-msgid "Please use a different username."
-msgstr ""
-
-#: app/forms.py:38
-msgid "Please use a different email address."
-msgstr ""
-
-#: app/forms.py:41
+#: app/forms.py:22 app/main/forms.py:22 app/midi/forms.py:22
 msgid "About me"
 msgstr ""
 
-#: app/forms.py:42 app/forms.py:59 app/forms.py:78
+#: app/forms.py:23 app/forms.py:40 app/forms.py:43 app/main/forms.py:23
+#: app/main/forms.py:40 app/main/forms.py:43 app/midi/forms.py:23
+#: app/midi/forms.py:40 app/midi/forms.py:43
 msgid "Submit"
 msgstr ""
 
-#: app/forms.py:53
+#: app/auth/forms.py:34 app/forms.py:31 app/main/forms.py:31
+#: app/midi/forms.py:31
+msgid "Please use a different username."
+msgstr ""
+
+#: app/forms.py:34 app/main/forms.py:34 app/midi/forms.py:34
 msgid "Say something"
 msgstr ""
 
-#: app/forms.py:62 app/forms.py:75
-msgid "Request Password Reset"
-msgstr ""
-
-#: app/forms.py:77
+#: app/forms.py:42 app/main/forms.py:42 app/midi/forms.py:42
 msgid "Foo"
 msgstr ""
 
-#: app/routes.py:56
-msgid "Your post is now live!"
+#: app/auth/forms.py:22 app/auth/forms.py:28 app/auth/forms.py:44
+msgid "Password"
 msgstr ""
 
-#: app/routes.py:86
+#: app/auth/forms.py:23
+msgid "RememberMe"
+msgstr ""
+
+#: app/auth/forms.py:24
+msgid "SignIn"
+msgstr ""
+
+#: app/auth/forms.py:27 app/auth/forms.py:40
+msgid "Email"
+msgstr ""
+
+#: app/auth/forms.py:29 app/auth/forms.py:48
+msgid "Repeat Password"
+msgstr ""
+
+#: app/auth/forms.py:30 app/templates/auth/register.html:4
+msgid "Register"
+msgstr ""
+
+#: app/auth/forms.py:38
+msgid "Please use a different email address."
+msgstr ""
+
+#: app/auth/forms.py:41 app/auth/forms.py:54
+msgid "Request Password Reset"
+msgstr ""
+
+#: app/auth/routes.py:53
 msgid "Invalid username or password"
 msgstr ""
 
-#: app/routes.py:108
+#: app/auth/routes.py:75
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/routes.py:176 app/routes.py:491
+#: app/auth/routes.py:91
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+
+#: app/auth/routes.py:109
+msgid "Your password has been reset."
+msgstr ""
+
+#: app/main/routes.py:53
+msgid "Your post is now live!"
+msgstr ""
+
+#: app/main/routes.py:136 app/main/routes.py:445
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/routes.py:187 app/routes.py:201
+#: app/main/routes.py:147 app/main/routes.py:161
 #, python-format
 msgid "User %(username)s not found."
 msgstr ""
 
-#: app/routes.py:190
+#: app/main/routes.py:150
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/routes.py:194
+#: app/main/routes.py:154
 #, python-format
 msgid "You are following %(username)s!"
 msgstr ""
 
-#: app/routes.py:204
+#: app/main/routes.py:164
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/routes.py:208
+#: app/main/routes.py:168
 #, python-format
 msgid "You are not following %(username)s."
-msgstr ""
-
-#: app/routes.py:252
-msgid "Check your email for the instructions to reset your password"
-msgstr ""
-
-#: app/routes.py:270
-msgid "Your password has been reset."
-msgstr ""
-
-#: app/routes.py:495 app/templates/ajaxtest.html:3 app/templates/base.html:93
-msgid "Ajax Test"
-msgstr ""
-
-#: app/templates/404.html:2
-msgid "File Not Found"
-msgstr ""
-
-#: app/templates/404.html:3 app/templates/500.html:5
-msgid "Back"
-msgstr ""
-
-#: app/templates/500.html:3
-msgid "An unexpected error has occurred"
-msgstr ""
-
-#: app/templates/500.html:4
-msgid "The administrator has been notified. Sorry for the inconvenience!"
 msgstr ""
 
 #: app/templates/_post.html:7
 msgid "says"
 msgstr ""
 
-#: app/templates/base.html:11
+#: app/templates/ajaxtest.html:3 app/templates/ajaxtest.html:16
+msgid "Ajax Test"
+msgstr ""
+
+#: app/templates/base.html:14
 msgid "Microblog"
 msgstr ""
 
-#: app/templates/base.html:13
+#: app/templates/base.html:16
 msgid "Welcome to Microblog"
 msgstr ""
 
-#: app/templates/base.html:64
+#: app/templates/base.html:80
 msgid "Home"
 msgstr ""
 
-#: app/templates/base.html:68
+#: app/templates/base.html:84
 msgid "Login"
 msgstr ""
 
-#: app/templates/base.html:72
+#: app/templates/base.html:88
 msgid "Profile"
 msgstr ""
 
-#: app/templates/base.html:75
+#: app/templates/base.html:91
 msgid "Explore"
 msgstr ""
 
-#: app/templates/base.html:78
+#: app/templates/base.html:94
 msgid "Users"
 msgstr ""
 
-#: app/templates/base.html:81
+#: app/templates/base.html:97
 msgid "Trajectories"
 msgstr ""
 
-#: app/templates/base.html:84
+#: app/templates/base.html:100
 msgid "CPU"
 msgstr ""
 
-#: app/templates/base.html:87
+#: app/templates/base.html:103
 msgid "PSUTIL"
 msgstr ""
 
-#: app/templates/base.html:90
+#: app/templates/base.html:106
 msgid "Tables"
 msgstr ""
 
-#: app/templates/base.html:96
+#: app/templates/base.html:109
+msgid "Gis"
+msgstr ""
+
+#: app/templates/base.html:112
+msgid "D3"
+msgstr ""
+
+#: app/templates/base.html:115
+msgid "Gfx"
+msgstr ""
+
+#: app/templates/base.html:118
+msgid "Excel"
+msgstr ""
+
+#: app/templates/base.html:121
+msgid "HR"
+msgstr ""
+
+#: app/templates/base.html:124
 msgid "Logout"
 msgstr ""
 
-#: app/templates/base.html:104
+#: app/templates/base.html:132
 msgid "Hi"
 msgstr ""
 
@@ -204,22 +212,6 @@ msgstr ""
 msgid "Your Message..."
 msgstr ""
 
-#: app/templates/login.html:4
-msgid "Sign In"
-msgstr ""
-
-#: app/templates/login.html:23
-msgid "New User"
-msgstr ""
-
-#: app/templates/login.html:23
-msgid "Click to Register"
-msgstr ""
-
-#: app/templates/login.html:24
-msgid "Click to Reset It"
-msgstr ""
-
 #: app/templates/reset_password.html:3
 msgid "Reset Your Password"
 msgstr ""
@@ -228,7 +220,7 @@ msgstr ""
 msgid "Reset Password"
 msgstr ""
 
-#: app/templates/table.html:19
+#: app/templates/hr/home.html:15 app/templates/table.html:20
 msgid "View"
 msgstr ""
 
@@ -242,6 +234,10 @@ msgstr ""
 
 #: app/templates/tables.html:10
 msgid "Count"
+msgstr ""
+
+#: app/templates/tables.html:18
+msgid "Datatable"
 msgstr ""
 
 #: app/templates/user.html:6
@@ -280,7 +276,7 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: app/templates/users.html:9
+#: app/templates/hr/department.html:4 app/templates/users.html:9
 msgid "Name"
 msgstr ""
 
@@ -294,5 +290,41 @@ msgstr ""
 
 #: app/templates/users.html:12
 msgid "About"
+msgstr ""
+
+#: app/templates/auth/login.html:4
+msgid "Sign In"
+msgstr ""
+
+#: app/templates/auth/login.html:23
+msgid "New User"
+msgstr ""
+
+#: app/templates/auth/login.html:23
+msgid "Click to Register"
+msgstr ""
+
+#: app/templates/auth/login.html:24
+msgid "Click to Reset It"
+msgstr ""
+
+#: app/templates/errors/404.html:2
+msgid "File Not Found"
+msgstr ""
+
+#: app/templates/errors/404.html:3 app/templates/errors/500.html:5
+msgid "Back"
+msgstr ""
+
+#: app/templates/errors/500.html:3
+msgid "An unexpected error has occurred"
+msgstr ""
+
+#: app/templates/errors/500.html:4
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr ""
+
+#: app/templates/hr/department.html:5 app/templates/hr/home.html:14
+msgid "Employees"
 msgstr ""
 

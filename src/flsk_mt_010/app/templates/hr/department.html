@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+	<div style="margin-top:20px">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3>{{_('Name')}}: {{department.Name}}</h3>
+				<h3>{{_('Employees')}}: {{department.employees.count()}}</h3>
+			</div>
+		</div>
+		{% if employees %}
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-hover table-sm" id="table_id">
+						<thead>
+							<tr>
+								<th></th>
+								{% if employees.headings %}
+								{% for heading in employees.headings %}
+									<th>{{ heading }}</th>
+								{% endfor %}
+								{% endif %}
+							</tr>
+						</thead>
+						<tbody>
+							{% if employees.rows %}
+								{% for row in employees.rows%}
+									<tr class="table-active">
+										<td>
+											<a class="btn btn-default btn-sm" href="{{ url_for('hr.show_employee',id=row.id) }}">{{_('View')}}</a>
+										</td>
+										{% for heading in employees.headings %}
+											<td>{{ row[heading] }}</td>
+										{% endfor %}
+									</tr>
+								{% endfor %}
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="pagination">
+						{% if prev_url %}
+							<li class="page-item">
+								<a class="page-link" href="{{ prev_url }}">&laquo;</a>
+							</li>
+						{% else %}
+							<li class="page-item disabled">
+								<a class="page-link" href="#">&laquo;</a>
+							</li>
+						{% endif %}
+						<li class="page-item active">
+							<a class="page-link" href="#">1</a>
+						</li>
+						{% if next_url %}
+							<li class="page-item">
+								<a class="page-link" href="{{ next_url }}">&raquo;</a>
+							</li>
+						{% else %}
+							<li class="page-item disabled">
+								<a class="page-link" href="#">&raquo;</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		{% endif %}
+
+	</div>
+	{% if employees %}
+		<script>
+			$(document).ready(
+				function(){
+					$('#table_id').DataTable();
+				}
+			);
+		</script>
+	{% endif %}
+{% endblock %}
+

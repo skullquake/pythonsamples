@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+	<div  style="margin-top:20p"></div>
+	<div class="row">
+	{% for department in departments %}
+		<div class="col-sm-4">
+			<div class="card" style="margin-top:20px;">
+				<div class="card-body">
+					<div class="card-title">
+						<h3>
+							{{department.Name}}
+						</h3>
+					</div>
+					<p class="card-text">{{_('Employees')}}: {{department.employees.count()}}</p>
+					<a class="btn btn-default" href="{{ url_for('hr.show_department',id=department.id) }}">{{_('View')}}</a>
+
+				</div>
+			</div>
+		</div>
+	{% endfor %} </div>
+{% endblock %}
+
+

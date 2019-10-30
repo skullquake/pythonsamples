@@ -1,4 +1,4 @@
-2019-10-29 06:13:01,609 ERROR: Exception on /gfx/plot [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-30 04:38:19,479 ERROR: Exception on /hr/home [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,88 +14,61 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 132, in plot
-    scale=min(dstw/srcw,dsth/srch)
-NameError: name 'dstw' is not defined
-2019-10-29 06:13:24,685 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:14:21,409 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:26:41,757 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:27:11,186 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:28:18,520 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:31:05,065 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:34:17,824 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:37:40,129 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:41:36,993 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:42:59,168 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:44:12,395 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:45:44,344 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:46:30,848 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:47:46,955 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:48:38,489 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 06:49:12,151 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 15:58:38,795 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 16:42:52,236 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 16:42:54,627 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:29:33,026 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 49, in home
+    departments=departments
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/main/routes.py", line 306, in _psutil
-    'disk_io_counters':psutil.disk_io_counters(),
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
-    rawdict = _psplatform.disk_io_counters(**kwargs)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
-    for entry in gen:
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
-    raise ValueError("not sure how to interpret line %r" % line)
-ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 70683.873\n'
-2019-10-29 18:29:38,054 ERROR: Exception on /psutil [GET] [in /data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/main/routes.py", line 306, in _psutil
-    'disk_io_counters':psutil.disk_io_counters(),
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/__init__.py", line 2169, in disk_io_counters
-    rawdict = _psplatform.disk_io_counters(**kwargs)
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1120, in disk_io_counters
-    for entry in gen:
-  File "/data/data/com.termux/files/usr/lib/python3.7/site-packages/psutil/_pslinux.py", line 1093, in read_procfs
-    raise ValueError("not sure how to interpret line %r" % line)
-ValueError: not sure how to interpret line '   1       0 ram0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 61440 0 0 0 70688.900\n'
-2019-10-29 18:31:29,821 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:31:51,910 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:32:11,398 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:32:21,975 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:32:29,230 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:32:47,535 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:34:26,639 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:35:03,281 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:35:29,971 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:35:47,555 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:36:23,358 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:36:35,070 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-29 18:37:14,475 INFO: Microblog startup [in /data/data/com.termux/files/home/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/templates/hr/home.html", line 6, in template
+    {% if loop.counter|divisibleby:"3" or forloop.last %}
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 199, in parse_for
+    body = self.parse_statements(('name:endfor', 'name:else'))
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 213, in parse_if
+    'name:endif'))
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/parser.py", line 164, in parse_statements
+    self.stream.expect('block_end')
+  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got 'string'
+2019-10-30 04:38:39,161 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:39:05,677 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:39:19,499 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:39:55,312 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:40:35,671 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:41:05,176 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 04:42:50,945 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]

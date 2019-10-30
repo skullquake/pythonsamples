@@ -1,4 +1,4 @@
-2019-10-30 00:01:55,597 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-30 05:14:55,980 ERROR: Exception on /hr/show_department/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,13 +14,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 238, in noise
-    fnt=ImageFont.truetype("./res/ProggyClean.ttf",fntsz)
-NameError: name 'fntsz' is not defined
-2019-10-30 00:02:08,077 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:02:59,974 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:04:52,944 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:04:55,780 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 56, in show_department
+    headings:[],
+NameError: name 'headings' is not defined
+2019-10-30 05:15:19,540 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 05:15:20,018 ERROR: Exception on /hr/show_department/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -36,16 +34,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 235, in noise
-    vmin=min(vmin,val)
-TypeError: '<' not supported between instances of 'float' and 'NoneType'
-2019-10-30 00:05:10,528 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:06:06,416 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:06:27,671 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:06:53,240 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:07:32,034 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:08:51,991 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:08:54,105 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 56, in show_department
+    headings:[],
+NameError: name 'headings' is not defined
+2019-10-30 05:15:55,190 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 05:15:58,014 ERROR: Exception on /hr/show_department/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -61,18 +54,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 235, in noise
-    vmin=val if val==None else val if val<vmin else vmin
-TypeError: '<' not supported between instances of 'float' and 'NoneType'
-2019-10-30 00:09:18,567 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:09:46,883 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:10:06,724 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:10:28,980 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:10:58,701 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:11:43,724 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:12:33,451 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:12:49,975 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
-2019-10-30 00:12:55,572 ERROR: Exception on /gfx/noise [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 56, in show_department
+    headings:[],
+NameError: name 'headings' is not defined
+2019-10-30 05:16:19,491 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+2019-10-30 05:16:20,358 ERROR: Exception on /hr/show_department/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,7 +74,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/gfx/routes.py", line 238, in noise
-    vmin=val if vmin==None else val if val<vmin else vmin
-TypeError: '<' not supported between instances of 'complex' and 'float'
-2019-10-30 00:13:28,667 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:75]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 56, in show_department
+    headings:[],
+NameError: name 'headings' is not defined
+2019-10-30 05:16:41,400 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]

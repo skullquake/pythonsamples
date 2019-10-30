@@ -6,10 +6,15 @@
 		<link rel="icon" href="/favicon.ico" type="image/png">
 		<link rel="stylesheet" href="/bootstrap/slate/bootstrap.css">
 		<link rel="stylesheet" href="/datables/dataTables.bootstrap4.min.css">
-		<script src="/jquery/3.3.1/jquery-3.3.1.js"></script>
+		<link rel="stylesheet" href="/fullcalendar/packages/core/main.css">
+		<link rel="stylesheet" href="/timetable/timetablejs.css">
+		<script src="/jquery/jquery-3.4.1.min.js"></script>
+		<script src="/fullcalendar/packages/core/main.js"></script>
 		<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="/datatables/jquery.dataTables.js"></script>
 		<script src="/datatables/dataTables.bootstrap4.min.js"></script>
+		<script src="/timetable/timetable.js"></script>
+
 		{% if title %}
 		<title>{{ title }} - {{_('Microblog')}}</title>
 		{% else %}
@@ -116,6 +121,9 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{url_for('excel.home')}}">{{_('Excel')}}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('hr.home')}}">{{_('HR')}}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{url_for('auth.logout')}}">{{_('Logout')}}</a>

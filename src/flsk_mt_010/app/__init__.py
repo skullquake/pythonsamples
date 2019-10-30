@@ -64,6 +64,8 @@ def create_app(config_class=Config):
 	app.register_blueprint(gfx_bp,url_prefix='/gfx')
 	from app.excel import bp as excel_bp
 	app.register_blueprint(excel_bp,url_prefix='/excel')
+	from app.hr import bp as hr_bp
+	app.register_blueprint(hr_bp,url_prefix='/hr')
 	if not app.debug:
 		if not os.path.exists('logs'):
 			os.mkdir('logs')

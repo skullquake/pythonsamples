@@ -1,6 +1,5 @@
 from app import\
-	db#,\
-#	app
+	db
 from datetime import\
 	datetime
 from werkzeug.security import\
@@ -202,6 +201,34 @@ class Vec2F(UserMixin,db.Model):
 	id=db.Column(db.Integer,primary_key=True)
 	X=db.Column(db.Float)
 	Y=db.Column(db.Float)
+#-------------------------------------------------------------------------------
+#HR
+#-------------------------------------------------------------------------------
+class Department(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	Name=db.Column(db.String)
+	employees=db.relationship(
+		'Employee',
+		backref='department',
+		lazy='dynamic'
+	)
+class Employee(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	Name=db.Column(db.String)
+	department_id=db.Column(db.Integer,db.ForeignKey('department.id'))
+	schedules=db.relationship(
+		'Schedule',
+		backref='employee',
+		lazy='dynamic'
+	)
+class Schedule(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	date=db.Column(db.DateTime,default=datetime.utcnow)
+	description=db.Column(db.String)
+	employee_id=db.Column(db.Integer,db.ForeignKey('employee.id'))
+#-------------------------------------------------------------------------------
+#//HR
+#-------------------------------------------------------------------------------
 @login.user_loader
 def load_user(id):
 	return User.query.get(int(id))
