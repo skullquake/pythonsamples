@@ -51,6 +51,12 @@ import colorsys
 from flask import Response
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+import matplotlib
+from mpl_toolkits.mplot3d import Axes3D
+import numpy
+import matplotlib.pyplot
+
+
 
 def serve_pil_image(pil_img):
 	#img_io = StringIO()
@@ -320,3 +326,22 @@ def mplfig():
 	ys = [random.randint(1, 50) for x in xs]
 	axis.plot(xs, ys)
 	return fig
+@bp.route('/mpl3d',methods=['GET'])
+def mpl3d():
+	matplotlib.rcParams['legend.fontsize'] = 10
+	fig=Figure()
+	ax=fig.gca(projection='3d')
+	theta = numpy.linspace(-4 * numpy.pi, 4 * numpy.pi, 100)
+	z = numpy.linspace(-2, 2, 100)
+	r = z**2 + 1
+	x = r * numpy.sin(theta)
+	y = r * numpy.cos(theta)
+	ax.plot(x, y, z, label='parametric curve')
+	ax.legend()
+	output=io.BytesIO()
+	FigureCanvas(fig).print_png(output)
+	return Response(output.getvalue(), mimetype='image/png')
+
+
+
+
