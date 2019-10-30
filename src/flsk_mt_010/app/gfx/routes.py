@@ -48,6 +48,10 @@ from opensimplex import\
 from noise import\
 	pnoise2
 import colorsys
+from flask import Response
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 def serve_pil_image(pil_img):
 	#img_io = StringIO()
 	img_io = BytesIO()
@@ -303,4 +307,16 @@ def noise():
 	del draw
 
 	return serve_pil_image(im)
-
+@bp.route('/mpl',methods=['GET'])
+def mpl():
+	fig = mplfig()
+	output = io.BytesIO()
+	FigureCanvas(fig).print_png(output)
+	return Response(output.getvalue(), mimetype='image/png')
+def mplfig():
+	fig = Figure()
+	axis = fig.add_subplot(1, 1, 1)
+	xs = range(100)
+	ys = [random.randint(1, 50) for x in xs]
+	axis.plot(xs, ys)
+	return fig
