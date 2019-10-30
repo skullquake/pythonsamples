@@ -5,4 +5,6 @@
 **/lib/**
 **/local/**
 **/share/**
-app.db
+**/res/**
+*.db
+/app.db
