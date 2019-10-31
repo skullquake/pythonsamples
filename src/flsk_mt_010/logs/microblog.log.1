@@ -1,4 +1,4 @@
-2019-10-30 05:16:42,866 ERROR: Exception on /hr/show_department/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+2019-10-31 01:22:19,584 ERROR: Exception on /hr/show_employee/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,32 +14,41 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 65, in show_department
-    employees=employees
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/templates/hr/department.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/templates/base.html", line 146, in top-level template code
-    {% block content %}
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/templates/hr/department.html", line 27, in block "content"
-    {% for heading in employee.headings %}
-  File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/jinja2/environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'employee' is undefined
-2019-10-30 05:17:29,091 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:41:43,378 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:41:49,987 ERROR: Exception on /hr/show_employee/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 80, in show_employee
+    dates.append({'dsc':s.description,'t0':s.date,'t1':s.date})
+AttributeError: 'Schedule' object has no attribute 'date'
+2019-10-31 01:23:01,450 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:26:21,364 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:26:27,475 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:27:06,875 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:30:22,884 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:30:41,590 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:30:55,452 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:31:12,779 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:35:01,524 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:35:14,291 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:35:52,654 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:36:57,229 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:37:54,538 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:39:39,661 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:39:44,191 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:40:46,583 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:44:12,421 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:45:38,758 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:45:51,854 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:48:31,483 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:48:36,369 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:49:54,374 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:54:13,593 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:54:21,226 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:54:36,531 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:56:49,585 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:58:23,350 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:59:11,285 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 01:59:21,160 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:79]
+2019-10-31 02:40:46,115 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:81]
+2019-10-31 02:44:37,222 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:81]
+2019-10-31 02:44:40,536 ERROR: Exception on /plotly/home [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -55,11 +64,12 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 77, in show_employee
-    schedule["rows"]=employee.schedule.all()
-AttributeError: 'Department' object has no attribute 'schedule'
-2019-10-30 05:42:10,280 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:42:11,205 ERROR: Exception on /hr/show_employee/1 [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/plotly/routes.py", line 28, in home
+    bar=create_plot()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/plotly/routes.py", line 35, in create_plot
+    x=np.linespace(0,1,N)
+AttributeError: module 'numpy' has no attribute 'linespace'
+2019-10-31 02:46:37,268 ERROR: Exception on /plotly/home [GET] [in /home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -75,20 +85,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/skullquake/src/skullquake/pythonsamples/src/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/hr/routes.py", line 77, in show_employee
-    schedule["rows"]=employee.schedule.all()
-AttributeError: 'Employee' object has no attribute 'schedule'
-2019-10-30 05:42:56,160 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:43:28,410 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:44:11,485 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:52:43,765 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:53:42,451 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:54:22,734 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:58:40,517 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:59:17,639 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 05:59:39,920 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 06:18:55,022 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 06:20:06,850 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 06:20:40,926 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 06:25:06,129 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
-2019-10-30 06:26:28,658 INFO: Microblog startup [in /home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/__init__.py:77]
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/plotly/routes.py", line 28, in home
+    bar=create_plot()
+  File "/home/skullquake/src/skullquake/pythonsamples/src/flsk_mt_010/app/plotly/routes.py", line 35, in create_plot
+    x=np.linespace(0,1,N)
+AttributeError: module 'numpy' has no attribute 'linespace'

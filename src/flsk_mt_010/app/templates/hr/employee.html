@@ -69,18 +69,16 @@
 			$(document).ready(
 				function(){
 					$('#table_id').DataTable();
-//timetable.addLocations(['Rotterdam', 'Madrid', 'London', 'New York', 'Los Angeles', 'Jakarta', 'Tokyo']);
-//timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015,7,17,10,45), new Date(2015,7,17,12,30), '#');
-//timetable.addEvent('Zumba', 'Madrid', new Date(2015,7,17,12), new Date(2015,7,17,13), '#');
-//timetable.addEvent('Zumbu', 'Madrid', new Date(2015,7,17,13,30), new Date(2015,7,17,15), '#');
-//timetable.addEvent('Hackathon', 'Tokyo', new Date(2015,7,17,11,30), new Date(2015,7,17,20), '#');
-//timetable.addEvent('Tokyo Hackathon Livestream', 'Los Angeles', new Date(2015,7,17,12,0), new Date(2015,7,17,16), '#');
-//timetable.addEvent('Lunch', 'Jakarta', new Date(2015,7,17,9,30), new Date(2015,7,17,11), '#');
 					var timetable = new Timetable();
+					timetable.addLocations(['location0']);
 					{% for d in dates %}
-						timetable.addLocations(['{{d.dsc}}']);
-						//d.push({'dsc':'{{d.dsc}}','t0':new Date("{{d.t0}}"),'t1':new Date("{{d.t1}}")});
-						timetable.addEvent('{{d.dsc}}', '{{d.dsc}}', new Date("{{d.t0}}"),new Date(new Date("{{d.t1}}").getTime()+60000), '#');
+						timetable.addEvent(
+							'{{d.dsc}}',
+							'location0',//'{{d.dsc}}',
+							new Date("{{d.t0}}"),
+							new Date("{{d.t1}}"),
+							'#'
+						);
 					{% endfor %}
 
 					var renderer = new Timetable.Renderer(timetable);

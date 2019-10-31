@@ -77,7 +77,7 @@ def show_employee(id):
 	schedules["rows"]=employee.schedules.all()
 	dates=[]
 	for s in schedules["rows"]:
-		dates.append({'dsc':s.description,'t0':s.date,'t1':s.date})
+		dates.append({'dsc':s.description,'t0':s.t0,'t1':s.t1})
 	return render_template(
 		"hr/employee.html",
 		employee=employee,

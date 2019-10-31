@@ -352,23 +352,23 @@ def tables():
 			tables.append(table)
 		except Exception as E:
 			print(str(E))		
-	table={}
-	table['name']='----'
-	table['cols']=[]
-	table['count']='---'
-	tables.append(table)
-	for t in db.metadata.tables:
-		try:
-			db.metadata.tables[t]
-			table={}
-			table['name']=db.metadata.tables[t].name
-			table['cols']=[]
-			for col in db.metadata.tables[t].columns:
-				table['cols'].append(col.name)
-			table['count']=0
-			tables.append(table)
-		except Exception as E:
-			print(str(E))		
+#	table={}
+#	table['name']='----'
+#	table['cols']=[]
+#	table['count']='---'
+#	tables.append(table)
+#	for t in db.metadata.tables:
+#		try:
+#			db.metadata.tables[t]
+#			table={}
+#			table['name']=db.metadata.tables[t].name
+#			table['cols']=[]
+#			for col in db.metadata.tables[t].columns:
+#				table['cols'].append(col.name)
+#			table['count']=0
+#			tables.append(table)
+#		except Exception as E:
+#			print(str(E))		
 	return render_template(
 		'tables.html',
 		tables=tables

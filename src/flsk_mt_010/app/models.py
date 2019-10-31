@@ -197,10 +197,6 @@ class P6IMFBRRTN(UserMixin,db.Model):
 	DOY=db.Column(db.Integer)
 	HR=db.Column(db.Integer)
 	RTN=db.Column(db.Float)
-class Vec2F(UserMixin,db.Model):
-	id=db.Column(db.Integer,primary_key=True)
-	X=db.Column(db.Float)
-	Y=db.Column(db.Float)
 #-------------------------------------------------------------------------------
 #HR
 #-------------------------------------------------------------------------------
@@ -223,11 +219,46 @@ class Employee(db.Model):
 	)
 class Schedule(db.Model):
 	id=db.Column(db.Integer,primary_key=True)
-	date=db.Column(db.DateTime,default=datetime.utcnow)
+	t0=db.Column(db.DateTime,default=datetime.utcnow)
+	t1=db.Column(db.DateTime,default=datetime.utcnow)
 	description=db.Column(db.String)
 	employee_id=db.Column(db.Integer,db.ForeignKey('employee.id'))
+#todo
+class Task(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	description=db.Column(db.String)
+
 #-------------------------------------------------------------------------------
 #//HR
+#-------------------------------------------------------------------------------
+#plotting
+#-------------------------------------------------------------------------------
+class Dataset(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	vec2s=db.relationship(
+		'Vec2F',
+		backref='dataset',
+		lazy='dynamic'
+	)
+	vec3s=db.relationship(
+		'Vec3F',
+		backref='dataset',
+		lazy='dynamic'
+	)
+class Vec2F(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	dataset_id=db.Column(db.Integer,db.ForeignKey('dataset.id'))
+	X=db.Column(db.Float)
+	Y=db.Column(db.Float)
+class Vec3F(db.Model):
+	id=db.Column(db.Integer,primary_key=True)
+	dataset_id=db.Column(db.Integer,db.ForeignKey('dataset.id'))
+	X=db.Column(db.Float)
+	Y=db.Column(db.Float)
+	Z=db.Column(db.Float)
+
+#-------------------------------------------------------------------------------
+#//plotting
 #-------------------------------------------------------------------------------
 @login.user_loader
 def load_user(id):

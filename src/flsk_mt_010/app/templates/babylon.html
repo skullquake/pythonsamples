@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block content %}
+     	<style> 
+                 #renderCanvas {
+                                width: 100%;
+                                height: 100%;
+                                touch-action: none;
+                        }
+     	</style> 
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<div class="row">
+		<div class="col-sm-12">
+			
+			<canvas class="renderCanvas" id="renderCanvas"></canvas>
+		</div>
+	</div>
+		<!-- Babylon.js -->
+		<script src="/babylonjs/pep/0.4.2/pep.min.js"></script>
+		<!--
+		<script src="/babylonjs/dat-gui/0.6.2/dat.gui.min.js"></script>
+		-->
+		<script src="/babylonjs/cannon.js"></script>
+		<script src="/babylonjs/Oimo.js"></script>
+		<script src="/babylonjs/earcut.min.js"></script>
+		<script src="/babylonjs/babylon.js"></script>
+		<script src="/babylonjs/inspector/babylon.inspector.bundle.js"></script>
+		<script src="/babylonjs/materialsLibrary/babylonjs.materials.min.js"></script>
+		<script src="/babylonjs/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+		<script src="/babylonjs/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+		<script src="/babylonjs/loaders/babylonjs.loaders.min.js"></script>
+		<script src="/babylonjs/serializers/babylonjs.serializers.min.js"></script>
+		<script src="/babylonjs/gui/babylon.gui.min.js"></script>
+
+
+	<script>
+
+	function test0(){
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine(canvas, true);
+		var createScene = function () {
+			// This creates a basic Babylon Scene object (non-mesh)
+			var scene = new BABYLON.Scene(engine);
+			// This creates and positions a free camera (non-mesh)
+			var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+			// This targets the camera to scene origin
+			camera.setTarget(BABYLON.Vector3.Zero());
+			// This attaches the camera to the canvas
+			camera.attachControl(canvas, true);
+			// This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+			var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+			// Default intensity is 1. Let's dim the light a small amount
+			light.intensity = 0.7;
+			// Our built-in 'sphere' shape. Params: name, subdivs, size, scene
+			// lod tex
+			var myMaterial=new BABYLON.StandardMaterial('myMaterial',scene);
+			var tex=new BABYLON.Texture('/gfx/noise?f=0.02',scene);
+			myMaterial.diffuseTexture=tex;
+			myMaterial.specularTexture=tex;
+			myMaterial.emissiveTexture=tex;
+			myMaterial.ambientTexture=tex;
+			var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+			sphere.material=myMaterial;//set mat
+			// Move the sphere upward 1/2 its height
+			sphere.position.y = 1;
+			// Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
+			//var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
+			scene.clearColor=new BABYLON.Color3(0,0,0);
+			//$.toast('Scene created');
+			return scene;
+		};
+		var scene = createScene()
+		scene=scene;
+		engine.runRenderLoop(
+			function () {
+				if(scene){
+					scene.render();
+				}
+			}
+		);
+		// Resize
+		window.addEventListener(
+			"resize",
+			function(){
+				engine.resize();
+			}
+		);
+		canvas.addEventListener(
+			"resize",
+			function(){
+				engine.resize();
+			}
+		);
+		//panel.scene.dispose();
+		//$.toast('Scene destroyed');
+		//return true;
+	}
+	function test1(){
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine(canvas, true);
+		var createScene = function () {
+			var s=1;
+			var f=8;
+			var w=1024;
+			var h=1024;
+			var scene = new BABYLON.Scene(engine);
+			var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(5, 300, 200), scene);
+			camera.setTarget(BABYLON.Vector3.Zero());
+			camera.attachControl(canvas, true);
+			var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+			light.intensity = 0.7;
+			var myMaterial=new BABYLON.StandardMaterial('myMaterial',scene);
+			var tex=new BABYLON.Texture(
+				'/gfx/noise?{% for arg in args %}{{arg}}={{args.get(arg)}}&{% endfor %}',
+				scene
+			);
+			myMaterial.diffuseTexture=tex;
+			myMaterial.specularTexture=tex;
+			myMaterial.emissiveTexture=tex;
+			myMaterial.ambientTexture=tex;
+			var ground = BABYLON.Mesh.CreateGroundFromHeightMap(
+				"ground",
+				'/gfx/noise?{% for arg in args %}{{arg}}={{args.get(arg)}}&{% endfor %}',
+				256,
+				256,
+				500,
+				0,
+				10,
+				scene,
+				false
+			);
+			ground.material=myMaterial
+			scene.clearColor=new BABYLON.Color3(0,0,0);
+			return scene;
+		};
+		var scene = createScene()
+		engine.runRenderLoop(
+			function () {
+				if(scene){
+					scene.render();
+				}
+			}
+		);
+		window.addEventListener(
+			"resize",
+			function(){
+				engine.resize();
+			}
+		);
+		canvas.addEventListener(
+			"resize",
+			function(){
+				engine.resize();
+			}
+		);
+	}
+	test1();
+
+
+	</script>
+{% endblock %}

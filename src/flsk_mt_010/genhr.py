@@ -21,13 +21,15 @@ if __name__=='__main__':
 	"""
 	"""
 	app=create_app()
-	ndep=32
-	nemp=128
-	nsch=16
+	ndep=4
+	nemp=8
+	nsch=8
+	tasks=['task0','task1','task3']
 	with app.app_context():
 		db.session.query(Department).delete()
 		db.session.query(Employee).delete()
 		db.session.query(Schedule).delete()
+		dateNow=datetime.today()
 		for a in range(ndep):
 			print(f"Generating department {a}")
 			dep=Department(
@@ -41,9 +43,29 @@ if __name__=='__main__':
 				)
 				db.session.add(emp)
 				for c in range(nsch):
-					sch=Schedule(
-						description=f"Schedule {c}",
-						employee=emp
-					)
-					db.session.add(sch)
+					for d in range(8):
+						sch=Schedule(
+							description=random.choice(tasks),
+							t0=datetime(
+								dateNow.year,
+								dateNow.month,
+								c+1,
+								d,
+								0,
+								0,
+								0
+							),
+							t1=datetime(
+								dateNow.year,
+								dateNow.month,
+								c+1,
+								d,
+								59-random.randint(0,30),
+								0,
+								0
+							),
+							employee=emp
+						)
+						trand=random.randint(0,8)
+						db.session.add(sch)
 			db.session.commit()

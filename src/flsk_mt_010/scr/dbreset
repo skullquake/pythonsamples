@@ -1,2 +1,7 @@
 #!/bin/bash
-rm ./app.db&&./scr/rmmgr&&./scr/mkmgr&&./scr/mgrmgr&&./scr/ugrmgr&&python3 ./genusr.py
+rm ./app.db
+./scr/rmmgr
+./scr/mkmgr
+./scr/mgrmgr
+./scr/ugrmgr
+python3 ./genusr.py
