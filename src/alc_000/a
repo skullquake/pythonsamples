@@ -1,0 +1,173 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vim: ts=4 sw=4 et:
+import sys
+from sqlalchemy import\
+	create_engine,\
+	Sequence
+from sqlalchemy.orm import\
+	sessionmaker
+from sqlalchemy.ext.declarative import\
+	declarative_base 
+Base=declarative_base()
+from sqlalchemy import\
+	Column,\
+	Integer,\
+	String
+class User(Base):
+	__tablename__='users'
+	id=Column(Integer,primary_key=True)
+	name=Column(String)
+	fullname=Column(String)
+	nickname=Column(String)
+	def __repr__(self):
+		return "<User(name='%s',fullname='%s',nickname='%s')>"%(self.name,self.fullname,self.nickname)
+class User2(Base):
+	__tablename__='users2'
+	id=Column(Integer,Sequence('user2_id_seq'),primary_key=True)
+	name=Column(String(50))
+	fullname=Column(String(50))
+	nickname=Column(String(50))
+	def __repr__(self):
+		return "<User(name='%s',fullname='%s',nickname='%s')>"%(self.name,self.fullname,self.nickname)
+
+"""
+Module doc
+"""
+def main (args):
+	"""
+	main()
+	"""
+	engine=create_engine('sqlite:///:memory:',echo=True)
+	Base.metadata.create_all(engine)
+	Session=sessionmaker(bind=engine)
+	session=Session()
+	for i in range(0,8):
+		session.add(User(name=f"name[{i}]",fullname=f"fullname[{i}]",nickname=f"nickname[{i}]"))
+	session.commit()
+	for i in range(4,12):
+		u=session.query(User).filter_by(name=f"name[{i}]").first()
+		if u!=None:
+			print("Found:")
+			print(f"	Name:{u.name}")
+			print(f"	Fullname:{u.fullname}")
+			print(f"	Nickname:{u.nickname}")
+		else:
+			print("Not found")
+	arr_usr=[]
+	arr_usr.clear()
+	for i in range(8,16):
+		arr_usr.append(
+			User(name=f"name[{i}]",fullname=f"fullname[{i}]",nickname=f"nickname[{i}]")
+		)
+	session.add_all(arr_usr)
+	print(session.dirty)
+	print(session.new)
+	for usr in arr_usr:
+		usr.name=f"_name[{i}]"
+	print(session.dirty)
+	print(session.new)
+	session.add_all(arr_usr)
+	session.commit()
+	for row in session.query(User).order_by(User.id):
+		print(row)
+	clz=User
+	obj_res={}
+	obj_res["meta"]={}
+	obj_res["meta"]["tablename"]=clz.__table__.name
+	obj_res["meta"]["rows"]=session.query(clz).count()
+	arr_row=[]
+	for row in session.query(clz).limit(4):
+		obj_row={}
+		for heading in row.__table__.columns:
+			obj_row[heading.name]=getattr(row,heading.name)
+			arr_row.append(obj_row)
+	obj_res["data"]=arr_row
+	print(obj_res)
+	for row in session.query(User.name.label('name_alias')).limit(4):
+		print(row.name_alias)
+	stride=4
+	for row in session.query(User)[0:4]:
+		print(row)
+	obj_usr=session.query(User).filter(User.id==1).filter(User.name=='name[0]').first();
+	if obj_usr!=None:
+		print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.id!=1).filter(User.name!='name[0]').all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.name.like('%name%')).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.name.ilike('%name%')).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.id.in_([1,2,3,4])).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(~User.id.in_([1,2,3,4])).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.id==None).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.id!=None).all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	arr_usr=session.query(User).filter(User.id==1,User.name=="name[0]").all();
+	if arr_usr!=None:
+		for obj_usr in arr_usr:
+			print(obj_usr)
+	else:
+		print("Not Found")
+	# import and_ ???
+	#arr_usr=session.query(User).filter(and_(User.id==1,User.name=="name[0]")).all();
+	#if arr_usr!=None:
+	#	for obj_usr in arr_usr:
+	#		print(obj_usr)
+	#else:
+	#	print("Not Found")
+	# import or_ ???
+	#arr_usr=session.query(User).filter(or_(User.id==1,User.name=="name[0]")).all();
+	#if arr_usr!=None:
+	#	for obj_usr in arr_usr:
+	#		print(obj_usr)
+	#else:
+	#	print("Not Found")
+	#db specific???
+	#arr_usr=session.query(User).filter(User.name.match("name[0]")).all();
+	#if arr_usr!=None:
+	#	for obj_usr in arr_usr:
+	#		print(obj_usr)
+	#else:
+	#	print("Not Found")
+
+
+
+	return 0;
+if __name__ == "__main__":
+	import sys;
+	sys.exit(main(sys.argv));
+	sys.exit(0);

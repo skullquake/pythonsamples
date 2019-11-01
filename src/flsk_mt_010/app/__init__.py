@@ -68,8 +68,6 @@ def create_app(config_class=Config):
 	app.register_blueprint(hr_bp,url_prefix='/hr')
 	from app.babylon import bp as babylon_bp
 	app.register_blueprint(babylon_bp,url_prefix='/babylon')
-	from app.plotly import bp as plotly_bp
-	app.register_blueprint(plotly_bp,url_prefix='/plotly')
 	if not app.debug:
 		if not os.path.exists('logs'):
 			os.mkdir('logs')
